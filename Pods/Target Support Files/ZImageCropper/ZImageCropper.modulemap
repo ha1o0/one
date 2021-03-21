@@ -1,0 +1,6 @@
+module ZImageCropper {
+  umbrella header "ZImageCropper-umbrella.h"
+
+  export *
+  module * { export * }
+}
