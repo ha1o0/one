@@ -39,6 +39,12 @@
 		E9E0CDB52607A1D90047DAE9 /* BaseTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDB32607A1D90047DAE9 /* BaseTableViewController.xib */; };
 		E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */; };
 		E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */; };
+		E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDD02608E88D0047DAE9 /* Functions.swift */; };
+		E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDD92608ED0D0047DAE9 /* BaseTableViewCell.swift */; };
+		E9E0CDDC2608ED0D0047DAE9 /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDDA2608ED0D0047DAE9 /* BaseTableViewCell.xib */; };
+		E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDE12608EDE90047DAE9 /* FunctionListTableViewCell.swift */; };
+		E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */; };
+		E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +105,12 @@
 		E9E0CDB32607A1D90047DAE9 /* BaseTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewController.xib; sourceTree = "<group>"; };
 		E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
+		E9E0CDD02608E88D0047DAE9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		E9E0CDD92608ED0D0047DAE9 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		E9E0CDDA2608ED0D0047DAE9 /* BaseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewCell.xib; sourceTree = "<group>"; };
+		E9E0CDE12608EDE90047DAE9 /* FunctionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionListTableViewCell.swift; sourceTree = "<group>"; };
+		E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionListTableViewCell.xib; sourceTree = "<group>"; };
+		E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +181,7 @@
 		E9E0CB4D26062A860047DAE9 /* one */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CDCF2608E69C0047DAE9 /* Model */,
 				E9E0CD8D2607952F0047DAE9 /* Util */,
 				E9E0CD84260794FE0047DAE9 /* View */,
 				E9E0CD7A260794980047DAE9 /* Controller */,
@@ -252,6 +265,7 @@
 				E9E0CD6F2607947C0047DAE9 /* HUD.swift */,
 				E9E0CD712607947C0047DAE9 /* SaveFiles.swift */,
 				E9E0CD722607947C0047DAE9 /* StrInt.swift */,
+				E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -270,6 +284,7 @@
 		E9E0CD84260794FE0047DAE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CDCE2608E6600047DAE9 /* TableViewCell */,
 				E9E0CD85260795070047DAE9 /* Player */,
 			);
 			path = View;
@@ -299,6 +314,41 @@
 				E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		E9E0CDCE2608E6600047DAE9 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CDE02608ED830047DAE9 /* Function */,
+				E9E0CDD82608ECF30047DAE9 /* Base */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		E9E0CDCF2608E69C0047DAE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CDD02608E88D0047DAE9 /* Functions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9E0CDD82608ECF30047DAE9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CDD92608ED0D0047DAE9 /* BaseTableViewCell.swift */,
+				E9E0CDDA2608ED0D0047DAE9 /* BaseTableViewCell.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E9E0CDE02608ED830047DAE9 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CDE12608EDE90047DAE9 /* FunctionListTableViewCell.swift */,
+				E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */,
+			);
+			path = Function;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +461,7 @@
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* juhua.gif in Resources */,
+				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
@@ -418,6 +469,7 @@
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
+				E9E0CDDC2608ED0D0047DAE9 /* BaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +522,8 @@
 				E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */,
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
+				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
+				E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */,
 				E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
@@ -484,6 +538,8 @@
 				E9E0CD732607947C0047DAE9 /* HUD.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
+				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
+				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 			);

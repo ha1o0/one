@@ -45,6 +45,11 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
+    
+    deinit {
+        print("---deinit---")
+    }
+    
     /*
     // MARK: - Navigation
 

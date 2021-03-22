@@ -7,27 +7,31 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UISearchBarDelegate {
+class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+
+    
 
     lazy var navigationView = UIView()
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
     lazy var tableView = UITableView()
+    var tableViewData: [IdName] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
+        setTableView()
         // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated:Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -146,7 +150,57 @@ class HomeViewController: BaseViewController, UISearchBarDelegate {
         }
     }
     
+    func setTableView() {
+        self.view.addSubview(self.tableView)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableViewData.append(IdName(name: "视频播放器", id: "1"))
+        self.tableViewData.append(IdName(name: "动画", id: "2"))
+        self.tableViewData.append(IdName(name: "贝塞尔曲线", id: "3"))
+        self.tableViewData.append(IdName(name: "UITableView", id: "4"))
+        self.tableViewData.append(IdName(name: "UICollectionView", id: "5"))
+//        self.tableView.backgroundColor = UIColor.red
+        self.tableView.snp.makeConstraints { (maker) in
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.top.equalTo(self.navigationView.snp.bottom)
+            maker.bottom.equalToSuperview()
+        }
+        tableView.tableFooterView = UIView()
+    }
+
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableViewData.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = dequeueReusableCell(withIdentifier: "FunctionListTableViewCell", tableView: tableView) as! FunctionListTableViewCell
+        let item = self.tableViewData[indexPath.row]
+        cell.setContent(data: item)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let row = indexPath.row
+        let selectedRow = self.tableViewData[row]
+        var targetController: UIViewController? = nil
+        switch selectedRow.id {
+        case "1":
+            targetController = PlayViewController()
+        default:
+            return
+        }
+        if let targetController = targetController {
+            self.navigationController?.pushViewController(targetController, animated: true)
+        }
+    }
     /*
     // MARK: - Navigation
 
