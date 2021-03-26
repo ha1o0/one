@@ -14,7 +14,7 @@ class PlayViewController: BaseViewController {
     var diyPlayerView = DiyPlayerView()
     var responseButton = UIButton()
     var domainName = UITextField()
-    var videos = ["http://192.168.6.242/1.mp4", "http://192.168.6.242/2.mp4", "http://192.168.6.242/5.mp4", "http://192.168.6.242/3.wmv", "http://192.168.6.242/4.avi"]
+    var videos = ["http://192.168.6.242/1.mp4", "http://192.168.6.242/2.mp4", "https://blog.iword.win/5.mp4", "http://192.168.6.242/3.wmv", "http://192.168.6.242/4.avi"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +23,7 @@ class PlayViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         diyPlayerView = DiyPlayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: UIScreen.main.bounds.width, height: 250))
+        diyPlayerView.layer.zPosition = 999
         view.addSubview(diyPlayerView)
         diyPlayerView.commonInit()
         diyPlayerView.playUrl(url: videos[0])
@@ -31,6 +32,7 @@ class PlayViewController: BaseViewController {
     
     func setSeries() {
         let seriesView = UIScrollView()
+        seriesView.layer.zPosition = 998
         seriesView.contentSize = CGSize(width: 0, height: 34)
         seriesView.alwaysBounceVertical = false
         seriesView.alwaysBounceHorizontal = true

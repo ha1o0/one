@@ -48,7 +48,7 @@ extension UIView {
         //设置颜色
         layer.colors = colors
 
-        //设置颜色渐变的位置 （我这里是横向 中间点开始变化）
+        //设置颜色渐变的位置
         layer.locations = locations
 
         //开始的坐标点
@@ -59,5 +59,12 @@ extension UIView {
 
         //设置渐变背景色后，view上面的内容无法显示，所以将layer放在最底层
         self.layer.insertSublayer(layer, at: 0)
+    }
+    
+    // 旋转view
+    func rotate(angle: CGFloat) {
+        let radians = angle / 180.0 * CGFloat.pi
+        let rotation = self.transform.rotated(by: radians);
+        self.transform = rotation
     }
 }

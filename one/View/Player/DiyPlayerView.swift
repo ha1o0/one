@@ -22,7 +22,10 @@ class DiyPlayerView: UIView {
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var cacheSlider: UISlider!
+    @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var topControlView: UIView!
     
+    @IBOutlet weak var controlViewHeight: NSLayoutConstraint!
     var loadingImageView: UIImageView!
     var playerItem: AVPlayerItem!
     var player: AVPlayer! = nil
@@ -36,6 +39,8 @@ class DiyPlayerView: UIView {
     var sliderThumbFollowGesture = false
     var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
     var firstOpen = true
+    var isFullScreen = false
+    var originalFrame = CGRect.zero
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -107,9 +112,9 @@ class DiyPlayerView: UIView {
         initSlider()
         addGesture()
         initMPVolumeView()
-        print("commoninit")
         contentView.frame = self.bounds
         addSubview(contentView)
+        originalFrame = self.frame
     }
     
     func initSlider() {
@@ -126,11 +131,20 @@ class DiyPlayerView: UIView {
 //        progressSlider.addTarget(self, action: #selector(changeSliderValue:), for: UIControlEvents.RawValue)
         progressSlider.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
+        
+    }
+    
+    func setControlView() {
+        controlView.setGradientBackgroundColor(colors: [UIColor.black.cgColor, UIColor.clear.cgColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
+        topControlView.setGradientBackgroundColor(colors: [UIColor.clear.cgColor, UIColor.black.cgColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
     }
     
     override func layoutSubviews() {
         print("layout")
         super.layoutSubviews()
+        if controlView != nil && topControlView != nil {
+            setControlView()
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?,
@@ -229,6 +243,14 @@ class DiyPlayerView: UIView {
         }
     }
     
+    @IBAction func fullScreenPlayer(_ sender: UIButton) {
+        if isFullScreen {
+            exitFullScreen()
+        } else {
+            fullScreen()
+        }
+    }
+    
     @IBAction func playOrPause(_ sender: UIButton) {
         if player == nil {
             return
@@ -312,7 +334,6 @@ class DiyPlayerView: UIView {
         addPlayerObserver(playerItem: playerItem)
         player = AVPlayer(playerItem: playerItem)
         playerLayer = AVPlayerLayer(player: player)
-        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         playerLayer.contentsScale = UIScreen.main.scale
         playerLayer.frame = self.bounds
         playerView.layer.insertSublayer(playerLayer, at: 0)
@@ -329,7 +350,33 @@ class DiyPlayerView: UIView {
         playToEnd()
     }
     
+    @objc func fullScreen() {
+        isFullScreen = true
+        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
+        playerLayer.frame = self.bounds
+        appDelegate.deviceOrientation = .landscapeRight
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        controlViewHeight.constant = hasSafeArea ? 67 : 44
+//        playerLayer.videoGravity = .resizeAspectFill
+        
+    }
+    
+    @objc func exitFullScreen() {
+        isFullScreen = false
+        self.frame = originalFrame
+        playerLayer.frame = self.bounds
+        appDelegate.deviceOrientation = .portrait
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        controlViewHeight.constant = 44
+    }
+    
     @IBAction func pop(_ sender: UIButton) {
+        if isFullScreen {
+            exitFullScreen()
+            return
+        }
         self.parentViewController?.navigationController?.popViewController(animated: true)
     }
     
