@@ -87,7 +87,8 @@ public func getCuttingImage(_ size: CGSize, direction: UIRectCorner, cornerRadii
 //    return nc
 //}
 //
-//var topViewController: UIViewController? {
+var topViewController: UIViewController? {
+    return appDelegate.window?.rootViewController
 //    var vc = (appDelegate.window?.rootViewController as? SideMenuController)?.contentViewController
 //    if let rootVC = vc as? UITabBarController {
 //        if rootVC.children.count > rootVC.selectedIndex {
@@ -105,7 +106,7 @@ public func getCuttingImage(_ size: CGSize, direction: UIRectCorner, cornerRadii
 //        vc = vc?.presentedViewController
 //    }
 //    return vc
-//}
+}
 
 //public func getTargetControllerInNavStacks(target: AnyClass) -> UIViewController? {
 //    let stackVcs: [UIViewController] = rootNavigationController?.children ?? []
@@ -141,5 +142,18 @@ public func pt(_ px: CGFloat) -> CGFloat {
 extension Array {
     subscript (safe index: Int) -> Element? {
         return (0..<count).contains(index) ? self[index] : nil
+    }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder?.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
     }
 }

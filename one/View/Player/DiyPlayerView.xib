@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiyPlayerView" customModule="diyplayer" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiyPlayerView" customModule="one" customModuleProvider="target">
             <connections>
                 <outlet property="barView" destination="0Cy-qc-igu" id="pQ9-yX-jcB"/>
                 <outlet property="cacheSlider" destination="FhD-UF-IDX" id="PkJ-1S-mdK"/>
@@ -22,13 +19,33 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DiyPlayerView" customModule="diyplayer" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DiyPlayerView" customModule="one" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-xm-UaE">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-ap-PbX">
+                            <rect key="frame" x="8" y="8" width="36" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="2A0-E7-zow"/>
+                                <constraint firstAttribute="height" constant="28" id="zzS-mV-h8l"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" image="leftBack">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="pop:" destination="-1" eventType="touchUpInside" id="9aG-pe-SSH"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="uZp-ap-PbX" firstAttribute="leading" secondItem="hjP-xm-UaE" secondAttribute="leading" constant="8" id="F17-80-bqG"/>
+                        <constraint firstItem="uZp-ap-PbX" firstAttribute="top" secondItem="hjP-xm-UaE" secondAttribute="top" constant="8" id="hWY-Ij-cq6"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cy-qc-igu">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -52,7 +69,7 @@
                         </slider>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FhD-UF-IDX">
                             <rect key="frame" x="38" y="7" width="232" height="31"/>
-                            <color key="minimumTrackTintColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <color key="minimumTrackTintColor" systemColor="lightTextColor"/>
                             <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58N-uL-ENM">
@@ -103,7 +120,11 @@
         </view>
     </objects>
     <resources>
-        <image name="full" width="200" height="200"/>
-        <image name="play" width="200" height="200"/>
+        <image name="full" width="100" height="100"/>
+        <image name="leftBack" width="100" height="100"/>
+        <image name="play" width="100" height="100"/>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

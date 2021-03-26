@@ -25,17 +25,18 @@ class DiyPlayerView: UIView {
     
     var loadingImageView: UIImageView!
     var playerItem: AVPlayerItem!
-    var player: AVPlayer!
+    var player: AVPlayer! = nil
     var playerLayer: AVPlayerLayer!
     var isPlay = false
     var systemVolumeView = MPVolumeView()
-    var videoUrl = "http://192.168.6.242/2.mp4"
+    var videoUrl = ""
     var totalTimeSeconds = 0
     var totalTime = "00:00"
     var currentTime = "00:00"
     var sliderThumbFollowGesture = false
     var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
     var firstOpen = true
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("frame")
@@ -89,8 +90,10 @@ class DiyPlayerView: UIView {
     }
 
     func commonInit() {
-//        videoUrl = "http://vjs.zencdn.net/v/oceans.mp4"
-//        videoUrl = "https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_10mb.mp4"
+//        let assets = AVURLAsset.audiovisualTypes()
+//        assets.map { type in
+//            print(type.rawValue)
+//        }
         let loadingGif = UIImage.gifImageWithName("juhua")
         loadingImageView = UIImageView(image: loadingGif)
         self.playerView.addSubview(loadingImageView)
@@ -105,22 +108,8 @@ class DiyPlayerView: UIView {
         addGesture()
         initMPVolumeView()
         print("commoninit")
-        guard let url = URL(string: videoUrl) else {
-            print(videoUrl)
-            fatalError("播放地址错误")
-        }
-        let asset = AVAsset(url: url)
-        playerItem = AVPlayerItem(asset: asset)
-        addPlayerObserver(playerItem: playerItem)
-        player = AVPlayer(playerItem: playerItem)
-        playerLayer = AVPlayerLayer(player: player)
-        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-        playerLayer.contentsScale = UIScreen.main.scale
-        playerLayer.frame = self.bounds
-        self.playerView.layer.insertSublayer(playerLayer, at: 0)
         contentView.frame = self.bounds
         addSubview(contentView)
-        playOrPause(self.playBtn)
     }
     
     func initSlider() {
@@ -220,6 +209,7 @@ class DiyPlayerView: UIView {
             // Player item is ready to play.
             case .failed:
                 print("1111111")
+                reset()
                 break
             // Player item failed. See error.
             case .unknown:
@@ -240,6 +230,9 @@ class DiyPlayerView: UIView {
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
+        if player == nil {
+            return
+        }
         player.isPlaying ? player.pause() : player.play()
         sender.setImage(player.isPlaying ? UIImage(named: "pause") : UIImage(named: "play"), for: .normal)
         loadingImageView.isHidden = !player.isPlaying
@@ -281,18 +274,63 @@ class DiyPlayerView: UIView {
     }
 
     @objc func playToEnd() {
+        if player == nil {
+            return
+        }
         playBtn.setImage(UIImage(named: "play"), for: .normal)
         playerItem.seek(to: CMTime.zero) { (bool) in }
         player.pause()
     }
     
     func closePlayer(){
-        if ((player) != nil) {
+        if (player != nil) {
+            print("关闭播放器")
             player.pause()
             removePlayerObserver(playerItem: playerItem)
             player = nil
-            playerLayer.removeFromSuperlayer()
         }
+    }
+    
+    func playUrl(url: String) {
+        if url == videoUrl {
+            print("地址未变化")
+            return
+        }
+        guard let urlURL = URL(string: url) else {
+            print(url)
+            fatalError("播放地址错误")
+        }
+        if player != nil {
+            print("移除")
+            playToEnd()
+            closePlayer()
+            playerView.layer.sublayers?.remove(at: 0)
+        }
+        
+        let asset = AVAsset(url: urlURL)
+        playerItem = AVPlayerItem(asset: asset)
+        addPlayerObserver(playerItem: playerItem)
+        player = AVPlayer(playerItem: playerItem)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        playerLayer.contentsScale = UIScreen.main.scale
+        playerLayer.frame = self.bounds
+        playerView.layer.insertSublayer(playerLayer, at: 0)
+        playOrPause(self.playBtn)
+        videoUrl = url
+    }
+    
+    @objc func reset() {
+        currentTime = "00:00"
+        totalTime = "00:00"
+        timeDisplay.text = "\(currentTime)/\(totalTime)"
+        progressSlider.value = .zero
+        cacheSlider.value = .zero
+        playToEnd()
+    }
+    
+    @IBAction func pop(_ sender: UIButton) {
+        self.parentViewController?.navigationController?.popViewController(animated: true)
     }
     
     func addPlayerObserver(playerItem:AVPlayerItem) {

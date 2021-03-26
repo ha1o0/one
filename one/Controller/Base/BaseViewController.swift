@@ -32,6 +32,7 @@ class BaseViewController: UIViewController {
     }
     
     func setCustomNav() {
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.tintColor = UIColor.white

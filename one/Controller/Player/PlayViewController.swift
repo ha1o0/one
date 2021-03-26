@@ -14,6 +14,7 @@ class PlayViewController: BaseViewController {
     var diyPlayerView = DiyPlayerView()
     var responseButton = UIButton()
     var domainName = UITextField()
+    var videos = ["http://192.168.6.242/1.mp4", "http://192.168.6.242/2.mp4", "http://192.168.6.242/5.mp4", "http://192.168.6.242/3.wmv", "http://192.168.6.242/4.avi"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,11 +22,52 @@ class PlayViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
-        diyPlayerView = DiyPlayerView(frame: CGRect(x: 0, y: 40, width: UIScreen.main.bounds.width, height: 250))
+        diyPlayerView = DiyPlayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: UIScreen.main.bounds.width, height: 250))
+        view.addSubview(diyPlayerView)
         diyPlayerView.commonInit()
-        self.view.addSubview(diyPlayerView)
-        
+        diyPlayerView.playUrl(url: videos[0])
+        setSeries()
+    }
+    
+    func setSeries() {
+        let seriesView = UIScrollView()
+        seriesView.contentSize = CGSize(width: 0, height: 34)
+        seriesView.alwaysBounceVertical = false
+        seriesView.alwaysBounceHorizontal = true
+        view.addSubview(seriesView)
+        seriesView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(diyPlayerView.snp.bottom).offset(20)
+            maker.leading.equalToSuperview().offset(16)
+            maker.trailing.equalToSuperview().offset(-16)
+            maker.height.equalTo(50)
+        }
+        for (index, _) in videos.enumerated() {
+            let button = UIButton()
+            let width = 100
+            button.setTitleColor(UIColor.red, for: .normal)
+            button.layer.borderWidth = 1
+            button.layer.cornerRadius = 5
+            button.layer.borderColor = UIColor.red.cgColor
+            button.setTitle("第\(index + 1)集", for: .normal)
+            button.tag = index
+            seriesView.addSubview(button)
+            button.snp.makeConstraints { (maker) in
+                maker.top.equalToSuperview()
+                maker.leading.equalToSuperview().offset((width + 20) * index)
+                maker.width.equalTo(width)
+            }
+            seriesView.contentSize.width += CGFloat((width + 20))
+            button.addTarget(self, action: #selector(playVideo), for: .touchUpInside)
+        }
+        seriesView.contentSize.width -= 20
+    }
+    
+    @objc func playVideo(target: UIButton) {
+        diyPlayerView.playUrl(url: videos[target.tag])
+//        diyPlayerView.changeUrl(url: videos[target.tag])
+    }
+    
+    func setDomainView() {
         // input domain
         let uiInputView = UIView()
         uiInputView.backgroundColor = UIColor.gray
@@ -79,7 +121,6 @@ class PlayViewController: BaseViewController {
         responseButton.snp.makeConstraints { (maker) in
             maker.center.equalToSuperview()
         }
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

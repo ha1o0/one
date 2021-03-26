@@ -45,6 +45,8 @@
 		E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDE12608EDE90047DAE9 /* FunctionListTableViewCell.swift */; };
 		E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */; };
 		E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */; };
+		E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */; };
+		E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		E9E0CDE12608EDE90047DAE9 /* FunctionListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionListTableViewCell.swift; sourceTree = "<group>"; };
 		E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionListTableViewCell.xib; sourceTree = "<group>"; };
 		E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
+		E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection1ViewController.swift; sourceTree = "<group>"; };
+		E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Collection1ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +277,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CDF0260D9EE00047DAE9 /* Collection */,
 				E9E0CDB92607A2E10047DAE9 /* Player */,
 				E9E0CBA3260660350047DAE9 /* Launch */,
 				E9E0CB8526063A270047DAE9 /* Base */,
@@ -349,6 +354,15 @@
 				E9E0CDE22608EDE90047DAE9 /* FunctionListTableViewCell.xib */,
 			);
 			path = Function;
+			sourceTree = "<group>";
+		};
+		E9E0CDF0260D9EE00047DAE9 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */,
+				E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */,
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,6 +479,7 @@
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
+				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E9E0CDB52607A1D90047DAE9 /* BaseTableViewController.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
@@ -541,6 +556,7 @@
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
+				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

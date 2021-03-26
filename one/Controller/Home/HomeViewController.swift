@@ -194,6 +194,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         switch selectedRow.id {
         case "1":
             targetController = PlayViewController()
+        case "5":
+            targetController = Collection1ViewController()
         default:
             return
         }
