@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.launchWindow = nil
     }
     
+    func hideStatusBar() {
+        UIApplication.shared.statusBarUIView?.isHidden = true
+    }
+
+    func showStatusBar() {
+        UIApplication.shared.statusBarUIView?.isHidden = false
+    }
+
     // MARK: AppDelegate LifeCycle
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -158,5 +166,5 @@ extension UIApplication {
             }
         }
         return nil
-      }
+    }
 }

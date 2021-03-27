@@ -265,6 +265,7 @@ class DiyPlayerView: UIView {
     
     @objc func fullScreen() {
         isFullScreen = true
+        appDelegate.hideStatusBar()
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
         playerLayer.frame = self.bounds
         appDelegate.deviceOrientation = .landscapeRight
@@ -276,6 +277,7 @@ class DiyPlayerView: UIView {
     
     @objc func exitFullScreen() {
         isFullScreen = false
+        appDelegate.showStatusBar()
         self.frame = originalFrame
         playerLayer.frame = self.bounds
         appDelegate.deviceOrientation = .portrait
