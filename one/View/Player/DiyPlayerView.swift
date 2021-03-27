@@ -41,6 +41,7 @@ class DiyPlayerView: UIView {
     var firstOpen = true
     var isFullScreen = false
     var originalFrame = CGRect.zero
+    var hasSetControlView = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -135,8 +136,14 @@ class DiyPlayerView: UIView {
     }
     
     func setControlView() {
-        controlView.setGradientBackgroundColor(colors: [UIColor.black.cgColor, UIColor.clear.cgColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
-        topControlView.setGradientBackgroundColor(colors: [UIColor.clear.cgColor, UIColor.black.cgColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
+        if hasSetControlView {
+            controlView.layer.sublayers?.remove(at: 0)
+            topControlView.layer.sublayers?.remove(at: 0)
+        }
+        let blackGradientColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        controlView.setGradientBackgroundColor(colors: [blackGradientColor, UIColor.clear.cgColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
+        topControlView.setGradientBackgroundColor(colors: [UIColor.clear.cgColor, blackGradientColor], locations: [0, 1], startPoint: CGPoint(x: 0.5, y: 1), endPoint: CGPoint(x: 0.5, y: 0))
+        hasSetControlView = true
     }
     
     override func layoutSubviews() {
@@ -222,12 +229,13 @@ class DiyPlayerView: UIView {
                 break
             // Player item is ready to play.
             case .failed:
-                print("1111111")
+                print("1111111\(Error.self)")
                 reset()
                 break
             // Player item failed. See error.
             case .unknown:
                 print("2222222")
+                reset()
                 break
                 // Player item is not yet ready.
             @unknown default:
@@ -236,6 +244,9 @@ class DiyPlayerView: UIView {
         }
         
         if keyPath == #keyPath(AVPlayerItem.loadedTimeRanges) {
+            if playerItem == nil || playerItem.loadedTimeRanges.count == 0 {
+                return
+            }
             let cacheSeconds = Int(playerItem.loadedTimeRanges[0].timeRangeValue.duration.value) / Int(playerItem.loadedTimeRanges[0].timeRangeValue.duration.timescale)
             if totalTimeSeconds > 0 && Float(cacheSeconds) > cacheSlider.value {
                 cacheSlider.value = Float(cacheSeconds)
@@ -244,11 +255,32 @@ class DiyPlayerView: UIView {
     }
     
     @IBAction func fullScreenPlayer(_ sender: UIButton) {
+        controlViewHeight.constant = (hasSafeArea && !isFullScreen) ? 70 : 44
         if isFullScreen {
             exitFullScreen()
         } else {
             fullScreen()
         }
+    }
+    
+    @objc func fullScreen() {
+        isFullScreen = true
+        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
+        playerLayer.frame = self.bounds
+        appDelegate.deviceOrientation = .landscapeRight
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+//        playerLayer.videoGravity = .resizeAspectFill
+        
+    }
+    
+    @objc func exitFullScreen() {
+        isFullScreen = false
+        self.frame = originalFrame
+        playerLayer.frame = self.bounds
+        appDelegate.deviceOrientation = .portrait
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
@@ -350,29 +382,8 @@ class DiyPlayerView: UIView {
         playToEnd()
     }
     
-    @objc func fullScreen() {
-        isFullScreen = true
-        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
-        playerLayer.frame = self.bounds
-        appDelegate.deviceOrientation = .landscapeRight
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        controlViewHeight.constant = hasSafeArea ? 67 : 44
-//        playerLayer.videoGravity = .resizeAspectFill
-        
-    }
-    
-    @objc func exitFullScreen() {
-        isFullScreen = false
-        self.frame = originalFrame
-        playerLayer.frame = self.bounds
-        appDelegate.deviceOrientation = .portrait
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        controlViewHeight.constant = 44
-    }
-    
     @IBAction func pop(_ sender: UIButton) {
+        controlViewHeight.constant = 44
         if isFullScreen {
             exitFullScreen()
             return

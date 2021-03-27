@@ -100,19 +100,19 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="Z4c-xI-hoI" firstAttribute="centerY" secondItem="6u3-HC-jMk" secondAttribute="centerY" id="IHO-AC-T4b"/>
                                 <constraint firstItem="6u3-HC-jMk" firstAttribute="leading" secondItem="0Cy-qc-igu" secondAttribute="leading" constant="10" id="KKy-kZ-sgc"/>
                                 <constraint firstItem="Z4c-xI-hoI" firstAttribute="leading" secondItem="58N-uL-ENM" secondAttribute="trailing" constant="3" id="UfW-6p-wy9"/>
                                 <constraint firstItem="58N-uL-ENM" firstAttribute="leading" secondItem="juP-7I-eUG" secondAttribute="trailing" constant="10" id="V2n-jW-Z8h"/>
                                 <constraint firstAttribute="trailing" secondItem="Z4c-xI-hoI" secondAttribute="trailing" constant="8" id="Wge-hB-4qc"/>
-                                <constraint firstItem="Z4c-xI-hoI" firstAttribute="centerY" secondItem="0Cy-qc-igu" secondAttribute="centerY" id="cA0-aT-36v"/>
-                                <constraint firstItem="FhD-UF-IDX" firstAttribute="centerY" secondItem="0Cy-qc-igu" secondAttribute="centerY" id="ef4-qg-Wc9"/>
+                                <constraint firstItem="juP-7I-eUG" firstAttribute="centerY" secondItem="6u3-HC-jMk" secondAttribute="centerY" id="aAE-Qh-VZA"/>
                                 <constraint firstItem="58N-uL-ENM" firstAttribute="leading" secondItem="FhD-UF-IDX" secondAttribute="trailing" constant="10" id="f7s-W7-kFS"/>
-                                <constraint firstItem="juP-7I-eUG" firstAttribute="centerY" secondItem="0Cy-qc-igu" secondAttribute="centerY" id="gg4-by-nWE"/>
-                                <constraint firstItem="58N-uL-ENM" firstAttribute="centerY" secondItem="0Cy-qc-igu" secondAttribute="centerY" id="h0h-tj-lAt"/>
+                                <constraint firstItem="FhD-UF-IDX" firstAttribute="centerY" secondItem="6u3-HC-jMk" secondAttribute="centerY" id="gmz-Z8-CM9"/>
                                 <constraint firstItem="FhD-UF-IDX" firstAttribute="leading" secondItem="6u3-HC-jMk" secondAttribute="trailing" constant="10" id="hcA-Ns-d6p"/>
+                                <constraint firstItem="6u3-HC-jMk" firstAttribute="top" secondItem="0Cy-qc-igu" secondAttribute="top" constant="12" id="kUr-ZT-k2v"/>
+                                <constraint firstItem="58N-uL-ENM" firstAttribute="centerY" secondItem="6u3-HC-jMk" secondAttribute="centerY" id="u5C-1S-tkB"/>
                                 <constraint firstAttribute="height" constant="44" id="vgx-vx-VNf"/>
                                 <constraint firstItem="juP-7I-eUG" firstAttribute="leading" secondItem="6u3-HC-jMk" secondAttribute="trailing" constant="10" id="xVK-8O-4IT"/>
-                                <constraint firstItem="6u3-HC-jMk" firstAttribute="centerY" secondItem="0Cy-qc-igu" secondAttribute="centerY" id="zdH-U8-uYQ"/>
                             </constraints>
                         </view>
                     </subviews>
