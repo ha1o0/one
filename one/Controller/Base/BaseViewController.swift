@@ -8,7 +8,9 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
+    lazy var navigationView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigation()
@@ -21,22 +23,45 @@ class BaseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        if (self.navigationController?.isNavigationBarHidden ?? false) {
-//            setCustomNav()
-//        }
-        
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
     func setCustomNav() {
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        view.addSubview(navigationView)
+        navigationView.snp.makeConstraints { (maker) in
+            maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.height.equalTo(44)
+        }
+        navigationView.backgroundColor = UIColor.main
+        let leftView = UIView()
+        navigationView.addSubview(leftView)
+        leftView.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.leading.equalToSuperview().offset(0)
+            maker.width.equalTo(80)
+            maker.height.equalTo(44)
+        }
+        let leftArrowImageView = UIImageView()
+        leftArrowImageView.image = UIImage(named: "leftBack")
+        leftView.addSubview(leftArrowImageView)
+        leftArrowImageView.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.width.equalTo(36)
+            maker.height.equalTo(28)
+            maker.leading.equalToSuperview().offset(8)
+        }
+        leftArrowImageView.isUserInteractionEnabled = true
+        let backRecognizer = UITapGestureRecognizer(target: self, action: #selector(back))
+        leftArrowImageView.addGestureRecognizer(backRecognizer)
     }
     
     func setNavigation() {
@@ -46,9 +71,12 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     deinit {
-        print("---deinit---")
+        print("---deinit---:\(self)")
     }
     
     /*

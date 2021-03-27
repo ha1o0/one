@@ -9,9 +9,6 @@ import UIKit
 
 class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    
-
-    lazy var navigationView = UIView()
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
     lazy var tableView = UITableView()
@@ -24,6 +21,11 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.backgroundColor = UIColor.clear
+    }
+    
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
 //        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -31,6 +33,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewWillDisappear(_ animated:Bool) {
         super.viewWillDisappear(animated)
+        
 //        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
@@ -54,23 +57,13 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     override func setNavigation() {
         
         super.setNavigation()
-        
-        let statusView = UIView()
-        self.view.addSubview(statusView)
-        statusView.backgroundColor = UIColor.main
-        statusView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(self.view).offset(0)
-            maker.left.equalTo(self.view).offset(0)
-            maker.trailing.equalTo(self.view).offset(0)
-            maker.height.equalTo(STATUS_BAR_HEIGHT)
-        }
-        
+
         self.view.addSubview(navigationView)
         navigationView.backgroundColor = UIColor.main
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(statusView.snp.bottom).offset(0)
-            maker.left.equalTo(self.view).offset(0)
-            maker.trailing.equalTo(self.view).offset(0)
+            maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
+            maker.left.equalToSuperview().offset(0)
+            maker.trailing.equalToSuperview().offset(0)
             maker.height.equalTo(44)
         }
         
@@ -159,7 +152,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         self.tableViewData.append(IdName(name: "贝塞尔曲线", id: "3"))
         self.tableViewData.append(IdName(name: "UITableView", id: "4"))
         self.tableViewData.append(IdName(name: "UICollectionView", id: "5"))
-//        self.tableView.backgroundColor = UIColor.red
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
