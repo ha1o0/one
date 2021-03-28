@@ -27,7 +27,6 @@
 		E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD5C2607934D0047DAE9 /* UIColor+hex.swift */; };
 		E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD5D2607934D0047DAE9 /* UIImageView+URL.swift */; };
 		E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD5E2607934D0047DAE9 /* Image+Gif.swift */; };
-		E9E0CD732607947C0047DAE9 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD6F2607947C0047DAE9 /* HUD.swift */; };
 		E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD702607947C0047DAE9 /* Constants.swift */; };
 		E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD712607947C0047DAE9 /* SaveFiles.swift */; };
 		E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD722607947C0047DAE9 /* StrInt.swift */; };
@@ -95,7 +94,6 @@
 		E9E0CD5C2607934D0047DAE9 /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		E9E0CD5D2607934D0047DAE9 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		E9E0CD5E2607934D0047DAE9 /* Image+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+Gif.swift"; sourceTree = "<group>"; };
-		E9E0CD6F2607947C0047DAE9 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		E9E0CD702607947C0047DAE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E9E0CD712607947C0047DAE9 /* SaveFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveFiles.swift; sourceTree = "<group>"; };
 		E9E0CD722607947C0047DAE9 /* StrInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrInt.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				E9E0CD702607947C0047DAE9 /* Constants.swift */,
-				E9E0CD6F2607947C0047DAE9 /* HUD.swift */,
 				E9E0CD712607947C0047DAE9 /* SaveFiles.swift */,
 				E9E0CD722607947C0047DAE9 /* StrInt.swift */,
 				E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */,
@@ -550,7 +547,6 @@
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
-				E9E0CD732607947C0047DAE9 /* HUD.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
