@@ -19,4 +19,12 @@ class TimeUtil {
         let secondResult = seconds / SECONDS_PER_MINUTE
         return secondResult < 10 ? "0\(secondResult)" : "\(secondResult)"
     }
+    
+    static func getCurrentTime() -> String {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: currentDate)
+        let minute = calendar.component(.minute, from: currentDate)
+        return "\(hour):\(minute)"
+    }
 }

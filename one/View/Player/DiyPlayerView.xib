@@ -15,6 +15,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="YFD-9R-Ycc"/>
                 <outlet property="controlView" destination="0Cy-qc-igu" id="LDI-5B-YBV"/>
                 <outlet property="controlViewHeight" destination="vgx-vx-VNf" id="hvH-cX-t2A"/>
+                <outlet property="dateTimeDisplayLabel" destination="33g-sw-A88" id="unG-Lp-2WK"/>
                 <outlet property="fullBtn" destination="Z4c-xI-hoI" id="nNq-vi-yPM"/>
                 <outlet property="gestureView" destination="DWW-gs-m1W" id="nd4-nj-hPj"/>
                 <outlet property="playBtn" destination="6u3-HC-jMk" id="zpl-x4-idE"/>
@@ -49,12 +50,21 @@
                                         <action selector="pop:" destination="-1" eventType="touchUpInside" id="9aG-pe-SSH"/>
                                     </connections>
                                 </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33g-sw-A88">
+                                    <rect key="frame" x="187.5" y="22" width="0.0" height="0.0"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="33g-sw-A88" firstAttribute="centerX" secondItem="T8N-rX-CqH" secondAttribute="centerX" id="1a6-tD-r6c"/>
                                 <constraint firstItem="uZp-ap-PbX" firstAttribute="leading" secondItem="T8N-rX-CqH" secondAttribute="leading" constant="8" id="PqF-cu-Tjy"/>
                                 <constraint firstItem="uZp-ap-PbX" firstAttribute="centerY" secondItem="T8N-rX-CqH" secondAttribute="centerY" id="Y3F-gg-mLa"/>
                                 <constraint firstAttribute="height" constant="44" id="egj-lK-F5d"/>
+                                <constraint firstItem="33g-sw-A88" firstAttribute="centerY" secondItem="T8N-rX-CqH" secondAttribute="centerY" id="iXQ-Mg-2KE"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWW-gs-m1W">
@@ -62,6 +72,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDw-zg-4hp">
                                     <rect key="frame" x="187.5" y="289.5" width="0.0" height="0.0"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>

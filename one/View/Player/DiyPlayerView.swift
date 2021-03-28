@@ -29,6 +29,7 @@ class DiyPlayerView: UIView {
     @IBOutlet weak var cacheSlider: UISlider!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var topControlView: UIView!
+    @IBOutlet weak var dateTimeDisplayLabel: UILabel!
     @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var controlViewHeight: NSLayoutConstraint!
     @IBOutlet weak var centerProgressDisplayLabel: UILabel!
@@ -54,6 +55,7 @@ class DiyPlayerView: UIView {
     var fadeControlViewLock = 0
     var isHideControlViewTimerRun = false
     var hideControlViewTimer: Timer!
+    var dateTimeDisplayTimer: Timer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,10 +118,6 @@ class DiyPlayerView: UIView {
     }
 
     func commonInit() {
-//        let assets = AVURLAsset.audiovisualTypes()
-//        assets.map { type in
-//            print(type.rawValue)
-//        }
         let loadingGif = UIImage.gifImageWithName("juhua")
         loadingImageView = UIImageView(image: loadingGif)
         self.playerView.addSubview(loadingImageView)
@@ -137,6 +135,7 @@ class DiyPlayerView: UIView {
         addSubview(contentView)
         originalFrame = self.frame
         startHideControlViewTimer()
+        startDateTimeTimer()
     }
     
     func initSlider() {
@@ -150,7 +149,6 @@ class DiyPlayerView: UIView {
         cacheSlider.minimumValue = 0
         cacheSlider.value = 0
         progressSlider.isContinuous = false
-//        progressSlider.addTarget(self, action: #selector(changeSliderValue:), for: UIControlEvents.RawValue)
         progressSlider.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
         
@@ -282,6 +280,7 @@ class DiyPlayerView: UIView {
         appDelegate.deviceOrientation = .landscapeRight
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        dateTimeDisplayLabel.isHidden = !isFullScreen
 //        playerLayer.videoGravity = .resizeAspectFill
         
     }
@@ -294,6 +293,7 @@ class DiyPlayerView: UIView {
         appDelegate.deviceOrientation = .portrait
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        dateTimeDisplayLabel.isHidden = !isFullScreen
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
@@ -381,61 +381,13 @@ class DiyPlayerView: UIView {
         
     }
     
-    @objc func fadeControlView() {
-        if fadeControlViewLock == 1 {
-            return
-        }
-        
-        UIView.animate(withDuration: 0.5) {
-            let alpha = self.showControlView ? CGFloat.zero : 1.0
-            self.controlView.alpha = alpha
-            self.topControlView.alpha = alpha
-            self.fadeControlViewLock = 1
-        } completion: { (result) in
-            self.showControlView = !self.showControlView
-            self.fadeControlViewLock = 0
-            if self.showControlView {
-                self.stopHideControlViewTimer()
-                self.startHideControlViewTimer()
-            }
-        }
-
-    }
-    
-    @objc func hideControlView() {
-        UIView.animate(withDuration: 0.5) {
-            let alpha = CGFloat.zero
-            self.controlView.alpha = alpha
-            self.topControlView.alpha = alpha
-        } completion: { (result) in
-            self.showControlView = !self.showControlView
-            self.fadeControlViewLock = 0
-            self.isHideControlViewTimerRun = false
-        }
-    }
-    
-    func startHideControlViewTimer() {
-        if !isHideControlViewTimerRun {
-            isHideControlViewTimerRun = true
-            hideControlViewTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(hideControlView), userInfo: nil, repeats: false)
-        }
-    }
-    
-    func stopHideControlViewTimer() {
-        if !isHideControlViewTimerRun {
-            return
-        }
-        hideControlViewTimer.invalidate()
-        hideControlViewTimer = Timer()
-        isHideControlViewTimerRun = false
-    }
-    
     func closePlayer(){
         if (player != nil) {
             print("关闭播放器")
             player.pause()
             removePlayerObserver(playerItem: playerItem)
             player = nil
+            stopHideControlViewTimer()
         }
     }
     
@@ -503,6 +455,75 @@ class DiyPlayerView: UIView {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+    }
+}
+
+// 控制条显示
+extension DiyPlayerView {
+    @objc func fadeControlView() {
+        if fadeControlViewLock == 1 {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            let alpha = self.showControlView ? CGFloat.zero : 1.0
+            self.controlView.alpha = alpha
+            self.topControlView.alpha = alpha
+            self.fadeControlViewLock = 1
+        } completion: { (result) in
+            self.showControlView = !self.showControlView
+            self.fadeControlViewLock = 0
+            if self.showControlView {
+                self.stopHideControlViewTimer()
+                self.startHideControlViewTimer()
+            }
+        }
+
+    }
+    
+    @objc func hideControlView() {
+        UIView.animate(withDuration: 0.5) {
+            let alpha = CGFloat.zero
+            self.controlView.alpha = alpha
+            self.topControlView.alpha = alpha
+        } completion: { (result) in
+            self.showControlView = !self.showControlView
+            self.fadeControlViewLock = 0
+            self.isHideControlViewTimerRun = false
+        }
+    }
+    
+    func startHideControlViewTimer() {
+        if !isHideControlViewTimerRun {
+            isHideControlViewTimerRun = true
+            hideControlViewTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(hideControlView), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func stopHideControlViewTimer() {
+        if !isHideControlViewTimerRun {
+            return
+        }
+        hideControlViewTimer.invalidate()
+        hideControlViewTimer = nil
+        isHideControlViewTimerRun = false
+    }
+}
+
+// 时间显示
+extension DiyPlayerView {
+    
+    @objc func updateDateTime() {
+        dateTimeDisplayLabel.text = TimeUtil.getCurrentTime()
+    }
+    
+    func startDateTimeTimer() {
+        dateTimeDisplayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateDateTime), userInfo: nil, repeats: true)
+    }
+    
+    func endDateTimeTimer() {
+        dateTimeDisplayTimer.invalidate()
+        dateTimeDisplayTimer = nil
     }
 }
 
