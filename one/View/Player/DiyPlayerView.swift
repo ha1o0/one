@@ -12,6 +12,11 @@ import AVFoundation
 import SnapKit
 import MediaPlayer
 
+enum PanType {
+    case volume
+    case progress
+}
+
 class DiyPlayerView: UIView {
     
     @IBOutlet var contentView: UIView!
@@ -24,8 +29,10 @@ class DiyPlayerView: UIView {
     @IBOutlet weak var cacheSlider: UISlider!
     @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var topControlView: UIView!
-    
+    @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var controlViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var centerProgressDisplayLabel: UILabel!
+    
     var loadingImageView: UIImageView!
     var playerItem: AVPlayerItem!
     var player: AVPlayer! = nil
@@ -42,6 +49,13 @@ class DiyPlayerView: UIView {
     var isFullScreen = false
     var originalFrame = CGRect.zero
     var hasSetControlView = false
+    var currentPanType: PanType! = nil
+    var currentVolume = 0.0
+    var currentProgress = 0.0
+    let tempSlider = UISlider()
+    var showControlView = true
+    var fadeControlViewLock = 0
+    var showControlViewTimer: Timer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,17 +70,25 @@ class DiyPlayerView: UIView {
     }
 
     func addGesture() {
+        // 单击隐藏控制条手势
+        let clickTap = UITapGestureRecognizer(target: self, action: #selector(clickTapPlayer(_:)))
+        clickTap.numberOfTapsRequired = 1
+        gestureView.addGestureRecognizer(clickTap)
         // 双击播放和暂停手势
         let doubleTap = UITapGestureRecognizer(target: self, action:#selector(doubleTapPlayer))
         doubleTap.numberOfTapsRequired = 2
-        self.playerView.addGestureRecognizer(doubleTap)
+        gestureView.addGestureRecognizer(doubleTap)
         // 滑动+-音量手势
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpVolume))
-        swipeUp.direction = .up
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownVolume))
-        swipeDown.direction = .down
-        self.playerView.addGestureRecognizer(swipeUp)
-        self.playerView.addGestureRecognizer(swipeDown)
+//        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpVolume))
+//        swipeUp.direction = .up
+//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownVolume))
+//        swipeDown.direction = .down
+//        gestureView.addGestureRecognizer(swipeUp)
+//        gestureView.addGestureRecognizer(swipeDown)
+        
+        // 滑动进度手势+-音量手势
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(changeVolumeProgress(_:)))
+        gestureView.addGestureRecognizer(panGesture)
     }
 
     func initMPVolumeView() {
@@ -116,6 +138,11 @@ class DiyPlayerView: UIView {
         contentView.frame = self.bounds
         addSubview(contentView)
         originalFrame = self.frame
+        
+//        Timer.init(timeInterval: 3, repeats: false) { (timer) in
+//            self.controlView.isHidden = true
+//            self.topControlView.isHidden = true
+//        }
     }
     
     func initSlider() {
@@ -158,15 +185,6 @@ class DiyPlayerView: UIView {
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-//         Only handle observations for the playerItemContext
-//        guard context == &playerItemContext else {
-//            super.observeValue(forKeyPath: keyPath,
-//                               of: object,
-//                               change: change,
-//                               context: context)
-//            return
-//        }
-        
         if keyPath == #keyPath(AVPlayerItem.status) {
             
             let status: AVPlayerItem.Status
@@ -295,13 +313,15 @@ class DiyPlayerView: UIView {
         print("isplaying", player.isPlaying)
     }
 
-    @objc func startToChangeSliderValue(slider:UISlider) {
+    @objc func startToChangeSliderValue(slider: UISlider) {
         print("start slider.value = %d",slider.value)
         self.timeDisplay.text = "\(TimeUtil.getTimeMinutesBySeconds(Int(slider.value))):\(TimeUtil.getTimeSecondBySeconds(Int(slider.value)))/\(self.totalTime)"
+        self.centerProgressDisplayLabel.isHidden = false
+        self.centerProgressDisplayLabel.text = self.timeDisplay.text
         sliderThumbFollowGesture = true
     }
     
-    @objc func changeSliderValue(slider:UISlider) {
+    @objc func changeSliderValue(slider: UISlider) {
         print("slider.value = %d",slider.value)
         justDrag = 2
         player.pause()
@@ -309,7 +329,12 @@ class DiyPlayerView: UIView {
         player.play()
         loadingImageView.isHidden = !player.isPlaying
         self.playBtn.setImage(UIImage(named: "pause"), for: .normal)
+        self.centerProgressDisplayLabel.isHidden = true
         sliderThumbFollowGesture = false
+    }
+    
+    @objc func clickTapPlayer(_ sender: UITapGestureRecognizer) {
+        fadeControlView()
     }
     
     @objc func doubleTapPlayer() {
@@ -317,18 +342,36 @@ class DiyPlayerView: UIView {
         playOrPause(self.playBtn)
     }
 
-    @objc func swipeUpVolume() {
-        print("swipe up", self.getSystemVolumeValue())
-        self.setSystemVolumeValue(self.getSystemVolumeValue() + 0.1)
-        print("swipe up", self.getSystemVolumeValue())
+    @objc func changeVolumeProgress(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: gestureView)
+        let absx = abs(Int32(translation.x))
+        let absy = abs(Int32(translation.y))
+        print("\(translation)")
+        if (absx > 20 || absy > 20) && currentPanType == nil {
+            currentPanType = absx > absy ? .progress : .volume
+        }
+        if sender.state == .began {
+            currentVolume = Double(self.getSystemVolumeValue())
+            currentProgress = Double(self.progressSlider.value)
+        }
+        if currentPanType == .volume {
+            let step = 0.006 // y pt步进音量（0-1）
+            self.setSystemVolumeValue(Float(currentVolume - (step * Double(translation.y))))
+        }
+        if currentPanType == .progress {
+            let step: CGFloat =  isFullScreen ? (90 / 600) : (90 / 300) // x pt步进s
+            progressSlider.value = Float(currentProgress + Double(step * translation.x))
+            startToChangeSliderValue(slider: progressSlider)
+        }
+        if sender.state == .ended {
+            if currentPanType == .progress {
+                changeSliderValue(slider: progressSlider)
+            }
+            currentPanType = nil
+        }
+        
     }
-
-    @objc func swipeDownVolume() {
-        print("swipe down", self.getSystemVolumeValue())
-        self.setSystemVolumeValue(self.getSystemVolumeValue() - 0.1)
-        print("swipe down", self.getSystemVolumeValue())
-    }
-
+    
     @objc func playToEnd() {
         if player == nil {
             return
@@ -336,6 +379,23 @@ class DiyPlayerView: UIView {
         playBtn.setImage(UIImage(named: "play"), for: .normal)
         playerItem.seek(to: CMTime.zero) { (bool) in }
         player.pause()
+    }
+    
+    func fadeControlView() {
+        if fadeControlViewLock == 1 {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            let alpha = self.showControlView ? CGFloat.zero : 1.0
+            self.controlView.alpha = alpha
+            self.topControlView.alpha = alpha
+            self.fadeControlViewLock = 1
+        } completion: { (result) in
+            self.showControlView = !self.showControlView
+            self.fadeControlViewLock = 0
+        }
+
     }
     
     func closePlayer(){

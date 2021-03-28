@@ -46,10 +46,10 @@ class PlayViewController: BaseViewController {
         for (index, _) in videos.enumerated() {
             let button = UIButton()
             let width = 100
-            button.setTitleColor(UIColor.red, for: .normal)
+            button.setTitleColor(UIColor.main, for: .normal)
             button.layer.borderWidth = 1
             button.layer.cornerRadius = 5
-            button.layer.borderColor = UIColor.red.cgColor
+            button.layer.borderColor = UIColor.main.cgColor
             button.setTitle("第\(index + 1)集", for: .normal)
             button.tag = index
             seriesView.addSubview(button)
