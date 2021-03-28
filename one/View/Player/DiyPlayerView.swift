@@ -54,6 +54,7 @@ class DiyPlayerView: UIView {
     var currentProgress = 0.0
     var showControlView = true
     var fadeControlViewLock = 0
+    var autoFadeControlViewSecond = 5
     var isHideControlViewTimerRun = false
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
@@ -508,7 +509,7 @@ extension DiyPlayerView {
     func startHideControlViewTimer() {
         if !isHideControlViewTimerRun {
             isHideControlViewTimerRun = true
-            hideControlViewTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(hideControlView), userInfo: nil, repeats: false)
+            hideControlViewTimer = Timer.scheduledTimer(timeInterval: TimeInterval(autoFadeControlViewSecond), target: self, selector: #selector(hideControlView), userInfo: nil, repeats: false)
         }
     }
     
