@@ -19,9 +19,9 @@ target 'one' do
     pod 'SnapKit', '~> 5.0.0'
     pod 'DLRadioButton', '~> 1.4'
     pod 'SDWebImage', '~> 5.0'
+    pod 'Toast-Swift', '~> 5.0.1'
     pod 'FreeStreamer'
     # pod objective-c
-    pod 'MBProgressHUD'
     pod 'ZImageCropper'
 end
 	
