@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import SnapKit
 import MediaPlayer
+import Toast_Swift
 
 enum PanType {
     case volume
@@ -130,7 +131,6 @@ class DiyPlayerView: UIView {
         contentView.frame = self.bounds
         addSubview(contentView)
         originalFrame = self.frame
-        startHideControlViewTimer()
         startDateTimeTimer()
     }
     
@@ -237,12 +237,12 @@ class DiyPlayerView: UIView {
                 break
             // Player item is ready to play.
             case .failed:
-                print("1111111\(Error.self)")
+                self.makeToast("播放失败")
                 reset()
                 break
             // Player item failed. See error.
             case .unknown:
-                print("2222222")
+                self.makeToast("播放失败")
                 reset()
                 break
                 // Player item is not yet ready.
@@ -388,7 +388,7 @@ class DiyPlayerView: UIView {
         playBtn.setImage(UIImage(named: "play"), for: .normal)
         playerItem.seek(to: CMTime.zero) { (bool) in }
         player.pause()
-        
+        bottomProgressView.progress = 0
     }
     
     func closePlayer(){
@@ -415,6 +415,7 @@ class DiyPlayerView: UIView {
             playToEnd()
             closePlayer()
             playerView.layer.sublayers?.remove(at: 0)
+            stopHideControlViewTimer()
         }
         
         let asset = AVAsset(url: urlURL)
@@ -427,6 +428,7 @@ class DiyPlayerView: UIView {
         playerView.layer.insertSublayer(playerLayer, at: 0)
         playOrPause(self.playBtn)
         videoUrl = url
+        startHideControlViewTimer()
     }
     
     @objc func reset() {
