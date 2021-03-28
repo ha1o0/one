@@ -33,6 +33,7 @@ class DiyPlayerView: UIView {
     @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var controlViewHeight: NSLayoutConstraint!
     @IBOutlet weak var centerProgressDisplayLabel: UILabel!
+    @IBOutlet weak var bottomProgressView: UIProgressView!
     
     var loadingImageView: UIImageView!
     var playerItem: AVPlayerItem!
@@ -151,7 +152,7 @@ class DiyPlayerView: UIView {
         progressSlider.isContinuous = false
         progressSlider.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
-        
+        bottomProgressView.tintColor = UIColor.main
     }
     
     func setControlView() {
@@ -231,6 +232,7 @@ class DiyPlayerView: UIView {
                             self.justDrag -= 1
                         } else {
                             self.progressSlider.value = Float(CMTimeGetSeconds(time))
+                            self.bottomProgressView.progress = self.progressSlider.value / self.progressSlider.maximumValue
                         }
                     }
                 })
@@ -281,6 +283,7 @@ class DiyPlayerView: UIView {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         dateTimeDisplayLabel.isHidden = !isFullScreen
+        bottomProgressView.isHidden = true
 //        playerLayer.videoGravity = .resizeAspectFill
         
     }
@@ -312,6 +315,7 @@ class DiyPlayerView: UIView {
         self.timeDisplay.text = "\(TimeUtil.getTimeMinutesBySeconds(Int(slider.value))):\(TimeUtil.getTimeSecondBySeconds(Int(slider.value)))/\(self.totalTime)"
         self.centerProgressDisplayLabel.isHidden = false
         self.centerProgressDisplayLabel.text = self.timeDisplay.text
+        self.bottomProgressView.progress = slider.value / self.progressSlider.maximumValue
         sliderThumbFollowGesture = true
         self.stopHideControlViewTimer()
     }
@@ -477,6 +481,7 @@ extension DiyPlayerView {
                 self.stopHideControlViewTimer()
                 self.startHideControlViewTimer()
             }
+            self.bottomProgressView.isHidden = self.isFullScreen || self.showControlView
         }
 
     }
@@ -490,6 +495,7 @@ extension DiyPlayerView {
             self.showControlView = !self.showControlView
             self.fadeControlViewLock = 0
             self.isHideControlViewTimerRun = false
+            self.bottomProgressView.isHidden = self.isFullScreen
         }
     }
     
