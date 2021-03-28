@@ -37,7 +37,6 @@ class DiyPlayerView: UIView {
     var playerItem: AVPlayerItem!
     var player: AVPlayer! = nil
     var playerLayer: AVPlayerLayer!
-    var isPlay = false
     var systemVolumeView = MPVolumeView()
     var videoUrl = ""
     var totalTimeSeconds = 0
@@ -45,17 +44,16 @@ class DiyPlayerView: UIView {
     var currentTime = "00:00"
     var sliderThumbFollowGesture = false
     var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
-    var firstOpen = true
     var isFullScreen = false
     var originalFrame = CGRect.zero
     var hasSetControlView = false
     var currentPanType: PanType! = nil
     var currentVolume = 0.0
     var currentProgress = 0.0
-    let tempSlider = UISlider()
     var showControlView = true
     var fadeControlViewLock = 0
-    var showControlViewTimer: Timer!
+    var isHideControlViewTimerRun = false
+    var hideControlViewTimer: Timer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -138,11 +136,7 @@ class DiyPlayerView: UIView {
         contentView.frame = self.bounds
         addSubview(contentView)
         originalFrame = self.frame
-        
-//        Timer.init(timeInterval: 3, repeats: false) { (timer) in
-//            self.controlView.isHidden = true
-//            self.topControlView.isHidden = true
-//        }
+        startHideControlViewTimer()
     }
     
     func initSlider() {
@@ -241,7 +235,6 @@ class DiyPlayerView: UIView {
                             self.progressSlider.value = Float(CMTimeGetSeconds(time))
                         }
                     }
-                    
                 })
                 
                 break
@@ -313,14 +306,17 @@ class DiyPlayerView: UIView {
         print("isplaying", player.isPlaying)
     }
 
+    // 开始拖动
     @objc func startToChangeSliderValue(slider: UISlider) {
         print("start slider.value = %d",slider.value)
         self.timeDisplay.text = "\(TimeUtil.getTimeMinutesBySeconds(Int(slider.value))):\(TimeUtil.getTimeSecondBySeconds(Int(slider.value)))/\(self.totalTime)"
         self.centerProgressDisplayLabel.isHidden = false
         self.centerProgressDisplayLabel.text = self.timeDisplay.text
         sliderThumbFollowGesture = true
+        self.stopHideControlViewTimer()
     }
     
+    // 拖动结束
     @objc func changeSliderValue(slider: UISlider) {
         print("slider.value = %d",slider.value)
         justDrag = 2
@@ -331,6 +327,9 @@ class DiyPlayerView: UIView {
         self.playBtn.setImage(UIImage(named: "pause"), for: .normal)
         self.centerProgressDisplayLabel.isHidden = true
         sliderThumbFollowGesture = false
+        if showControlView {
+            self.startHideControlViewTimer()
+        }
     }
     
     @objc func clickTapPlayer(_ sender: UITapGestureRecognizer) {
@@ -379,9 +378,10 @@ class DiyPlayerView: UIView {
         playBtn.setImage(UIImage(named: "play"), for: .normal)
         playerItem.seek(to: CMTime.zero) { (bool) in }
         player.pause()
+        
     }
     
-    func fadeControlView() {
+    @objc func fadeControlView() {
         if fadeControlViewLock == 1 {
             return
         }
@@ -394,8 +394,40 @@ class DiyPlayerView: UIView {
         } completion: { (result) in
             self.showControlView = !self.showControlView
             self.fadeControlViewLock = 0
+            if self.showControlView {
+                self.stopHideControlViewTimer()
+                self.startHideControlViewTimer()
+            }
         }
 
+    }
+    
+    @objc func hideControlView() {
+        UIView.animate(withDuration: 0.5) {
+            let alpha = CGFloat.zero
+            self.controlView.alpha = alpha
+            self.topControlView.alpha = alpha
+        } completion: { (result) in
+            self.showControlView = !self.showControlView
+            self.fadeControlViewLock = 0
+            self.isHideControlViewTimerRun = false
+        }
+    }
+    
+    func startHideControlViewTimer() {
+        if !isHideControlViewTimerRun {
+            isHideControlViewTimerRun = true
+            hideControlViewTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(hideControlView), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func stopHideControlViewTimer() {
+        if !isHideControlViewTimerRun {
+            return
+        }
+        hideControlViewTimer.invalidate()
+        hideControlViewTimer = Timer()
+        isHideControlViewTimerRun = false
     }
     
     func closePlayer(){
