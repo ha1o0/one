@@ -11,6 +11,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
 
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
+    lazy var scanIconView = UIImageView()
+    lazy var messageIconView = UIImageView()
     lazy var tableView = UITableView()
     var tableViewData: [IdName] = []
     
@@ -83,10 +85,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         avatarImageView.loadFrom(link: avatarUrl, isCircle: true)
         navigationView.bringSubviewToFront(avatarImageView)
         
-        setSearchBar()
-        
         //扫一扫和消息图标
-        let messageIconView = UIImageView()
         messageIconView.image = UIImage(named: "message")
         navigationView.addSubview(messageIconView)
         messageIconView.snp.makeConstraints { (maker) in
@@ -95,7 +94,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             maker.centerY.equalToSuperview()
             maker.trailing.equalToSuperview().offset(-15)
         }
-        let scanIconView = UIImageView()
+        
         scanIconView.image = UIImage(named: "scan")
         navigationView.addSubview(scanIconView)
         scanIconView.snp.makeConstraints { (maker) in
@@ -104,6 +103,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             maker.centerY.equalToSuperview()
             maker.trailing.equalTo(messageIconView.snp.leading).offset(-20)
         }
+        
+        setSearchBar()
     }
     
     func setSearchBar() {
@@ -138,8 +139,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         searchBoxView.snp.makeConstraints { (maker) in
             maker.leading.equalTo(avatarImageView.snp.trailing).offset(12)
             maker.centerY.equalToSuperview()
-            maker.width.equalTo(260)
             maker.height.equalTo(30)
+            maker.trailing.equalTo(self.scanIconView.snp.leading).offset(15)
         }
     }
     

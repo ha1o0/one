@@ -324,6 +324,7 @@ public final class Constraint {
                 updateLayoutConstraint.constant = self.constant.constraintConstantTargetValueFor(layoutAttribute: updateLayoutAttribute)
             }
         } else {
+
             NSLayoutConstraint.activate(layoutConstraints)
             item.add(constraints: [self])
         }
