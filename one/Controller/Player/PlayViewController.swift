@@ -9,7 +9,21 @@
 import UIKit
 import SnapKit
 
-class PlayViewController: BaseViewController {
+class PlayViewController: BaseViewController, DiyPlayerDelegate {
+    
+    func fullScreen() {
+        appDelegate.hideStatusBar()
+        appDelegate.deviceOrientation = .landscapeRight
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
+    func exitFullScreen() {
+        appDelegate.showStatusBar()
+        appDelegate.deviceOrientation = .portrait
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
 
     var diyPlayerView = DiyPlayerView()
     var responseButton = UIButton()
@@ -24,6 +38,7 @@ class PlayViewController: BaseViewController {
         super.viewDidLoad()
         diyPlayerView = DiyPlayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_WIDTH / 16 * 9))
         diyPlayerView.layer.zPosition = 999
+        diyPlayerView.delegate = self
         view.addSubview(diyPlayerView)
         diyPlayerView.commonInit()
         diyPlayerView.playUrl(url: videos[0])

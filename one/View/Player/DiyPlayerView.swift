@@ -18,6 +18,11 @@ enum PanType {
     case progress
 }
 
+protocol DiyPlayerDelegate {
+    func fullScreen()
+    func exitFullScreen()
+}
+
 class DiyPlayerView: UIView {
     
     @IBOutlet var contentView: UIView!
@@ -60,7 +65,7 @@ class DiyPlayerView: UIView {
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
     var clickDebounceTimer: Timer!
-    
+    var delegate: DiyPlayerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -273,28 +278,26 @@ class DiyPlayerView: UIView {
     
     @objc func fullScreen() {
         isFullScreen = true
-        appDelegate.hideStatusBar()
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
         playerLayer.frame = self.bounds
-        appDelegate.deviceOrientation = .landscapeRight
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = 0
+        if let delegate = delegate {
+            delegate.fullScreen()
+        }
 //        playerLayer.videoGravity = .resizeAspectFill
         
     }
     
     @objc func exitFullScreen() {
         isFullScreen = false
-        appDelegate.showStatusBar()
         self.frame = originalFrame
         playerLayer.frame = self.bounds
-        appDelegate.deviceOrientation = .portrait
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = showControlView ? 0 : 1
+        if let delegate = delegate {
+            delegate.exitFullScreen()
+        }
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
