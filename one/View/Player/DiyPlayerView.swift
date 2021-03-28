@@ -79,14 +79,6 @@ class DiyPlayerView: UIView {
         let doubleTap = UITapGestureRecognizer(target: self, action:#selector(doubleTapPlayer))
         doubleTap.numberOfTapsRequired = 2
         gestureView.addGestureRecognizer(doubleTap)
-        // 滑动+-音量手势
-//        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpVolume))
-//        swipeUp.direction = .up
-//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownVolume))
-//        swipeDown.direction = .down
-//        gestureView.addGestureRecognizer(swipeUp)
-//        gestureView.addGestureRecognizer(swipeDown)
-        
         // 滑动进度手势+-音量手势
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(changeVolumeProgress(_:)))
         gestureView.addGestureRecognizer(panGesture)
@@ -152,7 +144,9 @@ class DiyPlayerView: UIView {
         progressSlider.isContinuous = false
         progressSlider.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
-        bottomProgressView.tintColor = UIColor.main
+        bottomProgressView.progressTintColor = UIColor.main
+        bottomProgressView.trackTintColor = UIColor.clear
+        
     }
     
     func setControlView() {
@@ -283,7 +277,7 @@ class DiyPlayerView: UIView {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         dateTimeDisplayLabel.isHidden = !isFullScreen
-        bottomProgressView.isHidden = true
+        bottomProgressView.alpha = 0
 //        playerLayer.videoGravity = .resizeAspectFill
         
     }
@@ -297,6 +291,7 @@ class DiyPlayerView: UIView {
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         dateTimeDisplayLabel.isHidden = !isFullScreen
+        bottomProgressView.alpha = showControlView ? 0 : 1
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
@@ -474,6 +469,7 @@ extension DiyPlayerView {
             self.controlView.alpha = alpha
             self.topControlView.alpha = alpha
             self.fadeControlViewLock = 1
+            self.bottomProgressView.alpha = (self.isFullScreen || !self.showControlView) ? CGFloat.zero : 1
         } completion: { (result) in
             self.showControlView = !self.showControlView
             self.fadeControlViewLock = 0
@@ -481,7 +477,7 @@ extension DiyPlayerView {
                 self.stopHideControlViewTimer()
                 self.startHideControlViewTimer()
             }
-            self.bottomProgressView.isHidden = self.isFullScreen || self.showControlView
+            
         }
 
     }
@@ -491,11 +487,11 @@ extension DiyPlayerView {
             let alpha = CGFloat.zero
             self.controlView.alpha = alpha
             self.topControlView.alpha = alpha
+            self.bottomProgressView.alpha = self.isFullScreen ? 0 : 1
         } completion: { (result) in
             self.showControlView = !self.showControlView
             self.fadeControlViewLock = 0
             self.isHideControlViewTimerRun = false
-            self.bottomProgressView.isHidden = self.isFullScreen
         }
     }
     
