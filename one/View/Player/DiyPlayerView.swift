@@ -57,6 +57,8 @@ class DiyPlayerView: UIView {
     var isHideControlViewTimerRun = false
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
+    var clickDebounceTimer: Timer!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -332,11 +334,19 @@ class DiyPlayerView: UIView {
     }
     
     @objc func clickTapPlayer(_ sender: UITapGestureRecognizer) {
+        clickDebounceTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(singleClick), userInfo: nil, repeats: false)
+    }
+    
+    @objc func singleClick() {
         fadeControlView()
     }
     
     @objc func doubleTapPlayer() {
         print("double tap")
+        if clickDebounceTimer != nil {
+            clickDebounceTimer.invalidate()
+            clickDebounceTimer = nil
+        }
         playOrPause(self.playBtn)
     }
 
