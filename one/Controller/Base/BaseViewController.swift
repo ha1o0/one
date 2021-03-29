@@ -62,6 +62,16 @@ class BaseViewController: UIViewController {
         leftArrowImageView.isUserInteractionEnabled = true
         let backRecognizer = UITapGestureRecognizer(target: self, action: #selector(back))
         leftArrowImageView.addGestureRecognizer(backRecognizer)
+        
+        if let title = title {
+            let titleLabel = UILabel()
+            titleLabel.text = title
+            titleLabel.textColor = .white
+            navigationView.addSubview(titleLabel)
+            titleLabel.snp.makeConstraints { (maker) in
+                maker.center.equalToSuperview()
+            }
+        }
     }
     
     func setNavigation() {

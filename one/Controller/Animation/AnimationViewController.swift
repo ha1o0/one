@@ -1,17 +1,17 @@
 //
-//  Collection1ViewController.swift
+//  AnimationViewController.swift
 //  one
 //
-//  Created by sidney on 2021/3/26.
+//  Created by sidney on 2021/3/29.
 //
 
 import UIKit
 
-class Collection1ViewController: BaseViewController {
+class AnimationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "集合"
+        self.title = "动画"
         setCustomNav()
         // Do any additional setup after loading the view.
     }

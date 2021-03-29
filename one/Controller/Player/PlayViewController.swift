@@ -28,7 +28,7 @@ class PlayViewController: BaseViewController, DiyPlayerDelegate {
     var diyPlayerView = DiyPlayerView()
     var responseButton = UIButton()
     var domainName = UITextField()
-    var videos = ["http://192.168.6.242/langjie.mp4", "http://192.168.6.242/2.mp4", "https://blog.iword.win/5.mp4", "http://192.168.6.242/3.wmv", "http://192.168.6.242/langjie.avi", "https://iqiyi.cdn9-okzy.com/20201104/17638_8f3022ce/index.m3u8"]
+    var videos = ["http://192.168.6.242/langjie.mp4", "http://192.168.6.242/2.mp4", "https://blog.iword.win/5.mp4", "http://192.168.6.242/3.wmv", "http://192.168.6.242/mjpg.avi", "https://iqiyi.cdn9-okzy.com/20201104/17638_8f3022ce/index.m3u8"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
