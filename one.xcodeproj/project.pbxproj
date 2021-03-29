@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		BB7E39F66C917E6575D29ABE /* libPods-one.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67504BD83F2153BEEBB40FD5 /* libPods-one.a */; };
 		E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */; };
-		E93E0E9F2611D80A00D43B4C /* AnimationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93E0E9D2611D80A00D43B4C /* AnimationViewController.xib */; };
+		E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */; };
+		E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EA72611DF6A00D43B4C /* LiveListView.swift */; };
+		E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EAE2612039800D43B4C /* Animation1TableViewCell.swift */; };
+		E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93E0EAF2612039800D43B4C /* Animation1TableViewCell.xib */; };
+		E93E0EC12612262100D43B4C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EC02612262100D43B4C /* Animation.swift */; };
+		E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EC526122C5400D43B4C /* Animation2TableViewCell.swift */; };
+		E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */; };
 		E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */; };
 		E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */; };
 		E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CB5A26062A890047DAE9 /* Assets.xcassets */; };
@@ -37,7 +43,6 @@
 		E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */; };
 		E9E0CD942607963C0047DAE9 /* juhua.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CD932607963C0047DAE9 /* juhua.gif */; };
 		E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */; };
-		E9E0CDB52607A1D90047DAE9 /* BaseTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDB32607A1D90047DAE9 /* BaseTableViewController.xib */; };
 		E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */; };
 		E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */; };
 		E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDD02608E88D0047DAE9 /* Functions.swift */; };
@@ -72,7 +77,13 @@
 		54814271B70437C46126C7F5 /* Pods-one.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one.release.xcconfig"; path = "Target Support Files/Pods-one/Pods-one.release.xcconfig"; sourceTree = "<group>"; };
 		67504BD83F2153BEEBB40FD5 /* libPods-one.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-one.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
-		E93E0E9D2611D80A00D43B4C /* AnimationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationViewController.xib; sourceTree = "<group>"; };
+		E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTabView.swift; sourceTree = "<group>"; };
+		E93E0EA72611DF6A00D43B4C /* LiveListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveListView.swift; sourceTree = "<group>"; };
+		E93E0EAE2612039800D43B4C /* Animation1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation1TableViewCell.swift; sourceTree = "<group>"; };
+		E93E0EAF2612039800D43B4C /* Animation1TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Animation1TableViewCell.xib; sourceTree = "<group>"; };
+		E93E0EC02612262100D43B4C /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		E93E0EC526122C5400D43B4C /* Animation2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation2TableViewCell.swift; sourceTree = "<group>"; };
+		E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
 		E9E0CB4B26062A860047DAE9 /* one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E0CB5826062A860047DAE9 /* one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = one.xcdatamodel; sourceTree = "<group>"; };
@@ -106,7 +117,6 @@
 		E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		E9E0CD932607963C0047DAE9 /* juhua.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = juhua.gif; sourceTree = "<group>"; };
 		E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		E9E0CDB32607A1D90047DAE9 /* BaseTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewController.xib; sourceTree = "<group>"; };
 		E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
 		E9E0CDD02608E88D0047DAE9 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -166,7 +176,17 @@
 			isa = PBXGroup;
 			children = (
 				E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */,
-				E93E0E9D2611D80A00D43B4C /* AnimationViewController.xib */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		E93E0EAD2612027D00D43B4C /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E93E0EAE2612039800D43B4C /* Animation1TableViewCell.swift */,
+				E93E0EAF2612039800D43B4C /* Animation1TableViewCell.xib */,
+				E93E0EC526122C5400D43B4C /* Animation2TableViewCell.swift */,
+				E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -247,7 +267,6 @@
 				E9E0CBB1260666370047DAE9 /* BaseNavigationViewController.swift */,
 				E9E0CBB2260666370047DAE9 /* BaseNavigationViewController.xib */,
 				E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */,
-				E9E0CDB32607A1D90047DAE9 /* BaseTableViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -300,6 +319,8 @@
 		E9E0CD84260794FE0047DAE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E93E0EA72611DF6A00D43B4C /* LiveListView.swift */,
+				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
 				E9E0CDCE2608E6600047DAE9 /* TableViewCell */,
 				E9E0CD85260795070047DAE9 /* Player */,
 			);
@@ -335,6 +356,7 @@
 		E9E0CDCE2608E6600047DAE9 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E93E0EAD2612027D00D43B4C /* Animation */,
 				E9E0CDE02608ED830047DAE9 /* Function */,
 				E9E0CDD82608ECF30047DAE9 /* Base */,
 			);
@@ -345,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				E9E0CDD02608E88D0047DAE9 /* Functions.swift */,
+				E93E0EC02612262100D43B4C /* Animation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -488,11 +511,10 @@
 				E9E0CD942607963C0047DAE9 /* juhua.gif in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
-				E93E0E9F2611D80A00D43B4C /* AnimationViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
-				E9E0CDB52607A1D90047DAE9 /* BaseTableViewController.xib in Resources */,
+				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
@@ -550,6 +572,7 @@
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
+				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */,
 				E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
@@ -559,16 +582,21 @@
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
+				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
+				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
+				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
+				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
+				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

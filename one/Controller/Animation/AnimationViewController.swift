@@ -7,24 +7,32 @@
 
 import UIKit
 
-class AnimationViewController: BaseViewController {
 
+
+class AnimationViewController: BaseTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "动画"
+        title = "动画"
         setCustomNav()
-        // Do any additional setup after loading the view.
+        tableView.backgroundColor = .lightGray
+        tableData = []
+        tableData.append(Animation(name: "平移", id: "1", type: "transform"))
+        tableData.append(Animation(name: "旋转", id: "2", type: "rotate"))
+        registerCellWithClass(Animation2TableViewCell.self, tableView: tableView)
+        registerCellWithClass(AnimationTableViewCell.self, tableView: tableView)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let data = tableData[indexPath.row] as? Animation
+        var cell: UITableViewCell
+        switch data?.type {
+        case "rotate":
+            cell = dequeueReusableCell(withIdentifier: "Animation2TableViewCell", tableView: tableView) as! Animation2TableViewCell
+        default:
+            cell = dequeueReusableCell(withIdentifier: "Animation1TableViewCell", tableView: tableView) as! Animation1TableViewCell
+        }
+        
+        return cell
     }
-    */
-
 }

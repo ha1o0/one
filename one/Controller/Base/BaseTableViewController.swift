@@ -7,11 +7,21 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController {
-        
+class BaseTableViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+
+    lazy var tableView = UITableView()
+    var tableData: [Any] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (maker) in
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalToSuperview().offset(44 + STATUS_BAR_HEIGHT)
+        }
+        tableView.tableFooterView = UIView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -21,16 +31,20 @@ class BaseTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tableData.count
     }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = dequeueReusableCell(withIdentifier: "BaseTableViewCell", tableView: tableView) as! BaseTableViewCell
+        return cell
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -85,5 +99,4 @@ class BaseTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
 }

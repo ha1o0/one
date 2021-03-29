@@ -25,18 +25,14 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-//        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated:Bool) {
         super.viewWillDisappear(animated)
-        
-//        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
