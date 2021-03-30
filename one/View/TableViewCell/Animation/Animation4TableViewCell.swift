@@ -1,18 +1,18 @@
 //
-//  Animation2TableViewCell.swift
+//  Animation4TableViewCell.swift
 //  one
 //
-//  Created by sidney on 2021/3/29.
+//  Created by sidney on 2021/3/30.
 //
 
 import UIKit
 
-class Animation2TableViewCell: AnimationTableViewCell {
+class Animation4TableViewCell: AnimationTableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        titleLabel.text = "旋转+缩小"
-        tips = "CGAffineTransform.identity.rotated.scaledBy"
+        titleLabel.text = "弹性抖动"
+        tips = "UIView.animate(usingSpringWithDamping, initialSpringVelocity)"
     }
     
     required init?(coder: NSCoder) {
@@ -26,15 +26,13 @@ class Animation2TableViewCell: AnimationTableViewCell {
     }
     
     override func start() {
-        UIView.animate(withDuration: 3) {
-            self.targetView.transform = CGAffineTransform.identity.rotated(by: CGFloat(Double.pi / 3)).scaledBy(x: 0.8, y: 0.8)
-        } completion: { (result) in
-            
-        }
+        UIView.animate(withDuration: 1 , delay: 0 , usingSpringWithDamping: 0.5 , initialSpringVelocity: 6 , options: [] , animations: {
+          self.targetView.center.x += 200
+        }, completion: nil)
 
     }
     
     override func reset() {
-        self.targetView.transform = .identity
+        self.targetView.frame.origin.x = 16
     }
 }

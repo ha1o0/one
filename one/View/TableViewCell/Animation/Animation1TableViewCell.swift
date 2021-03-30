@@ -13,6 +13,7 @@ class Animation1TableViewCell: BaseTableViewCell {
     @IBOutlet weak var targetView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.text = "平移"
         // Initialization code
     }
 
@@ -24,9 +25,11 @@ class Animation1TableViewCell: BaseTableViewCell {
     
     @IBAction func start(_ sender: UIButton) {
         UIView.animate(withDuration: 2) {
-            self.targetView.frame.origin.x += 100
+            self.targetView.frame.origin.x += 200
         } completion: { (result) in
-            
+            UIView.animate(withDuration: 2) {
+                self.targetView.frame.origin.x -= 100
+            } completion: { (result) in}
         }
     }
     

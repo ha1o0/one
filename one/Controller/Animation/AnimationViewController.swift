@@ -15,12 +15,14 @@ class AnimationViewController: BaseTableViewController {
         super.viewDidLoad()
         title = "动画"
         setCustomNav()
-        tableView.backgroundColor = .lightGray
         tableData = []
         tableData.append(Animation(name: "平移", id: "1", type: "transform"))
         tableData.append(Animation(name: "旋转", id: "2", type: "rotate"))
+        tableData.append(Animation(name: "翻转", id: "3", type: "rotate3d"))
+        tableData.append(Animation(name: "抖动", id: "4", type: "spring"))
         registerCellWithClass(Animation2TableViewCell.self, tableView: tableView)
-        registerCellWithClass(AnimationTableViewCell.self, tableView: tableView)
+        registerCellWithClass(Animation3TableViewCell.self, tableView: tableView)
+        registerCellWithClass(Animation4TableViewCell.self, tableView: tableView)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,6 +31,10 @@ class AnimationViewController: BaseTableViewController {
         switch data?.type {
         case "rotate":
             cell = dequeueReusableCell(withIdentifier: "Animation2TableViewCell", tableView: tableView) as! Animation2TableViewCell
+        case "rotate3d":
+            cell = dequeueReusableCell(withIdentifier: "Animation3TableViewCell", tableView: tableView) as! Animation3TableViewCell
+        case "spring":
+            cell = dequeueReusableCell(withIdentifier: "Animation4TableViewCell", tableView: tableView) as! Animation4TableViewCell
         default:
             cell = dequeueReusableCell(withIdentifier: "Animation1TableViewCell", tableView: tableView) as! Animation1TableViewCell
         }
