@@ -155,6 +155,10 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         self.diyPlayerView.closePlayer()
     }
 
+    deinit {
+        print("123123123123123")
+    }
+    
     @objc func getNetData() {
 //        let domain = self.domainName.text ?? "json.cn"
 //        let url = "https://www.sojson.com/api/beian/\(domain)"

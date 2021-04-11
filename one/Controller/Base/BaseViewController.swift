@@ -51,7 +51,7 @@ class BaseViewController: UIViewController {
             maker.height.equalTo(44)
         }
         let leftArrowImageView = UIImageView()
-        leftArrowImageView.image = UIImage(named: "leftBack")
+        leftArrowImageView.image = UIImage(named: "back")
         leftView.addSubview(leftArrowImageView)
         leftArrowImageView.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()

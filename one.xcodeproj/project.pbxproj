@@ -18,6 +18,12 @@
 		E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */; };
 		E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */; };
 		E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */; };
+		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
+		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
+		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
+		E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */; };
+		E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */; };
+		E99BC10526233C770002C066 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC10426233C770002C066 /* Video.swift */; };
 		E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */; };
 		E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */; };
 		E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CB5A26062A890047DAE9 /* Assets.xcassets */; };
@@ -88,6 +94,12 @@
 		E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation3TableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4TableViewCell.swift; sourceTree = "<group>"; };
+		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
+		E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		E99BC10426233C770002C066 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		E9E0CB4B26062A860047DAE9 /* one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E0CB5826062A860047DAE9 /* one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = one.xcdatamodel; sourceTree = "<group>"; };
@@ -197,6 +209,33 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E99BC0F426232DD10002C066 /* Picture */,
+				E99BC0E926232D950002C066 /* Base */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		E99BC0E926232D950002C066 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */,
+				E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E99BC0F426232DD10002C066 /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */,
+				E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */,
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
 		E9E0CB4226062A860047DAE9 = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +312,7 @@
 				E9E0CBB1260666370047DAE9 /* BaseNavigationViewController.swift */,
 				E9E0CBB2260666370047DAE9 /* BaseNavigationViewController.xib */,
 				E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */,
+				E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -327,6 +367,7 @@
 			children = (
 				E93E0EA72611DF6A00D43B4C /* LiveListView.swift */,
 				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
+				E99BC0E826232D840002C066 /* CollectionViewCell */,
 				E9E0CDCE2608E6600047DAE9 /* TableViewCell */,
 				E9E0CD85260795070047DAE9 /* Player */,
 			);
@@ -374,6 +415,7 @@
 			children = (
 				E9E0CDD02608E88D0047DAE9 /* Functions.swift */,
 				E93E0EC02612262100D43B4C /* Animation.swift */,
+				E99BC10426233C770002C066 /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -521,7 +563,9 @@
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
+				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
+				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
@@ -596,6 +640,7 @@
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
+				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */,
 				E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */,
@@ -604,6 +649,7 @@
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
+				E99BC10526233C770002C066 /* Video.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
@@ -611,6 +657,7 @@
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
+				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
@@ -618,6 +665,7 @@
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
+				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
