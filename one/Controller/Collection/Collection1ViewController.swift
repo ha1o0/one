@@ -54,7 +54,7 @@ class Collection1ViewController: BaseCollectionViewController {
     }
     
     func generateData() -> Video {
-        return Video(id: "1", type: "1", title: "《乘风破浪的姐姐》我曾难自拔于世界之大", subtitle: "猜你喜欢 · 芒果视频", poster: "http://192.168.6.242/images/langjie.png", url: "http://192.168.6.242/langjie.mp4")
+        return Video(id: "1", type: "1", title: "《乘风破浪的姐姐》我曾难自拔于世界之大", subtitle: "猜你喜欢 · 芒果视频", poster: "https://blog.iword.win/images/langjie.png", url: "https://blog.iword.win/langjie.mp4")
     }
 
 }
