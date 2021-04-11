@@ -212,7 +212,7 @@ class DiyPlayerView: UIView {
                     }
                     if let isPlaybackLikelyToKeepUp = self.player.currentItem?.isPlaybackLikelyToKeepUp {
                         //do what ever you want with isPlaybackLikelyToKeepUp value, for example, show or hide a activity indicator.
-                        self.loadingImageView.isHidden = isPlaybackLikelyToKeepUp || !self.player.isPlaying
+                        self.loadingImageView.isHidden = isPlaybackLikelyToKeepUp && self.player.isPlaying
                     }
                     
                     if let bufferEmpty = self.player.currentItem?.isPlaybackBufferEmpty {

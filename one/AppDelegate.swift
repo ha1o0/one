@@ -45,14 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.launchWindow?.resignKey()
         self.launchWindow = nil
     }
-    
-    func hideStatusBar() {
-        UIApplication.shared.statusBarUIView?.isHidden = true
-    }
-
-    func showStatusBar() {
-        UIApplication.shared.statusBarUIView?.isHidden = false
-    }
 
     // MARK: AppDelegate LifeCycle
     
@@ -166,5 +158,17 @@ extension UIApplication {
             }
         }
         return nil
+    }
+    
+    
+}
+
+extension AppDelegate {
+    func hideStatusBar() {
+        UIApplication.shared.statusBarUIView?.isHidden = true
+    }
+
+    func showStatusBar() {
+        UIApplication.shared.statusBarUIView?.isHidden = false
     }
 }
