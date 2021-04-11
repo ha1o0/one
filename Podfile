@@ -23,5 +23,6 @@ target 'one' do
     pod 'FreeStreamer'
     # pod objective-c
     pod 'ZImageCropper'
+    pod 'MJRefresh'
 end
 	
