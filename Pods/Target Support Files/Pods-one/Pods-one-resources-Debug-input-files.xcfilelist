@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-one/Pods-one-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/Dplayer/Dplayer.bundle
 ${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle

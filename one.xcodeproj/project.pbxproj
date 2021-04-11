@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -43,7 +43,7 @@
 		E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD86260795270047DAE9 /* DiyPlayerView.swift */; };
 		E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CD87260795270047DAE9 /* DiyPlayerView.xib */; };
 		E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */; };
-		E9E0CD942607963C0047DAE9 /* juhua.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CD932607963C0047DAE9 /* juhua.gif */; };
+		E9E0CD942607963C0047DAE9 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CD932607963C0047DAE9 /* loading.gif */; };
 		E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */; };
 		E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */; };
 		E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */; };
@@ -119,7 +119,7 @@
 		E9E0CD86260795270047DAE9 /* DiyPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiyPlayerView.swift; sourceTree = "<group>"; };
 		E9E0CD87260795270047DAE9 /* DiyPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiyPlayerView.xib; sourceTree = "<group>"; };
 		E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
-		E9E0CD932607963C0047DAE9 /* juhua.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = juhua.gif; sourceTree = "<group>"; };
+		E9E0CD932607963C0047DAE9 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		E9E0CDBA2607A3230047DAE9 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		E9E0CDBB2607A3230047DAE9 /* PlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayViewController.xib; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				E9E0CB5A26062A890047DAE9 /* Assets.xcassets */,
 				E9E0CB5C26062A890047DAE9 /* LaunchScreen.storyboard */,
 				E9E0CB5F26062A890047DAE9 /* Info.plist */,
-				E9E0CD932607963C0047DAE9 /* juhua.gif */,
+				E9E0CD932607963C0047DAE9 /* loading.gif */,
 				E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */,
 			);
 			path = one;
@@ -515,7 +515,7 @@
 			files = (
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
-				E9E0CD942607963C0047DAE9 /* juhua.gif in Resources */,
+				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,

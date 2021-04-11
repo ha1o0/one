@@ -1,0 +1,6 @@
+module Dplayer {
+  umbrella header "Dplayer-umbrella.h"
+
+  export *
+  module * { export * }
+}
