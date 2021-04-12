@@ -15,6 +15,7 @@ class BezierPathViewController: BaseViewController {
     lazy var contentView = UIView()
     lazy var firstView = UIView()
     lazy var secondView = UIView()
+    lazy var coupon = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +57,7 @@ class BezierPathViewController: BaseViewController {
             maker.centerX.equalToSuperview()
             maker.top.equalToSuperview().offset(10)
         }
-        
-        let coupon = UIView()
+
         firstView.addSubview(coupon)
         coupon.snp.makeConstraints { (maker) in
             maker.centerX.equalToSuperview()
@@ -82,7 +82,7 @@ class BezierPathViewController: BaseViewController {
             maker.leading.equalTo(couponLeft.snp.trailing)
         }
         
-        
+        self.animate()
     }
     
     func setupBezierView2() {
@@ -94,6 +94,20 @@ class BezierPathViewController: BaseViewController {
             maker.top.equalTo(firstView.snp.bottom)
             maker.height.equalTo(height)
             maker.bottom.equalToSuperview()
+        }
+    }
+    
+    @objc func animate() {
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
+            UIView.animate(withDuration: 1) {
+                self.coupon.transform = CGAffineTransform.identity.rotated(by: 0.07).translatedBy(x: 0, y: 30)
+            } completion: { (result) in
+                UIView.animate(withDuration: 1) {
+                    self.coupon.transform = CGAffineTransform.identity.rotated(by: 0).translatedBy(x: 0, y: 0)
+                } completion: { (result) in
+                    
+                }
+            }
         }
     }
 }
