@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class AnimationViewController: BaseTableViewController {
     
     override func viewDidLoad() {

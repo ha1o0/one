@@ -49,6 +49,40 @@ class BezierPathViewController: BaseViewController {
             maker.leading.trailing.top.equalToSuperview()
             maker.height.equalTo(height)
         }
+        let titleLabel = UILabel()
+        titleLabel.text = "优惠券绘制"
+        firstView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.top.equalToSuperview().offset(10)
+        }
+        
+        let coupon = UIView()
+        firstView.addSubview(coupon)
+        coupon.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.height.equalTo(120)
+            maker.top.equalToSuperview().offset(60)
+            maker.width.equalTo(300)
+        }
+        
+        let couponLeft = CouponLeftView()
+        couponLeft.backgroundColor = .clear
+        coupon.addSubview(couponLeft)
+        couponLeft.snp.makeConstraints { (maker) in
+            maker.top.leading.bottom.equalToSuperview()
+            maker.width.equalTo(200)
+        }
+        let couponRight = CouponRightView()
+        couponRight.backgroundColor = .clear
+        coupon.addSubview(couponRight)
+        couponRight.snp.makeConstraints { (maker) in
+            maker.width.equalTo(100)
+            maker.top.trailing.bottom.equalToSuperview()
+            maker.leading.equalTo(couponLeft.snp.trailing)
+        }
+        
+        
     }
     
     func setupBezierView2() {
