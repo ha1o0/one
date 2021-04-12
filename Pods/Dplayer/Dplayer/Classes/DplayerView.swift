@@ -13,12 +13,12 @@ import SnapKit
 import MediaPlayer
 import Toast_Swift
 
-enum PanType {
+public enum PanType {
     case volume
     case progress
 }
 
-public protocol DplayerDelegate {
+public protocol DplayerDelegate: AnyObject {
     func fullScreen()
     func exitFullScreen()
 }
@@ -65,7 +65,7 @@ public class DplayerView: UIView {
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
     var clickDebounceTimer: Timer!
-    public var delegate: DplayerDelegate?
+    public weak var delegate: DplayerDelegate?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

@@ -20,6 +20,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: getCollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .systemBackground
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()

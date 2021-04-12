@@ -24,6 +24,8 @@
 		E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */; };
 		E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */; };
 		E99BC10526233C770002C066 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC10426233C770002C066 /* Video.swift */; };
+		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
+		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */; };
 		E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */; };
 		E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CB5A26062A890047DAE9 /* Assets.xcassets */; };
@@ -100,6 +102,8 @@
 		E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		E99BC10426233C770002C066 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
+		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9E0CB4B26062A860047DAE9 /* one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E0CB5826062A860047DAE9 /* one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = one.xcdatamodel; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */,
+				E9A135182624271500DEC078 /* BezierPathViewController.swift */,
+				E9A135192624271500DEC078 /* BezierPathViewController.xib */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -262,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				E9E0CDCF2608E69C0047DAE9 /* Model */,
-				E9E0CD8D2607952F0047DAE9 /* Util */,
 				E9E0CD84260794FE0047DAE9 /* View */,
 				E9E0CD7A260794980047DAE9 /* Controller */,
 				E9E0CD6E260794590047DAE9 /* Common */,
@@ -341,6 +346,7 @@
 		E9E0CD6E260794590047DAE9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */,
 				E9E0CD702607947C0047DAE9 /* Constants.swift */,
 				E9E0CD712607947C0047DAE9 /* SaveFiles.swift */,
 				E9E0CD722607947C0047DAE9 /* StrInt.swift */,
@@ -381,14 +387,6 @@
 				E9E0CD87260795270047DAE9 /* DiyPlayerView.xib */,
 			);
 			path = Player;
-			sourceTree = "<group>";
-		};
-		E9E0CD8D2607952F0047DAE9 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				E9E0CD8E2607956A0047DAE9 /* TimeUtil.swift */,
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		E9E0CDB92607A2E10047DAE9 /* Player */ = {
@@ -565,6 +563,7 @@
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
+				E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
@@ -659,6 +658,7 @@
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
+				E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,

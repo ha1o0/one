@@ -82,7 +82,6 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     
     @objc func playVideo(target: UIButton) {
         diyPlayerView.playUrl(url: videos[target.tag])
-//        diyPlayerView.changeUrl(url: videos[target.tag])
     }
     
     func setDomainView() {
@@ -153,10 +152,6 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.diyPlayerView.closePlayer()
-    }
-
-    deinit {
-        print("123123123123123")
     }
     
     @objc func getNetData() {

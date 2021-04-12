@@ -185,6 +185,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             targetController = PlayViewController()
         case "2":
             targetController = AnimationViewController()
+        case "3":
+            targetController = BezierPathViewController()
         case "5":
             targetController = Collection1ViewController()
         default:
