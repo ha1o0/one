@@ -25,7 +25,7 @@ class PictureCollectionViewCell: BaseCollectionViewCell {
         }
         
         titleLabel.text = data.title
-        subtitleLabel.text = data.subtitle
+        subtitleLabel.text = "\(data.subtitle)-\(arc4random() % 1000)"
     }
     
     @IBAction func more(_ sender: UIButton) {

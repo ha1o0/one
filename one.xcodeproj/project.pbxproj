@@ -24,6 +24,8 @@
 		E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */; };
 		E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */; };
 		E99BC10526233C770002C066 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC10426233C770002C066 /* Video.swift */; };
+		E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1252624849A0002C066 /* LoadMoreCollectionReusableView.swift */; };
+		E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1262624849A0002C066 /* LoadMoreCollectionReusableView.xib */; };
 		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
 		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
@@ -105,6 +107,8 @@
 		E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		E99BC10426233C770002C066 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		E99BC1252624849A0002C066 /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
+		E99BC1262624849A0002C066 /* LoadMoreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreCollectionReusableView.xib; sourceTree = "<group>"; };
 		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
 		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			children = (
 				E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */,
 				E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */,
+				E99BC1252624849A0002C066 /* LoadMoreCollectionReusableView.swift */,
+				E99BC1262624849A0002C066 /* LoadMoreCollectionReusableView.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
 				E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */,
+				E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
@@ -688,6 +695,7 @@
 				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
+				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,

@@ -44,7 +44,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="短片· 张小斐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxg-IP-DB0">
-                                <rect key="frame" x="44" y="137.5" width="57.5" height="12"/>
+                                <rect key="frame" x="33" y="137.5" width="57.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                             <constraint firstAttribute="bottom" secondItem="fht-pi-yeu" secondAttribute="bottom" constant="10.5" id="qd5-uM-TOy"/>
                             <constraint firstItem="fht-pi-yeu" firstAttribute="centerY" secondItem="Vxg-IP-DB0" secondAttribute="centerY" id="ufU-lv-4Pm"/>
                             <constraint firstAttribute="trailing" secondItem="Nyu-OH-Ltb" secondAttribute="trailing" constant="8" id="vGi-lH-D3f"/>
-                            <constraint firstItem="Vxg-IP-DB0" firstAttribute="leading" secondItem="fht-pi-yeu" secondAttribute="trailing" constant="16" id="yXs-0N-bTL"/>
+                            <constraint firstItem="Vxg-IP-DB0" firstAttribute="leading" secondItem="fht-pi-yeu" secondAttribute="trailing" constant="5" id="yXs-0N-bTL"/>
                             <constraint firstAttribute="trailing" secondItem="qjl-bF-fzP" secondAttribute="trailing" id="yek-Fc-i0i"/>
                         </constraints>
                     </view>
@@ -99,7 +99,7 @@
                 <outlet property="subtitleLabel" destination="Vxg-IP-DB0" id="FNO-WW-v9S"/>
                 <outlet property="titleLabel" destination="Nyu-OH-Ltb" id="Itx-jj-om3"/>
             </connections>
-            <point key="canvasLocation" x="63" y="-3"/>
+            <point key="canvasLocation" x="308" y="80"/>
         </collectionViewCell>
     </objects>
     <resources>

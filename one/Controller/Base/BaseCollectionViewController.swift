@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum LoadMoreStatus {
+    case Loading
+    case Finished
+    case HaveMore
+}
+
 private let reuseIdentifier = "Cell"
 
 class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -14,6 +20,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate
     lazy var collectionView = UICollectionView()
     var data: [Any] = []
     var dataCount = 0
+    var loadMoreStatus: LoadMoreStatus = .HaveMore
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +57,8 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate
         flowLayout.minimumLineSpacing = 10
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        flowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 100)
+//        flowLayout.footerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 100)
         let viewWidth = (SCREEN_WIDTH - 20 - flowLayout.minimumInteritemSpacing) / 2
         flowLayout.itemSize = CGSize(width: viewWidth, height: 160)
         return flowLayout

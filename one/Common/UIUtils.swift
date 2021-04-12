@@ -9,6 +9,10 @@ public func registerNibWithName(_ nibName: String, tableView: UITableView) {
     
 }
 
+public func registerNibWithName(_ nibName: String, collectionView: UICollectionView, kind: String) {
+    collectionView.register(UINib(nibName: nibName, bundle: nil), forSupplementaryViewOfKind: kind, withReuseIdentifier: nibName)
+}
+
 public func registerCellWithClass(_ clazz: AnyClass, tableView: UITableView) {
     tableView.register(clazz, forCellReuseIdentifier: "\(clazz.self)")
 }
