@@ -51,7 +51,7 @@ class BezierPathViewController: BaseViewController {
             maker.height.equalTo(height)
         }
         let titleLabel = UILabel()
-        titleLabel.text = "优惠券绘制"
+        titleLabel.text = "优惠券圆角、倒角绘制"
         firstView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (maker) in
             maker.centerX.equalToSuperview()
@@ -100,12 +100,12 @@ class BezierPathViewController: BaseViewController {
     @objc func animate() {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
             UIView.animate(withDuration: 1) {
-                self.coupon.transform = CGAffineTransform.identity.rotated(by: 0.07).translatedBy(x: 0, y: 30)
+                self.coupon.transform = CGAffineTransform.identity.rotated(by: .pi / 12).translatedBy(x: 0, y: 50)
             } completion: { (result) in
                 UIView.animate(withDuration: 1) {
-                    self.coupon.transform = CGAffineTransform.identity.rotated(by: 0).translatedBy(x: 0, y: 0)
+                    self.coupon.transform = CGAffineTransform.identity.rotated(by: -.pi / 12).translatedBy(x: 0, y: 0)
                 } completion: { (result) in
-                    
+
                 }
             }
         }

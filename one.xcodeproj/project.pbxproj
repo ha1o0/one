@@ -26,6 +26,10 @@
 		E99BC10526233C770002C066 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC10426233C770002C066 /* Video.swift */; };
 		E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1252624849A0002C066 /* LoadMoreCollectionReusableView.swift */; };
 		E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1262624849A0002C066 /* LoadMoreCollectionReusableView.xib */; };
+		E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC13F2625E11B0002C066 /* TestTableViewController.swift */; };
+		E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1402625E11B0002C066 /* TestTableViewController.xib */; };
+		E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1492625EBEE0002C066 /* TestTableViewCell.swift */; };
+		E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC14A2625EBEE0002C066 /* TestTableViewCell.xib */; };
 		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
 		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
@@ -109,6 +113,10 @@
 		E99BC10426233C770002C066 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		E99BC1252624849A0002C066 /* LoadMoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		E99BC1262624849A0002C066 /* LoadMoreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreCollectionReusableView.xib; sourceTree = "<group>"; };
+		E99BC13F2625E11B0002C066 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		E99BC1402625E11B0002C066 /* TestTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
+		E99BC1492625EBEE0002C066 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		E99BC14A2625EBEE0002C066 /* TestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTableViewCell.xib; sourceTree = "<group>"; };
 		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
 		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
@@ -254,6 +262,15 @@
 			path = Picture;
 			sourceTree = "<group>";
 		};
+		E99BC13E2625E0F40002C066 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E99BC13F2625E11B0002C066 /* TestTableViewController.swift */,
+				E99BC1402625E11B0002C066 /* TestTableViewController.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		E9A1357D262443A000DEC078 /* Bezier */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +397,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E99BC13E2625E0F40002C066 /* Table */,
 				E93E0E9B2611D2F800D43B4C /* Animation */,
 				E9E0CDF0260D9EE00047DAE9 /* Collection */,
 				E9E0CDB92607A2E10047DAE9 /* Player */,
@@ -446,6 +464,8 @@
 			children = (
 				E9E0CDD92608ED0D0047DAE9 /* BaseTableViewCell.swift */,
 				E9E0CDDA2608ED0D0047DAE9 /* BaseTableViewCell.xib */,
+				E99BC1492625EBEE0002C066 /* TestTableViewCell.swift */,
+				E99BC14A2625EBEE0002C066 /* TestTableViewCell.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -579,6 +599,7 @@
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
+				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
@@ -589,6 +610,7 @@
 				E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */,
 				E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
+				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
@@ -664,6 +686,7 @@
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
+				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */,
 				E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */,
@@ -675,6 +698,7 @@
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
+				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,

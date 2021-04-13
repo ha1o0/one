@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="nameLabel" destination="djq-lH-gw5" id="Mdc-mK-Bbx"/>
             </connections>
-            <point key="canvasLocation" x="332" y="94"/>
+            <point key="canvasLocation" x="14" y="87"/>
         </tableViewCell>
     </objects>
 </document>
