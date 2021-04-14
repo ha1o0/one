@@ -10,13 +10,9 @@ import MJRefresh
 
 class TestTableViewController: BaseTableViewController {
 
-    lazy var header: MJRefreshHeader = {
-        return MJRefreshHeader()
-    }()
+    var header = MJRefreshNormalHeader()
     
-    lazy var footer: MJRefreshFooter = {
-        return MJRefreshFooter()
-    }()
+    var footer = MJRefreshAutoNormalFooter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +24,8 @@ class TestTableViewController: BaseTableViewController {
             tableData.append(index)
         }
         registerNibWithName("TestTableViewCell", tableView: tableView)
+        header.setRefreshingTarget(self, refreshingAction: #selector(refreshData))
+        footer.setRefreshingTarget(self, refreshingAction: #selector(loadMoreData))
         // Do any additional setup after loading the view.
     }
 
@@ -37,5 +35,24 @@ class TestTableViewController: BaseTableViewController {
         return cell
     }
     
+    @objc func refreshData() {
+        sleep(2)
+        tableData = []
+        for index in 1..<16 {
+            tableData.append(index)
+        }
+        self.tableView.reloadData()
+        self.tableView.mj_header?.endRefreshing()
+    }
+    
+    @objc func loadMoreData() {
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+            for index in 1..<16 {
+                self.tableData.append(index)
+            }
+            self.tableView.reloadData()
+            self.tableView.mj_footer?.endRefreshing()
+        }
+    }
 
 }

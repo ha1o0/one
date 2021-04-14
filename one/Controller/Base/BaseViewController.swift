@@ -89,6 +89,11 @@ class BaseViewController: UIViewController {
         print("---deinit---:\(self)")
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print("收到了内存警告")
+    }
+    
     /*
     // MARK: - Navigation
 
