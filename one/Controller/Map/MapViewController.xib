@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="one" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="y8G-XU-FWi" id="gOp-G4-feI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="y8G-XU-FWi">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                </mapView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fKt-6o-qXI">
+                    <rect key="frame" x="334" y="512" width="50" height="150"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xel-2Z-a6y">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W59-h4-Hnm">
+                                    <rect key="frame" x="19" y="14" width="12.5" height="22"/>
+                                    <state key="normal" image="chevron.left" catalog="system"/>
+                                    <connections>
+                                        <action selector="plusMap:" destination="-1" eventType="touchUpInside" id="bu3-Nf-hnp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="W59-h4-Hnm" firstAttribute="centerX" secondItem="xel-2Z-a6y" secondAttribute="centerX" id="EEY-Zh-XS4"/>
+                                <constraint firstItem="W59-h4-Hnm" firstAttribute="centerY" secondItem="xel-2Z-a6y" secondAttribute="centerY" id="vie-A6-9es"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86K-Sg-JgZ">
+                            <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXK-tt-3jL">
+                                    <rect key="frame" x="14.5" y="14" width="21" height="22"/>
+                                    <state key="normal" image="square.3.stack.3d.bottom.fill" catalog="system"/>
+                                    <connections>
+                                        <action selector="minusMap:" destination="-1" eventType="touchUpInside" id="uAf-VM-Ksa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="DXK-tt-3jL" firstAttribute="centerX" secondItem="86K-Sg-JgZ" secondAttribute="centerX" id="0Rg-tV-KTQ"/>
+                                <constraint firstItem="DXK-tt-3jL" firstAttribute="centerY" secondItem="86K-Sg-JgZ" secondAttribute="centerY" id="nPt-pI-PJe"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qER-Bc-fBd">
+                            <rect key="frame" x="0.0" y="100" width="50" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySf-qf-kRx">
+                                    <rect key="frame" x="15" y="14" width="20" height="22"/>
+                                    <state key="normal" image="smallcircle.fill.circle" catalog="system"/>
+                                    <connections>
+                                        <action selector="currentMap:" destination="-1" eventType="touchUpInside" id="9Hn-JN-kM3"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="ySf-qf-kRx" firstAttribute="centerX" secondItem="qER-Bc-fBd" secondAttribute="centerX" id="WH7-tk-ucy"/>
+                                <constraint firstItem="ySf-qf-kRx" firstAttribute="centerY" secondItem="qER-Bc-fBd" secondAttribute="centerY" id="viB-G6-7Dh"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="kk6-uw-zHA"/>
+                        <constraint firstAttribute="width" constant="50" id="tZ2-wl-bed"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fKt-6o-qXI" secondAttribute="bottom" constant="200" id="A7o-MS-UIa"/>
+                <constraint firstItem="y8G-XU-FWi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ap6-6x-OtI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fKt-6o-qXI" secondAttribute="trailing" constant="30" id="WaI-EV-7FE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="y8G-XU-FWi" secondAttribute="bottom" id="loP-uG-Kfy"/>
+                <constraint firstItem="y8G-XU-FWi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="n47-r1-wYa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="y8G-XU-FWi" secondAttribute="trailing" id="vcy-pz-VVI"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="95.758928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="smallcircle.fill.circle" catalog="system" width="128" height="121"/>
+        <image name="square.3.stack.3d.bottom.fill" catalog="system" width="128" height="124"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
@@ -15,6 +15,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     lazy var messageIconView = UIImageView()
     lazy var tableView = UITableView()
     var tableViewData: [IdName] = []
+    var tableViewDataCopy: [IdName] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +34,6 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
     
     override func viewWillDisappear(_ animated:Bool) {
         super.viewWillDisappear(animated)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("clicked")
-        searchBoxView.endEditing(true)
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("begin edit")
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("end edit")
     }
     
     @objc func toPlayView() {
@@ -136,7 +124,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             maker.leading.equalTo(avatarImageView.snp.trailing).offset(12)
             maker.centerY.equalToSuperview()
             maker.height.equalTo(30)
-            maker.trailing.equalTo(self.scanIconView.snp.leading).offset(15)
+            maker.trailing.equalTo(self.scanIconView.snp.leading).offset(-15)
         }
     }
     
@@ -149,6 +137,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
         self.tableViewData.append(IdName(name: "贝塞尔曲线", id: "3"))
         self.tableViewData.append(IdName(name: "UITableView", id: "4"))
         self.tableViewData.append(IdName(name: "UICollectionView", id: "5"))
+        self.tableViewData.append(IdName(name: "地图", id: "6"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -156,6 +145,7 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             maker.bottom.equalToSuperview()
         }
         tableView.tableFooterView = UIView()
+        self.tableViewDataCopy = self.tableViewData
     }
 
     
@@ -191,6 +181,8 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             targetController = TestTableViewController()
         case "5":
             targetController = Collection1ViewController()
+        case "6":
+            targetController = MapViewController()
         default:
             return
         }
@@ -198,14 +190,28 @@ class HomeViewController: BaseViewController, UISearchBarDelegate, UITableViewDe
             self.navigationController?.pushViewController(targetController, animated: true)
         }
     }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("clicked")
+        searchBoxView.endEditing(true)
     }
-    */
-
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("begin edit")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("end edit")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("change edit")
+        let text = searchBar.searchTextField.text ?? ""
+        self.tableViewData = self.tableViewDataCopy.filter { (item) -> Bool in
+            return text == "" ? true : item.name.uppercased().contains(text.uppercased())
+        }
+        self.tableView.reloadData()
+    }
 }
