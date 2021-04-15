@@ -44,9 +44,9 @@ class ModalViewController: BaseViewController {
     
     @IBAction func partialCurl(_ sender: UIButton) {
         // 有问题
-        newVc.modalTransitionStyle = .partialCurl
-        newVc.modalPresentationStyle = .fullScreen
-        self.present(newVc, animated: true, completion: nil)
+//        newVc.modalTransitionStyle = .partialCurl
+//        newVc.modalPresentationStyle = .fullScreen
+//        self.present(newVc, animated: true, completion: nil)
     }
     
 }
