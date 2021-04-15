@@ -89,7 +89,7 @@ extension UIColor {
     }
     
     static var scheduleMapPositionBkg: UIColor {
-        return colorWithHexString("#9bdeff", alpha: 0.8)
+        return colorWithHexString("#212121", alpha: 0.7)
     }
     
     static var scheduleMapBorderGray: UIColor {

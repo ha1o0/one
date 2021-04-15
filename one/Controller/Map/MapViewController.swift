@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: BaseViewController, CLLocationManagerDelegate {
+class MapViewController: BaseViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let mapTypes: [MKMapType] = [.standard, .satellite, .hybrid]
@@ -37,7 +37,7 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate {
             }
         }
     }
-
+    
     func getDeviceLocation() {
         let latDelta = 0.05
         let longDelta = 0.05
@@ -58,16 +58,30 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate {
 
     func setTextField() {
         view.addSubview(textInput)
-        textInput.backgroundColor = .gray
+        textInput.delegate = self
+        textInput.backgroundColor = UIColor.scheduleMapPositionBkg
         textInput.layer.cornerRadius = 5
         textInput.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 30))
         textInput.leftViewMode = .always
+        textInput.enablesReturnKeyAutomatically = false
         textInput.snp.makeConstraints { (maker) in
-            maker.height.equalTo(30)
+            maker.height.equalTo(45)
             maker.leading.equalToSuperview().offset(20)
             maker.trailing.equalToSuperview().offset(-20)
             maker.top.equalTo(navigationView.snp.bottom).offset(20)
         }
+        textInput.returnKeyType = .done
+        textInput.enablesReturnKeyAutomatically = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        search(textField.text ?? "")
+        return true
+    }
+    
+    @objc func search(_ text: String) {
+        print(text)
     }
     
     @IBAction func plusMap(_ sender: UIButton) {
@@ -96,8 +110,8 @@ extension MapViewController: MKMapViewDelegate {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuserId)
             annotationView?.canShowCallout = true
             annotationView?.animatesDrop = true
-            annotationView?.pinTintColor = UIColor.green
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView?.pinTintColor = UIColor.red
+//            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         } else {
             annotationView?.annotation = annotation
         }
@@ -187,8 +201,4 @@ extension MapViewController: MKMapViewDelegate {
                  fromOldState oldState: MKAnnotationView.DragState) {
         print("移动annotation位置时调用")
     }
-}
-
-extension MapViewController: UITextFieldDelegate {
-    
 }
