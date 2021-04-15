@@ -21,6 +21,8 @@ class ModalViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "转场方式"
+        setCustomNav()
         newVc.title = "new"
         newVc.setCustomNav()
         // Do any additional setup after loading the view.

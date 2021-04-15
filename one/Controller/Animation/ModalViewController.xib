@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-on-LZM">
-                    <rect key="frame" x="20" y="64" width="374" height="200"/>
+                    <rect key="frame" x="20" y="88" width="374" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wco-2A-4Dl">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -99,7 +99,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H6O-on-LZM" secondAttribute="trailing" constant="20" id="CBg-P3-N3b"/>
-                <constraint firstItem="H6O-on-LZM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="IUO-Jw-tBw"/>
+                <constraint firstItem="H6O-on-LZM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="44" id="IUO-Jw-tBw"/>
                 <constraint firstItem="H6O-on-LZM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="fu6-x4-C5x"/>
             </constraints>
             <point key="canvasLocation" x="65" y="79"/>
