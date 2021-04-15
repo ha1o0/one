@@ -138,6 +138,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewData.append(IdName(name: "UITableView", id: "4"))
         self.tableViewData.append(IdName(name: "UICollectionView", id: "5"))
         self.tableViewData.append(IdName(name: "地图", id: "6"))
+        self.tableViewData.append(IdName(name: "Controller转场动画", id: "7"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -183,6 +184,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             targetController = Collection1ViewController()
         case "6":
             targetController = MapViewController()
+        case "7":
+            targetController = ModalViewController()
         default:
             return
         }

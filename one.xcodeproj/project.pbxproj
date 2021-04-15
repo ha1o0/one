@@ -33,6 +33,8 @@
 		E99BC16326272A300002C066 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC16126272A300002C066 /* MapViewController.swift */; };
 		E99BC16426272A300002C066 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC16226272A300002C066 /* MapViewController.xib */; };
 		E99BC183262749700002C066 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC182262749700002C066 /* LocationService.swift */; };
+		E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1A92628958A0002C066 /* ModalViewController.swift */; };
+		E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1AA2628958A0002C066 /* ModalViewController.xib */; };
 		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
 		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
@@ -123,6 +125,8 @@
 		E99BC16126272A300002C066 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E99BC16226272A300002C066 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		E99BC182262749700002C066 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		E99BC1A92628958A0002C066 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		E99BC1AA2628958A0002C066 /* ModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
 		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
 		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 				E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */,
 				E9A135182624271500DEC078 /* BezierPathViewController.swift */,
 				E9A135192624271500DEC078 /* BezierPathViewController.xib */,
+				E99BC1A92628958A0002C066 /* ModalViewController.swift */,
+				E99BC1AA2628958A0002C066 /* ModalViewController.xib */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
+				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
@@ -717,6 +724,7 @@
 				E99BC183262749700002C066 /* LocationService.swift in Sources */,
 				E9E0CDDB2608ED0D0047DAE9 /* BaseTableViewCell.swift in Sources */,
 				E9E0CD8F2607956A0047DAE9 /* TimeUtil.swift in Sources */,
+				E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
