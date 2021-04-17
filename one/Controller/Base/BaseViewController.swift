@@ -91,7 +91,7 @@ class BaseViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("收到了内存警告")
+        print("收到了内存警告:\(self)")
     }
 }
 

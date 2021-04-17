@@ -16,6 +16,7 @@ class BezierPathViewController: BaseViewController {
     lazy var firstView = UIView()
     lazy var secondView = UIView()
     lazy var coupon = UIView()
+    lazy var circle = DoubleCircle(innerRadius: 10, outerLineWidth: 2, innerLineWidth: 1, outerColor: UIColor.main, innerColor: UIColor.main, isInnerEmpty: false, isOuterEmpty: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,16 @@ class BezierPathViewController: BaseViewController {
             maker.leading.equalTo(couponLeft.snp.trailing)
         }
         
-        self.animate()
+        self.animateView1()
+        
+        circle.backgroundColor = .clear
+        firstView.addSubview(circle)
+        circle.snp.makeConstraints { (maker) in
+            maker.centerX.equalTo(firstView)
+            maker.width.height.equalTo(50)
+            maker.top.equalTo(coupon.snp.bottom).offset(300)
+        }
+        self.animateView2()
     }
     
     func setupBezierView2() {
@@ -95,9 +105,10 @@ class BezierPathViewController: BaseViewController {
             maker.height.equalTo(height)
             maker.bottom.equalToSuperview()
         }
+        
     }
     
-    @objc func animate() {
+    @objc func animateView1() {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
             UIView.animate(withDuration: 1) {
                 self.coupon.transform = CGAffineTransform.identity.rotated(by: .pi / 12).translatedBy(x: 0, y: 50)
@@ -109,5 +120,43 @@ class BezierPathViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    @objc func animateView2() {
+        
+        let keyFrameAniamtion = CAKeyframeAnimation(keyPath: "position")
+        let mutablePath = CGMutablePath()
+        mutablePath.move(to: CGPoint(x: 50, y: 300))
+        mutablePath.addCurve(to: CGPoint(x: 300, y: 300), control1: CGPoint(x: 50, y: 200), control2: CGPoint(x: 200, y: 500))
+        mutablePath.addLine(to: CGPoint(x: 50, y: 300))
+        keyFrameAniamtion.path = mutablePath
+        keyFrameAniamtion.duration = 3.0
+        keyFrameAniamtion.fillMode = .backwards
+        keyFrameAniamtion.repeatCount = Float.greatestFiniteMagnitude
+        keyFrameAniamtion.isRemovedOnCompletion = false
+        circle.layer.add(keyFrameAniamtion, forKey: "animation")
+        
+        
+        let layer = CAShapeLayer()
+        layer.path = mutablePath
+        layer.strokeColor = UIColor.main.cgColor
+        layer.lineWidth = 5
+        layer.fillColor = nil
+        firstView.layer.addSublayer(layer)
+        //路径直接描绘出来无动画
+        let pathAnimation = CAKeyframeAnimation(keyPath: "strokeEnd")
+        pathAnimation.path = mutablePath
+        pathAnimation.duration = 3.0
+        pathAnimation.fillMode = .backwards
+        pathAnimation.repeatCount = Float.greatestFiniteMagnitude
+        pathAnimation.isRemovedOnCompletion = false
+
+        // 路径描绘有动画
+//        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+//        pathAnimation.duration = 3.0
+//        pathAnimation.fromValue = 0
+//        pathAnimation.toValue = 1.0
+//        pathAnimation.repeatCount = Float.greatestFiniteMagnitude
+        layer.add(pathAnimation, forKey: "strokeEndAnimation")
     }
 }

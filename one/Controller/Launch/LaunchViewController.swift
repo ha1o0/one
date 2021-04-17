@@ -30,6 +30,7 @@ class LaunchViewController: BaseViewController {
 
 
     @IBAction func ignoreAd(_ sender: UIButton) {
+        countdownTimer.invalidate()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.cancelLaunchWindow()
     }
