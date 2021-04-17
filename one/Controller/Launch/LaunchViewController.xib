@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LaunchViewController" customModule="one" customModuleProvider="target">
             <connections>
+                <outlet property="timeLabel" destination="Mco-2X-bm5" id="MTU-1D-oBS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,16 +35,24 @@
                         <action selector="ignoreAd:" destination="-1" eventType="touchUpInside" id="iey-O2-aow"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mco-2X-bm5">
+                    <rect key="frame" x="207" y="483.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemPinkColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bBq-i1-Oie" secondAttribute="trailing" constant="23" id="L8B-cM-t4x"/>
+                <constraint firstItem="Mco-2X-bm5" firstAttribute="top" secondItem="LQ2-y0-GPr" secondAttribute="bottom" constant="20" id="N78-NB-Tro"/>
                 <constraint firstItem="LQ2-y0-GPr" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="TwR-hx-kLR"/>
+                <constraint firstItem="Mco-2X-bm5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cXT-YG-tAt"/>
                 <constraint firstItem="LQ2-y0-GPr" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="k1s-ZP-kVk"/>
                 <constraint firstItem="bBq-i1-Oie" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pkO-j8-aBc"/>
             </constraints>
-            <point key="canvasLocation" x="141" y="71"/>
+            <point key="canvasLocation" x="140.57971014492756" y="70.982142857142847"/>
         </view>
     </objects>
     <resources>

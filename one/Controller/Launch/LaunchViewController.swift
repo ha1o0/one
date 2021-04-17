@@ -9,9 +9,22 @@ import UIKit
 
 class LaunchViewController: BaseViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    var countdownTimer: Timer!
+    var countdownSeconds = 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        timeLabel.text = "\(countdownSeconds)"
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            if self.countdownSeconds > 0 {
+                self.countdownSeconds -= 1
+                self.timeLabel.text = "\(self.countdownSeconds)"
+            } else {
+                self.countdownTimer.invalidate()
+                self.ignoreAd(UIButton())
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
