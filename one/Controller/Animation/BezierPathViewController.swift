@@ -17,6 +17,7 @@ class BezierPathViewController: BaseViewController {
     lazy var secondView = UIView()
     lazy var coupon = UIView()
     lazy var circle = DoubleCircle(innerRadius: 10, outerLineWidth: 2, innerLineWidth: 1, outerColor: UIColor.main, innerColor: UIColor.main, isInnerEmpty: false, isOuterEmpty: true)
+    var firstViewTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,12 @@ class BezierPathViewController: BaseViewController {
         initScrollContentView()
         setupBezierView1()
         setupBezierView2()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // 销毁定时器，防止内存泄露
+        firstViewTimer.invalidate()
     }
     
     func initScrollContentView() {
@@ -109,7 +115,7 @@ class BezierPathViewController: BaseViewController {
     }
     
     @objc func animateView1() {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
+        firstViewTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
             UIView.animate(withDuration: 1) {
                 self.coupon.transform = CGAffineTransform.identity.rotated(by: .pi / 12).translatedBy(x: 0, y: 50)
             } completion: { (result) in
