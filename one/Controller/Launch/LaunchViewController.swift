@@ -10,6 +10,7 @@ import UIKit
 class LaunchViewController: BaseViewController {
 
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabelCircleView: UIView!
     var countdownTimer: Timer!
     var countdownSeconds = 3
     
@@ -25,7 +26,26 @@ class LaunchViewController: BaseViewController {
                 self.ignoreAd(UIButton())
             }
         }
-        // Do any additional setup after loading the view.
+        
+        
+        // 倒计时动画
+        let layer = CAShapeLayer()
+        let path = CGMutablePath()
+        let center = timeLabelCircleView.frame.width / 2
+        path.addArc(center: CGPoint(x: center, y: center), radius: 20, startAngle: -.pi / 2, endAngle: .pi * 3 / 2, clockwise: false)
+        layer.path = path
+        layer.strokeColor = UIColor.white.cgColor
+        layer.lineWidth = 1
+        layer.fillColor = UIColor.clear.cgColor
+
+        timeLabelCircleView.layer.addSublayer(layer)
+        
+        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        pathAnimation.duration = CFTimeInterval(countdownSeconds)
+        pathAnimation.fromValue = 0
+        pathAnimation.toValue = 1
+        pathAnimation.repeatCount = 1
+        layer.add(pathAnimation, forKey: "strokeEndAnimation")
     }
 
 
