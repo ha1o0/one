@@ -40,6 +40,10 @@
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
 		E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135B72624477C00DEC078 /* CouponRightView.swift */; };
 		E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135BF2624479900DEC078 /* CouponLeftView.swift */; };
+		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
+		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
+		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
+		E9A952FA263171290032EADB /* BrickLandspeeder4501.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */; };
 		E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */; };
 		E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */; };
 		E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CB5A26062A890047DAE9 /* Assets.xcassets */; };
@@ -132,6 +136,10 @@
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
 		E9A135B72624477C00DEC078 /* CouponRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponRightView.swift; sourceTree = "<group>"; };
 		E9A135BF2624479900DEC078 /* CouponLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponLeftView.swift; sourceTree = "<group>"; };
+		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
+		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
+		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
+		E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.mtl; sourceTree = "<group>"; };
 		E9E0CB4B26062A860047DAE9 /* one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E0CB5826062A860047DAE9 /* one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = one.xcdatamodel; sourceTree = "<group>"; };
@@ -228,6 +236,8 @@
 				E9A135192624271500DEC078 /* BezierPathViewController.xib */,
 				E99BC1A92628958A0002C066 /* ModalViewController.swift */,
 				E99BC1AA2628958A0002C066 /* ModalViewController.xib */,
+				E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */,
+				E9A952E026315FBF0032EADB /* SceneKitViewController.xib */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -310,6 +320,15 @@
 			path = Bezier;
 			sourceTree = "<group>";
 		};
+		E9A952F6263171140032EADB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */,
+				E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		E9E0CB4226062A860047DAE9 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +354,7 @@
 		E9E0CB4D26062A860047DAE9 /* one */ = {
 			isa = PBXGroup;
 			children = (
+				E9A952F6263171140032EADB /* Resource */,
 				E99BC1812627495C0002C066 /* Service */,
 				E9E0CDCF2608E69C0047DAE9 /* Model */,
 				E9E0CD84260794FE0047DAE9 /* View */,
@@ -627,6 +647,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */,
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
@@ -637,6 +658,7 @@
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
+				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
@@ -648,6 +670,7 @@
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
 				E9E0CDDC2608ED0D0047DAE9 /* BaseTableViewCell.xib in Resources */,
+				E9A952FA263171290032EADB /* BrickLandspeeder4501.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +769,7 @@
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */,
+				E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,

@@ -1,0 +1,66 @@
+newmtl Tan
+Ns 20
+Ka 0 0 0
+Kd 1 0.772549 0.541176
+Ks 0.501961 0.25098 0
+d 1
+newmtl DarkGray
+Ns 20
+Ka 0 0 0
+Kd 0.309804 0.309804 0.309804
+Ks 0.494118 0.494118 0.494118
+d 1
+newmtl LightGray
+Ns 20
+Ka 0 0 0
+Kd 0.498039 0.498039 0.498039
+Ks 0.72549 0.72549 0.72549
+d 1
+newmtl ClearRed
+Ns 20
+Ka 0 0 0
+Kd 1 0 0
+Ks 0.72549 0 0
+d 0.35
+newmtl Gold
+Ns 20
+Ka 0 0 0
+Kd 0.501961 0.501961 0
+Ks 0.435294 0.435294 0
+d 1
+newmtl Black
+Ns 20
+Ka 0 0 0
+Kd 0 0 0
+Ks 0.184314 0.184314 0.184314
+d 1
+newmtl ClearWhite
+Ns 20
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.247059 0.247059 0.247059
+d 0.35
+newmtl Yellow
+Ns 20
+Ka 0 0 0
+Kd 1 1 0
+Ks 0.72549 0.72549 0
+d 1
+newmtl LightBlue
+Ns 20
+Ka 0 0 0
+Kd 0 0.501961 1
+Ks 0 0 0.721569
+d 1
+newmtl Silver
+Ns 20
+Ka 0 0 0
+Kd 0.309804 0.309804 0.309804
+Ks 0.494118 0.494118 0.494118
+d 1
+newmtl Red
+Ns 20
+Ka 0 0 0
+Kd 1 0 0
+Ks 0.72549 0 0
+d 1
