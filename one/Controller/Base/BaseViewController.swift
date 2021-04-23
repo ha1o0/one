@@ -9,6 +9,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
     
     override func viewDidLoad() {
@@ -33,10 +34,20 @@ class BaseViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    func setStatusBar() {
+        view.addSubview(statusBarView)
+        statusBarView.backgroundColor = UIColor.main
+        statusBarView.snp.makeConstraints { (maker) in
+            maker.top.leading.trailing.equalToSuperview()
+            maker.height.height.equalTo(STATUS_BAR_HEIGHT)
+        }
+    }
+    
     func setCustomNav() {
+        setStatusBar()
         view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
-            maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
+            maker.top.equalTo(statusBarView.snp.bottom)
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
             maker.height.equalTo(44)

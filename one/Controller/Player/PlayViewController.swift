@@ -13,14 +13,12 @@ import Dplayer
 class PlayViewController: BaseViewController, DplayerDelegate {
     
     func fullScreen() {
-        appDelegate.hideStatusBar()
         appDelegate.deviceOrientation = .landscapeRight
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     func exitFullScreen() {
-        appDelegate.showStatusBar()
         appDelegate.deviceOrientation = .portrait
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
@@ -37,6 +35,7 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setStatusBar()
         diyPlayerView = DplayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_WIDTH / 16 * 9))
         diyPlayerView.layer.zPosition = 999
         diyPlayerView.delegate = self

@@ -41,7 +41,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func setNavigation() {
-        
+        super.setStatusBar()
         super.setNavigation()
 
         self.view.addSubview(navigationView)
