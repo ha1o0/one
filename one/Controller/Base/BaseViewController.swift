@@ -9,8 +9,15 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var showStatusBar = true
+    var showNavBar = true
     lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
+    
+    class func create() -> BaseViewController {
+        let vc = BaseViewController()
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

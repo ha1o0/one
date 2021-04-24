@@ -140,6 +140,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewData.append(IdName(name: "地图", id: "6"))
         self.tableViewData.append(IdName(name: "Controller转场动画", id: "7"))
         self.tableViewData.append(IdName(name: "SceneKit", id: "8"))
+        self.tableViewData.append(IdName(name: "WebView", id: "9"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -189,6 +190,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             targetController = ModalViewController()
         case "8":
             targetController = SceneKitViewController()
+        case "9":
+            targetController = BaseWebViewController.create(with: "https://blog.iword.win")
         default:
             return
         }

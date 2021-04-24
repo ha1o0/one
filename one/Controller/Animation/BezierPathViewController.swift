@@ -130,6 +130,7 @@ class BezierPathViewController: BaseViewController {
     
     @objc func animateView2() {
         
+        // 圆环位置沿路径移动
         let keyFrameAniamtion = CAKeyframeAnimation(keyPath: "position")
         let mutablePath = CGMutablePath()
         mutablePath.move(to: CGPoint(x: 50, y: 300))
@@ -149,7 +150,8 @@ class BezierPathViewController: BaseViewController {
         layer.lineWidth = 5
         layer.fillColor = nil
         firstView.layer.addSublayer(layer)
-        //路径直接描绘出来无动画
+        
+        // 路径直接描绘出来无动画
         let pathAnimation = CAKeyframeAnimation(keyPath: "strokeEnd")
         pathAnimation.path = mutablePath
         pathAnimation.duration = 3.0

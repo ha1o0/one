@@ -35,6 +35,8 @@
 		E99BC183262749700002C066 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC182262749700002C066 /* LocationService.swift */; };
 		E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1A92628958A0002C066 /* ModalViewController.swift */; };
 		E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1AA2628958A0002C066 /* ModalViewController.xib */; };
+		E99BC1DB26340F580002C066 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1D926340F580002C066 /* BaseWebViewController.swift */; };
+		E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1DA26340F580002C066 /* BaseWebViewController.xib */; };
 		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
 		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
@@ -131,6 +133,8 @@
 		E99BC182262749700002C066 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		E99BC1A92628958A0002C066 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E99BC1AA2628958A0002C066 /* ModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
+		E99BC1D926340F580002C066 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		E99BC1DA26340F580002C066 /* BaseWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWebViewController.xib; sourceTree = "<group>"; };
 		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
 		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				E9E0CBB2260666370047DAE9 /* BaseNavigationViewController.xib */,
 				E9E0CDB22607A1D90047DAE9 /* BaseTableViewController.swift */,
 				E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */,
+				E99BC1D926340F580002C066 /* BaseWebViewController.swift */,
+				E99BC1DA26340F580002C066 /* BaseWebViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -608,7 +614,6 @@
 				TargetAttributes = {
 					E9E0CB4A26062A860047DAE9 = {
 						CreatedOnToolsVersion = 12.4;
-						ProvisioningStyle = Automatic;
 					};
 					E9E0CB6326062A890047DAE9 = {
 						CreatedOnToolsVersion = 12.4;
@@ -657,6 +662,7 @@
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
+				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
@@ -767,6 +773,7 @@
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
+				E99BC1DB26340F580002C066 /* BaseWebViewController.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */,
 				E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */,
@@ -952,6 +959,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WZMD84KKFL;
 				INFOPLIST_FILE = one/Info.plist;
@@ -959,8 +967,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = win.iword.one;
+				PRODUCT_BUNDLE_IDENTIFIER = win.iword.onee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -972,6 +981,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WZMD84KKFL;
 				INFOPLIST_FILE = one/Info.plist;
@@ -979,8 +989,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = win.iword.one;
+				PRODUCT_BUNDLE_IDENTIFIER = win.iword.onee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

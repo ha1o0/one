@@ -30,7 +30,7 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         if viewController == self.viewControllers[0] {
             self.interactivePopGestureRecognizer?.delegate = self.popDelegate
         } else {
-            self.interactivePopGestureRecognizer?.delegate = nil;
+            self.interactivePopGestureRecognizer?.delegate = nil
         }
     }
 
