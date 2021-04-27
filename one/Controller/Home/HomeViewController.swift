@@ -141,6 +141,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewData.append(IdName(name: "Controller转场动画", id: "7"))
         self.tableViewData.append(IdName(name: "SceneKit", id: "8"))
         self.tableViewData.append(IdName(name: "WebView", id: "9"))
+        self.tableViewData.append(IdName(name: "相机", id: "10"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -192,6 +193,8 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             targetController = SceneKitViewController()
         case "9":
             targetController = BaseWebViewController.create(with: "https://blog.iword.win")
+        case "10":
+            targetController = ScanQrCodeViewController()
         default:
             return
         }

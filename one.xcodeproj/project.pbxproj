@@ -37,6 +37,9 @@
 		E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1AA2628958A0002C066 /* ModalViewController.xib */; };
 		E99BC1DB26340F580002C066 /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1D926340F580002C066 /* BaseWebViewController.swift */; };
 		E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1DA26340F580002C066 /* BaseWebViewController.xib */; };
+		E99BC1F6263869620002C066 /* ScanQrCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC1F4263869620002C066 /* ScanQrCodeViewController.swift */; };
+		E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1F5263869620002C066 /* ScanQrCodeViewController.xib */; };
+		E99BC1FF26386B820002C066 /* QRCodeScanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E99BC1FE26386B820002C066 /* QRCodeScanLine@2x.png */; };
 		E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135182624271500DEC078 /* BezierPathViewController.swift */; };
 		E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A135192624271500DEC078 /* BezierPathViewController.xib */; };
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
@@ -135,6 +138,9 @@
 		E99BC1AA2628958A0002C066 /* ModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
 		E99BC1D926340F580002C066 /* BaseWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
 		E99BC1DA26340F580002C066 /* BaseWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWebViewController.xib; sourceTree = "<group>"; };
+		E99BC1F4263869620002C066 /* ScanQrCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQrCodeViewController.swift; sourceTree = "<group>"; };
+		E99BC1F5263869620002C066 /* ScanQrCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanQrCodeViewController.xib; sourceTree = "<group>"; };
+		E99BC1FE26386B820002C066 /* QRCodeScanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeScanLine@2x.png"; sourceTree = "<group>"; };
 		E9A135182624271500DEC078 /* BezierPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathViewController.swift; sourceTree = "<group>"; };
 		E9A135192624271500DEC078 /* BezierPathViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BezierPathViewController.xib; sourceTree = "<group>"; };
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
@@ -314,6 +320,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		E99BC1F3263869310002C066 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				E99BC1F4263869620002C066 /* ScanQrCodeViewController.swift */,
+				E99BC1F5263869620002C066 /* ScanQrCodeViewController.xib */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		E9A1357D262443A000DEC078 /* Bezier */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */,
+				E99BC1FE26386B820002C066 /* QRCodeScanLine@2x.png */,
 				E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */,
 			);
 			path = Resource;
@@ -453,6 +469,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E99BC1F3263869310002C066 /* Camera */,
 				E99BC16026272A170002C066 /* Map */,
 				E99BC13E2625E0F40002C066 /* Table */,
 				E93E0E9B2611D2F800D43B4C /* Animation */,
@@ -661,6 +678,7 @@
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
+				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
@@ -677,6 +695,7 @@
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
 				E9E0CDDC2608ED0D0047DAE9 /* BaseTableViewCell.xib in Resources */,
 				E9A952FA263171290032EADB /* BrickLandspeeder4501.mtl in Resources */,
+				E99BC1FF26386B820002C066 /* QRCodeScanLine@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +801,7 @@
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
+				E99BC1F6263869620002C066 /* ScanQrCodeViewController.swift in Sources */,
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
 				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
@@ -967,7 +987,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = win.iword.onee;
+				PRODUCT_BUNDLE_IDENTIFIER = win.iword.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -989,7 +1009,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = win.iword.onee;
+				PRODUCT_BUNDLE_IDENTIFIER = win.iword.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

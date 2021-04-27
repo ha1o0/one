@@ -41,17 +41,17 @@ class BaseViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
-    func setStatusBar() {
+    func setStatusBar(color: UIColor = UIColor.main) {
         view.addSubview(statusBarView)
-        statusBarView.backgroundColor = UIColor.main
+        statusBarView.backgroundColor = color
         statusBarView.snp.makeConstraints { (maker) in
             maker.top.leading.trailing.equalToSuperview()
             maker.height.height.equalTo(STATUS_BAR_HEIGHT)
         }
     }
     
-    func setCustomNav() {
-        setStatusBar()
+    func setCustomNav(color: UIColor = UIColor.main) {
+        setStatusBar(color: color)
         view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.equalTo(statusBarView.snp.bottom)
@@ -59,7 +59,7 @@ class BaseViewController: UIViewController {
             maker.trailing.equalToSuperview()
             maker.height.equalTo(44)
         }
-        navigationView.backgroundColor = UIColor.main
+        navigationView.backgroundColor = color
         let leftView = UIView()
         navigationView.addSubview(leftView)
         leftView.snp.makeConstraints { (maker) in
