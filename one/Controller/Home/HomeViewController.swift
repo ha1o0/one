@@ -87,6 +87,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             maker.centerY.equalToSuperview()
             maker.trailing.equalTo(messageIconView.snp.leading).offset(-20)
         }
+        scanIconView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toScanQRCodeVc))
+        scanIconView.addGestureRecognizer(tapGesture)
         
         setSearchBar()
     }
@@ -152,6 +155,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewDataCopy = self.tableViewData
     }
 
+    @objc func toScanQRCodeVc() {
+        self.navigationController?.pushViewController(ScanQrCodeViewController(), animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableViewData.count
