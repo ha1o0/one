@@ -11,7 +11,7 @@ import AVFoundation
 import Toast_Swift
 import Photos
 
-class ScanQrCodeViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate {
+class ScanQrCodeViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var session: AVCaptureSession!
     var scanImageView: UIImageView!
@@ -29,6 +29,17 @@ class ScanQrCodeViewController: BaseViewController, AVCaptureMetadataOutputObjec
         _scanLineView.alpha = 0
         _scanLineView.image = UIImage(named: "QRCodeScanLine")
         return _scanLineView
+    }()
+    
+    lazy var pictureBtn: UIButton = {
+        let _pictureBtn = UIButton()
+        _pictureBtn.tintColor = .white
+        _pictureBtn.setTitle("", for: .normal)
+        _pictureBtn.setImage(UIImage(systemName: "photo"), for: .normal)
+        _pictureBtn.imageView?.contentMode = .scaleAspectFit
+        _pictureBtn.imageEdgeInsets = UIEdgeInsets(top: 35, left: 35, bottom: 35, right: 35)
+        _pictureBtn.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
+        return _pictureBtn
     }()
     
     var hasCameraPermission: Bool = {
@@ -80,6 +91,11 @@ class ScanQrCodeViewController: BaseViewController, AVCaptureMetadataOutputObjec
             maker.top.leading.trailing.equalToSuperview()
             maker.height.equalTo(20)
         }
+        containerView.addSubview(pictureBtn)
+        pictureBtn.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-100)
+        }
     }
     
     func loadScanView() {
@@ -120,51 +136,57 @@ class ScanQrCodeViewController: BaseViewController, AVCaptureMetadataOutputObjec
         }
     }
     
-//    func resultFromQRCodeImage(image: UIImage) -> String {
-//        let context: CIContext = CIContext(options: nil)
-//        let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
-//        let ciImage: CIImage = CIImage(cgImage: image.cgImage!)
-//        let features = detector.features(in: ciImage)
-//        if features.count == 0 {
-//            return ""
-//        }
-//        let feature: CIQRCodeFeature = features.first
-//        return feature.messageString
-//    }
+    @objc func selectPhoto() {
+        if !hasPhotoLibraryPermission {
+            self.view.makeToast("对不起，请到设置中允许应用访问相册")
+            return
+        }
+        let imagePickerVc = UIImagePickerController()
+        imagePickerVc.navigationBar.tintColor = .main
+        imagePickerVc.delegate = self
+        self.present(imagePickerVc, animated: true, completion: nil)
+    }
+    
+    func resultFromQRCodeImage(image: UIImage) -> String {
+        let context: CIContext = CIContext(options: nil)
+        let detector: CIDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
+        let ciImage: CIImage = CIImage(cgImage: image.cgImage!)
+        let features = detector.features(in: ciImage)
+        if features.count == 0 {
+            return ""
+        }
+        let feature: CIQRCodeFeature = features.first as! CIQRCodeFeature
+        return feature.messageString ?? "no info"
+    }
     
     /// AVCaptureMetadataOutputObjectsDelegate
-//    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-//        print(metadataObjects)
-//        if metadataObjects.count > 0 {
-//            self.session.stopRunning()
-//            let metadataObject: AVMetadataMachineReadableCodeObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-//            print(metadataObject.stringValue ?? "error")
-//        }
-//    }
-    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         session.stopRunning()
 
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
-            guard let stringValue = readableObject.stringValue else { return }
-            // 震动提示
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.view.makeToast("扫描到的内容：\(stringValue)")
+            guard let result = readableObject.stringValue else { return }
+            self.toastQRContent(result)
         }
 
         dismiss(animated: true)
     }
     
     /// UIImagePickerControllerDelegate
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        self.isHandlePhoto = true
-//        self.dismiss(animated: true) {
-//            let image: UIImage = info[.originalImage] as! UIImage
-//            let result = self.resultFromQRCodeImage(image: image)
-//            print(result)
-//        }
-//    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.isHandlePhoto = true
+        self.dismiss(animated: true) {
+            let image: UIImage = info[.originalImage] as! UIImage
+            let result = self.resultFromQRCodeImage(image: image)
+            self.toastQRContent(result)
+        }
+    }
+    
+    func toastQRContent(_ info: String) {
+        // 震动提示
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        self.view.makeToast("扫描到的内容：\(info)")
+    }
 }
 
 extension ScanQrCodeViewController {
