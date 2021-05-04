@@ -22,11 +22,11 @@
                     <rect key="frame" x="20" y="88" width="374" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wco-2A-4Dl">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="33.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhL-tH-F50">
-                                    <rect key="frame" x="8" y="10" width="62" height="30"/>
-                                    <state key="normal" title="底部滑入"/>
+                                    <rect key="frame" x="8" y="1.5" width="125" height="30"/>
+                                    <state key="normal" title="底部滑入(present)"/>
                                     <connections>
                                         <action selector="coverVertical:" destination="-1" eventType="touchUpInside" id="INg-lm-8Yz"/>
                                     </connections>
@@ -39,11 +39,11 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHF-wC-znU">
-                            <rect key="frame" x="0.0" y="50" width="374" height="50"/>
+                            <rect key="frame" x="0.0" y="33.5" width="374" height="33"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-Xf-JEV">
-                                    <rect key="frame" x="8" y="10" width="62" height="30"/>
-                                    <state key="normal" title="水平翻转"/>
+                                    <rect key="frame" x="8" y="1.5" width="125" height="30"/>
+                                    <state key="normal" title="水平翻转(present)"/>
                                     <connections>
                                         <action selector="flipHorizontal:" destination="-1" eventType="touchUpInside" id="xef-1s-4wi"/>
                                     </connections>
@@ -56,11 +56,11 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIj-Pv-W7C">
-                            <rect key="frame" x="0.0" y="100" width="374" height="50"/>
+                            <rect key="frame" x="0.0" y="66.5" width="374" height="33.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-Bh-wZs">
-                                    <rect key="frame" x="8" y="10" width="31" height="30"/>
-                                    <state key="normal" title="渐隐"/>
+                                    <rect key="frame" x="8" y="2" width="94" height="30"/>
+                                    <state key="normal" title="渐隐(present)"/>
                                     <connections>
                                         <action selector="crossDissolve:" destination="-1" eventType="touchUpInside" id="Ot1-Js-3FT"/>
                                     </connections>
@@ -73,11 +73,11 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLi-zK-ctR">
-                            <rect key="frame" x="0.0" y="150" width="374" height="50"/>
+                            <rect key="frame" x="0.0" y="100" width="374" height="33.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hq-Fz-4hL">
-                                    <rect key="frame" x="8" y="10" width="31" height="30"/>
-                                    <state key="normal" title="翻页"/>
+                                    <rect key="frame" x="8" y="1.5" width="31" height="30"/>
+                                    <state key="normal" title="渐隐"/>
                                     <connections>
                                         <action selector="partialCurl:" destination="-1" eventType="touchUpInside" id="0Dw-3A-aJa"/>
                                     </connections>
@@ -87,6 +87,40 @@
                             <constraints>
                                 <constraint firstItem="2Hq-Fz-4hL" firstAttribute="centerY" secondItem="JLi-zK-ctR" secondAttribute="centerY" id="A21-W7-BI6"/>
                                 <constraint firstItem="2Hq-Fz-4hL" firstAttribute="leading" secondItem="JLi-zK-ctR" secondAttribute="leading" constant="8" id="nDj-FF-ON6"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmP-Rb-ZMF">
+                            <rect key="frame" x="0.0" y="133.5" width="374" height="33"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-AD-PhI">
+                                    <rect key="frame" x="8" y="1.5" width="62" height="30"/>
+                                    <state key="normal" title="底部滑入"/>
+                                    <connections>
+                                        <action selector="fromBottom:" destination="-1" eventType="touchUpInside" id="AYb-Ym-DT4"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="7gj-AD-PhI" firstAttribute="centerY" secondItem="TmP-Rb-ZMF" secondAttribute="centerY" id="YNE-uv-GWp"/>
+                                <constraint firstItem="7gj-AD-PhI" firstAttribute="leading" secondItem="TmP-Rb-ZMF" secondAttribute="leading" constant="8" id="y8a-f4-FGB"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-A0-OxH">
+                            <rect key="frame" x="0.0" y="166.5" width="374" height="33.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rt3-4F-77y">
+                                    <rect key="frame" x="8" y="2" width="108" height="30"/>
+                                    <state key="normal" title="折叠（仿得物）"/>
+                                    <connections>
+                                        <action selector="fold:" destination="-1" eventType="touchUpInside" id="upu-Uj-L8F"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Rt3-4F-77y" firstAttribute="centerY" secondItem="nZc-A0-OxH" secondAttribute="centerY" id="Cdn-BQ-8Nm"/>
+                                <constraint firstItem="Rt3-4F-77y" firstAttribute="leading" secondItem="nZc-A0-OxH" secondAttribute="leading" constant="8" id="n5j-Jb-0aw"/>
                             </constraints>
                         </view>
                     </subviews>

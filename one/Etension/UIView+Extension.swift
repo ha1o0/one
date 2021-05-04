@@ -67,4 +67,14 @@ extension UIView {
         let rotation = self.transform.rotated(by: radians);
         self.transform = rotation
     }
+    
+    func setAnchor(point: CGPoint) {
+        let oldOrigin = self.frame.origin
+        self.layer.anchorPoint = point
+        let newOrigin = self.frame.origin
+        var transition: CGPoint = .zero
+        transition.x = newOrigin.x - oldOrigin.x
+        transition.y = newOrigin.y - oldOrigin.y
+        self.center = CGPoint(x: self.center.x - transition.x, y: self.center.y - transition.y)
+    }
 }

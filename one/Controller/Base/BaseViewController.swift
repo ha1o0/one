@@ -7,10 +7,16 @@
 
 import UIKit
 
+enum VcEnterType {
+    case push
+    case present
+}
+
 class BaseViewController: UIViewController {
     
     var showStatusBar = true
     var showNavBar = true
+    var enterType: VcEnterType = .push
     lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
     
@@ -100,7 +106,12 @@ class BaseViewController: UIViewController {
     }
 
     @objc func back() {
-        self.navigationController?.popViewController(animated: true)
+        if enterType == .push {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     deinit {
