@@ -39,18 +39,8 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate, UITextFi
     }
     
     func getDeviceLocation() {
-        let latDelta = 0.05
-        let longDelta = 0.05
-        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
         if let center = locaionService.locationManager.location?.coordinate {
-            let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, span: currentLocationSpan)
-            self.mapView.setRegion(currentRegion, animated: true)
-            //设置大头针的显示位置
-            objectAnnotation.coordinate = CLLocation(latitude: center.latitude, longitude: center.longitude).coordinate
-            //设置点击大头针之后显示的标题
-            objectAnnotation.title = "上海市浦东新区"
-            //设置点击大头针之后显示的描述
-            objectAnnotation.subtitle = "张江镇"
+            self.setLocation(center: center, title: "上海市浦东新区", subtitle: "张江镇")
             //添加大头针
             self.hasGetLocation = true
         }
@@ -82,6 +72,10 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate, UITextFi
     
     @objc func search(_ text: String) {
         print(text)
+        let coordinatesString = text.split(separator: ",")
+        guard let newLatitude = Double(coordinatesString[0]), let newLongtitude = Double(coordinatesString[1]) else { return }
+        let newCenter = CLLocationCoordinate2D(latitude: newLatitude, longitude: newLongtitude)
+        self.setLocation(center: newCenter)
     }
     
     @IBAction func plusMap(_ sender: UIButton) {
@@ -98,6 +92,29 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate, UITextFi
     
     @IBAction func currentMap(_ sender: UIButton) {
         getDeviceLocation()
+    }
+    
+    func setLocation(center: CLLocationCoordinate2D, title: String = "", subtitle: String = "") {
+        if center.latitude < -90 || center.latitude > 90 || center.longitude < -180 || center.longitude > 180 {
+            self.view.makeToast("对不起，位置经纬度信息非法")
+            return
+        }
+        let longtitude = center.longitude
+        let latitude = center.latitude
+        self.textInput.text = "\(latitude),\(longtitude)"
+        let latDelta = 0.05
+        let longDelta = 0.05
+        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, span: currentLocationSpan)
+        self.mapView.setRegion(currentRegion, animated: true)
+        self.objectAnnotation.coordinate = CLLocation(latitude: center.latitude, longitude: center.longitude).coordinate
+        if title.count == 0 && subtitle.count == 0 {
+            objectAnnotation.title = "\(center.latitude)"
+            objectAnnotation.subtitle = "\(center.longitude)"
+            return
+        }
+        objectAnnotation.title = title
+        objectAnnotation.subtitle = subtitle
     }
 }
 
@@ -123,7 +140,8 @@ extension MapViewController: MKMapViewDelegate {
     }
      
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("地图缩放完毕触法")
+        print("地图缩放完毕")
+//        self.setLocation(center: mapView.centerCoordinate)
     }
      
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
@@ -143,7 +161,7 @@ extension MapViewController: MKMapViewDelegate {
     }
      
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        print("渲染下载的地图结束时调用")
+        print("渲染下载的地图结束")
     }
      
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
@@ -201,4 +219,5 @@ extension MapViewController: MKMapViewDelegate {
                  fromOldState oldState: MKAnnotationView.DragState) {
         print("移动annotation位置时调用")
     }
+
 }
