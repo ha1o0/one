@@ -88,7 +88,7 @@ class BezierPathViewController: BaseViewController {
             maker.top.trailing.bottom.equalToSuperview()
             maker.leading.equalTo(couponLeft.snp.trailing)
         }
-        
+//        coupon.setAnchor(point: CGPoint(x: 0.2, y: 0.5))
         self.animateView1()
         
         circle.backgroundColor = .clear
