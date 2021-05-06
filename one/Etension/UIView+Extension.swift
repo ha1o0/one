@@ -84,7 +84,24 @@ extension UIView {
         let viewPoint: CGPoint = self.convert(superViewCenter, from: self.superview?.superview)
         anchorPoint.x = viewPoint.x / self.bounds.size.width
         anchorPoint.y = viewPoint.y / self.bounds.size.height
-        print(anchorPoint)
         setAnchor(point: anchorPoint)
+    }
+    
+    func setAnchorPoint(anchorPoint: CGPoint) {
+        let width = self.bounds.size.width
+        let height = self.bounds.size.height
+        var newPoint = CGPoint(x: width * anchorPoint.x, y: height * anchorPoint.y)
+        var oldPoint = CGPoint(x: width * self.layer.anchorPoint.x, y: height * self.layer.anchorPoint.y)
+        newPoint = newPoint.applying(self.transform)
+        oldPoint = oldPoint.applying(self.transform)
+        
+        var position = self.layer.position
+        position.x -= oldPoint.x
+        position.x += newPoint.x
+        position.y -= oldPoint.y
+        position.y += newPoint.y
+        
+        self.layer.position = position
+        self.layer.anchorPoint = anchorPoint
     }
 }

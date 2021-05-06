@@ -10,10 +10,10 @@ import UIKit
 class ModalViewController: BaseViewController {
 
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentViewTrailing: NSLayoutConstraint!
     @IBOutlet weak var contentViewTop: NSLayoutConstraint!
     @IBOutlet weak var contentViewBottom: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var contentViewWidth: NSLayoutConstraint!
     var newVc = BaseViewController()
     let leftBarViewWidth: CGFloat = 44
     var hasFold = false
@@ -52,6 +52,7 @@ class ModalViewController: BaseViewController {
         newVc.view.backgroundColor = .systemBackground
         newVc.enterType = .present
         newVc.setCustomNav()
+        contentViewWidth.constant = SCREEN_WIDTH
         // Do any additional setup after loading the view.
     }
     
@@ -167,35 +168,38 @@ class ModalViewController: BaseViewController {
     }
 
     func foldContentView() {
+        print("最初：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
         UIView.animate(withDuration: 1) {
             self.leftBarView.alpha = 1
             self.contentViewLeading.constant = self.leftBarViewWidth
         } completion: { (result) in
-            self.contentView.setAnchor(point: CGPoint(x: 0, y: 0.5))
+            print("平移44后：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
+            self.contentView.setAnchorPoint(anchorPoint: CGPoint(x: 0, y: 0.5))
+            print("更改anchor后：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
             UIView.animate(withDuration: 3) {
-                let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 3 , 0, 1, 0)
+                let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
                 self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
-                
             } completion: { (result) in
-                
+                print("旋转后：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
             }
         }
     }
     
     func unFoldContentView() {
-        self.contentView.setAnchor(point: CGPoint(x: 0.5, y: 0.5))
-        
+//        self.contentView.setAnchorPoint(anchorPoint: CGPoint(x: 0.5, y: 0.5))
         UIView.animate(withDuration: 2) {
             self.leftBarView.alpha = 0
-            self.contentViewLeading.constant = 0
-//          self.contentView.setAnchor(point: CGPoint(x: 0, y: 0.5))
+            self.contentViewWidth.constant = SCREEN_WIDTH
+            print("复原旋转前：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
             let transform3D: CATransform3D = CATransform3DMakeRotation(0, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
+            print("复原旋转后：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
         } completion: { (result) in
-            
+            self.contentView.layer.position = CGPoint(x: 44.0, y: self.contentView.layer.position.y)
+            print("复原旋转后2：\(self.contentView.frame)--\(self.contentView.layer.position)--\(self.contentView.center)--\(self.contentView.layer.anchorPoint)")
+            self.contentViewLeading.constant = 0
             self.hasFold = false
         }
-        
     }
     
     func CATransform3DMakePerspective(center:CGPoint, idz:CGFloat) -> CATransform3D {
