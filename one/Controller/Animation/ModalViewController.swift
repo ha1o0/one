@@ -18,6 +18,7 @@ class ModalViewController: BaseViewController {
     let leftBarViewWidth: CGFloat = 44
     var hasFold = false
     let animationSecondDuration: Double = 1
+    var cameraNode: SCNNode!
     lazy var sceneView: SCNView = {
         return SCNView()
     }()
@@ -90,7 +91,7 @@ class ModalViewController: BaseViewController {
         }
         
         let scene = SCNScene(named: "BrickLandspeeder4501.obj")
-        let cameraNode = SCNNode()
+        cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
         scene?.rootNode.addChildNode(cameraNode)
@@ -246,7 +247,8 @@ class ModalViewController: BaseViewController {
     }
     
     func unFoldContentView() {
-        UIView.animate(withDuration: animationSecondDuration) {
+        self.sceneView.pointOfView = self.cameraNode
+        UIView.animate(withDuration: self.animationSecondDuration) {
             self.sceneView.isHidden = true
             self.contentView.backgroundColor = .white
             let transform3D: CATransform3D = CATransform3DMakeRotation(0, 0, 1, 0)
@@ -255,11 +257,12 @@ class ModalViewController: BaseViewController {
             self.hasFold = false
             self.leftBarView.alpha = 0
         }
-        
-        UIView.animate(withDuration: animationSecondDuration) {
+
+        UIView.animate(withDuration: self.animationSecondDuration) {
             self.leftBarView.frame.origin.x -= self.leftBarViewWidth
             self.contentView.frame.origin.x -= self.leftBarViewWidth
         }
+        
     }
     
     func CATransform3DMakePerspective(center:CGPoint, idz:CGFloat) -> CATransform3D {
