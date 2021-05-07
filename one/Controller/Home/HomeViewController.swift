@@ -145,6 +145,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewData.append(IdName(name: "SceneKit", id: "8"))
         self.tableViewData.append(IdName(name: "WebView", id: "9"))
         self.tableViewData.append(IdName(name: "相机", id: "10"))
+        self.tableViewData.append(IdName(name: "测试", id: "0"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -202,7 +203,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         case "10":
             targetController = ScanQrCodeViewController()
         default:
-            return
+            targetController = BaseTestViewController()
         }
         if let targetController = targetController {
             self.navigationController?.pushViewController(targetController, animated: true)

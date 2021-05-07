@@ -68,9 +68,9 @@ extension UIView {
         self.transform = rotation
     }
     
-    func setAnchor(point: CGPoint) {
+    func setAnchor(anchorPoint: CGPoint) {
         let oldOrigin = self.frame.origin
-        self.layer.anchorPoint = point
+        self.layer.anchorPoint = anchorPoint
         let newOrigin = self.frame.origin
         var transition: CGPoint = .zero
         transition.x = newOrigin.x - oldOrigin.x
@@ -84,7 +84,7 @@ extension UIView {
         let viewPoint: CGPoint = self.convert(superViewCenter, from: self.superview?.superview)
         anchorPoint.x = viewPoint.x / self.bounds.size.width
         anchorPoint.y = viewPoint.y / self.bounds.size.height
-        setAnchor(point: anchorPoint)
+        setAnchor(anchorPoint: anchorPoint)
     }
     
     func setAnchorPoint(anchorPoint: CGPoint) {

@@ -18,6 +18,8 @@
 		E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */; };
 		E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */; };
 		E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */; };
+		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
+		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
 		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
 		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
@@ -119,6 +121,8 @@
 		E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation3TableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4TableViewCell.swift; sourceTree = "<group>"; };
+		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
+		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 				E99BC0FF262335730002C066 /* BaseCollectionViewController.swift */,
 				E99BC1D926340F580002C066 /* BaseWebViewController.swift */,
 				E99BC1DA26340F580002C066 /* BaseWebViewController.xib */,
+				E99855DA264509F9006B0E1E /* BaseTestViewController.swift */,
+				E99855DB264509F9006B0E1E /* BaseTestViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -674,6 +680,7 @@
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
 				E99BC16426272A300002C066 /* MapViewController.xib in Resources */,
+				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
@@ -783,6 +790,7 @@
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
+				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,

@@ -1,5 +1,20 @@
 import UIKit
 
+public func setAnchor(anchorPoint: CGPoint, forView: UIView) {
+    let oldOrigin = forView.frame.origin
+    forView.layer.anchorPoint = anchorPoint
+    let newOrigin = forView.frame.origin
+    var transition: CGPoint = .zero
+    transition.x = newOrigin.x - oldOrigin.x
+    transition.y = newOrigin.y - oldOrigin.y
+    forView.center = CGPoint(x: forView.center.x - transition.x, y: forView.center.y - transition.y)
+}
+
+public func delay(_ delayTime: Double, closure: @escaping () -> ()) {
+    let time = DispatchTime.now() + delayTime
+    DispatchQueue.main.asyncAfter(deadline: time, execute: closure)
+}
+
 public func viewFromNib<T: UIView>(_ nibName: String) -> T {
     return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as! T
 }
