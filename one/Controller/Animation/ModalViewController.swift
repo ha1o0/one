@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SceneKit
 
 class ModalViewController: BaseViewController {
 
@@ -16,6 +17,9 @@ class ModalViewController: BaseViewController {
     var newVc = BaseViewController()
     let leftBarViewWidth: CGFloat = 44
     var hasFold = false
+    lazy var sceneView2: SCNView = {
+        return SCNView()
+    }()
     lazy var leftBarView: UIView = {
         let _leftBarView = UIView(frame: CGRect(x: -leftBarViewWidth, y: 0, width: leftBarViewWidth, height: SCREEN_HEIGHT))
         _leftBarView.backgroundColor = .white
@@ -49,6 +53,7 @@ class ModalViewController: BaseViewController {
         contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         setupLeftBar()
         setCustomNav(color: .clear)
+        setupObjView()
         newVc.title = "new"
         newVc.view.backgroundColor = .systemBackground
         newVc.enterType = .present
@@ -73,12 +78,52 @@ class ModalViewController: BaseViewController {
         }
     }
     
+    func setupObjView() {
+        sceneView2.alpha = 0
+        view.addSubview(sceneView2)
+        sceneView2.snp.makeConstraints { (maker) in
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalToSuperview().offset(100)
+        }
+        
+        let scene = SCNScene(named: "BrickLandspeeder4501.obj")
+
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+        scene?.rootNode.addChildNode(cameraNode)
+        
+        let lightNode = SCNNode()
+        lightNode.light = SCNLight()
+        lightNode.light?.intensity = 100
+        lightNode.light?.type = .omni
+        lightNode.position = SCNVector3(x: 0, y: 5, z: 5)
+        scene?.rootNode.addChildNode(lightNode)
+        
+        // 6: Creating and adding ambien light to scene
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light?.type = .ambient
+        ambientLightNode.light?.color = UIColor.lightGray
+        scene?.rootNode.addChildNode(ambientLightNode)
+        
+        // Allow user to manipulate camera
+        sceneView2.allowsCameraControl = true
+        sceneView2.backgroundColor = UIColor.clear
+        sceneView2.cameraControlConfiguration.allowsTranslation = false
+        sceneView2.scene = scene
+        
+        contentView.layer.zPosition = 100
+        sceneView2.layer.zPosition = 101
+        
+    }
+    
     override func setStatusBar(color: UIColor = UIColor.main) {
         contentView.addSubview(statusBarView)
         statusBarView.backgroundColor = color
         statusBarView.snp.makeConstraints { (maker) in
             maker.top.leading.trailing.equalToSuperview()
-            maker.height.height.equalTo(STATUS_BAR_HEIGHT)
+            maker.height.equalTo(STATUS_BAR_HEIGHT)
         }
     }
     
@@ -161,9 +206,15 @@ class ModalViewController: BaseViewController {
         transition.duration = 0.4
         transition.type = CATransitionType.moveIn
         transition.subtype = CATransitionSubtype.fromTop
-        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
         view.window?.layer.add(transition, forKey: kCATransition)
         self.navigationController?.pushViewController(newVc, animated: false)
+        
+        // another way
+//        let nav = UINavigationController.init(rootViewController: newVc)
+//        nav.modalPresentationStyle = .fullScreen
+//        appDelegate.window?.rootViewController?.present(nav, animated: true, completion: nil)
+        
     }
     @IBAction func fold(_ sender: UIButton) {
         hasFold = true
@@ -174,43 +225,39 @@ class ModalViewController: BaseViewController {
         let oldFrame = self.contentView.frame
         self.contentView.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
         self.contentView.frame = oldFrame
-//        self.contentView.setNeedsUpdateConstraints()
         leftBarView.alpha = 1
-        UIView.animate(withDuration: 0.5) {
+        // another animation way
+//        let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
+//        let transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 500)
+//        let animation = CABasicAnimation(keyPath: "transform")
+//        animation.toValue = NSValue(caTransform3D: transform)
+//        animation.duration = 2
+//        self.contentView.layer.add(animation, forKey: "transform")
+        UIView.animate(withDuration: 2) {
             self.leftBarView.frame.origin.x += self.leftBarViewWidth
             self.contentView.frame.origin.x += self.leftBarViewWidth
+            self.contentView.backgroundColor = .lightGray
+            let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
+            self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
         } completion: { (result) in
-//            let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
-//            let transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 500)
-//            let animation = CABasicAnimation(keyPath: "transform")
-//            animation.toValue = NSValue(caTransform3D: transform)
-//            animation.duration = 2
-//            self.contentView.layer.add(animation, forKey: "transform")
-            self.contentView.backgroundColor = .white
-            UIView.animate(withDuration: 2) {
-                self.contentView.backgroundColor = .lightGray
-                let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
-                self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
-            } completion: { (result) in
-            }
+            self.sceneView2.alpha = 1
         }
-
-        
     }
     
     func unFoldContentView() {
         UIView.animate(withDuration: 2) {
+            self.sceneView2.alpha = 0
             self.contentView.backgroundColor = .white
             let transform3D: CATransform3D = CATransform3DMakeRotation(0, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
         } completion: { (result) in
-            UIView.animate(withDuration: 0.5) {
-                self.leftBarView.frame.origin.x -= self.leftBarViewWidth
-                self.contentView.frame.origin.x -= self.leftBarViewWidth
-            } completion: { (result) in
-                self.hasFold = false
-                self.leftBarView.alpha = 0
-            }
+            self.hasFold = false
+            self.leftBarView.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 2) {
+            self.leftBarView.frame.origin.x -= self.leftBarViewWidth
+            self.contentView.frame.origin.x -= self.leftBarViewWidth
         }
     }
     
