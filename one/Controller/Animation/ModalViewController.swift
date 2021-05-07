@@ -17,7 +17,8 @@ class ModalViewController: BaseViewController {
     var newVc = BaseViewController()
     let leftBarViewWidth: CGFloat = 44
     var hasFold = false
-    lazy var sceneView2: SCNView = {
+    let animationSecondDuration: Double = 1
+    lazy var sceneView: SCNView = {
         return SCNView()
     }()
     lazy var leftBarView: UIView = {
@@ -79,15 +80,16 @@ class ModalViewController: BaseViewController {
     }
     
     func setupObjView() {
-        sceneView2.alpha = 0
-        view.addSubview(sceneView2)
-        sceneView2.snp.makeConstraints { (maker) in
-            maker.leading.trailing.bottom.equalToSuperview()
+        sceneView.isHidden = true
+        view.addSubview(sceneView)
+        sceneView.snp.makeConstraints { (maker) in
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-50)
             maker.top.equalToSuperview().offset(100)
+            maker.leading.equalToSuperview().offset(0)
         }
         
         let scene = SCNScene(named: "BrickLandspeeder4501.obj")
-
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
@@ -108,13 +110,12 @@ class ModalViewController: BaseViewController {
         scene?.rootNode.addChildNode(ambientLightNode)
         
         // Allow user to manipulate camera
-        sceneView2.allowsCameraControl = true
-        sceneView2.backgroundColor = UIColor.clear
-        sceneView2.cameraControlConfiguration.allowsTranslation = false
-        sceneView2.scene = scene
+        sceneView.allowsCameraControl = true
+        sceneView.backgroundColor = UIColor.clear
+        sceneView.cameraControlConfiguration.allowsTranslation = false
+        sceneView.scene = scene
         
-        contentView.layer.zPosition = 100
-        sceneView2.layer.zPosition = 101
+        self.view.bringSubviewToFront(sceneView)
         
     }
     
@@ -233,20 +234,20 @@ class ModalViewController: BaseViewController {
 //        animation.toValue = NSValue(caTransform3D: transform)
 //        animation.duration = 2
 //        self.contentView.layer.add(animation, forKey: "transform")
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: animationSecondDuration) {
             self.leftBarView.frame.origin.x += self.leftBarViewWidth
             self.contentView.frame.origin.x += self.leftBarViewWidth
             self.contentView.backgroundColor = .lightGray
             let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
         } completion: { (result) in
-            self.sceneView2.alpha = 1
+            self.sceneView.isHidden = false
         }
     }
     
     func unFoldContentView() {
-        UIView.animate(withDuration: 2) {
-            self.sceneView2.alpha = 0
+        UIView.animate(withDuration: animationSecondDuration) {
+            self.sceneView.isHidden = true
             self.contentView.backgroundColor = .white
             let transform3D: CATransform3D = CATransform3DMakeRotation(0, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
@@ -255,7 +256,7 @@ class ModalViewController: BaseViewController {
             self.leftBarView.alpha = 0
         }
         
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: animationSecondDuration) {
             self.leftBarView.frame.origin.x -= self.leftBarViewWidth
             self.contentView.frame.origin.x -= self.leftBarViewWidth
         }
