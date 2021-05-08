@@ -13,6 +13,7 @@
                 <outlet property="contentViewBottom" destination="iLa-dX-TKs" id="elh-BP-cmO"/>
                 <outlet property="contentViewLeading" destination="iLa-dX-TKs" id="7Vf-IK-piS"/>
                 <outlet property="contentViewTop" destination="KQj-zL-MxR" id="aMN-4R-JBS"/>
+                <outlet property="contentViewTrailing" destination="mH5-kr-Wnl" id="m6M-82-BLw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -14,6 +14,7 @@ class ModalViewController: BaseViewController {
     @IBOutlet weak var contentViewTop: NSLayoutConstraint!
     @IBOutlet weak var contentViewBottom: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var contentViewTrailing: NSLayoutConstraint!
     var newVc = BaseViewController()
     let leftBarViewWidth: CGFloat = 44
     var hasFold = false
@@ -51,8 +52,8 @@ class ModalViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "转场方式"
-        contentView.translatesAutoresizingMaskIntoConstraints = true
-        contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         setupLeftBar()
         setCustomNav(color: .clear)
         setupObjView()
@@ -225,25 +226,29 @@ class ModalViewController: BaseViewController {
 
     func foldContentView() {
         let oldFrame = self.contentView.frame
+        print(oldFrame)
+        let sub = oldFrame.width * 0.5
         self.contentView.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
-        self.contentView.frame = oldFrame
-        leftBarView.alpha = 1
-        // another animation way
-//        let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
-//        let transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 500)
-//        let animation = CABasicAnimation(keyPath: "transform")
-//        animation.toValue = NSValue(caTransform3D: transform)
-//        animation.duration = 2
-//        self.contentView.layer.add(animation, forKey: "transform")
-        UIView.animate(withDuration: animationSecondDuration) {
-            self.leftBarView.frame.origin.x += self.leftBarViewWidth
-            self.contentView.frame.origin.x += self.leftBarViewWidth
+        self.contentViewLeading.constant = -sub
+        self.contentViewTrailing.constant = sub
+//        self.contentView.frame = oldFrame
+        self.leftBarView.alpha = 1
+        UIView.animate(withDuration: self.animationSecondDuration) {
             self.contentView.backgroundColor = .lightGray
             let transform3D: CATransform3D = CATransform3DMakeRotation(CGFloat.pi / 2.5, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
         } completion: { (result) in
             self.sceneView.isHidden = false
         }
+        
+        UIView.animate(withDuration: self.animationSecondDuration) {
+            self.leftBarView.frame.origin.x += self.leftBarViewWidth
+            self.contentView.frame.origin.x += self.leftBarViewWidth
+            self.contentViewLeading.constant += self.leftBarViewWidth
+            self.contentViewTrailing.constant -= self.leftBarViewWidth
+        }
+        
+        
     }
     
     func unFoldContentView() {
@@ -261,6 +266,8 @@ class ModalViewController: BaseViewController {
         UIView.animate(withDuration: self.animationSecondDuration) {
             self.leftBarView.frame.origin.x -= self.leftBarViewWidth
             self.contentView.frame.origin.x -= self.leftBarViewWidth
+            self.contentViewLeading.constant -= self.leftBarViewWidth
+            self.contentViewTrailing.constant += self.leftBarViewWidth
         }
         
     }
