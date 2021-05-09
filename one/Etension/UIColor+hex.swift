@@ -115,4 +115,8 @@ extension UIColor {
     static var disabledGray: UIColor {
         return colorWithHexString("#aaaaaa")
     }
+    
+    static var mainBkg: UIColor {
+        return colorWithHexString("#453936")
+    }
 }

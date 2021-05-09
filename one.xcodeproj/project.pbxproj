@@ -88,6 +88,7 @@
 		E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */; };
 		E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */; };
 		E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */; };
+		E9E68BE52648376200929383 /* Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E68BE42648376100929383 /* Capsule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection1ViewController.swift; sourceTree = "<group>"; };
 		E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Collection1ViewController.xib; sourceTree = "<group>"; };
+		E9E68BE42648376100929383 /* Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capsule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +499,7 @@
 				E9E0CDCE2608E6600047DAE9 /* TableViewCell */,
 				E9E0CD85260795070047DAE9 /* Player */,
 				E9A1357D262443A000DEC078 /* Bezier */,
+				E9E68BE42648376100929383 /* Capsule.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
+				E9E68BE52648376200929383 /* Capsule.swift in Sources */,
 				E99BC1F6263869620002C066 /* ScanQrCodeViewController.swift in Sources */,
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
 				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,

@@ -66,7 +66,9 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let avatarGesture = UITapGestureRecognizer(target: self, action: #selector(toPlayView))
         avatarImageView.addGestureRecognizer(avatarGesture)
         let avatarUrl = "http://b-ssl.duitang.com/uploads/item/201809/24/20180924092018_zjgut.jpg"
-        avatarImageView.loadFrom(link: avatarUrl, isCircle: true)
+        avatarImageView.loadFrom(link: avatarUrl, isCircle: false)
+        avatarImageView.layer.cornerRadius = 16
+        avatarImageView.layer.masksToBounds = true
         navigationView.bringSubviewToFront(avatarImageView)
         
         //扫一扫和消息图标
@@ -114,13 +116,11 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         searchBoxView.tintColor = UIColor.main
         searchBoxView.searchTextPositionAdjustment = UIOffset(horizontal: 8, vertical: 1)
         let textField = searchBoxView.value(forKey: "searchField") as! UITextField
-        textField.layer.cornerRadius = 18
         textField.borderStyle = .none
         textField.font = UIFont.systemFont(ofSize: 14)
-        textField.textColor = UIColor.lightGray
-        textField.tintColor = UIColor.main
-        textField.backgroundColor = UIColor.clear
-        textField.placeholder = "搜索"
+        textField.textColor = UIColor.white
+        textField.backgroundColor = UIColor.mainBkg.withAlphaComponent(0.6)
+        textField.attributedPlaceholder = NSAttributedString(string: "搜索", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightText])
         textField.enablesReturnKeyAutomatically = false //text为空时return key依然可用
         searchBoxView.backgroundImage = UIImage()
         searchBoxView.snp.makeConstraints { (maker) in
