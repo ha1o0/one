@@ -288,6 +288,8 @@
 			children = (
 				E99855EC2648C786006B0E1E /* MainViewController.swift */,
 				E99855F42648C965006B0E1E /* TabBarViewController.swift */,
+				E99855E42648C073006B0E1E /* DrawerViewController.swift */,
+				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -458,8 +460,6 @@
 				E99BC1DA26340F580002C066 /* BaseWebViewController.xib */,
 				E99855DA264509F9006B0E1E /* BaseTestViewController.swift */,
 				E99855DB264509F9006B0E1E /* BaseTestViewController.xib */,
-				E99855E42648C073006B0E1E /* DrawerViewController.swift */,
-				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
 				E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */,
 				E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */,
 			);
