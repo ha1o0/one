@@ -11,6 +11,7 @@ class AnimationViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print("animation didload")
         title = "动画"
         setCustomNav()
         tableData = []
@@ -39,4 +40,35 @@ class AnimationViewController: BaseTableViewController {
         
         return cell
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        print("animation willappear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        print("animation didappear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        print("animation willdisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+//        print("animation diddisappear")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+//        print("animation willlayoutsubviews")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        print("animation didlayoutsubviews")
+    }
+    
 }

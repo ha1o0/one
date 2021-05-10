@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
     
     var showStatusBar = true
     var showNavBar = true
+    var isTabbarVc = false
     var enterType: VcEnterType = .push
     lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
@@ -40,7 +41,7 @@ class BaseViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-
+        super.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -133,6 +134,13 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func pushVc(vc: UIViewController, animate: Bool = true) {
+        // 解决新vc与tab vc的tabbar显示与否的问题
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: animate)
+        self.hidesBottomBarWhenPushed = false
     }
 }
 

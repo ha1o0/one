@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var launchWindow: UIWindow?
     var deviceOrientation = UIInterfaceOrientationMask.portrait
+    var rootVc: MainViewController?
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return deviceOrientation
@@ -25,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
 //        UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.main
-        let navigationViewController = BaseNavigationViewController.init(rootViewController: HomeViewController())
-        window?.rootViewController = navigationViewController
+        rootVc = MainViewController()
+        window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
         
         self.showLaunchWindown()
@@ -63,14 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        print("WillEnterForeground")
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        print("DidBecomeActive")
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+        print("WillTerminate")
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITableViewDataSource {
 
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
@@ -37,7 +37,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func toPlayView() {
-        self.navigationController?.pushViewController(PlayViewController(), animated: true)
+        self.pushVc(vc: PlayViewController())
     }
     
     override func setNavigation() {
@@ -156,8 +156,12 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.tableViewDataCopy = self.tableViewData
     }
 
+    @objc func showLeftVc() {
+        print("ok")
+    }
+    
     @objc func toScanQRCodeVc() {
-        self.navigationController?.pushViewController(ScanQrCodeViewController(), animated: true)
+        self.pushVc(vc: ScanQrCodeViewController())
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -206,7 +210,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             targetController = BaseTestViewController()
         }
         if let targetController = targetController {
-            self.navigationController?.pushViewController(targetController, animated: true)
+            self.pushVc(vc: targetController)
         }
     }
 }

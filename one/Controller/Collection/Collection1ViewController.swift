@@ -37,7 +37,7 @@ class Collection1ViewController: BaseCollectionViewController, UICollectionViewD
 //        let cellData = data[indexPath.row] as! Video
 //        let url = cellData.url
         let playerVc = PlayViewController()
-        self.navigationController?.pushViewController(playerVc, animated: true)
+        self.pushVc(vc: playerVc)
     }
     
 //    override func scrollViewDidScroll(_ scrollView: UIScrollView) {

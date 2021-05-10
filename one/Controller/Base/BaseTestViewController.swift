@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseTestViewController: BaseViewController {
+class BaseTestViewController: BaseTabBarViewController {
     @IBOutlet weak var view1: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +43,4 @@ class BaseTestViewController: BaseViewController {
         view2.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
         view2.frame = oldFrame2
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

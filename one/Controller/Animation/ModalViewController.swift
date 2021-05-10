@@ -200,7 +200,7 @@ class ModalViewController: BaseViewController {
 //        transition.subtype = CATransitionSubtype.fromBottom
         transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
         view.window?.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.pushViewController(newVc, animated: false)
+        self.pushVc(vc: newVc, animate: false)
     }
     
     @IBAction func fromBottom(_ sender: UIButton) {
@@ -211,7 +211,7 @@ class ModalViewController: BaseViewController {
         transition.subtype = CATransitionSubtype.fromTop
         transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
         view.window?.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.pushViewController(newVc, animated: false)
+        self.pushVc(vc: newVc, animate: false)
         
         // another way
 //        let nav = UINavigationController.init(rootViewController: newVc)

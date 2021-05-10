@@ -50,7 +50,9 @@ extension UIColor {
 extension UIColor {
     
     static var main: UIColor {
-        return colorWithHexString("#FF6E82")
+        // #FF6E82
+        // #0396FF
+        return colorWithHexString("#0396FF")
     }
     
     /// #8a8a8a

@@ -7,42 +7,24 @@
 
 import UIKit
 
-class BaseNavigationViewController: UINavigationController, UINavigationControllerDelegate {
+class BaseNavigationViewController: UINavigationController, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
 
-    var popDelegate:UIGestureRecognizerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.green]
-        self.popDelegate = self.interactivePopGestureRecognizer?.delegate
+        self.interactivePopGestureRecognizer?.delegate = self
         self.delegate = self
-//         Do any additional setup after loading the view.
     }
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//        if (viewController == self) {
-//            navigationController.setNavigationBarHidden(true, animated: true)
-//        } else {
-//
-//        }
+
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        if viewController == self.viewControllers[0] {
-            self.interactivePopGestureRecognizer?.delegate = self.popDelegate
-        } else {
-            self.interactivePopGestureRecognizer?.delegate = nil
+        // 这里也可以根据vc来赋予或者移除右滑返回手势
+        // 在首页时，右滑呼出抽屉
+        if viewControllers.count == 1 {
+//            drawerMenuController()?.needSwipeShowMenu = true
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

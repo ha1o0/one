@@ -20,6 +20,12 @@
 		E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
+		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
+		E99855E72648C073006B0E1E /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855E52648C073006B0E1E /* DrawerViewController.xib */; };
+		E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855EC2648C786006B0E1E /* MainViewController.swift */; };
+		E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F42648C965006B0E1E /* TabBarViewController.swift */; };
+		E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */; };
+		E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */; };
 		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
 		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
 		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
@@ -124,6 +130,12 @@
 		E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4TableViewCell.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
+		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		E99855E52648C073006B0E1E /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
+		E99855EC2648C786006B0E1E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E99855F42648C965006B0E1E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTabBarViewController.xib; sourceTree = "<group>"; };
 		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -269,6 +281,15 @@
 				E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		E99855EB2648C76E006B0E1E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E99855EC2648C786006B0E1E /* MainViewController.swift */,
+				E99855F42648C965006B0E1E /* TabBarViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
@@ -437,6 +458,10 @@
 				E99BC1DA26340F580002C066 /* BaseWebViewController.xib */,
 				E99855DA264509F9006B0E1E /* BaseTestViewController.swift */,
 				E99855DB264509F9006B0E1E /* BaseTestViewController.xib */,
+				E99855E42648C073006B0E1E /* DrawerViewController.swift */,
+				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
+				E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */,
+				E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -477,6 +502,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E99855EB2648C76E006B0E1E /* Main */,
 				E99BC1F3263869310002C066 /* Camera */,
 				E99BC16026272A170002C066 /* Map */,
 				E99BC13E2625E0F40002C066 /* Table */,
@@ -697,12 +723,14 @@
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
 				E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */,
+				E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */,
 				E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
+				E99855E72648C073006B0E1E /* DrawerViewController.xib in Resources */,
 				E9E0CDDC2608ED0D0047DAE9 /* BaseTableViewCell.xib in Resources */,
 				E9A952FA263171290032EADB /* BrickLandspeeder4501.mtl in Resources */,
 				E99BC1FF26386B820002C066 /* QRCodeScanLine.png in Resources */,
@@ -776,6 +804,7 @@
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
+				E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
@@ -789,6 +818,7 @@
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
+				E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */,
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
@@ -817,6 +847,8 @@
 				E9E0CDEC2608EF7B0047DAE9 /* UIUtils.swift in Sources */,
 				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
+				E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */,
+				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
