@@ -13,9 +13,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 //        print("main didload")
         let tabbarVc = TabBarViewController()
+        let leftVc = LeftDrawerViewController()
         let drawerVc = DrawerViewController()
-        drawerVc.tabbarVc = tabbarVc
         appDelegate.window?.rootViewController = drawerVc
+        drawerVc.tabbarVc = tabbarVc
+        drawerVc.leftVc = leftVc
     }
     
     override func viewWillAppear(_ animated: Bool) {
