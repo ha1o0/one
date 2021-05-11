@@ -9,9 +9,25 @@ import UIKit
 
 class DrawerViewController: BaseViewController {
 
+    lazy var contentView: UIView = {
+        let _contentView = UIView()
+        return _contentView
+    }()
+    
+    var tabbarVc: TabBarViewController? {
+        didSet {
+            if tabbarVc != nil {
+                contentView.addSubview(tabbarVc!.view)
+                tabbarVc!.view.frame = self.contentView.frame
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view.addSubview(contentView)
+        contentView.snp.makeConstraints { (maker) in
+            maker.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
 }

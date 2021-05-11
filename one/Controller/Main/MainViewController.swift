@@ -8,14 +8,14 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    var tabbarVc: TabBarViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print("main didload")
-        tabbarVc = TabBarViewController()
-        appDelegate.window?.rootViewController = tabbarVc
+        let tabbarVc = TabBarViewController()
+        let drawerVc = DrawerViewController()
+        drawerVc.tabbarVc = tabbarVc
+        appDelegate.window?.rootViewController = drawerVc
     }
     
     override func viewWillAppear(_ animated: Bool) {
