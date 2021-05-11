@@ -26,6 +26,8 @@
 		E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F42648C965006B0E1E /* TabBarViewController.swift */; };
 		E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */; };
 		E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */; };
+		E9985605264A7FBD006B0E1E /* LeftDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */; };
+		E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */; };
 		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
 		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
 		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
@@ -136,6 +138,8 @@
 		E99855F42648C965006B0E1E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTabBarViewController.xib; sourceTree = "<group>"; };
+		E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerViewController.swift; sourceTree = "<group>"; };
+		E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftDrawerViewController.xib; sourceTree = "<group>"; };
 		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 				E99855F42648C965006B0E1E /* TabBarViewController.swift */,
 				E99855E42648C073006B0E1E /* DrawerViewController.swift */,
 				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
+				E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */,
+				E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
+				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
@@ -816,6 +823,7 @@
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
+				E9985605264A7FBD006B0E1E /* LeftDrawerViewController.swift in Sources */,
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
 				E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */,
