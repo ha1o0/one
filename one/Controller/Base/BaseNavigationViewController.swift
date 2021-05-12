@@ -26,4 +26,9 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
         // 在首页时，右滑呼出抽屉
         appDelegate.rootVc?.drawerVc.enableOpenLeftVc = viewControllers.count == 1
     }
+    
+    // 必须在首页禁用边缘手势，否则在呼出抽屉vc后，无法再push其他vc
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return children.count > 1
+    }
 }

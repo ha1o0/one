@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()

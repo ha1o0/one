@@ -9,7 +9,7 @@ import UIKit
 
 class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
-    var leftPanGesture: UIPanGestureRecognizer!
+    var leftPanGesture: UIScreenEdgePanGestureRecognizer!
     let shadowAlpha: Double = 0.6
     let leftVcWidth: Double = 300
     var startOpenLeftVc = false
@@ -46,6 +46,15 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
     }
     
+//    lazy var leftView: UIView = {
+//        let _leftView = UIView()
+//        _leftView.backgroundColor = .orange
+//        var frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+//        frame.origin.x = -frame.size.width
+//        _leftView.frame = frame
+//        return _leftView
+//    }()
+    
     lazy var contentView: UIView = {
         let _contentView = UIView()
         _contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
@@ -68,16 +77,14 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.view.addSubview(contentView)
         print("didload")
-        leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(leftPan))
+        leftPanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(leftPan))
         leftPanGesture.delegate = self
-//        leftPanGesture.edges = .left
-//        self.contentView.addGestureRecognizer(leftPanGesture)
+        leftPanGesture.edges = .left
     }
     
     @objc func leftPan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: contentView)
         let _ = sender.translation(in: self.contentView)
-        print(location)
         if !enableOpenLeftVc {
             return
         }
@@ -93,9 +100,6 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
             return
         }
         if sender.state == .began {
-            if location.x > 25 {
-                return
-            }
             startOpenLeftVc = true
         }
         if startOpenLeftVc {
@@ -138,7 +142,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.contentView.removeGestureRecognizer(leftPanGesture)
     }
     
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
