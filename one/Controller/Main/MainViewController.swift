@@ -9,12 +9,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let tabbarVc = TabBarViewController()
+    let leftVc = LeftDrawerViewController()
+    let drawerVc = DrawerViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print("main didload")
-        let tabbarVc = TabBarViewController()
-        let leftVc = LeftDrawerViewController()
-        let drawerVc = DrawerViewController()
         appDelegate.window?.rootViewController = drawerVc
         drawerVc.tabbarVc = tabbarVc
         drawerVc.leftVc = leftVc

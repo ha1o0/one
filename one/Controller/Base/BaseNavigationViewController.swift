@@ -17,14 +17,13 @@ class BaseNavigationViewController: UINavigationController, UINavigationControll
     }
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-
+        print("willshow\(viewControllers.count)")
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        print("didshow\(viewControllers.count)")
         // 这里也可以根据vc来赋予或者移除右滑返回手势
         // 在首页时，右滑呼出抽屉
-        if viewControllers.count == 1 {
-//            drawerMenuController()?.needSwipeShowMenu = true
-        }
+        appDelegate.rootVc?.drawerVc.enableOpenLeftVc = viewControllers.count == 1
     }
 }

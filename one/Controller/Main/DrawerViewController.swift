@@ -10,18 +10,26 @@ import UIKit
 class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     var leftPanGesture: UIPanGestureRecognizer!
-    var enableOpenLeftVc = true
+    let shadowAlpha: Double = 0.6
+    let leftVcWidth: Double = 300
     var startOpenLeftVc = false
-    lazy var contentView: UIView = {
-        let _contentView = UIView()
-        return _contentView
-    }()
-    
+    var enableOpenLeftVc: Bool = false {
+        didSet {
+            if enableOpenLeftVc {
+                self.enableContentViewLeftPan()
+            } else {
+                self.disableContentViewLeftPan()
+            }
+        }
+    }
+
     var tabbarVc: TabBarViewController? {
         didSet {
             if tabbarVc != nil {
                 contentView.addSubview(tabbarVc!.view)
                 tabbarVc!.view.frame = self.contentView.bounds
+                print("add tabbarVc")
+                self.contentView.addSubview(shadowView)
             }
         }
     }
@@ -33,71 +41,104 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 var frame = self.contentView.bounds
                 frame.origin.x = -frame.size.width
                 leftVc!.view.frame = frame
+                print("add leftVc")
             }
         }
     }
     
+    lazy var contentView: UIView = {
+        let _contentView = UIView()
+        _contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        return _contentView
+    }()
+    
+    lazy var shadowView: UIView = {
+        let _shadowView = UIView()
+        _shadowView.backgroundColor = .black
+        _shadowView.alpha = 0
+        _shadowView.isHidden = true
+        _shadowView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeLeftVc))
+        _shadowView.addGestureRecognizer(tapGesture)
+        _shadowView.isUserInteractionEnabled = true
+        return _shadowView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(contentView)
-        contentView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        print("didload")
         leftPanGesture = UIPanGestureRecognizer(target: self, action: #selector(leftPan))
         leftPanGesture.delegate = self
-        contentView.addGestureRecognizer(leftPanGesture)
-        
-    }
-    
-    func setup() {
-        
+//        leftPanGesture.edges = .left
+//        self.contentView.addGestureRecognizer(leftPanGesture)
     }
     
     @objc func leftPan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: contentView)
-        let distance = sender.translation(in: self.contentView)
-        print("aaaa\(distance), bbb\(location)")
+        let _ = sender.translation(in: self.contentView)
+        print(location)
         if !enableOpenLeftVc {
             return
         }
-        if sender.state == .ended {
+        if sender.state == .ended || sender.state == .cancelled {
             if startOpenLeftVc {
-                UIView.animate(withDuration: 0.3) {
-                    self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH + (location.x > 50 ? 300 : 0)
+                if location.x > 100 {
+                    self.openLeftVc()
+                } else {
+                    self.closeLeftVc()
                 }
             }
             startOpenLeftVc = false
             return
         }
-        if location.x < 25 && sender.state == .began {
+        if sender.state == .began {
+            if location.x > 25 {
+                return
+            }
             startOpenLeftVc = true
         }
         if startOpenLeftVc {
-            leftVc!.view.frame.origin.x = -SCREEN_WIDTH + location.x
+            self.shadowView.isHidden = false
+            self.shadowView.alpha = min(CGFloat(shadowAlpha / leftVcWidth) * location.x, CGFloat(self.shadowAlpha))
+            leftVc!.view.frame.origin.x = min(-SCREEN_WIDTH + location.x, CGFloat(self.leftVcWidth))
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchbegin")
+    @objc func openLeftVc() {
+        self.shadowView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.shadowView.alpha = CGFloat(self.shadowAlpha)
+            self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH + CGFloat(self.leftVcWidth)
+        } completion: { (result) in
+            self.disableContentViewLeftPan()
+        }
+        
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchend")
+    @objc func closeLeftVc() {
+        UIView.animate(withDuration: 0.3) {
+            self.shadowView.alpha = 0
+            self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH
+        } completion: { (result) in
+            self.shadowView.isHidden = true
+            if self.enableOpenLeftVc {
+                self.enableContentViewLeftPan()
+            }
+        }
     }
     
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    func enableContentViewLeftPan() {
+//        self.contentView.isUserInteractionEnabled = true
+        self.contentView.addGestureRecognizer(leftPanGesture)
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive event: UIEvent) -> Bool {
-//        print(event)
-        return true
+    func disableContentViewLeftPan() {
+//        self.contentView.isUserInteractionEnabled = false
+        self.contentView.removeGestureRecognizer(leftPanGesture)
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        print(touch)
-        return true
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
 }
