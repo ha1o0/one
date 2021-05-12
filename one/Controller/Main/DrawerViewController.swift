@@ -11,7 +11,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     var leftPanGesture: UIScreenEdgePanGestureRecognizer!
     let shadowAlpha: Double = 0.6
-    let leftVcWidth: Double = 300
+    let leftVcWidth: Double = Double(SCREEN_WIDTH * 0.82)
     var startOpenLeftVc = false
     var enableOpenLeftVc: Bool = false {
         didSet {
@@ -34,26 +34,17 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    var leftVc: UIViewController? {
+    var leftVc: LeftDrawerViewController? {
         didSet {
             if leftVc != nil {
                 contentView.addSubview(leftVc!.view)
                 var frame = self.contentView.bounds
                 frame.origin.x = -frame.size.width
                 leftVc!.view.frame = frame
-                print("add leftVc")
+                print("add leftVc\(leftVc!.contentView)")
             }
         }
     }
-    
-//    lazy var leftView: UIView = {
-//        let _leftView = UIView()
-//        _leftView.backgroundColor = .orange
-//        var frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
-//        frame.origin.x = -frame.size.width
-//        _leftView.frame = frame
-//        return _leftView
-//    }()
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
@@ -105,7 +96,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         if startOpenLeftVc {
             self.shadowView.isHidden = false
             self.shadowView.alpha = min(CGFloat(shadowAlpha / leftVcWidth) * location.x, CGFloat(self.shadowAlpha))
-            leftVc!.view.frame.origin.x = min(-SCREEN_WIDTH + location.x, CGFloat(self.leftVcWidth))
+            leftVc!.view.frame.origin.x = -SCREEN_WIDTH + min(location.x, CGFloat(self.leftVcWidth))
         }
     }
     
@@ -133,16 +124,14 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
     }
     
     func enableContentViewLeftPan() {
-//        self.contentView.isUserInteractionEnabled = true
         self.contentView.addGestureRecognizer(leftPanGesture)
     }
     
     func disableContentViewLeftPan() {
-//        self.contentView.isUserInteractionEnabled = false
         self.contentView.removeGestureRecognizer(leftPanGesture)
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
 }

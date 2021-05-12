@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     let tabbarVc = TabBarViewController()
     let leftVc = LeftDrawerViewController()
     let drawerVc = DrawerViewController()

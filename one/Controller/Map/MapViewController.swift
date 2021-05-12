@@ -40,6 +40,7 @@ class MapViewController: BaseViewController, CLLocationManagerDelegate, UITextFi
     
     func getDeviceLocation() {
         if let center = locaionService.locationManager.location?.coordinate {
+            print(center)
             self.setLocation(center: center, title: "上海市浦东新区", subtitle: "张江镇")
             self.hasGetLocation = true
         }
