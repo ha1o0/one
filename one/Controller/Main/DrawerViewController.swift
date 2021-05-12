@@ -11,7 +11,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     var leftPanGesture: UIScreenEdgePanGestureRecognizer!
     let shadowAlpha: Double = 0.6
-    let leftVcWidth: Double = Double(SCREEN_WIDTH * 0.82)
+    let leftVcVisibleViewWidth: Double = Double(SCREEN_WIDTH * 0.82)
     var startOpenLeftVc = false
     var enableOpenLeftVc: Bool = false {
         didSet {
@@ -95,8 +95,8 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         if startOpenLeftVc {
             self.shadowView.isHidden = false
-            self.shadowView.alpha = min(CGFloat(shadowAlpha / leftVcWidth) * location.x, CGFloat(self.shadowAlpha))
-            leftVc!.view.frame.origin.x = -SCREEN_WIDTH + min(location.x, CGFloat(self.leftVcWidth))
+            self.shadowView.alpha = min(CGFloat(shadowAlpha / leftVcVisibleViewWidth) * location.x, CGFloat(self.shadowAlpha))
+            leftVc!.view.frame.origin.x = -SCREEN_WIDTH + min(location.x, CGFloat(self.leftVcVisibleViewWidth))
         }
     }
     
@@ -104,7 +104,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.shadowView.isHidden = false
         UIView.animate(withDuration: 0.3) {
             self.shadowView.alpha = CGFloat(self.shadowAlpha)
-            self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH + CGFloat(self.leftVcWidth)
+            self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH + CGFloat(self.leftVcVisibleViewWidth)
         } completion: { (result) in
             self.disableContentViewLeftPan()
         }

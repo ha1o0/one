@@ -9,12 +9,12 @@ import UIKit
 
 class LeftDrawerViewController: UIViewController {
     
-    let visibleViewWidth: CGFloat = CGFloat(SCREEN_WIDTH * 0.82)
+    let leftVcVisibleViewWidth: CGFloat = CGFloat(SCREEN_WIDTH * 0.85)
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
-        _contentView.backgroundColor = .lightText
-        _contentView.frame = CGRect(x: SCREEN_WIDTH - visibleViewWidth, y: 0, width: visibleViewWidth, height: SCREEN_HEIGHT)
+        _contentView.backgroundColor = .white
+        _contentView.frame = CGRect(x: SCREEN_WIDTH - leftVcVisibleViewWidth, y: 0, width: leftVcVisibleViewWidth, height: SCREEN_HEIGHT)
         return _contentView
     }()
     
@@ -41,12 +41,12 @@ class LeftDrawerViewController: UIViewController {
     
     func setup() {
         self.view.addSubview(contentView)
-//        self.contentView.addSubview(topBarView)
-//        topBarView.snp.makeConstraints { (maker) in
-//            maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
-//            maker.leading.equalToSuperview().offset(16)
-//            maker.trailing.equalToSuperview().offset(-16)
-//            maker.height.equalTo(50)
-//        }
+        self.contentView.addSubview(topBarView)
+        topBarView.snp.makeConstraints { (maker) in
+            maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
+            maker.left.equalToSuperview().offset(26)
+            maker.right.equalToSuperview().offset(-16)
+            maker.height.equalTo(50)
+        }
     }
 }

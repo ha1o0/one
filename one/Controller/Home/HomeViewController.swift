@@ -106,7 +106,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         searchBoxBgView.snp.makeConstraints { (maker) in
             maker.leading.equalTo(avatarImageView.snp.trailing).offset(15)
             maker.centerY.equalToSuperview()
-            maker.width.equalTo(hasSafeArea ? 250 : 200)
+            maker.width.equalTo(hasNotch ? 250 : 200)
             maker.height.equalTo(30)
         }
         

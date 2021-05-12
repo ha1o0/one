@@ -268,7 +268,7 @@ class DiyPlayerView: UIView {
     }
     
     @IBAction func fullScreenPlayer(_ sender: UIButton) {
-        controlViewHeight.constant = (hasSafeArea && !isFullScreen) ? 70 : 44
+        controlViewHeight.constant = (hasNotch && !isFullScreen) ? 70 : 44
         if isFullScreen {
             exitFullScreen()
         } else {
