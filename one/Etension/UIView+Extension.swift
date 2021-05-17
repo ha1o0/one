@@ -105,3 +105,15 @@ extension UIView {
         self.layer.anchorPoint = anchorPoint
     }
 }
+
+extension UIButton {
+    static func getSystemIconBtn(name: String, color: UIColor, size: CGFloat = 25) -> UIButton {
+        let btn = UIButton()
+        btn.tintColor = color
+        btn.setTitle("", for: .normal)
+        btn.setImage(UIImage(systemName: name), for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFit
+        btn.imageEdgeInsets = UIEdgeInsets(top: size, left: size, bottom: size, right: size)
+        return btn
+    }
+}

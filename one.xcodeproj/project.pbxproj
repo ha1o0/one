@@ -28,6 +28,9 @@
 		E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */; };
 		E9985605264A7FBD006B0E1E /* LeftDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */; };
 		E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */; };
+		E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E998560A265268B0006B0E1E /* LeftDrawerItem.swift */; };
+		E99856192652702A006B0E1E /* MemberCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99856182652702A006B0E1E /* MemberCardView.xib */; };
+		E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E998561D265274D7006B0E1E /* MemberCardView.swift */; };
 		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
 		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
 		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
@@ -140,6 +143,9 @@
 		E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTabBarViewController.xib; sourceTree = "<group>"; };
 		E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerViewController.swift; sourceTree = "<group>"; };
 		E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftDrawerViewController.xib; sourceTree = "<group>"; };
+		E998560A265268B0006B0E1E /* LeftDrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerItem.swift; sourceTree = "<group>"; };
+		E99856182652702A006B0E1E /* MemberCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCardView.xib; sourceTree = "<group>"; };
+		E998561D265274D7006B0E1E /* MemberCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardView.swift; sourceTree = "<group>"; };
 		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -298,6 +304,15 @@
 				E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E998560F26526F01006B0E1E /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				E99856182652702A006B0E1E /* MemberCardView.xib */,
+				E998561D265274D7006B0E1E /* MemberCardView.swift */,
+			);
+			path = Drawer;
 			sourceTree = "<group>";
 		};
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
@@ -525,6 +540,7 @@
 		E9E0CD84260794FE0047DAE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E998560F26526F01006B0E1E /* Drawer */,
 				E93E0EA72611DF6A00D43B4C /* LiveListView.swift */,
 				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
 				E99BC0E826232D840002C066 /* CollectionViewCell */,
@@ -570,6 +586,7 @@
 				E9E0CDD02608E88D0047DAE9 /* Functions.swift */,
 				E93E0EC02612262100D43B4C /* Animation.swift */,
 				E99BC10426233C770002C066 /* Video.swift */,
+				E998560A265268B0006B0E1E /* LeftDrawerItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -726,6 +743,7 @@
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
+				E99856192652702A006B0E1E /* MemberCardView.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
@@ -809,6 +827,7 @@
 			files = (
 				E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */,
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
+				E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */,
@@ -848,6 +867,7 @@
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
+				E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
 				E9E68BE52648376200929383 /* Capsule.swift in Sources */,

@@ -11,7 +11,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     var leftPanGesture: UIScreenEdgePanGestureRecognizer!
     let shadowAlpha: Double = 0.6
-    let leftVcVisibleViewWidth: Double = Double(SCREEN_WIDTH * 0.82)
+    let leftVcVisibleViewWidth: Double = Double(SCREEN_WIDTH * leftVcleftVcVisibleViewWidthPercent)
     var startOpenLeftVc = false
     var enableOpenLeftVc: Bool = false {
         didSet {

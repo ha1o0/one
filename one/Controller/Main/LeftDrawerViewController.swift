@@ -7,9 +7,10 @@
 
 import UIKit
 
-class LeftDrawerViewController: UIViewController {
+class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let leftVcVisibleViewWidth: CGFloat = CGFloat(SCREEN_WIDTH * 0.85)
+    let leftVcVisibleViewWidth: CGFloat = CGFloat(SCREEN_WIDTH * leftVcleftVcVisibleViewWidthPercent)
+    var data: [LeftDrawerSection] = []
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
@@ -30,7 +31,29 @@ class LeftDrawerViewController: UIViewController {
             maker.width.equalTo(33)
             maker.height.equalTo(33)
         }
+        let usernameLabel = UILabel()
+        usernameLabel.text = "炒饭冷面河粉"
+        usernameLabel.font = UIFont.systemFont(ofSize: 15)
+        _topBarView.addSubview(usernameLabel)
+        usernameLabel.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.leading.equalTo(avatarView.snp.trailing).offset(20)
+        }
+        let scanIcon = UIButton.getSystemIconBtn(name: "camera.metering.none", color: .black)
+        _topBarView.addSubview(scanIcon)
+        scanIcon.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.trailing.equalToSuperview().offset(-10)
+        }
+        scanIcon.addTarget(self, action: #selector(toScanQRCodeVc), for: .touchUpInside)
         return _topBarView
+    }()
+    
+    lazy var tableView: UITableView = {
+        let _tableView = UITableView()
+        _tableView.backgroundColor = .orange
+        _tableView.separatorStyle = .none
+        return _tableView
     }()
     
     override func viewDidLoad() {
@@ -48,5 +71,62 @@ class LeftDrawerViewController: UIViewController {
             maker.right.equalToSuperview().offset(-16)
             maker.height.equalTo(50)
         }
+        
+        self.contentView.addSubview(tableView)
+        tableView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(topBarView.snp.bottom)
+            maker.leading.trailing.bottom.equalToSuperview()
+        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let section1 = LeftDrawerSection()
+        data.append(section1)
+        var section2 = LeftDrawerSection()
+        section2.items.append(LeftDrawerItem(name: "消息中心", iconName: "mail", hasSwitch: false, subInfo: ""))
+        section2.items.append(LeftDrawerItem(name: "位置中心", iconName: "mark", hasSwitch: false, subInfo: ""))
+        section2.items.append(LeftDrawerItem(name: "订单中心", iconName: "wallet", hasSwitch: false, subInfo: ""))
+        data.append(section2)
+    }
+    
+    @objc func toScanQRCodeVc() {
+//        self.pushVc(vc: ScanQrCodeViewController())
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let rows = data[section].items
+        return rows.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = dequeueReusableCell(withIdentifier: "FunctionListTableViewCell", tableView: tableView) as! FunctionListTableViewCell
+        let item = self.data[indexPath.section].items[indexPath.row]
+        let contentItem = IdName(name: item.name, id: "")
+        cell.setContent(data: contentItem)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var uiview = UIView()
+//        if section == 0 {
+//            uiview = viewFromNib("MemberCardView")
+//        }
+        return uiview
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 60
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
     }
 }
