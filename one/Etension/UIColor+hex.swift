@@ -121,4 +121,12 @@ extension UIColor {
     static var mainBkg: UIColor {
         return colorWithHexString("#453936")
     }
+    
+    static var cardColor1: UIColor {
+        return colorWithHexString("#343a40")
+    }
+    
+    static var cardColor2: UIColor {
+        return colorWithHexString("#adb5bd")
+    }
 }

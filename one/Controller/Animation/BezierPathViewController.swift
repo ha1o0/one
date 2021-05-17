@@ -112,6 +112,14 @@ class BezierPathViewController: BaseViewController {
             maker.bottom.equalToSuperview()
         }
         
+        let card = viewFromNib("MemberCardView")
+        secondView.addSubview(card)
+        card.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.height.equalTo(160)
+            maker.width.equalTo(SCREEN_WIDTH)
+        }
+        
     }
     
     @objc func animateView1() {

@@ -49,9 +49,9 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         return _topBarView
     }()
     
-    lazy var tableView: UITableView = {
+       lazy var tableView: UITableView = {
         let _tableView = UITableView()
-        _tableView.backgroundColor = .orange
+        _tableView.backgroundColor = .lightText
         _tableView.separatorStyle = .none
         return _tableView
     }()
@@ -112,21 +112,34 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var uiview = UIView()
-//        if section == 0 {
-//            uiview = viewFromNib("MemberCardView")
-//        }
+        let uiview = UIView()
+        if section == 0 {
+            let card = viewFromNib("MemberCardView")
+            uiview.addSubview(card)
+//            card.frame = CGRect(x: 10, y: 0, width: leftVcVisibleViewWidth - 20, height: 160)
+            card.snp.makeConstraints { (maker) in
+                maker.top.bottom.equalToSuperview()
+                maker.leading.equalToSuperview().offset(10)
+                maker.width.equalTo(leftVcVisibleViewWidth - 20)
+            }
+        }
         return uiview
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 60
+            return 160
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let uiview = UIView()
+        uiview.backgroundColor = .red
+        return uiview
     }
 }
