@@ -18,12 +18,18 @@ class MemberCardView: UIView {
     }()
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.setGradientBackgroundColor(colors: [UIColor.cardColor1.cgColor, UIColor.cardColor2.cgColor], locations: [0], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
-        buttonView.addSubview(capsule)
-        capsule.snp.makeConstraints { (maker) in
-            maker.leading.bottom.top.trailing.equalToSuperview()
+    }
+    
+    override func layoutSubviews() {
+        // 注意要在布局结束后设置渐变和圆角layer
+        if buttonView.subviews.count == 0 {
+            contentView.setGradientBackgroundColor(colors: [UIColor.cardColor1.cgColor, UIColor.cardColor2.cgColor], locations: [0], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 1))
+            buttonView.addSubview(capsule)
+            capsule.snp.makeConstraints { (maker) in
+                maker.leading.bottom.top.trailing.equalToSuperview()
+            }
+            contentView.setRoundCorners(corners: UIRectCorner(arrayLiteral: .topLeft, .topRight, .bottomLeft, .bottomRight), with: 10)
         }
-        contentView.setRoundCorners(corners: UIRectCorner(arrayLiteral: .topLeft, .topRight, .bottomLeft, .bottomRight), with: 10)
     }
     
 }

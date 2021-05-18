@@ -117,7 +117,8 @@ class BezierPathViewController: BaseViewController {
         card.snp.makeConstraints { (maker) in
             maker.centerX.equalToSuperview()
             maker.height.equalTo(160)
-            maker.width.equalTo(SCREEN_WIDTH)
+            maker.leading.equalToSuperview().offset(15)
+            maker.trailing.equalToSuperview().offset(-15)
         }
         
     }

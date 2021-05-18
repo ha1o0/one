@@ -26,7 +26,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         avatarView.loadFrom(link: avatarUrl, isCircle: true)
         _topBarView.addSubview(avatarView)
         avatarView.snp.makeConstraints { (maker) in
-            maker.left.equalToSuperview().offset(0)
+            maker.leading.equalToSuperview().offset(0)
             maker.centerY.equalToSuperview()
             maker.width.equalTo(33)
             maker.height.equalTo(33)
@@ -43,7 +43,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         _topBarView.addSubview(scanIcon)
         scanIcon.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
-            maker.trailing.equalToSuperview().offset(-10)
+            maker.trailing.equalToSuperview().offset(0)
         }
         scanIcon.addTarget(self, action: #selector(toScanQRCodeVc), for: .touchUpInside)
         return _topBarView
@@ -67,8 +67,8 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         self.contentView.addSubview(topBarView)
         topBarView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
-            maker.left.equalToSuperview().offset(26)
-            maker.right.equalToSuperview().offset(-16)
+            maker.leading.equalToSuperview().offset(15)
+            maker.trailing.equalToSuperview().offset(-15)
             maker.height.equalTo(50)
         }
         
@@ -116,11 +116,10 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         if section == 0 {
             let card = viewFromNib("MemberCardView")
             uiview.addSubview(card)
-//            card.frame = CGRect(x: 10, y: 0, width: leftVcVisibleViewWidth - 20, height: 160)
             card.snp.makeConstraints { (maker) in
                 maker.top.bottom.equalToSuperview()
-                maker.leading.equalToSuperview().offset(10)
-                maker.width.equalTo(leftVcVisibleViewWidth - 20)
+                maker.leading.equalToSuperview().offset(15)
+                maker.width.equalTo(leftVcVisibleViewWidth - 30)
             }
         }
         return uiview
@@ -130,11 +129,11 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         if section == 0 {
             return 160
         }
-        return 0
+        return .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 15
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
