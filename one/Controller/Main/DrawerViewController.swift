@@ -79,7 +79,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         if sender.state == .ended || sender.state == .cancelled {
             if startOpenLeftVc {
-                if location.x > 100 {
+                if location.x > 50 {
                     self.openLeftVc()
                 } else {
                     self.closeLeftVc()
