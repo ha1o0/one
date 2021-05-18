@@ -11,13 +11,15 @@ class MemberCardView: UIView {
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     lazy var capsule: Capsule = {
-        let _capsule = Capsule(text: "会员中心", bkgColor: .white, borderColor: .clear, textColor: .cardColor1)
+        let _capsule = Capsule(text: "会员中心", bkgColor: .clear, borderColor: .white, textColor: .white)
         return _capsule
     }()
     override func awakeFromNib() {
         super.awakeFromNib()
+        avatarImageView.layer.cornerRadius = 5
     }
     
     override func layoutSubviews() {

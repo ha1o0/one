@@ -96,6 +96,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="avatarImageView" destination="qJ0-Ge-mpA" id="UZ9-4O-xc7"/>
                 <outlet property="buttonView" destination="1U3-vR-nfI" id="asO-BR-Qud"/>
                 <outlet property="contentView" destination="Clu-tL-YG2" id="bVk-lq-Qef"/>
             </connections>
