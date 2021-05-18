@@ -69,13 +69,11 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.view.addSubview(contentView)
         print("didload")
         leftPanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(leftPan))
-        leftPanGesture.delegate = self
         leftPanGesture.edges = .left
     }
     
     @objc func leftPan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: contentView)
-        let _ = sender.translation(in: self.contentView)
         if !enableOpenLeftVc {
             return
         }
@@ -102,17 +100,19 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     @objc func openLeftVc() {
         self.shadowView.isHidden = false
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.shadowView.alpha = CGFloat(self.shadowAlpha)
             self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH + CGFloat(self.leftVcVisibleViewWidth)
         } completion: { (result) in
             self.disableContentViewLeftPan()
+            self.leftVc?.addGesture()
+            self.leftVc?.drawVc = self
         }
         
     }
     
     @objc func closeLeftVc() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.shadowView.alpha = 0
             self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH
         } completion: { (result) in
@@ -120,6 +120,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
             if self.enableOpenLeftVc {
                 self.enableContentViewLeftPan()
             }
+            self.leftVc?.removeGesture()
         }
     }
     

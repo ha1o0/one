@@ -11,6 +11,9 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let leftVcVisibleViewWidth: CGFloat = CGFloat(SCREEN_WIDTH * leftVcleftVcVisibleViewWidthPercent)
     var data: [LeftDrawerSection] = []
+    var panGesture: UIPanGestureRecognizer!
+    var hasOpenLeftVc = false
+    weak var drawVc: DrawerViewController?
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
@@ -34,6 +37,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         let usernameLabel = UILabel()
         usernameLabel.text = "炒饭冷面河粉"
         usernameLabel.font = UIFont.systemFont(ofSize: 15)
+        usernameLabel.textColor = .black
         _topBarView.addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
@@ -60,6 +64,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         setup()
         print("leftdrawvc didload")
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeView))
     }
     
     func setup() {
@@ -106,6 +111,35 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
 //        var section5 = LeftDrawerSection()
 //        section5.items.append(LeftDrawerItem(name: "退出", iconName: "mail", hasSwitch: false, subInfo: ""))
 //        data.append(section5)
+    }
+    
+    func addGesture() {
+        self.removeGesture()
+        print("add leftvc gesture")
+        self.contentView.addGestureRecognizer(panGesture)
+    }
+    
+    func removeGesture() {
+        print("remove leftvc gesture")
+        self.contentView.removeGestureRecognizer(panGesture)
+    }
+    
+    @objc func swipeView(sender: UIPanGestureRecognizer) {
+        guard let drawVc = drawVc else {
+            return
+        }
+        let distance = sender.translation(in: contentView)
+        if sender.state == .ended || sender.state == .cancelled {
+            if distance.x > -50 {
+                drawVc.openLeftVc()
+            } else {
+                drawVc.closeLeftVc()
+            }
+            return
+        }
+        drawVc.shadowView.alpha = CGFloat(drawVc.shadowAlpha) + min(CGFloat(drawVc.shadowAlpha / drawVc.leftVcVisibleViewWidth) * distance.x, 0)
+        self.view.frame.origin.x = -SCREEN_WIDTH + leftVcVisibleViewWidth + min(distance.x, 0)
+        
     }
     
     @objc func toScanQRCodeVc() {
