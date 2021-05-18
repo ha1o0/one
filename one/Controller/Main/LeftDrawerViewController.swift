@@ -14,7 +14,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
-        _contentView.backgroundColor = .white
+        _contentView.backgroundColor = .gray1
         _contentView.frame = CGRect(x: SCREEN_WIDTH - leftVcVisibleViewWidth, y: 0, width: leftVcVisibleViewWidth, height: SCREEN_HEIGHT)
         return _contentView
     }()
@@ -51,7 +51,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
        lazy var tableView: UITableView = {
         let _tableView = UITableView()
-        _tableView.backgroundColor = .lightText
+        _tableView.backgroundColor = .clear
         _tableView.separatorStyle = .none
         return _tableView
     }()
@@ -87,6 +87,25 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         section2.items.append(LeftDrawerItem(name: "位置中心", iconName: "mark", hasSwitch: false, subInfo: ""))
         section2.items.append(LeftDrawerItem(name: "订单中心", iconName: "wallet", hasSwitch: false, subInfo: ""))
         data.append(section2)
+        var section3 = LeftDrawerSection()
+        section3.title = "其他设置"
+        section3.items.append(LeftDrawerItem(name: "设置", iconName: "mail", hasSwitch: false, subInfo: ""))
+        section3.items.append(LeftDrawerItem(name: "夜间模式", iconName: "mark", hasSwitch: true, subInfo: ""))
+        section3.items.append(LeftDrawerItem(name: "定时关闭", iconName: "wallet", hasSwitch: false, subInfo: ""))
+        section3.items.append(LeftDrawerItem(name: "黑名单", iconName: "mail", hasSwitch: false, subInfo: ""))
+        section3.items.append(LeftDrawerItem(name: "个性", iconName: "mark", hasSwitch: false, subInfo: ""))
+        section3.items.append(LeftDrawerItem(name: "闹钟", iconName: "wallet", hasSwitch: false, subInfo: ""))
+        data.append(section3)
+        
+        var section4 = LeftDrawerSection()
+        section4.items.append(LeftDrawerItem(name: "我的客服", iconName: "mail", hasSwitch: false, subInfo: ""))
+        section4.items.append(LeftDrawerItem(name: "分享此应用", iconName: "mark", hasSwitch: false, subInfo: ""))
+        section4.items.append(LeftDrawerItem(name: "关于", iconName: "wallet", hasSwitch: false, subInfo: ""))
+        data.append(section4)
+        
+//        var section5 = LeftDrawerSection()
+//        section5.items.append(LeftDrawerItem(name: "退出", iconName: "mail", hasSwitch: false, subInfo: ""))
+//        data.append(section5)
     }
     
     @objc func toScanQRCodeVc() {
@@ -103,10 +122,11 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dequeueReusableCell(withIdentifier: "FunctionListTableViewCell", tableView: tableView) as! FunctionListTableViewCell
-        let item = self.data[indexPath.section].items[indexPath.row]
-        let contentItem = IdName(name: item.name, id: "")
-        cell.setContent(data: contentItem)
+        let cell = dequeueReusableCell(withIdentifier: "LeftDrawerTableViewCell", tableView: tableView) as! LeftDrawerTableViewCell
+        let currentSectionItems = self.data[indexPath.section].items
+        let item = currentSectionItems[indexPath.row]
+        cell.selectionStyle = .none
+        cell.setContent(item: item, isFirst: indexPath.row == 0 && !sectionHasHeader(section: indexPath.section), isLast: indexPath.row == currentSectionItems.count - 1)
         
         return cell
     }
@@ -121,6 +141,36 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
                 maker.leading.equalToSuperview().offset(15)
                 maker.width.equalTo(leftVcVisibleViewWidth - 30)
             }
+        } else {
+            let contentView = UIView()
+            uiview.addSubview(contentView)
+            contentView.snp.makeConstraints { (maker) in
+                maker.leading.equalToSuperview().offset(15)
+                maker.width.equalTo(leftVcVisibleViewWidth - 30)
+                maker.top.bottom.equalToSuperview()
+            }
+            contentView.layer.cornerRadius = 10
+            contentView.layer.masksToBounds = true
+            contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            contentView.backgroundColor = .white
+            
+            let title = UILabel()
+            title.text = data[section].title
+            title.textColor = .gray
+            title.font = UIFont.systemFont(ofSize: 12)
+            contentView.addSubview(title)
+            title.snp.makeConstraints { (maker) in
+                maker.centerY.equalToSuperview()
+                maker.leading.equalToSuperview().offset(15)
+            }
+            
+            let splitView = UIView()
+            splitView.backgroundColor = .systemGray5
+            contentView.addSubview(splitView)
+            splitView.snp.makeConstraints { (maker) in
+                maker.height.equalTo(1)
+                maker.leading.trailing.bottom.equalToSuperview()
+            }
         }
         return uiview
     }
@@ -129,7 +179,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         if section == 0 {
             return 160
         }
-        return .leastNonzeroMagnitude
+        return sectionHasHeader(section: section) ? 40 : .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -138,7 +188,11 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let uiview = UIView()
-        uiview.backgroundColor = .red
+        uiview.backgroundColor = .clear
         return uiview
+    }
+    
+    func sectionHasHeader(section: Int) -> Bool {
+        return data[section].title != ""
     }
 }

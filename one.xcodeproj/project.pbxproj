@@ -31,6 +31,8 @@
 		E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E998560A265268B0006B0E1E /* LeftDrawerItem.swift */; };
 		E99856192652702A006B0E1E /* MemberCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99856182652702A006B0E1E /* MemberCardView.xib */; };
 		E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E998561D265274D7006B0E1E /* MemberCardView.swift */; };
+		E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E998562326534C07006B0E1E /* LeftDrawerTableViewCell.swift */; };
+		E998562626534C07006B0E1E /* LeftDrawerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E998562426534C07006B0E1E /* LeftDrawerTableViewCell.xib */; };
 		E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */; };
 		E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */; };
 		E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */; };
@@ -146,6 +148,8 @@
 		E998560A265268B0006B0E1E /* LeftDrawerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerItem.swift; sourceTree = "<group>"; };
 		E99856182652702A006B0E1E /* MemberCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCardView.xib; sourceTree = "<group>"; };
 		E998561D265274D7006B0E1E /* MemberCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCardView.swift; sourceTree = "<group>"; };
+		E998562326534C07006B0E1E /* LeftDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerTableViewCell.swift; sourceTree = "<group>"; };
+		E998562426534C07006B0E1E /* LeftDrawerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftDrawerTableViewCell.xib; sourceTree = "<group>"; };
 		E99BC0EA26232DB00002C066 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E99BC0EB26232DB00002C066 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -313,6 +317,15 @@
 				E998561D265274D7006B0E1E /* MemberCardView.swift */,
 			);
 			path = Drawer;
+			sourceTree = "<group>";
+		};
+		E998562226534BE4006B0E1E /* LeftDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				E998562326534C07006B0E1E /* LeftDrawerTableViewCell.swift */,
+				E998562426534C07006B0E1E /* LeftDrawerTableViewCell.xib */,
+			);
+			path = LeftDrawer;
 			sourceTree = "<group>";
 		};
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
@@ -573,6 +586,7 @@
 		E9E0CDCE2608E6600047DAE9 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E998562226534BE4006B0E1E /* LeftDrawer */,
 				E93E0EAD2612027D00D43B4C /* Animation */,
 				E9E0CDE02608ED830047DAE9 /* Function */,
 				E9E0CDD82608ECF30047DAE9 /* Base */,
@@ -738,6 +752,7 @@
 				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
+				E998562626534C07006B0E1E /* LeftDrawerTableViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
@@ -880,6 +895,7 @@
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
+				E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
