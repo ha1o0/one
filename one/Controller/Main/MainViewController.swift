@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 初始root vc
 class MainViewController: UIViewController {
 
     let tabbarVc = TabBarViewController()

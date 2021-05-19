@@ -7,6 +7,7 @@
 
 import UIKit
 
+// root vc (带tabbar vc和左侧抽屉 vc)
 class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
     var leftPanGesture: UIScreenEdgePanGestureRecognizer!
