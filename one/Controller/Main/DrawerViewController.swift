@@ -58,7 +58,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         _shadowView.alpha = 0
         _shadowView.isHidden = true
         _shadowView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeLeftVc))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeLeftVcByTap))
         _shadowView.addGestureRecognizer(tapGesture)
         _shadowView.isUserInteractionEnabled = true
         return _shadowView
@@ -111,7 +111,11 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         
     }
     
-    @objc func closeLeftVc(callback: (() -> Void)? = nil) {
+    @objc func closeLeftVcByTap() {
+        self.closeLeftVc()
+    }
+    
+    @objc func closeLeftVc(callback: @escaping () -> Void = { return }) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.shadowView.alpha = 0
             self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH
@@ -121,9 +125,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 self.enableContentViewLeftPan()
             }
             self.leftVc?.removeGesture()
-            if let callback = callback {
-                callback()
-            }
+            callback()
         }
     }
     
