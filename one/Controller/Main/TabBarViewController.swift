@@ -30,7 +30,7 @@ class TabBarViewController: UITabBarController {
         homeNavigationVc.tabBarItem.image = UIImage(named: "home")
         homeNavigationVc.tabBarItem.selectedImage = UIImage(named: "homeSelected")
         
-        let testController = BaseTestViewController()
+        let testController = MusicHomeViewController()
         let testNavigationVc = BaseNavigationViewController(rootViewController: testController)
         testNavigationVc.navigationBar.isHidden = true
         testNavigationVc.tabBarItem.title = "我的"
