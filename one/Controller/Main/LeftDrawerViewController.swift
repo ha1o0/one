@@ -36,7 +36,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         let usernameLabel = UILabel()
         usernameLabel.text = "炒饭冷面河粉"
-        usernameLabel.font = UIFont.systemFont(ofSize: 15)
+        usernameLabel.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
         usernameLabel.textColor = .black
         _topBarView.addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (maker) in
@@ -115,12 +115,10 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func addGesture() {
         self.removeGesture()
-        print("add leftvc gesture")
         self.contentView.addGestureRecognizer(panGesture)
     }
     
     func removeGesture() {
-        print("remove leftvc gesture")
         self.contentView.removeGestureRecognizer(panGesture)
     }
     
@@ -143,7 +141,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func toScanQRCodeVc() {
-//        self.pushVc(vc: ScanQrCodeViewController())
+        NotificationService.shared.gotoVc(ScanQrCodeViewController())
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -111,7 +111,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         
     }
     
-    @objc func closeLeftVc() {
+    @objc func closeLeftVc(callback: (() -> Void)? = nil) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.shadowView.alpha = 0
             self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH
@@ -121,7 +121,20 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 self.enableContentViewLeftPan()
             }
             self.leftVc?.removeGesture()
+            if let callback = callback {
+                callback()
+            }
         }
+    }
+    
+    @objc func closeLeftVcWithoutAnimation() {
+        self.shadowView.alpha = 0
+        self.leftVc!.view.frame.origin.x = -SCREEN_WIDTH
+        self.shadowView.isHidden = true
+        if self.enableOpenLeftVc {
+            self.enableContentViewLeftPan()
+        }
+        self.leftVc?.removeGesture()
     }
     
     func enableContentViewLeftPan() {
@@ -131,8 +144,4 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
     func disableContentViewLeftPan() {
         self.contentView.removeGestureRecognizer(leftPanGesture)
     }
-    
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
 }

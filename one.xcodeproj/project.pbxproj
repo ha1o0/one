@@ -18,6 +18,7 @@
 		E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */; };
 		E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */; };
 		E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */; };
+		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -135,6 +136,7 @@
 		E93E0ED726122F9100D43B4C /* AnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation3TableViewCell.swift; sourceTree = "<group>"; };
 		E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4TableViewCell.swift; sourceTree = "<group>"; };
+		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				E99BC182262749700002C066 /* LocationService.swift */,
+				E9628EBB2654B5C200F5BECF /* NotificationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
+				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,

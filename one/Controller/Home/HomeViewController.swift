@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITableViewDataSource {
 
     lazy var avatarImageView = UIImageView()
     lazy var searchBoxView = UISearchBar()
@@ -80,6 +80,10 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             maker.centerY.equalToSuperview()
             maker.trailing.equalToSuperview().offset(-15)
         }
+        messageIconView.isUserInteractionEnabled = true
+        let mtapGesture = UITapGestureRecognizer(target: self, action: #selector(toMessageVc))
+        messageIconView.addGestureRecognizer(mtapGesture)
+        
         
         scanIconView.image = UIImage(named: "scan")
         navigationView.addSubview(scanIconView)
@@ -155,13 +159,14 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         tableView.tableFooterView = UIView()
         self.tableViewDataCopy = self.tableViewData
     }
-
-    @objc func showLeftVc() {
-        print("ok")
-    }
     
     @objc func toScanQRCodeVc() {
         self.pushVc(vc: ScanQrCodeViewController())
+    }
+    
+    @objc func toMessageVc() {
+        let vc = BaseTestViewController()
+        self.pushVc(vc: vc, animate: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

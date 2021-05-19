@@ -96,39 +96,18 @@ public func getCuttingImage(_ size: CGSize, direction: UIRectCorner, cornerRadii
     return image
 }
 
-//var rootNavigationController: UINavigationController? {
-//    let rootContentVC = (appDelegate.window?.rootViewController as? SideMenuController)?.contentViewController
-//    var nc = rootContentVC?.navigationController
-//    if let rootVC = rootContentVC as? UITabBarController {
-//        let selectedChild = rootVC.children[safe: rootVC.selectedIndex]
-//        if let vc = selectedChild as? UINavigationController {
-//            nc = vc
-//        } else {
-//            nc = selectedChild?.navigationController
-//        }
-//    }
-//    return nc
-//}
-//
-var topViewController: UIViewController? {
-    return appDelegate.window?.rootViewController
-//    var vc = (appDelegate.window?.rootViewController as? SideMenuController)?.contentViewController
-//    if let rootVC = vc as? UITabBarController {
-//        if rootVC.children.count > rootVC.selectedIndex {
-//            let selectedChild = rootVC.children[safe: rootVC.selectedIndex]
-//            if let nc = selectedChild as? UINavigationController {
-//                vc = nc.topViewController
-//            } else {
-//                vc = selectedChild
-//            }
-//        } else {
-//            vc = rootVC
-//        }
-//    }
-//    while vc?.presentedViewController != nil {
-//        vc = vc?.presentedViewController
-//    }
-//    return vc
+func getTopViewController(base: UIViewController? = appDelegate.window?.rootViewController) -> UIViewController? {
+    if let draw = base as? DrawerViewController {
+        return getTopViewController(base: draw.tabbarVc)
+    } else if let nav = base as? UINavigationController {
+        return getTopViewController(base: nav.visibleViewController)
+    } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+        return getTopViewController(base: selected)
+    } else if let presented = base?.presentedViewController {
+        return getTopViewController(base: presented)
+    }
+    
+    return base
 }
 
 //public func getTargetControllerInNavStacks(target: AnyClass) -> UIViewController? {

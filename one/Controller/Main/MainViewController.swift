@@ -15,10 +15,27 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("main didload")
+        print("main didload")
         appDelegate.window?.rootViewController = drawerVc
         drawerVc.tabbarVc = tabbarVc
         drawerVc.leftVc = leftVc
+        setNotification()
+    }
+    
+    @objc func gotoVc(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let vc = dict["vc"] as? UIViewController {
+                let drawVc = appDelegate.window?.rootViewController as? DrawerViewController
+                drawVc?.closeLeftVcWithoutAnimation()
+                if let topVc = getTopViewController() {
+                    topVc.pushVc(vc: vc)
+                }
+            }
+        }
+    }
+    
+    func setNotification() {
+        NotificationService.shared.listenGotoVc(target: self, selector: #selector(gotoVc(_:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -11,7 +11,7 @@ class BaseTabBarViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print("basetabbar didload")
+        print("basetabbar didload")
     }
 
     override func viewWillAppear(_ animated: Bool) {
