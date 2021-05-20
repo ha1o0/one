@@ -11,7 +11,6 @@ import MJRefresh
 class TestTableViewController: BaseTableViewController {
 
     var header = MJRefreshNormalHeader()
-    
     var footer = MJRefreshAutoNormalFooter()
     
     override func viewDidLoad() {
