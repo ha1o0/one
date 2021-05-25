@@ -14,8 +14,8 @@ class CollectionViewLayout {
         let itemWidth = SCREEN_WIDTH - 30
         layout.itemSize = CGSize(width: itemWidth, height: 120)
         //列间距,行间距,偏移
-        layout.minimumInteritemSpacing = 30
-        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 30
 //        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         layout.scrollDirection = .horizontal
 

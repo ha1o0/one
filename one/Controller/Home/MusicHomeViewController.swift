@@ -60,7 +60,7 @@ class MusicHomeViewController: BaseTableViewController {
             maker.trailing.equalToSuperview().offset(-20)
         })
         
-        let transColor: UIColor = .white.withAlphaComponent(0.8)
+        let transColor: UIColor = UIColor.white.withAlphaComponent(0.8)
         self.statusBarView.backgroundColor = transColor
         self.navigationView.backgroundColor = transColor
     }
@@ -103,7 +103,13 @@ class MusicHomeViewController: BaseTableViewController {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var header = UIView()
         if section == 0 {
-            header = Carousel(images: posters)
+            let carousel = Carousel(images: posters)
+            header.addSubview(carousel)
+            carousel.snp.makeConstraints { (maker) in
+                maker.top.bottom.equalToSuperview()
+                maker.leading.equalToSuperview().offset(15)
+                maker.trailing.equalToSuperview().offset(-15)
+            }
         }
         return header
     }

@@ -23,6 +23,7 @@ class MemberCardView: UIView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         // 注意要在布局结束后设置渐变和圆角layer
         if buttonView.subviews.count == 0 {
             buttonView.addSubview(capsule)

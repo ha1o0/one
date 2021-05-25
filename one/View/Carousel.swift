@@ -15,6 +15,8 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         return _collectionView
     }()
     var images: [MusicPoster] = []
+    var doCallbackInvock = false
+    var currentIndex = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +34,8 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         }
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
         registerNibWithName("CarouselCollectionViewCell", collectionView: collectionView)
     }
     
@@ -41,11 +45,49 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
+        cell.setContent(data: images[indexPath.row])
         return cell
     }
+    
+    
+    // MARK: delegate
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let contentOffset = scrollView.contentOffset
+//        print("\(contentOffset)")
+//        setPage(index: Int(contentOffset.x / self.frame.width))
+//        if contentOffset.x == 0 {
+//            setPage(index: Int(contentOffset.x / self.frame.width))
+//        } else if doCallbackInvock {
+//            setPage(index: Int(contentOffset.x / self.frame.width))
+//        }
+//    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        print("animation")
+        doCallbackInvock = true
+        
+    }
+    
+    func setPage(index: Int) {
+        print("setpage")
+        let point = CGPoint(x: CGFloat(index) * (collectionView.frame.size.width + 30), y: collectionView.frame.origin.y)
+        doCallbackInvock = false
+        collectionView.setContentOffset(point, animated: true)
+        currentIndex = index
+    }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        
+//        let contentOffset = scrollView.contentOffset
+//        print("didend\(contentOffset)")
+//        var willIndex = currentIndex
+//        if contentOffset.x >= (collectionView.frame.width + 30) * CGFloat(currentIndex) {
+//        }
+//        setPage(index: Int(contentOffset.x / self.frame.width))
+//    }
 }
