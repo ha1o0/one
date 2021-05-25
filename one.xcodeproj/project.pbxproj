@@ -64,6 +64,10 @@
 		E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135AF2624472200DEC078 /* DoubleCircle.swift */; };
 		E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135B72624477C00DEC078 /* CouponRightView.swift */; };
 		E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A135BF2624479900DEC078 /* CouponLeftView.swift */; };
+		E9A59EEC265CF0B600FA458B /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EEB265CF0B600FA458B /* Carousel.swift */; };
+		E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */; };
+		E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EF1265CFAC100FA458B /* CarouselCollectionViewCell.swift */; };
+		E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -185,6 +189,10 @@
 		E9A135AF2624472200DEC078 /* DoubleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCircle.swift; sourceTree = "<group>"; };
 		E9A135B72624477C00DEC078 /* CouponRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponRightView.swift; sourceTree = "<group>"; };
 		E9A135BF2624479900DEC078 /* CouponLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponLeftView.swift; sourceTree = "<group>"; };
+		E9A59EEB265CF0B600FA458B /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		E9A59EF1265CFAC100FA458B /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -339,6 +347,8 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59EF0265CFAA200FA458B /* Carousel */,
+				E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */,
 				E99BC0F426232DD10002C066 /* Picture */,
 				E99BC0E926232D950002C066 /* Base */,
 			);
@@ -409,6 +419,15 @@
 				E9A135BF2624479900DEC078 /* CouponLeftView.swift */,
 			);
 			path = Bezier;
+			sourceTree = "<group>";
+		};
+		E9A59EF0265CFAA200FA458B /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59EF1265CFAC100FA458B /* CarouselCollectionViewCell.swift */,
+				E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 		E9A952F6263171140032EADB /* Resource */ = {
@@ -572,6 +591,7 @@
 				E9E0CD85260795070047DAE9 /* Player */,
 				E9A1357D262443A000DEC078 /* Bezier */,
 				E9E68BE42648376100929383 /* Capsule.swift */,
+				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -765,6 +785,7 @@
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E998562626534C07006B0E1E /* LeftDrawerTableViewCell.xib in Resources */,
+				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
@@ -878,7 +899,9 @@
 				E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */,
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
+				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
+				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
@@ -913,6 +936,7 @@
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
+				E9A59EEC265CF0B600FA458B /* Carousel.swift in Sources */,
 				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 			);

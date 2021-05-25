@@ -23,12 +23,12 @@ class MusicHomeViewController: BaseTableViewController {
     
     var header = MJRefreshNormalHeader()
     var footer = MJRefreshAutoNormalFooter()
+    var posters: [MusicPoster] = []
     
     override func viewDidLoad() {
         setTableView()
         setNavigation()
         tableData = []
-        var posters: [MusicPoster] = []
         posters.append(MusicPoster(url: "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/aa/d4/70/aad470fd-e8cd-88f6-c00c-c194ebbb783d/source/600x600bb.jpg", color: .gray))
         posters.append(MusicPoster(url: "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/b8/19/d9/b819d9a3-0207-2725-68c5-6e5529b1e8b2/source/600x600bb.jpg", color: .blue))
         posters.append(MusicPoster(url: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2e/57/8c/2e578c02-c391-26f5-fb39-35c17a344f3a/source/600x600bb.jpg", color: .purple))
@@ -70,10 +70,19 @@ class MusicHomeViewController: BaseTableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.snp.makeConstraints { (maker) in
-            maker.leading.trailing.top.bottom.equalToSuperview()
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalToSuperview().offset(44)
         }
+        tableView.mj_header = header
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = .main
+        header.setRefreshingTarget(self, refreshingAction: #selector(refreshData))
+    }
+    
+    @objc func refreshData() {
+        sleep(1)
+        self.tableView.reloadData()
+        self.tableView.mj_header?.endRefreshing()
     }
     
     @objc func showLeftVc() {
@@ -85,7 +94,24 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 0
+        }
         return 1
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var header = UIView()
+        if section == 0 {
+            header = Carousel(images: posters)
+        }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 120
+        }
+        return .leastNonzeroMagnitude
+    }
 }
