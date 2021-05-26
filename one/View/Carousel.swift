@@ -10,7 +10,7 @@ import UIKit
 class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     lazy var collectionView: UICollectionView = {
-        let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 30, height: 120), collectionViewLayout: CollectionViewLayout())
+        let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 30, height: 150), collectionViewLayout: CollectionViewLayout())
         _collectionView.backgroundColor = .systemOrange
         return _collectionView
     }()
@@ -37,6 +37,8 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
         registerNibWithName("CarouselCollectionViewCell", collectionView: collectionView)
+        collectionView.layer.cornerRadius = 10
+        collectionView.layer.masksToBounds = true
     }
     
     override func layoutSubviews() {

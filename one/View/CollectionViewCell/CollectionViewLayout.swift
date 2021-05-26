@@ -12,7 +12,7 @@ class CollectionViewLayout: UICollectionViewFlowLayout {
     
     override init() {
         super.init()
-        self.itemSize = CGSize(width: SCREEN_WIDTH - 30, height: 120)
+        self.itemSize = CGSize(width: SCREEN_WIDTH - 30, height: 150)
         self.minimumInteritemSpacing = 0
         self.minimumLineSpacing = 0
 //        self.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
