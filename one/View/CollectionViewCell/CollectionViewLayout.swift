@@ -8,17 +8,20 @@
 import Foundation
 import UIKit
 
-class CollectionViewLayout {
-    static func getFlowLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        let itemWidth = SCREEN_WIDTH - 30
-        layout.itemSize = CGSize(width: itemWidth, height: 120)
-        //列间距,行间距,偏移
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 30
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        layout.scrollDirection = .horizontal
-
-        return layout
+class CollectionViewLayout: UICollectionViewFlowLayout {
+    
+    override init() {
+        super.init()
+        self.itemSize = CGSize(width: SCREEN_WIDTH - 30, height: 120)
+        self.minimumInteritemSpacing = 0
+        self.minimumLineSpacing = 0
+//        self.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        self.scrollDirection = .horizontal
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
+
+

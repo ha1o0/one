@@ -16,9 +16,9 @@ class CarouselCollectionViewCell: BaseCollectionViewCell {
     }
     
     func setContent(data: MusicPoster) {
-        if let url = URL(string: data.url) {
-            imageView.loadFrom(url: url)
-        }
+//        if let url = URL(string: data.url) {
+//            imageView.loadFrom(url: url)
+//        }
     }
 
 }

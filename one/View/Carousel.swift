@@ -10,8 +10,8 @@ import UIKit
 class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     lazy var collectionView: UICollectionView = {
-        let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 80), collectionViewLayout: CollectionViewLayout.getFlowLayout())
-        _collectionView.backgroundColor = .blue
+        let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 30, height: 120), collectionViewLayout: CollectionViewLayout())
+        _collectionView.backgroundColor = .systemOrange
         return _collectionView
     }()
     var images: [MusicPoster] = []
@@ -89,5 +89,15 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 //        if contentOffset.x >= (collectionView.frame.width + 30) * CGFloat(currentIndex) {
 //        }
 //        setPage(index: Int(contentOffset.x / self.frame.width))
+//    }
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if scrollView == self.collectionView {
+//            var currentCellOffset = self.collectionView.contentOffset
+//            currentCellOffset.x += self.collectionView.frame.width / 2
+//            if let indexPath = self.collectionView.indexPathForItem(at: currentCellOffset) {
+//              self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//            }
+//        }
 //    }
 }
