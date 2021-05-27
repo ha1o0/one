@@ -44,6 +44,7 @@ class MusicHomeViewController: BaseTableViewController {
     var header = MJRefreshNormalHeader()
     var footer = MJRefreshAutoNormalFooter()
     var posters: [MusicPoster] = []
+    var functions: [MusicFunction] = []
     
     override func viewDidLoad() {
         setTableView()
@@ -54,6 +55,14 @@ class MusicHomeViewController: BaseTableViewController {
         posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/XFqhaPOEY19rBAJ.jpg", color: .purple))
         let posterItem = MusicHomeItem(posters: posters)
         tableData.append(MusicHomeSection(type: .poster, items: [posterItem], title: ""))
+
+        functions.append(MusicFunction(icon: "calendar", name: "每日推荐", to: ""))
+        functions.append(MusicFunction(icon: "bus", name: "私人FM", to: ""))
+        functions.append(MusicFunction(icon: "book", name: "歌单", to: ""))
+        functions.append(MusicFunction(icon: "rank", name: "排行榜", to: ""))
+        functions.append(MusicFunction(icon: "movie", name: "数字专辑", to: ""))
+        functions.append(MusicFunction(icon: "voice", name: "歌房", to: ""))
+        functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
         self.updateTopViewImage(pageIndex: 0)
     }
     

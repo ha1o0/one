@@ -119,7 +119,11 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentIndex = Int(scrollView.contentOffset.x / self.frame.width)
+        let newIndex = Int(scrollView.contentOffset.x / self.frame.width)
+        if newIndex == currentIndex {
+            return
+        }
+        currentIndex = newIndex
         updateIndicator()
         if let callback = self.pageCallback {
             callback(currentIndex)

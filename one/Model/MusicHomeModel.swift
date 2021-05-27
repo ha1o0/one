@@ -43,4 +43,10 @@ struct Music {
     var author: String = ""
 }
 
+struct MusicFunction {
+    var icon: String = ""
+    var name: String = ""
+    var to: String = ""
+}
+
 
