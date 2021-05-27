@@ -53,8 +53,7 @@ class MusicHomeViewController: BaseTableViewController {
         posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/BOs7DMaKW86TLc4.jpg", color: .gray))
         posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/rVnT7Sf1N3ICw9j.jpg", color: .blue))
         posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/XFqhaPOEY19rBAJ.jpg", color: .purple))
-        let posterItem = MusicHomeItem(posters: posters)
-        tableData.append(MusicHomeSection(type: .poster, items: [posterItem], title: ""))
+        tableData.append(MusicHomeSection(type: .poster, items: posters, title: ""))
 
         functions.append(MusicFunction(icon: "calendar", name: "每日推荐", to: ""))
         functions.append(MusicFunction(icon: "bus", name: "私人FM", to: ""))
@@ -63,6 +62,7 @@ class MusicHomeViewController: BaseTableViewController {
         functions.append(MusicFunction(icon: "movie", name: "数字专辑", to: ""))
         functions.append(MusicFunction(icon: "voice", name: "歌房", to: ""))
         functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
+        tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
         self.updateTopViewImage(pageIndex: 0)
     }
     
@@ -136,12 +136,9 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 0
-        }
-        return 1
+        return 0
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
         if section == 0 {
@@ -155,12 +152,25 @@ class MusicHomeViewController: BaseTableViewController {
                 maker.trailing.equalToSuperview().offset(-15)
             }
         }
+        if section == 1 {
+            let functionView = MusicFunctionView(functions: functions)
+            header.addSubview(functionView)
+            functionView.snp.makeConstraints { (maker) in
+                maker.top.equalToSuperview().offset(5)
+                maker.bottom.equalToSuperview().offset(-5)
+                maker.leading.equalToSuperview().offset(5)
+                maker.trailing.equalToSuperview().offset(-5)
+            }
+        }
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 180
+        }
+        if section == 1 {
+            return 75
         }
         return .leastNonzeroMagnitude
     }

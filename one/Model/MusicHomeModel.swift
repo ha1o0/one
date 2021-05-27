@@ -21,7 +21,7 @@ enum MusicSection: String {
 
 struct MusicHomeSection {
     var type: MusicSection = .poster
-    var items: [MusicHomeItem] = []
+    var items: [Any] = []
     var title: String = ""
     
 }

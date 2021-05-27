@@ -54,7 +54,6 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         indicatorView.distribution = .fillEqually
         indicatorView.axis = .horizontal
         indicatorView.spacing = 5
-        print(self.images)
         
         for (index, _) in self.images.enumerated() {
             let dotView = UIView()
@@ -78,7 +77,6 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

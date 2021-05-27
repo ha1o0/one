@@ -22,6 +22,9 @@
 		E951C70F265501A9007CC3C2 /* MusicHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */; };
 		E951C71126550C3E007CC3C2 /* MusicHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */; };
 		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
+		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
+		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
+		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -147,6 +150,9 @@
 		E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicHomeViewController.xib; sourceTree = "<group>"; };
 		E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeModel.swift; sourceTree = "<group>"; };
 		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
+		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +319,15 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		E9922412265FC7810038BAB7 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */,
+				E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
 		E99855EB2648C76E006B0E1E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +362,7 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9922412265FC7810038BAB7 /* Function */,
 				E9A59EF0265CFAA200FA458B /* Carousel */,
 				E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */,
 				E99BC0F426232DD10002C066 /* Picture */,
@@ -592,6 +608,7 @@
 				E9A1357D262443A000DEC078 /* Bezier */,
 				E9E68BE42648376100929383 /* Capsule.swift */,
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
+				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -777,6 +794,7 @@
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
+				E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */,
 				E99BC16426272A300002C066 /* MapViewController.xib in Resources */,
 				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
@@ -904,6 +922,7 @@
 				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
+				E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
@@ -934,6 +953,7 @@
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
+				E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */,
 				E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E9A59EEC265CF0B600FA458B /* Carousel.swift in Sources */,
