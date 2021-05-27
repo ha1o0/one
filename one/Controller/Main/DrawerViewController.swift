@@ -28,7 +28,10 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         didSet {
             if tabbarVc != nil {
                 contentView.addSubview(tabbarVc!.view)
-                tabbarVc!.view.frame = self.contentView.bounds
+                // 自动布局防止视频全屏问题
+                tabbarVc!.view.snp.makeConstraints { (maker) in
+                    maker.top.bottom.leading.trailing.equalToSuperview()
+                }
                 print("add tabbarVc")
                 self.contentView.addSubview(shadowView)
             }
@@ -39,9 +42,15 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         didSet {
             if leftVc != nil {
                 contentView.addSubview(leftVc!.view)
-                var frame = self.contentView.bounds
-                frame.origin.x = -frame.size.width
-                leftVc!.view.frame = frame
+                // 自动布局防止视频全屏问题
+                leftVc!.view.snp.makeConstraints { (maker) in
+                    maker.trailing.equalTo(contentView.snp.leading).offset(0)
+                    maker.top.bottom.equalToSuperview()
+                    maker.width.equalTo(contentView.bounds.width)
+                }
+//                var frame = self.contentView.bounds
+//                frame.origin.x = -frame.size.width
+//                leftVc!.view.frame = frame
                 print("add leftVc\(leftVc!.contentView)")
             }
         }
@@ -68,6 +77,10 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(contentView)
+        // 修复视频全屏时，tabbar半屏问题
+        contentView.snp.makeConstraints { (maker) in
+            maker.top.bottom.leading.trailing.equalToSuperview()
+        }
         print("didload")
         leftPanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(leftPan))
         leftPanGesture.edges = .left
