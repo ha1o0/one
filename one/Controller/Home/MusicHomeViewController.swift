@@ -54,6 +54,7 @@ class MusicHomeViewController: BaseTableViewController {
         posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/XFqhaPOEY19rBAJ.jpg", color: .purple))
         let posterItem = MusicHomeItem(posters: posters)
         tableData.append(MusicHomeSection(type: .poster, items: [posterItem], title: ""))
+        self.updateTopViewImage(pageIndex: 0)
     }
     
     override func setNavigation() {

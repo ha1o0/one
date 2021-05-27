@@ -10,9 +10,14 @@ import UIKit
 class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     lazy var collectionView: UICollectionView = {
-        let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 30, height: 150), collectionViewLayout: CollectionViewLayout())
+        let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: CollectionViewLayout())
         _collectionView.backgroundColor = .clear
         return _collectionView
+    }()
+    
+    lazy var indicatorView: UIStackView = {
+        let _indicatorView = UIStackView()
+        return _indicatorView
     }()
     var images: [MusicPoster] = []
     var pageCallback: ((Int) -> Void)?
@@ -21,14 +26,17 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("awakefromnib")
     }
     
     convenience init(images: [MusicPoster] = []) {
         self.init()
+        print("convenience init")
         self.images = images
+        self.commonInit()
     }
     
-    override func draw(_ rect: CGRect) {
+    func commonInit() {
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { maker in
             maker.top.bottom.leading.trailing.equalToSuperview()
@@ -40,6 +48,32 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         registerNibWithName("CarouselCollectionViewCell", collectionView: collectionView)
         collectionView.layer.cornerRadius = 10
         collectionView.layer.masksToBounds = true
+        
+        indicatorView.backgroundColor = .clear
+        indicatorView.alignment = .fill
+        indicatorView.distribution = .fillEqually
+        indicatorView.axis = .horizontal
+        indicatorView.spacing = 5
+        print(self.images)
+        
+        for (index, _) in self.images.enumerated() {
+            let dotView = UIView()
+            dotView.backgroundColor = index == currentIndex ? UIColor.white : UIColor.white.withAlphaComponent(0.6)
+            dotView.layer.cornerRadius = 2
+            indicatorView.addArrangedSubview(dotView)
+        }
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false;
+        self.addSubview(indicatorView)
+        indicatorView.snp.makeConstraints { maker in
+            maker.centerX.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-20)
+            maker.height.equalTo(3)
+            maker.width.equalTo(self.images.count * 15 + (images.count - 1) * Int(indicatorView.spacing))
+        }
+    }
+    
+    override func draw(_ rect: CGRect) {
+        print("draw rect")
     }
     
     override func layoutSubviews() {
@@ -85,8 +119,16 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        currentIndex = Int(scrollView.contentOffset.x / self.frame.width)
+        updateIndicator()
         if let callback = self.pageCallback {
-            callback(Int(scrollView.contentOffset.x / self.frame.width))
+            callback(currentIndex)
+        }
+    }
+    
+    func updateIndicator() {
+        for (index, uiview) in self.indicatorView.arrangedSubviews.enumerated() {
+            uiview.backgroundColor = index == currentIndex ? UIColor.white : UIColor.white.withAlphaComponent(0.6)
         }
     }
     
