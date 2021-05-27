@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +25,7 @@
                                         <rect key="frame" x="8" y="8" width="24" height="24"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="x0s-Nx-TVo" secondAttribute="bottom" constant="8" id="QF6-Ik-uO6"/>
                                     <constraint firstAttribute="trailing" secondItem="x0s-Nx-TVo" secondAttribute="trailing" constant="8" id="U1y-LW-GmO"/>
@@ -39,11 +38,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="功能" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmm-Sz-yWi">
                                 <rect key="frame" x="20.5" y="42.5" width="25" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rmm-Sz-yWi" firstAttribute="centerX" secondItem="yJ3-rO-JW0" secondAttribute="centerX" id="PoH-1b-zDv"/>
                             <constraint firstItem="qm1-6X-YEu" firstAttribute="centerX" secondItem="yJ3-rO-JW0" secondAttribute="centerX" id="Vxq-Kk-Ede"/>
@@ -53,6 +52,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="yJ3-rO-JW0" secondAttribute="bottom" id="6GT-74-SIi"/>
                 <constraint firstItem="yJ3-rO-JW0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8yI-Qj-hqN"/>
@@ -68,9 +68,4 @@
             <point key="canvasLocation" x="-91.304347826086968" y="99.776785714285708"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

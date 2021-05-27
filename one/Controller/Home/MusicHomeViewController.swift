@@ -41,6 +41,11 @@ class MusicHomeViewController: BaseTableViewController {
         return _topShadowView
     }()
     
+    lazy var toptopShadowView: UIView = {
+        let _topShadowView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+        return _topShadowView
+    }()
+    
     var header = MJRefreshNormalHeader()
     var footer = MJRefreshAutoNormalFooter()
     var posters: [MusicPoster] = []
@@ -70,6 +75,7 @@ class MusicHomeViewController: BaseTableViewController {
         super.setStatusBar()
         super.setNavigation()
 
+        self.view.backgroundColor = UIColor.white
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
@@ -107,6 +113,12 @@ class MusicHomeViewController: BaseTableViewController {
             maker.top.leading.trailing.equalToSuperview()
             maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
         }
+        
+//        self.view.addSubview(toptopShadowView)
+//        toptopShadowView.snp.makeConstraints { (maker) in
+//            maker.top.leading.trailing.equalToSuperview()
+//            maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
+//        }
         self.view.addSubview(self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
