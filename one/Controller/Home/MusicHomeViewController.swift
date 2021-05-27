@@ -21,9 +21,24 @@ class MusicHomeViewController: BaseTableViewController {
         return _weatherButton
     }()
     
+    lazy var topImageView: UIImageView = {
+        let _topImageView = UIImageView()
+        _topImageView.contentMode = .scaleAspectFill
+        return _topImageView
+    }()
+    
     lazy var topView: UIView = {
         let _topView = UIView()
+        _topView.addSubview(topImageView)
+        topImageView.snp.makeConstraints { maker in
+            maker.top.bottom.leading.trailing.equalToSuperview()
+        }
         return _topView
+    }()
+    
+    lazy var topShadowView: UIView = {
+        let _topShadowView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+        return _topShadowView
     }()
     
     var header = MJRefreshNormalHeader()
@@ -65,17 +80,22 @@ class MusicHomeViewController: BaseTableViewController {
             maker.trailing.equalToSuperview().offset(-20)
         })
         
-        let transColor: UIColor = UIColor.white.withAlphaComponent(0.8)
+        let transColor: UIColor = UIColor.white.withAlphaComponent(0.5)
         self.statusBarView.backgroundColor = transColor
         self.navigationView.backgroundColor = transColor
     }
     
     func setTableView() {
         self.view.addSubview(topView)
-        topView.backgroundColor = .red
         topView.snp.makeConstraints { (maker) in
             maker.top.leading.trailing.equalToSuperview()
-            maker.height.equalTo(200)
+            maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
+        }
+
+        self.view.addSubview(topShadowView)
+        topShadowView.snp.makeConstraints { (maker) in
+            maker.top.leading.trailing.equalToSuperview()
+            maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
         }
         self.view.addSubview(self.tableView)
         self.tableView.delegate = self
@@ -86,7 +106,7 @@ class MusicHomeViewController: BaseTableViewController {
         }
         tableView.mj_header = header
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         header.setRefreshingTarget(self, refreshingAction: #selector(refreshData))
     }
     
@@ -94,6 +114,7 @@ class MusicHomeViewController: BaseTableViewController {
         sleep(1)
         self.tableView.reloadData()
         self.tableView.mj_header?.endRefreshing()
+        self.updateTopViewImage(pageIndex: 0)
     }
     
     @objc func showLeftVc() {
@@ -112,9 +133,10 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var header = UIView()
+        let header = UIView()
         if section == 0 {
             let carousel = Carousel(images: posters)
+            carousel.pageCallback = self.updateTopViewImage
             header.addSubview(carousel)
             carousel.snp.makeConstraints { (maker) in
                 maker.top.equalToSuperview().offset(15)
@@ -131,5 +153,11 @@ class MusicHomeViewController: BaseTableViewController {
             return 180
         }
         return .leastNonzeroMagnitude
+    }
+    
+    func updateTopViewImage(pageIndex: Int) {
+        if let url = URL(string: posters[pageIndex].url) {
+            topImageView.loadFrom(url: url)
+        }
     }
 }

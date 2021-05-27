@@ -11,10 +11,11 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     lazy var collectionView: UICollectionView = {
         let _collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 30, height: 150), collectionViewLayout: CollectionViewLayout())
-        _collectionView.backgroundColor = .systemOrange
+        _collectionView.backgroundColor = .clear
         return _collectionView
     }()
     var images: [MusicPoster] = []
+    var pageCallback: ((Int) -> Void)?
     var doCallbackInvock = false
     var currentIndex = 0
 
@@ -81,6 +82,12 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         doCallbackInvock = false
         collectionView.setContentOffset(point, animated: true)
         currentIndex = index
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let callback = self.pageCallback {
+            callback(Int(scrollView.contentOffset.x / self.frame.width))
+        }
     }
     
 //    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

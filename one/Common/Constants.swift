@@ -14,6 +14,7 @@ let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let STATUS_BAR_HEIGHT = CGFloat(hasNotch ? 44.0 : 20.0)
 let leftVcleftVcVisibleViewWidthPercent = CGFloat(0.85)
+let STATUS_NAV_HEIGHT = hasNotch ? 88 : 64
 
 var hasNotch: Bool {
     return (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0) > 0
