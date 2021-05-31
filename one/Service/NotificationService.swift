@@ -13,6 +13,7 @@ class NotificationService {
     
     enum State: String {
         case gotoVc = "gotoVc"
+        case stopPosterLoop = "stopPosterLoop"
     }
     
     func listenGotoVc(target: Any, selector: Selector) {
@@ -21,5 +22,13 @@ class NotificationService {
     
     func gotoVc(_ vc: UIViewController) {
         NotificationCenter.default.post(name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil, userInfo: ["vc": vc])
+    }
+    
+    func listenStopPosterLoop(target: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name.init(State.stopPosterLoop.rawValue), object: nil)
+    }
+    
+    func stopPosterLoop() {
+        NotificationCenter.default.post(name: NSNotification.Name.init(State.stopPosterLoop.rawValue), object: nil)
     }
 }
