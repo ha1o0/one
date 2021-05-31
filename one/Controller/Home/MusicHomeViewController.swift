@@ -70,7 +70,11 @@ class MusicHomeViewController: BaseTableViewController {
         functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
         tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
         
-        recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: ["https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/42/57/7e/42577e30-e629-c07e-98f0-201a4ffca0cf/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: ["https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/42/57/7e/42577e30-e629-c07e-98f0-201a4ffca0cf/source/600x600bb.jpg",
+             "https://is3-ssl.mzstatic.com/image/thumb/Music124/v4/77/56/37/77563720-c2e3-d584-e030-69e6da668ec4/source/600x600bb.jpg",
+             "https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/54/44/50/544450ff-aaf4-79a9-1b3b-c52fb598f4fb/source/600x600bb.jpg",
+             "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a9/85/64/a9856465-eacc-b533-b127-9796607ddb08/source/600x600bb.jpg",
+            ], playCount: 0))
         recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music115/v4/18/37/0d/18370d53-e146-a295-9da4-f772fbbde252/source/600x600bb.jpg"], playCount: 0))
         recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/4c/90/b5/4c90b552-8b6d-c1f5-20ee-5cb1665a5c12/source/600x600bb.jpg"], playCount: 0))
         recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg"], playCount: 0))
