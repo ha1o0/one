@@ -71,6 +71,9 @@
 		E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */; };
 		E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EF1265CFAC100FA458B /* CarouselCollectionViewCell.swift */; };
 		E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */; };
+		E9A59EF8266472CA00FA458B /* MusicSheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EF6266472CA00FA458B /* MusicSheetCollectionViewCell.swift */; };
+		E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59EF7266472CA00FA458B /* MusicSheetCollectionViewCell.xib */; };
+		E9A59EFB2664748800FA458B /* MusicSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EFA2664748800FA458B /* MusicSheet.swift */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -199,6 +202,9 @@
 		E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		E9A59EF1265CFAC100FA458B /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9A59EF6266472CA00FA458B /* MusicSheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSheetCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9A59EF7266472CA00FA458B /* MusicSheetCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicSheetCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9A59EFA2664748800FA458B /* MusicSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSheet.swift; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -362,6 +368,7 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59EF52664720200FA458B /* MusicSheet */,
 				E9922412265FC7810038BAB7 /* Function */,
 				E9A59EF0265CFAA200FA458B /* Carousel */,
 				E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */,
@@ -444,6 +451,15 @@
 				E9A59EF2265CFAC100FA458B /* CarouselCollectionViewCell.xib */,
 			);
 			path = Carousel;
+			sourceTree = "<group>";
+		};
+		E9A59EF52664720200FA458B /* MusicSheet */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59EF6266472CA00FA458B /* MusicSheetCollectionViewCell.swift */,
+				E9A59EF7266472CA00FA458B /* MusicSheetCollectionViewCell.xib */,
+			);
+			path = MusicSheet;
 			sourceTree = "<group>";
 		};
 		E9A952F6263171140032EADB /* Resource */ = {
@@ -609,6 +625,7 @@
 				E9E68BE42648376100929383 /* Capsule.swift */,
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
 				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
+				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -808,6 +825,7 @@
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
+				E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E99856192652702A006B0E1E /* MemberCardView.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
@@ -915,6 +933,7 @@
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
 				E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */,
+				E9A59EFB2664748800FA458B /* MusicSheet.swift in Sources */,
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,
@@ -954,6 +973,7 @@
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */,
+				E9A59EF8266472CA00FA458B /* MusicSheetCollectionViewCell.swift in Sources */,
 				E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E9A59EEC265CF0B600FA458B /* Carousel.swift in Sources */,

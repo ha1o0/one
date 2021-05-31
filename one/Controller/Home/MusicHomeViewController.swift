@@ -50,6 +50,7 @@ class MusicHomeViewController: BaseTableViewController {
     var footer = MJRefreshAutoNormalFooter()
     var posters: [MusicPoster] = []
     var functions: [MusicFunction] = []
+    var recommendedMusics: [MusicSheet] = []
     
     override func viewDidLoad() {
         setTableView()
@@ -68,6 +69,16 @@ class MusicHomeViewController: BaseTableViewController {
         functions.append(MusicFunction(icon: "voice", name: "歌房", to: ""))
         functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
         tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
+        
+        recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: ["https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/42/57/7e/42577e30-e629-c07e-98f0-201a4ffca0cf/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music115/v4/18/37/0d/18370d53-e146-a295-9da4-f772fbbde252/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/4c/90/b5/4c90b552-8b6d-c1f5-20ee-5cb1665a5c12/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/c2/c9/3d/c2c93de5-7e64-f98b-9247-bffa6076d47c/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/03/26/12/032612ad-88f5-176f-1822-e6e19a642c5f/source/600x600bb.jpg"], playCount: 0))
+        tableData.append(MusicHomeSection(type: .musicSheet, items: recommendedMusics, title: "推荐歌单"))
+        
+        
         self.updateTopViewImage(pageIndex: 0)
     }
     
@@ -152,9 +163,10 @@ class MusicHomeViewController: BaseTableViewController {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerData = tableData[section] as! MusicHomeSection
         let header = UIView()
         if section == 0 {
-            let carousel = Carousel(images: posters)
+            let carousel = Carousel(images: headerData.items as! [MusicPoster])
             carousel.pageCallback = self.updateTopViewImage
             header.addSubview(carousel)
             carousel.snp.makeConstraints { (maker) in
@@ -165,13 +177,23 @@ class MusicHomeViewController: BaseTableViewController {
             }
         }
         if section == 1 {
-            let functionView = MusicFunctionView(functions: functions)
+            let functionView = MusicFunctionView(functions: headerData.items as! [MusicFunction])
             header.addSubview(functionView)
             functionView.snp.makeConstraints { (maker) in
-                maker.top.equalToSuperview().offset(5)
-                maker.bottom.equalToSuperview().offset(-5)
-                maker.leading.equalToSuperview().offset(5)
-                maker.trailing.equalToSuperview().offset(-5)
+                maker.top.equalToSuperview().offset(10)
+                maker.bottom.equalToSuperview().offset(-10)
+                maker.leading.equalToSuperview().offset(10)
+                maker.trailing.equalToSuperview().offset(-10)
+            }
+        }
+        if section == 2 {
+            let musicSheetView = MusicSheetView(musicSheets: headerData.items as! [MusicSheet], headerName: headerData.title)
+            header.addSubview(musicSheetView)
+            musicSheetView.snp.makeConstraints { maker in
+                maker.top.equalToSuperview().offset(10)
+                maker.bottom.equalToSuperview().offset(-10)
+                maker.leading.equalToSuperview().offset(10)
+                maker.trailing.equalToSuperview().offset(-10)
             }
         }
         return header
@@ -182,7 +204,10 @@ class MusicHomeViewController: BaseTableViewController {
             return 180
         }
         if section == 1 {
-            return 75
+            return 80
+        }
+        if section == 2 {
+            return 220
         }
         return .leastNonzeroMagnitude
     }

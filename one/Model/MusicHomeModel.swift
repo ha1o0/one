@@ -11,7 +11,7 @@ import UIKit
 enum MusicSection: String {
     case poster = "poster"
     case function = "function"
-    case album = "album"
+    case musicSheet = "musicSheet"
     case musicList = "musicList"
     case featureVideos = "featureVideos"
     case rank = "rank"
@@ -35,7 +35,15 @@ struct MusicPoster {
     var color: UIColor = .white
 }
 
+struct MusicSheet {
+    var name = ""
+    var id = ""
+    var posters: [String] = []
+    var playCount = 0
+}
+
 struct Music {
+    var id = ""
     var poster: String = ""
     var name: String = ""
     var subtitle: String = ""
