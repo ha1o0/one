@@ -51,6 +51,7 @@ class MusicHomeViewController: BaseTableViewController {
     var posters: [MusicPoster] = []
     var functions: [MusicFunction] = []
     var recommendedMusics: [MusicSheet] = []
+    var musics: [Music] = []
     
     override func viewDidLoad() {
         setTableView()
@@ -83,8 +84,19 @@ class MusicHomeViewController: BaseTableViewController {
         recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/c2/c9/3d/c2c93de5-7e64-f98b-9247-bffa6076d47c/source/600x600bb.jpg"], playCount: 0))
         recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/03/26/12/032612ad-88f5-176f-1822-e6e19a642c5f/source/600x600bb.jpg"], playCount: 0))
         
+        musics.append(Music(id: "1", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "2", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "3", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "4", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "5", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "6", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "7", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "8", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "9", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        
         CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
             self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))
+            self.tableData.append(MusicHomeSection(type: .musicList, items: self.musics, title: "送你一壶古风酿的酒"))
             self.tableView.reloadData()
         }
         
@@ -205,6 +217,16 @@ class MusicHomeViewController: BaseTableViewController {
                 maker.trailing.equalToSuperview().offset(-10)
             }
         }
+        if section == 3 {
+            let musicSheetView = MusicListView(musics: headerData.items as! [Music], headerName: headerData.title)
+            header.addSubview(musicSheetView)
+            musicSheetView.snp.makeConstraints { maker in
+                maker.top.equalToSuperview().offset(10)
+                maker.bottom.equalToSuperview().offset(-10)
+                maker.leading.equalToSuperview().offset(10)
+                maker.trailing.equalToSuperview().offset(-10)
+            }
+        }
         return header
     }
     
@@ -216,6 +238,9 @@ class MusicHomeViewController: BaseTableViewController {
             return 80
         }
         if section == 2 {
+            return 220
+        }
+        if section == 3 {
             return 220
         }
         return .leastNonzeroMagnitude

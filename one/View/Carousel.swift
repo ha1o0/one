@@ -23,6 +23,7 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     var imageIndexs: [Int] = []
     var pageCallback: ((Int) -> Void)?
     var doCallbackInvock = false
+    var autoLoopInterval = 5
     var currentCollectionIndex = 0
     var totalIndex = 100
     var totalGroup: Int {
@@ -95,7 +96,7 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         }
 //        currentCollectionIndex = centerGroupStartIndex
 //        collectionView.scrollToItem(at: IndexPath(row: currentCollectionIndex , section: 0), at: .centeredHorizontally, animated: true)
-        let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { timer in
+        let timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(autoLoopInterval), repeats: true) { timer in
             self.currentCollectionIndex += 1
             self.collectionView.scrollToItem(at: IndexPath(row: self.currentCollectionIndex, section: 0), at: .centeredHorizontally, animated: true)
         }

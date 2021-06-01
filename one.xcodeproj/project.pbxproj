@@ -25,6 +25,11 @@
 		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
 		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
 		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
+		E992242B2666791E0038BAB7 /* MusicListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224292666791E0038BAB7 /* MusicListTableViewCell.swift */; };
+		E992242C2666791E0038BAB7 /* MusicListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E992242A2666791E0038BAB7 /* MusicListTableViewCell.xib */; };
+		E992243426667CF50038BAB7 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992243326667CF50038BAB7 /* MusicList.swift */; };
+		E9922451266681220038BAB7 /* MusicListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */; };
+		E9922452266681220038BAB7 /* MusicListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -158,6 +163,11 @@
 		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
 		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
+		E99224292666791E0038BAB7 /* MusicListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCell.swift; sourceTree = "<group>"; };
+		E992242A2666791E0038BAB7 /* MusicListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListTableViewCell.xib; sourceTree = "<group>"; };
+		E992243326667CF50038BAB7 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
+		E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListCollectionViewCell.xib; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +348,24 @@
 			path = Function;
 			sourceTree = "<group>";
 		};
+		E9922428266679050038BAB7 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				E99224292666791E0038BAB7 /* MusicListTableViewCell.swift */,
+				E992242A2666791E0038BAB7 /* MusicListTableViewCell.xib */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		E992243826667E8B0038BAB7 /* MusicList */ = {
+			isa = PBXGroup;
+			children = (
+				E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */,
+				E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */,
+			);
+			path = MusicList;
+			sourceTree = "<group>";
+		};
 		E99855EB2648C76E006B0E1E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,12 +400,13 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E992243826667E8B0038BAB7 /* MusicList */,
 				E9A59EF52664720200FA458B /* MusicSheet */,
 				E9922412265FC7810038BAB7 /* Function */,
 				E9A59EF0265CFAA200FA458B /* Carousel */,
-				E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */,
 				E99BC0F426232DD10002C066 /* Picture */,
 				E99BC0E926232D950002C066 /* Base */,
+				E9A59EEE265CF5CB00FA458B /* CollectionViewLayout.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -632,6 +661,7 @@
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
 				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
 				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
+				E992243326667CF50038BAB7 /* MusicList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -657,6 +687,7 @@
 		E9E0CDCE2608E6600047DAE9 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9922428266679050038BAB7 /* Music */,
 				E998562226534BE4006B0E1E /* LeftDrawer */,
 				E93E0EAD2612027D00D43B4C /* Animation */,
 				E9E0CDE02608ED830047DAE9 /* Function */,
@@ -829,11 +860,13 @@
 				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
+				E9922452266681220038BAB7 /* MusicListCollectionViewCell.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E99856192652702A006B0E1E /* MemberCardView.xib in Resources */,
+				E992242C2666791E0038BAB7 /* MusicListTableViewCell.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
@@ -932,6 +965,7 @@
 				E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
 				E951C70E265501A9007CC3C2 /* MusicHomeViewController.swift in Sources */,
+				E9922451266681220038BAB7 /* MusicListCollectionViewCell.swift in Sources */,
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
@@ -947,12 +981,14 @@
 				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
+				E992242B2666791E0038BAB7 /* MusicListTableViewCell.swift in Sources */,
 				E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
+				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
