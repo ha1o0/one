@@ -47,18 +47,9 @@ class MusicSheetCollectionViewCell: BaseCollectionViewCell {
     
     func setImage(urlStr: String, withAnimate: Bool = false) {
         if let url = URL(string: urlStr) {
-            if !withAnimate {
-                self.posterImageView.loadFrom(url: url)
-                return
-            }
-            if posterImageLock {
-                return
-            }
-            self.posterImageLock = true
             posterImageView.alpha = 0
             UIView.animate(withDuration: 0.618) { [self] in
                 self.posterImageView.sd_setImage(with: url) { image, Error, cacheType, url in
-                    self.posterImageLock = false
                     self.posterImageView.alpha = 1
                 }
             } completion: { result in }

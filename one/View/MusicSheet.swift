@@ -18,7 +18,7 @@ class MusicSheetView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     
     lazy var header: UIView = {
         let _header = UIView()
-        _header.backgroundColor = .white
+        _header.backgroundColor = .clear
         return _header
     }()
     
