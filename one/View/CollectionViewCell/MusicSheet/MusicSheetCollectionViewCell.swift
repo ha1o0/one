@@ -13,6 +13,7 @@ class MusicSheetCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     var posterImageLock = false
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,33 +21,28 @@ class MusicSheetCollectionViewCell: BaseCollectionViewCell {
         posterImageView.contentMode = .scaleAspectFill
     }
     
-    func setContent(data: MusicSheet) {
-        if data.id == "1" {
-            let index = 0
-            self.setImage(urlStr: data.posters[0])
-            let maxIndex = data.posters.count - 1
-            delayLoop(inputIndex: index, maxIndex: maxIndex, data: data)
-        } else {
-            self.setImage(urlStr: data.posters[0])
-        }
+    func setContent(data: MusicSheet, indexPath: IndexPath) {
+        self.setImage(urlStr: data.posters[0])
         nameLabel.text = data.name
+        self.indexPath = indexPath
+        self.startTimer(data: data)
     }
     
-    func delayLoop(inputIndex: Int, maxIndex: Int, data: MusicSheet) {
-        print("loop")
-        var index = inputIndex
-        delay(5) {
+    func startTimer(data: MusicSheet) {
+        if data.id != "1" {
+            return
+        }
+        var index = 0
+        let maxIndex = data.posters.count - 1
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { timer in
             index += 1
             if index > maxIndex {
                 index = 0
             }
-            if !self.posterImageLock {
-                self.setImage(urlStr: data.posters[index], withAnimate: true)
-            }
-            if data.posters.count > 1 {
-                self.delayLoop(inputIndex: index, maxIndex: maxIndex, data: data)
-            }
-        }
+            self.setImage(urlStr: data.posters[index], withAnimate: true)
+        })
+        TimerManager.shared.invalidateTimer(timerName: .musicPosterLoop)
+        TimerManager.shared.setTimer(timerName: .musicPosterLoop, timer: timer)
     }
     
     func setImage(urlStr: String, withAnimate: Bool = false) {
@@ -70,7 +66,7 @@ class MusicSheetCollectionViewCell: BaseCollectionViewCell {
     }
     
     deinit {
-        print("deinit MusicSheetCollectionViewCell")
+        print("deinit MusicSheetCollectionViewCell: \(String(describing: indexPath))")
     }
 
 }

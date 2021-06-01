@@ -74,6 +74,8 @@
 		E9A59EF8266472CA00FA458B /* MusicSheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EF6266472CA00FA458B /* MusicSheetCollectionViewCell.swift */; };
 		E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59EF7266472CA00FA458B /* MusicSheetCollectionViewCell.xib */; };
 		E9A59EFB2664748800FA458B /* MusicSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EFA2664748800FA458B /* MusicSheet.swift */; };
+		E9A59EFF2665FF4D00FA458B /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EFE2665FF4D00FA458B /* TimerManager.swift */; };
+		E9A59F01266615F600FA458B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F00266615F600FA458B /* CacheManager.swift */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -205,6 +207,8 @@
 		E9A59EF6266472CA00FA458B /* MusicSheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSheetCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9A59EF7266472CA00FA458B /* MusicSheetCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicSheetCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9A59EFA2664748800FA458B /* MusicSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSheet.swift; sourceTree = "<group>"; };
+		E9A59EFE2665FF4D00FA458B /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		E9A59F00266615F600FA458B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 			children = (
 				E99BC182262749700002C066 /* LocationService.swift */,
 				E9628EBB2654B5C200F5BECF /* NotificationService.swift */,
+				E9A59EFE2665FF4D00FA458B /* TimerManager.swift */,
+				E9A59F00266615F600FA458B /* CacheManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -956,6 +962,7 @@
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */,
 				E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */,
+				E9A59F01266615F600FA458B /* CacheManager.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
@@ -971,6 +978,7 @@
 				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
+				E9A59EFF2665FF4D00FA458B /* TimerManager.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */,
 				E9A59EF8266472CA00FA458B /* MusicSheetCollectionViewCell.swift in Sources */,
