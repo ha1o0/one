@@ -18,6 +18,7 @@ class TimerManager {
     
     enum TimerName: String {
         case musicPosterLoop = "musicPosterLoop"
+        case musicCarouselLoop = "musicCarouselLoop"
     }
     
     func setTimer(timerName: TimerName, timer: Timer) {

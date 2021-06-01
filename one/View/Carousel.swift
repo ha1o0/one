@@ -20,9 +20,29 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         return _indicatorView
     }()
     var images: [MusicPoster] = []
+    var imageIndexs: [Int] = []
     var pageCallback: ((Int) -> Void)?
     var doCallbackInvock = false
-    var currentIndex = 0
+    var currentCollectionIndex = 0
+    var totalIndex = 100
+    var totalGroup: Int {
+        get {
+            return totalIndex / images.count
+        }
+    }
+    var centerGroupStartIndex: Int {
+        get {
+            return (totalGroup / 2) * images.count
+        }
+    }
+    var currentIndex: Int = 0 {
+        didSet {
+            updateIndicator()
+            if let callback = self.pageCallback {
+                callback(currentIndex)
+            }
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +51,12 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     convenience init(images: [MusicPoster] = []) {
         self.init()
-        print("convenience init")
         self.images = images
+        for _ in 0..<totalGroup {
+            for index in 0..<images.count {
+                self.imageIndexs.append(index)
+            }
+        }
         self.commonInit()
     }
     
@@ -67,8 +91,16 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
             maker.centerX.equalToSuperview()
             maker.bottom.equalToSuperview().offset(-20)
             maker.height.equalTo(3)
-            maker.width.equalTo(self.images.count * 15 + (images.count - 1) * Int(indicatorView.spacing))
+            maker.width.equalTo(self.images.count * 10 + (images.count - 1) * Int(indicatorView.spacing))
         }
+//        currentCollectionIndex = centerGroupStartIndex
+//        collectionView.scrollToItem(at: IndexPath(row: currentCollectionIndex , section: 0), at: .centeredHorizontally, animated: true)
+        let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { timer in
+            self.currentCollectionIndex += 1
+            self.collectionView.scrollToItem(at: IndexPath(row: self.currentCollectionIndex, section: 0), at: .centeredHorizontally, animated: true)
+        }
+        TimerManager.shared.setTimer(timerName: .musicCarouselLoop, timer: timer)
+        
     }
     
     override func draw(_ rect: CGRect) {
@@ -80,12 +112,13 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return imageIndexs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as! CarouselCollectionViewCell
-        cell.setContent(data: images[indexPath.row])
+        let imageIndex = imageIndexs[indexPath.row]
+        cell.setContent(data: images[imageIndex])
         return cell
     }
     
@@ -102,10 +135,11 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 //        }
 //    }
     
+    // scrollToItem trigger
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        print("animation")
+//        print("scrollViewDidEndScrollingAnimation")
         doCallbackInvock = true
-        
+        self.resetPositionAfterScroll(scrollView)
     }
     
     func setPage(index: Int) {
@@ -116,16 +150,18 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         currentIndex = index
     }
     
+    // 人为滑动trigger
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        print("scrollViewDidEndDecelerating")
+        self.resetPositionAfterScroll(scrollView)
+    }
+    
+    func resetPositionAfterScroll(_ scrollView: UIScrollView) {
         let newIndex = Int(scrollView.contentOffset.x / self.frame.width)
-        if newIndex == currentIndex {
-            return
-        }
-        currentIndex = newIndex
-        updateIndicator()
-        if let callback = self.pageCallback {
-            callback(currentIndex)
-        }
+        let realIndex = self.imageIndexs[newIndex]
+        currentCollectionIndex = centerGroupStartIndex + realIndex
+        collectionView.scrollToItem(at: IndexPath(row: currentCollectionIndex, section: 0), at: .centeredHorizontally, animated: false)
+        currentIndex = realIndex
     }
     
     func updateIndicator() {
