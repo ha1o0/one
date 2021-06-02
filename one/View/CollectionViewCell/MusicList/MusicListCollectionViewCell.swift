@@ -12,16 +12,16 @@ class MusicListCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var cellContentView: UIView!
     
     var rows = 3
-    var rowHeight = 60
+    var rowHeight = 70
     
     override func awakeFromNib() {
         super.awakeFromNib()
         print("awakeFromNib MusicListCollectionViewCell")
         for index in 0..<rows {
-            let musicListCellView = viewFromNib("MusicListTableViewCell") as! MusicListTableViewCell
-            let musicListCellContentView = musicListCellView.contentView
-            self.cellContentView.addSubview(musicListCellContentView)
-            musicListCellContentView.snp.makeConstraints { (maker) in
+            let music = Music(id: "", poster: "", name: "123", subtitle: "456", playCount: 0, author: "789")
+            let musicListCellView = MusicListCellView(music: music)
+            self.cellContentView.addSubview(musicListCellView)
+            musicListCellView.snp.makeConstraints { (maker) in
                 maker.leading.trailing.equalToSuperview()
                 maker.top.equalToSuperview().offset(index * rowHeight)
                 maker.height.equalTo(rowHeight)
@@ -31,10 +31,10 @@ class MusicListCollectionViewCell: BaseCollectionViewCell {
     
     func setContent(data: [Music]) {
         print("setcontent")
-//        for (index, subview) in self.cellContentView.subviews.enumerated() {
-//            let subcontentView = subview as! MusicListTableViewCell
-//            subcontentView.setContent(data: data[index])
-//        }
+        for (index, subview) in self.cellContentView.subviews.enumerated() {
+            let subcontentView = subview as! MusicListCellView
+            subcontentView.setContent(data: data[index])
+        }
     }
 
 }

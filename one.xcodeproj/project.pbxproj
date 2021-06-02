@@ -30,6 +30,7 @@
 		E992243426667CF50038BAB7 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992243326667CF50038BAB7 /* MusicList.swift */; };
 		E9922451266681220038BAB7 /* MusicListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */; };
 		E9922452266681220038BAB7 /* MusicListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */; };
+		E99224672667D0600038BAB7 /* MusicListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224662667D0600038BAB7 /* MusicListCellView.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -168,6 +169,7 @@
 		E992243326667CF50038BAB7 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
 		E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListCollectionViewCell.xib; sourceTree = "<group>"; };
+		E99224662667D0600038BAB7 /* MusicListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCellView.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
 				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
 				E992243326667CF50038BAB7 /* MusicList.swift */,
+				E99224662667D0600038BAB7 /* MusicListCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -977,6 +980,7 @@
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,
+				E99224672667D0600038BAB7 /* MusicListCellView.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
 				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,

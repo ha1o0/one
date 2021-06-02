@@ -24,8 +24,8 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     lazy var collectionView: UICollectionView = {
         let layout = CollectionViewLayout()
-        layout.minimumLineSpacing = 15
-        layout.itemSize = CGSize(width: 100, height: 150)
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: SCREEN_WIDTH - 30, height: 210)
         let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         _collectionView.backgroundColor = .clear
         return _collectionView
@@ -58,11 +58,13 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         self.addSubview(header)
         header.snp.makeConstraints { maker in
             maker.leading.top.trailing.equalToSuperview()
-            maker.height.equalTo(35)
+            maker.height.equalTo(30)
         }
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { maker in
-            maker.bottom.leading.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.leading.equalToSuperview().offset(5)
+            maker.trailing.equalToSuperview().offset(-5)
             maker.top.equalTo(header.snp.bottom)
         }
         collectionView.delegate = self

@@ -238,7 +238,7 @@ class MusicHomeViewController: BaseTableViewController {
             return 220
         }
         if section == 3 {
-            return 220
+            return 260
         }
         return .leastNonzeroMagnitude
     }
