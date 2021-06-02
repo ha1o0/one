@@ -21,6 +21,9 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         setNavigation()
         setTableView()
+        let aa = [1,2,3,4,5]
+        let bb = aa.count / 3
+        print(ceil(Double(bb)))
         // Do any additional setup after loading the view.
     }
 

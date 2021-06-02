@@ -16,10 +16,12 @@ class MusicListCollectionViewCell: BaseCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("awakeFromNib MusicListCollectionViewCell")
         for index in 0..<rows {
             let musicListCellView = viewFromNib("MusicListTableViewCell") as! MusicListTableViewCell
-            self.cellContentView.addSubview(musicListCellView)
-            musicListCellView.snp.makeConstraints { (maker) in
+            let musicListCellContentView = musicListCellView.contentView
+            self.cellContentView.addSubview(musicListCellContentView)
+            musicListCellContentView.snp.makeConstraints { (maker) in
                 maker.leading.trailing.equalToSuperview()
                 maker.top.equalToSuperview().offset(index * rowHeight)
                 maker.height.equalTo(rowHeight)
@@ -28,10 +30,11 @@ class MusicListCollectionViewCell: BaseCollectionViewCell {
     }
     
     func setContent(data: [Music]) {
-        for (index, subview) in self.cellContentView.subviews.enumerated() {
-            let subcontentView = subview as! MusicListTableViewCell
-            subcontentView.setContent(data: data[index])
-        }
+        print("setcontent")
+//        for (index, subview) in self.cellContentView.subviews.enumerated() {
+//            let subcontentView = subview as! MusicListTableViewCell
+//            subcontentView.setContent(data: data[index])
+//        }
     }
 
 }

@@ -29,7 +29,6 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         _collectionView.backgroundColor = .clear
         return _collectionView
-        return _collectionView
     }()
     
     var musics: [Music] = []
@@ -43,6 +42,7 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     convenience init(musics: [Music] = [], headerName: String = "") {
         self.init()
+        print("convenience musiclistview")
         self.musics = musics
         self.headerName = headerName
         self.commonInit()
@@ -73,19 +73,18 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return musics.count / 3
+        return Int(ceil(Double(musics.count / 3)))
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "MusicListCollectionViewCell", for: indexPath) as! MusicListCollectionViewCell
         var currentMusics: [Music] = []
-        let singleColumnCellNumber = cell.rows
         for (index, music) in musics.enumerated() {
-            if index % singleColumnCellNumber == indexPath.row {
+            if index % collectionView.numberOfItems(inSection: 0) == indexPath.row {
                 currentMusics.append(music)
             }
         }
-        
+        print(currentMusics)
         cell.setContent(data: currentMusics)
         return cell
     }

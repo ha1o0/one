@@ -90,9 +90,6 @@ class MusicHomeViewController: BaseTableViewController {
         musics.append(Music(id: "4", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
         musics.append(Music(id: "5", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
         musics.append(Music(id: "6", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "7", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "8", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "9", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
         
         CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
             self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))
@@ -218,9 +215,9 @@ class MusicHomeViewController: BaseTableViewController {
             }
         }
         if section == 3 {
-            let musicSheetView = MusicListView(musics: headerData.items as! [Music], headerName: headerData.title)
-            header.addSubview(musicSheetView)
-            musicSheetView.snp.makeConstraints { maker in
+            let musicListView = MusicListView(musics: headerData.items as! [Music], headerName: headerData.title)
+            header.addSubview(musicListView)
+            musicListView.snp.makeConstraints { maker in
                 maker.top.equalToSuperview().offset(10)
                 maker.bottom.equalToSuperview().offset(-10)
                 maker.leading.equalToSuperview().offset(10)
