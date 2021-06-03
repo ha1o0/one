@@ -18,6 +18,7 @@ class MusicHomeViewController: BaseTableViewController {
     
     lazy var weatherButton: UIButton = {
         let _weatherButton = UIButton.getSystemIconBtn(name: "sun.max.fill", color: .black)
+        _weatherButton.addTarget(self, action: #selector(changeTabbar), for: .touchUpInside)
         return _weatherButton
     }()
     
@@ -171,6 +172,10 @@ class MusicHomeViewController: BaseTableViewController {
     
     @objc func showLeftVc() {
         appDelegate.rootVc?.drawerVc.openLeftVc()
+    }
+    
+    @objc func changeTabbar() {
+        appDelegate.rootVc?.drawerVc.tabbarVc?.switchBlurStyle()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

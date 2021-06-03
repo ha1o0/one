@@ -9,6 +9,9 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    var defaultBlurStyles: [UIBlurEffect.Style] = [.extraLight, .dark]
+    var currentBlurStyleIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("tabbar didload")
@@ -45,8 +48,50 @@ class TabBarViewController: UITabBarController {
         }
         
         self.viewControllers = items
-        self.tabBar.barTintColor = UIColor.white
-        self.tabBar.backgroundColor = UIColor.white
+        self.setTabbar()
+    }
+    
+    func setTabbar() {
+        tabBar.isTranslucent = true
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
+        tabBar.barTintColor = .clear
+        tabBar.backgroundColor = .clear
+        tabBar.layer.backgroundColor = UIColor.clear.cgColor
+        let blurView = getBlurView(style: defaultBlurStyles[currentBlurStyleIndex])
+        blurView.frame = self.tabBar.bounds
+        tabBar.insertSubview(blurView, at: 0)
+    }
+    
+    func getBlurView(style: UIBlurEffect.Style) -> UIVisualEffectView {
+        let _blurEffect = UIBlurEffect(style: style)
+        let _blurView = UIVisualEffectView(effect: _blurEffect)
+        _blurView.autoresizingMask = .flexibleHeight
+        return _blurView
+    }
+    
+    func removeBlurView() {
+        for subview in tabBar.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    func switchBlurStyle() {
+        let defaultTotalStyleCount = defaultBlurStyles.count
+        currentBlurStyleIndex += 1
+        if currentBlurStyleIndex == defaultTotalStyleCount {
+            currentBlurStyleIndex = 0
+        }
+        setBlurForTabbar(style: defaultBlurStyles[currentBlurStyleIndex])
+    }
+    
+    func setBlurForTabbar(style: UIBlurEffect.Style) {
+        let blurView = getBlurView(style: style)
+        blurView.frame = self.tabBar.bounds
+        self.removeBlurView()
+        tabBar.insertSubview(blurView, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
