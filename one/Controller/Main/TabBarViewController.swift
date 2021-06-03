@@ -7,10 +7,26 @@
 
 import UIKit
 
+struct TabbarItem {
+    var vc: UIViewController
+    var title = ""
+    var imageName = ""
+    var selectedImageName = ""
+}
+
 class TabBarViewController: UITabBarController {
 
     var defaultBlurStyles: [UIBlurEffect.Style] = [.extraLight, .dark]
+    var defaultBarColors: [[UIColor]] = [[UIColor.main, UIColor.tabBarGray], [UIColor.white, UIColor.tabBarGray]]
     var currentBlurStyleIndex: Int = 0
+    var tabbarItems: [TabbarItem] = {
+        var items: [TabbarItem] = []
+        let item1 = TabbarItem(vc: HomeViewController(), title: "首页", imageName: "home", selectedImageName: "homeSelected")
+        items.append(item1)
+        let item2 = TabbarItem(vc: MusicHomeViewController(), title: "我的", imageName: "my", selectedImageName: "mySelected")
+        items.append(item2)
+        return items
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,27 +42,18 @@ class TabBarViewController: UITabBarController {
     }
     
     func setup() {
-        let homeController = HomeViewController()
-        let homeNavigationVc = BaseNavigationViewController(rootViewController: homeController)
-        homeNavigationVc.navigationBar.isHidden = true
-        homeNavigationVc.tabBarItem.title = "首页"
-        homeNavigationVc.tabBarItem.image = UIImage(named: "home")
-        homeNavigationVc.tabBarItem.selectedImage = UIImage(named: "homeSelected")
-        
-        let testController = MusicHomeViewController()
-        let testNavigationVc = BaseNavigationViewController(rootViewController: testController)
-        testNavigationVc.navigationBar.isHidden = true
-        testNavigationVc.tabBarItem.title = "我的"
-        testNavigationVc.tabBarItem.image = UIImage(named: "my")
-        testNavigationVc.tabBarItem.selectedImage = UIImage(named: "mySelected")
-        
-        let items = [homeNavigationVc, testNavigationVc]
-        for item in items {
-            item.tabBarItem.selectedImage = item.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
-            item.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.main], for: .selected)
-            item.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.tabBarGray], for: .normal)
+        var items: [BaseNavigationViewController] = []
+        for barItem in tabbarItems {
+            let navVc = BaseNavigationViewController(rootViewController: barItem.vc)
+            navVc.navigationBar.isHidden = true
+            navVc.tabBarItem.title = barItem.title
+            navVc.tabBarItem.image = UIImage(named: barItem.imageName)
+            navVc.tabBarItem.selectedImage = UIImage(named: barItem.selectedImageName)
+            items.append(navVc)
         }
-        
+
+        let colors = defaultBarColors[currentBlurStyleIndex]
+        setTabbarColor(colors: colors)
         self.viewControllers = items
         self.setTabbar()
     }
@@ -85,6 +92,7 @@ class TabBarViewController: UITabBarController {
             currentBlurStyleIndex = 0
         }
         setBlurForTabbar(style: defaultBlurStyles[currentBlurStyleIndex])
+        setTabbarColor(colors: defaultBarColors[currentBlurStyleIndex])
     }
     
     func setBlurForTabbar(style: UIBlurEffect.Style) {
@@ -92,6 +100,19 @@ class TabBarViewController: UITabBarController {
         blurView.frame = self.tabBar.bounds
         self.removeBlurView()
         tabBar.insertSubview(blurView, at: 0)
+    }
+    
+    func setTabbarColor(colors: [UIColor]) {
+        guard let items = self.viewControllers else {
+            return
+        }
+        for (index, item) in items.enumerated() {
+            let barItem = tabbarItems[index]
+            item.tabBarItem.selectedImage = UIImage(named: colors[0] == UIColor.white ? barItem.imageName : barItem.selectedImageName)
+            item.tabBarItem.selectedImage = item.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
+            item.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors[0]], for: .selected)
+            item.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: colors[1]], for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
