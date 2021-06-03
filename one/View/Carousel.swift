@@ -96,6 +96,7 @@ class Carousel: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         }
 //        currentCollectionIndex = centerGroupStartIndex
 //        collectionView.scrollToItem(at: IndexPath(row: currentCollectionIndex , section: 0), at: .centeredHorizontally, animated: true)
+        TimerManager.shared.invalidateTimer(timerName: .musicCarouselLoop)
         let timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(autoLoopInterval), repeats: true) { timer in
             self.currentCollectionIndex += 1
             self.collectionView.scrollToItem(at: IndexPath(row: self.currentCollectionIndex, section: 0), at: .centeredHorizontally, animated: true)
