@@ -25,7 +25,8 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     lazy var collectionView: UICollectionView = {
         let layout = CollectionViewLayout()
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: SCREEN_WIDTH - 30, height: 210)
+        layout.itemSize = CGSize(width: SCREEN_WIDTH - 20, height: 70)
+        layout.scrollDirection = .horizontal
         let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         _collectionView.backgroundColor = .clear
         return _collectionView
@@ -63,31 +64,25 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { maker in
             maker.bottom.equalToSuperview()
-            maker.leading.equalToSuperview().offset(5)
-            maker.trailing.equalToSuperview().offset(-5)
+            maker.leading.equalToSuperview().offset(0)
+            maker.trailing.equalToSuperview().offset(0)
             maker.top.equalTo(header.snp.bottom)
         }
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
-        registerNibWithName("MusicListCollectionViewCell", collectionView: collectionView)
+        registerNibWithName("MusicListItemCollectionViewCell", collectionView: collectionView)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(ceil(Double(musics.count / 3)))
+        return musics.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "MusicListCollectionViewCell", for: indexPath) as! MusicListCollectionViewCell
-        var currentMusics: [Music] = []
-        for (index, music) in musics.enumerated() {
-            if index % collectionView.numberOfItems(inSection: 0) == indexPath.row {
-                currentMusics.append(music)
-            }
-        }
-        print(currentMusics)
-        cell.setContent(data: currentMusics)
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "MusicListItemCollectionViewCell", for: indexPath) as! MusicListItemCollectionViewCell
+        let data = musics[indexPath.row]
+        cell.setContent(data: data)
         return cell
     }
 }

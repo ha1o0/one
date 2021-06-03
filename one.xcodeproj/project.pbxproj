@@ -28,9 +28,6 @@
 		E992242B2666791E0038BAB7 /* MusicListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224292666791E0038BAB7 /* MusicListTableViewCell.swift */; };
 		E992242C2666791E0038BAB7 /* MusicListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E992242A2666791E0038BAB7 /* MusicListTableViewCell.xib */; };
 		E992243426667CF50038BAB7 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992243326667CF50038BAB7 /* MusicList.swift */; };
-		E9922451266681220038BAB7 /* MusicListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */; };
-		E9922452266681220038BAB7 /* MusicListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */; };
-		E99224672667D0600038BAB7 /* MusicListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224662667D0600038BAB7 /* MusicListCellView.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -82,6 +79,8 @@
 		E9A59EFB2664748800FA458B /* MusicSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EFA2664748800FA458B /* MusicSheet.swift */; };
 		E9A59EFF2665FF4D00FA458B /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59EFE2665FF4D00FA458B /* TimerManager.swift */; };
 		E9A59F01266615F600FA458B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F00266615F600FA458B /* CacheManager.swift */; };
+		E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */; };
+		E9A59F052668618200FA458B /* MusicListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -167,9 +166,6 @@
 		E99224292666791E0038BAB7 /* MusicListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListTableViewCell.swift; sourceTree = "<group>"; };
 		E992242A2666791E0038BAB7 /* MusicListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListTableViewCell.xib; sourceTree = "<group>"; };
 		E992243326667CF50038BAB7 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
-		E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCollectionViewCell.swift; sourceTree = "<group>"; };
-		E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListCollectionViewCell.xib; sourceTree = "<group>"; };
-		E99224662667D0600038BAB7 /* MusicListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListCellView.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +217,8 @@
 		E9A59EFA2664748800FA458B /* MusicSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSheet.swift; sourceTree = "<group>"; };
 		E9A59EFE2665FF4D00FA458B /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		E9A59F00266615F600FA458B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -362,8 +360,8 @@
 		E992243826667E8B0038BAB7 /* MusicList */ = {
 			isa = PBXGroup;
 			children = (
-				E992244F266681220038BAB7 /* MusicListCollectionViewCell.swift */,
-				E9922450266681220038BAB7 /* MusicListCollectionViewCell.xib */,
+				E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */,
+				E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */,
 			);
 			path = MusicList;
 			sourceTree = "<group>";
@@ -664,7 +662,6 @@
 				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
 				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
 				E992243326667CF50038BAB7 /* MusicList.swift */,
-				E99224662667D0600038BAB7 /* MusicListCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,13 +860,13 @@
 				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
-				E9922452266681220038BAB7 /* MusicListCollectionViewCell.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E99856192652702A006B0E1E /* MemberCardView.xib in Resources */,
 				E992242C2666791E0038BAB7 /* MusicListTableViewCell.xib in Resources */,
+				E9A59F052668618200FA458B /* MusicListItemCollectionViewCell.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
 				E99BC0F826232DFC0002C066 /* PictureCollectionViewCell.xib in Resources */,
 				E93E0EB12612039800D43B4C /* Animation1TableViewCell.xib in Resources */,
@@ -968,7 +965,6 @@
 				E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
 				E951C70E265501A9007CC3C2 /* MusicHomeViewController.swift in Sources */,
-				E9922451266681220038BAB7 /* MusicListCollectionViewCell.swift in Sources */,
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
@@ -980,7 +976,6 @@
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,
-				E99224672667D0600038BAB7 /* MusicListCellView.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
 				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
@@ -1007,6 +1002,7 @@
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */,
+				E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
 				E9E0CDE32608EDE90047DAE9 /* FunctionListTableViewCell.swift in Sources */,
 				E9E68BE52648376200929383 /* Capsule.swift in Sources */,

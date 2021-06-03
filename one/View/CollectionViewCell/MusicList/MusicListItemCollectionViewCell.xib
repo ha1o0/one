@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MusicListItemCollectionViewCell" customModule="one" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-z5-oOD">
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZIc-al-AvG">
+                                <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Bay-LN-tHU"/>
+                                    <constraint firstAttribute="width" constant="60" id="FKz-Wh-w8T"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-ze-yXY">
+                                <rect key="frame" x="80" y="10" width="69.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-mp-Wsq">
+                                <rect key="frame" x="154.5" y="12" width="6.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌手名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6r-24-PHh">
+                                <rect key="frame" x="166" y="12" width="57.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-Wj-PSE">
+                                <rect key="frame" x="80" y="43" width="229" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K3R-mp-Wsq" firstAttribute="leading" secondItem="ppn-ze-yXY" secondAttribute="trailing" constant="5" id="0fk-r6-ZgQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Dd7-Wj-PSE" secondAttribute="trailing" constant="5" id="2hy-kD-gfj"/>
+                            <constraint firstItem="ppn-ze-yXY" firstAttribute="leading" secondItem="ZIc-al-AvG" secondAttribute="trailing" constant="15" id="3dD-iQ-Add"/>
+                            <constraint firstItem="Dd7-Wj-PSE" firstAttribute="top" secondItem="ppn-ze-yXY" secondAttribute="bottom" constant="12" id="5Sl-ov-8B4"/>
+                            <constraint firstItem="R6r-24-PHh" firstAttribute="centerY" secondItem="ppn-ze-yXY" secondAttribute="centerY" id="DUa-89-DzR"/>
+                            <constraint firstItem="ZIc-al-AvG" firstAttribute="leading" secondItem="pbf-z5-oOD" secondAttribute="leading" constant="5" id="DiV-FN-LWO"/>
+                            <constraint firstItem="R6r-24-PHh" firstAttribute="leading" secondItem="K3R-mp-Wsq" secondAttribute="trailing" constant="5" id="fPS-Fq-EPv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R6r-24-PHh" secondAttribute="trailing" constant="5" id="h6Y-Iv-YVP"/>
+                            <constraint firstItem="ppn-ze-yXY" firstAttribute="top" secondItem="pbf-z5-oOD" secondAttribute="top" constant="10" id="hq8-oE-gNK"/>
+                            <constraint firstItem="K3R-mp-Wsq" firstAttribute="centerY" secondItem="ppn-ze-yXY" secondAttribute="centerY" id="mwc-Re-4d4"/>
+                            <constraint firstAttribute="bottom" secondItem="Dd7-Wj-PSE" secondAttribute="bottom" constant="10" id="pd5-sR-onJ"/>
+                            <constraint firstItem="Dd7-Wj-PSE" firstAttribute="leading" secondItem="ppn-ze-yXY" secondAttribute="leading" id="sE3-cU-dBX"/>
+                            <constraint firstItem="ZIc-al-AvG" firstAttribute="centerY" secondItem="pbf-z5-oOD" secondAttribute="centerY" id="sYv-u8-TTR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="pbf-z5-oOD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="61I-Dr-Yf4"/>
+                <constraint firstAttribute="bottom" secondItem="pbf-z5-oOD" secondAttribute="bottom" id="A96-bx-SeO"/>
+                <constraint firstAttribute="trailing" secondItem="pbf-z5-oOD" secondAttribute="trailing" id="G63-Kh-Pe9"/>
+                <constraint firstItem="pbf-z5-oOD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TQs-k4-6SU"/>
+            </constraints>
+            <size key="customSize" width="314" height="70"/>
+            <connections>
+                <outlet property="bkgView" destination="pbf-z5-oOD" id="nCO-dI-d2u"/>
+                <outlet property="musicAuthorLabel" destination="R6r-24-PHh" id="7I3-gX-48d"/>
+                <outlet property="musicInfoLabel" destination="Dd7-Wj-PSE" id="diD-7z-Oed"/>
+                <outlet property="musicNameLabel" destination="ppn-ze-yXY" id="Sjg-f4-RLC"/>
+                <outlet property="posterImageView" destination="ZIc-al-AvG" id="mGA-JN-4gN"/>
+            </connections>
+            <point key="canvasLocation" x="323.1884057971015" y="72.991071428571431"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
