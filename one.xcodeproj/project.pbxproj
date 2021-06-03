@@ -81,6 +81,7 @@
 		E9A59F01266615F600FA458B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F00266615F600FA458B /* CacheManager.swift */; };
 		E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */; };
 		E9A59F052668618200FA458B /* MusicListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */; };
+		E9A59F072668788400FA458B /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F062668788400FA458B /* MockService.swift */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -219,6 +220,7 @@
 		E9A59F00266615F600FA458B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9A59F062668788400FA458B /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				E9628EBB2654B5C200F5BECF /* NotificationService.swift */,
 				E9A59EFE2665FF4D00FA458B /* TimerManager.swift */,
 				E9A59F00266615F600FA458B /* CacheManager.swift */,
+				E9A59F062668788400FA458B /* MockService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
+				E9A59F072668788400FA458B /* MockService.swift in Sources */,
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,

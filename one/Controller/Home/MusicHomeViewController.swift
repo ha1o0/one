@@ -71,25 +71,26 @@ class MusicHomeViewController: BaseTableViewController {
         functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
         tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
         
-        let posterUrlstrs = ["https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/42/57/7e/42577e30-e629-c07e-98f0-201a4ffca0cf/source/600x600bb.jpg",
-                             "https://is3-ssl.mzstatic.com/image/thumb/Music124/v4/77/56/37/77563720-c2e3-d584-e030-69e6da668ec4/source/600x600bb.jpg",
-                             "https://is5-ssl.mzstatic.com/image/thumb/Music114/v4/54/44/50/544450ff-aaf4-79a9-1b3b-c52fb598f4fb/source/600x600bb.jpg",
-                             "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a9/85/64/a9856465-eacc-b533-b127-9796607ddb08/source/600x600bb.jpg",
-                            ]
+        var posterUrlstrs: [String] = []
+        for _ in 0..<4 {
+            posterUrlstrs.append(MockService.shared.getRandomImg())
+        }
         
         recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: posterUrlstrs, playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music115/v4/18/37/0d/18370d53-e146-a295-9da4-f772fbbde252/source/600x600bb.jpg"], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/4c/90/b5/4c90b552-8b6d-c1f5-20ee-5cb1665a5c12/source/600x600bb.jpg"], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg"], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: ["https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/c2/c9/3d/c2c93de5-7e64-f98b-9247-bffa6076d47c/source/600x600bb.jpg"], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: ["https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/03/26/12/032612ad-88f5-176f-1822-e6e19a642c5f/source/600x600bb.jpg"], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: [MockService.shared.getRandomImg()], playCount: 0))
         
-        musics.append(Music(id: "1", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "2", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "3", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "4", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "5", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "6", poster: "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/d0/d1/f8/d0d1f881-cc97-0167-a6c2-65cd54f6eb49/source/600x600bb.jpg", name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "1", poster: MockService.shared.getRandomImg(), name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "2", poster: MockService.shared.getRandomImg(), name: "灰色头像", subtitle: "你灰色头不会在跳动", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "3", poster: MockService.shared.getRandomImg(), name: "幻听", subtitle: "如今一个人听歌总是会觉得失落", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "4", poster: MockService.shared.getRandomImg(), name: "城府", subtitle: "你的城府有多深", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "5", poster: MockService.shared.getRandomImg(), name: "断桥残雪", subtitle: "断桥是否下过雪，我望着湖面", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "6", poster: MockService.shared.getRandomImg(), name: "庐州月", subtitle: "庐州的月光在我心上", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "7", poster: MockService.shared.getRandomImg(), name: "星座书上", subtitle: "最后我偷偷把那页撕掉", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "8", poster: MockService.shared.getRandomImg(), name: "违章动物", subtitle: "一群高贵气质的差人在处罚违章动物", playCount: 0, author: "许嵩"))
         
         CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
             self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))

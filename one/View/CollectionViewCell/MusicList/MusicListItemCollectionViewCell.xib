@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="width" constant="60" id="FKz-Wh-w8T"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-ze-yXY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-ze-yXY">
                                 <rect key="frame" x="80" y="10" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -56,7 +56,6 @@
                             <constraint firstItem="K3R-mp-Wsq" firstAttribute="leading" secondItem="ppn-ze-yXY" secondAttribute="trailing" constant="5" id="0fk-r6-ZgQ"/>
                             <constraint firstAttribute="trailing" secondItem="Dd7-Wj-PSE" secondAttribute="trailing" constant="5" id="2hy-kD-gfj"/>
                             <constraint firstItem="ppn-ze-yXY" firstAttribute="leading" secondItem="ZIc-al-AvG" secondAttribute="trailing" constant="15" id="3dD-iQ-Add"/>
-                            <constraint firstItem="Dd7-Wj-PSE" firstAttribute="top" secondItem="ppn-ze-yXY" secondAttribute="bottom" constant="12" id="5Sl-ov-8B4"/>
                             <constraint firstItem="R6r-24-PHh" firstAttribute="centerY" secondItem="ppn-ze-yXY" secondAttribute="centerY" id="DUa-89-DzR"/>
                             <constraint firstItem="ZIc-al-AvG" firstAttribute="leading" secondItem="pbf-z5-oOD" secondAttribute="leading" constant="5" id="DiV-FN-LWO"/>
                             <constraint firstItem="R6r-24-PHh" firstAttribute="leading" secondItem="K3R-mp-Wsq" secondAttribute="trailing" constant="5" id="fPS-Fq-EPv"/>

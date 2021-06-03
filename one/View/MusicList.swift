@@ -50,17 +50,19 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func commonInit() {
-        name.text = self.headerName
-        header.addSubview(name)
-        name.snp.makeConstraints { maker in
-            maker.centerY.equalToSuperview()
-            maker.leading.equalToSuperview().offset(5)
-        }
         self.addSubview(header)
         header.snp.makeConstraints { maker in
             maker.leading.top.trailing.equalToSuperview()
             maker.height.equalTo(30)
         }
+        
+        name.text = self.headerName
+        header.addSubview(name)
+        name.snp.makeConstraints { maker in
+            maker.top.equalToSuperview()
+            maker.leading.equalToSuperview().offset(5)
+        }
+        
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { maker in
             maker.bottom.equalToSuperview()
@@ -84,5 +86,10 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         let data = musics[indexPath.row]
         cell.setContent(data: data)
         return cell
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.x / scrollView.frame.width
+        print(offset)
     }
 }
