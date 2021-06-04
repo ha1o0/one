@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class MusicKTVItemCollectionViewCell: BaseCollectionViewCell {
 
     @IBOutlet weak var bkgView: UIView!
     @IBOutlet weak var playingView: UIView!
-    @IBOutlet weak var musicNameLabel: UILabel!
+    @IBOutlet weak var musicNameLabel: MarqueeLabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userNumberLabel: UILabel!
     @IBOutlet weak var imageOuterView: UIView!

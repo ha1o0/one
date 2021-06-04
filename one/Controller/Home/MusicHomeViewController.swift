@@ -197,6 +197,7 @@ class MusicHomeViewController: BaseTableViewController {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerData = tableData[section] as! MusicHomeSection
         let header = UIView()
+        let padding: CGFloat = 10
         if section == 0 {
             let carousel = Carousel(images: headerData.items as! [MusicPoster])
             carousel.pageCallback = self.updateTopViewImage
@@ -212,40 +213,40 @@ class MusicHomeViewController: BaseTableViewController {
             let functionView = MusicFunctionView(functions: headerData.items as! [MusicFunction])
             header.addSubview(functionView)
             functionView.snp.makeConstraints { (maker) in
-                maker.top.equalToSuperview().offset(10)
-                maker.bottom.equalToSuperview().offset(-10)
-                maker.leading.equalToSuperview().offset(10)
-                maker.trailing.equalToSuperview().offset(-10)
+                maker.top.equalToSuperview().offset(padding)
+                maker.bottom.equalToSuperview().offset(-padding)
+                maker.leading.equalToSuperview().offset(padding)
+                maker.trailing.equalToSuperview().offset(-padding)
             }
         }
         if section == 2 {
             let musicSheetView = MusicSheetView(musicSheets: headerData.items as! [MusicSheet], headerName: headerData.title)
             header.addSubview(musicSheetView)
             musicSheetView.snp.makeConstraints { maker in
-                maker.top.equalToSuperview().offset(10)
-                maker.bottom.equalToSuperview().offset(-10)
-                maker.leading.equalToSuperview().offset(10)
-                maker.trailing.equalToSuperview().offset(-10)
+                maker.top.equalToSuperview().offset(padding)
+                maker.bottom.equalToSuperview().offset(-padding)
+                maker.leading.equalToSuperview().offset(padding)
+                maker.trailing.equalToSuperview().offset(-padding)
             }
         }
         if section == 3 {
             let musicListView = MusicListView(musics: headerData.items as! [Music], headerName: headerData.title)
             header.addSubview(musicListView)
             musicListView.snp.makeConstraints { maker in
-                maker.top.equalToSuperview().offset(10)
-                maker.bottom.equalToSuperview().offset(-10)
-                maker.leading.equalToSuperview().offset(10)
-                maker.trailing.equalToSuperview().offset(-10)
+                maker.top.equalToSuperview().offset(padding)
+                maker.bottom.equalToSuperview().offset(-padding)
+                maker.leading.equalToSuperview().offset(padding)
+                maker.trailing.equalToSuperview().offset(-padding)
             }
         }
         if section == 4 {
             let musicKTVView = MusicKTVView(musicKTVs: headerData.items as! [MusicKTV], headerName: headerData.title)
             header.addSubview(musicKTVView)
             musicKTVView.snp.makeConstraints { maker in
-                maker.top.equalToSuperview().offset(10)
-                maker.bottom.equalToSuperview().offset(-10)
-                maker.leading.equalToSuperview().offset(10)
-                maker.trailing.equalToSuperview().offset(-10)
+                maker.top.equalToSuperview().offset(padding)
+                maker.bottom.equalToSuperview().offset(-padding)
+                maker.leading.equalToSuperview().offset(padding)
+                maker.trailing.equalToSuperview().offset(-padding)
             }
         }
         return header

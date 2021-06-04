@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="15" id="iOL-rg-yep"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-ba-1lS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IF-ba-1lS" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="35" y="6.5" width="50" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -93,7 +93,7 @@
                 <outlet property="bkgView" destination="E1Z-lc-iYm" id="LQc-Bf-5E3"/>
                 <outlet property="imageOuterView" destination="sro-nT-u4h" id="GhO-Ie-i7o"/>
                 <outlet property="imageView" destination="erm-y5-NQf" id="clL-d9-Sy4"/>
-                <outlet property="musicNameLabel" destination="6IF-ba-1lS" id="nZQ-Kn-ARx"/>
+                <outlet property="musicNameLabel" destination="6IF-ba-1lS" id="Pcq-6g-7Sr"/>
                 <outlet property="playingView" destination="d47-Wr-32u" id="gz9-N2-PdI"/>
                 <outlet property="titleLabel" destination="VUo-FP-icY" id="nbd-Ja-G8m"/>
                 <outlet property="userNumberLabel" destination="Cnb-ma-Jq2" id="e9c-Za-jIr"/>
