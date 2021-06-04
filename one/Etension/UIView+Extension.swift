@@ -39,7 +39,7 @@ extension UIView {
     }
     
     //设置渐变背景色
-    func setGradientBackgroundColor(colors: [Any], locations: [NSNumber], startPoint: CGPoint, endPoint: CGPoint) {
+    func setGradientBackgroundColor(colors: [Any], locations: [NSNumber], startPoint: CGPoint, endPoint: CGPoint, _ cornerRadius: CGFloat = 0) {
         self.layoutIfNeeded()
         let layer = CAGradientLayer()
 
@@ -56,6 +56,10 @@ extension UIView {
 
         //结束的坐标点
         layer.endPoint = endPoint
+        
+        if cornerRadius > 0 {
+            layer.cornerRadius = cornerRadius
+        }
 
         //设置渐变背景色后，view上面的内容无法显示，所以将layer放在最底层
         self.layer.insertSublayer(layer, at: 0)

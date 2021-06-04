@@ -53,6 +53,7 @@ class MusicHomeViewController: BaseTableViewController {
     var functions: [MusicFunction] = []
     var recommendedMusics: [MusicSheet] = []
     var musics: [Music] = []
+    var ktvs: [MusicKTV] = []
     
     override func viewDidLoad() {
         setTableView()
@@ -93,9 +94,16 @@ class MusicHomeViewController: BaseTableViewController {
         musics.append(Music(id: "7", poster: MockService.shared.getRandomImg(), name: "星座书上", subtitle: "最后我偷偷把那页撕掉", playCount: 0, author: "许嵩"))
         musics.append(Music(id: "8", poster: MockService.shared.getRandomImg(), name: "违章动物", subtitle: "一群高贵气质的差人在处罚违章动物", playCount: 0, author: "许嵩"))
         
+        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "1", roomTitle: "难听歌房营业中", currentMusicName: "星辰大海 - 黄潇潇", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 11))
+        ktvs.append(MusicKTV(roomColors: ["#84fab0", "#8fd3f4"], roomId: "2", roomTitle: "嗯", currentMusicName: "小情歌 - 苏打绿", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 5))
+        ktvs.append(MusicKTV(roomColors: ["#f6d365", "#fda085"], roomId: "3", roomTitle: "在线满30人，送保时捷", currentMusicName: "寂寞的季节 - 陶喆", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 3))
+        ktvs.append(MusicKTV(roomColors: ["#48c6ef", "#6f86d6"], roomId: "4", roomTitle: "Our job is only to love", currentMusicName: "焰火青年 - 刘森", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 102))
+        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "5", roomTitle: "随意", currentMusicName: "不该用情 - 柯积", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 1))
+        
         CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
             self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))
             self.tableData.append(MusicHomeSection(type: .musicList, items: self.musics, title: "送你一壶古风酿的酒"))
+            self.tableData.append(MusicHomeSection(type: .ktv, items: self.ktvs, title: "唱吧KTV"))
             self.tableView.reloadData()
         }
         
@@ -230,6 +238,16 @@ class MusicHomeViewController: BaseTableViewController {
                 maker.trailing.equalToSuperview().offset(-10)
             }
         }
+        if section == 4 {
+            let musicKTVView = MusicKTVView(musicKTVs: headerData.items as! [MusicKTV], headerName: headerData.title)
+            header.addSubview(musicKTVView)
+            musicKTVView.snp.makeConstraints { maker in
+                maker.top.equalToSuperview().offset(10)
+                maker.bottom.equalToSuperview().offset(-10)
+                maker.leading.equalToSuperview().offset(10)
+                maker.trailing.equalToSuperview().offset(-10)
+            }
+        }
         return header
     }
     
@@ -245,6 +263,9 @@ class MusicHomeViewController: BaseTableViewController {
         }
         if section == 3 {
             return 260
+        }
+        if section == 4 {
+            return 220
         }
         return .leastNonzeroMagnitude
     }

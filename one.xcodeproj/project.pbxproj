@@ -82,6 +82,11 @@
 		E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */; };
 		E9A59F052668618200FA458B /* MusicListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */; };
 		E9A59F072668788400FA458B /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F062668788400FA458B /* MockService.swift */; };
+		E9A59F0B266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F09266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.swift */; };
+		E9A59F0C266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F0A266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.xib */; };
+		E9A59F0F266A205F00FA458B /* MusicKTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F0E266A205F00FA458B /* MusicKTV.swift */; };
+		E9A59F11266A261100FA458B /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F10266A261100FA458B /* playing.gif */; };
+		E9A59F13266A276200FA458B /* playing2.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F12266A276200FA458B /* playing2.gif */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -221,6 +226,11 @@
 		E9A59F022668618200FA458B /* MusicListItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9A59F032668618200FA458B /* MusicListItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9A59F062668788400FA458B /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		E9A59F09266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKTVItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9A59F0A266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicKTVItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9A59F0E266A205F00FA458B /* MusicKTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKTV.swift; sourceTree = "<group>"; };
+		E9A59F10266A261100FA458B /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
+		E9A59F12266A276200FA458B /* playing2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing2.gif; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -402,6 +412,7 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59F08266A1A5100FA458B /* MusicKTV */,
 				E992243826667E8B0038BAB7 /* MusicList */,
 				E9A59EF52664720200FA458B /* MusicSheet */,
 				E9922412265FC7810038BAB7 /* Function */,
@@ -500,9 +511,40 @@
 			path = MusicSheet;
 			sourceTree = "<group>";
 		};
+		E9A59F08266A1A5100FA458B /* MusicKTV */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59F09266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.swift */,
+				E9A59F0A266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.xib */,
+			);
+			path = MusicKTV;
+			sourceTree = "<group>";
+		};
+		E9A59F0D266A1DD200FA458B /* MusicHome */ = {
+			isa = PBXGroup;
+			children = (
+				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
+				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
+				E992243326667CF50038BAB7 /* MusicList.swift */,
+				E9A59F0E266A205F00FA458B /* MusicKTV.swift */,
+			);
+			path = MusicHome;
+			sourceTree = "<group>";
+		};
+		E9A59F15266A279300FA458B /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59F10266A261100FA458B /* playing.gif */,
+				E9A59F12266A276200FA458B /* playing2.gif */,
+				E9E0CD932607963C0047DAE9 /* loading.gif */,
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
 		E9A952F6263171140032EADB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59F15266A279300FA458B /* gif */,
 				E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */,
 				E99BC1FE26386B820002C066 /* QRCodeScanLine.png */,
 				E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */,
@@ -546,7 +588,6 @@
 				E9E0CB5A26062A890047DAE9 /* Assets.xcassets */,
 				E9E0CB5C26062A890047DAE9 /* LaunchScreen.storyboard */,
 				E9E0CB5F26062A890047DAE9 /* Info.plist */,
-				E9E0CD932607963C0047DAE9 /* loading.gif */,
 				E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */,
 			);
 			path = one;
@@ -653,6 +694,7 @@
 		E9E0CD84260794FE0047DAE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59F0D266A1DD200FA458B /* MusicHome */,
 				E998560F26526F01006B0E1E /* Drawer */,
 				E93E0EA72611DF6A00D43B4C /* LiveListView.swift */,
 				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
@@ -662,9 +704,6 @@
 				E9A1357D262443A000DEC078 /* Bezier */,
 				E9E68BE42648376100929383 /* Capsule.swift */,
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
-				E992241D265FCDB40038BAB7 /* MusicFunction.swift */,
-				E9A59EFA2664748800FA458B /* MusicSheet.swift */,
-				E992243326667CF50038BAB7 /* MusicList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -850,6 +889,7 @@
 				E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */,
 				E9E0CB5E26062A890047DAE9 /* LaunchScreen.storyboard in Resources */,
 				E9E0CB8926063A450047DAE9 /* BaseViewController.xib in Resources */,
+				E9A59F0C266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.xib in Resources */,
 				E9E0CD942607963C0047DAE9 /* loading.gif in Resources */,
 				E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */,
 				E99BC16426272A300002C066 /* MapViewController.xib in Resources */,
@@ -858,6 +898,7 @@
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
+				E9A59F13266A276200FA458B /* playing2.gif in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E998562626534C07006B0E1E /* LeftDrawerTableViewCell.xib in Resources */,
 				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
@@ -879,6 +920,7 @@
 				E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
+				E9A59F11266A261100FA458B /* playing.gif in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
@@ -975,7 +1017,9 @@
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
 				E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */,
+				E9A59F0B266A1A6D00FA458B /* MusicKTVItemCollectionViewCell.swift in Sources */,
 				E9A59EFB2664748800FA458B /* MusicSheet.swift in Sources */,
+				E9A59F0F266A205F00FA458B /* MusicKTV.swift in Sources */,
 				E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */,
 				E9A135B82624477C00DEC078 /* CouponRightView.swift in Sources */,
 				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,

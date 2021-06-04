@@ -57,4 +57,11 @@ struct MusicFunction {
     var to: String = ""
 }
 
-
+struct MusicKTV {
+    var roomColors: [String] = [] // 渐变色号
+    var roomId: String = ""
+    var roomTitle: String = ""
+    var currentMusicName: String = ""
+    var currentImage: String = ""
+    var roomUserNumber: Int = 0
+}
