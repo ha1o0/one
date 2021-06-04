@@ -25,7 +25,7 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     lazy var collectionView: UICollectionView = {
         let layout = CollectionViewLayout()
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: SCREEN_WIDTH - 20, height: 70)
+        layout.itemSize = CGSize(width: SCREEN_WIDTH - 50, height: 70)
         layout.scrollDirection = .horizontal
         let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         _collectionView.backgroundColor = .clear
@@ -33,6 +33,7 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }()
     
     var musics: [Music] = []
+    var rowsPerColumn = 3
     var headerName = ""
     
     
@@ -91,5 +92,6 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.x / scrollView.frame.width
         print(offset)
+//        collectionView.contentOffset = CGPoint(x: (SCREEN_WIDTH - 50) * ceil(offset), y: 0)
     }
 }
