@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-z5-oOD">
+                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-z5-oOD">
                         <rect key="frame" x="0.0" y="0.0" width="314" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZIc-al-AvG">
@@ -59,7 +59,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K3R-mp-Wsq" firstAttribute="leading" secondItem="ppn-ze-yXY" secondAttribute="trailing" constant="5" id="0fk-r6-ZgQ"/>
                             <constraint firstAttribute="trailing" secondItem="Dd7-Wj-PSE" secondAttribute="trailing" constant="5" id="2hy-kD-gfj"/>
@@ -79,6 +79,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="pbf-z5-oOD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="61I-Dr-Yf4"/>
                 <constraint firstAttribute="bottom" secondItem="pbf-z5-oOD" secondAttribute="bottom" id="A96-bx-SeO"/>

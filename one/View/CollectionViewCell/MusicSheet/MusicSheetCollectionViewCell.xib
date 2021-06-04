@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="99" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfP-kW-pUh">
+                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfP-kW-pUh">
                         <rect key="frame" x="0.0" y="0.0" width="99" height="125"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9S-pI-tap">
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="J9S-pI-tap" firstAttribute="top" secondItem="FfP-kW-pUh" secondAttribute="top" id="8t4-2d-eQw"/>
                             <constraint firstItem="lk0-qq-gcT" firstAttribute="top" secondItem="J9S-pI-tap" secondAttribute="bottom" constant="4" id="Idn-Xa-XSY"/>
