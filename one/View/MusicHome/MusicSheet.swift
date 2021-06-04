@@ -78,12 +78,12 @@ class MusicSheetView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "MusicSheetCollectionViewCell", for: indexPath) as! MusicSheetCollectionViewCell
         cell.setContent(data: musicSheets[indexPath.row], indexPath: indexPath)
-        print("setCell: \(indexPath)")
+//        print("setCell: \(indexPath)")
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("enddisplay: \(indexPath)")
+//        print("enddisplay: \(indexPath)")
         let cellData = musicSheets[indexPath.row]
         if cellData.posters.count > 0 {
             // 不能在这里结束定时器
@@ -92,6 +92,6 @@ class MusicSheetView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("willDisplay: \(indexPath)")
+//        print("willDisplay: \(indexPath)")
     }
 }

@@ -25,7 +25,7 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     lazy var collectionView: UICollectionView = {
         let layout = CollectionViewLayout()
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: SCREEN_WIDTH - 50, height: 70)
+        layout.itemSize = CGSize(width: SCREEN_WIDTH - 20, height: 70)
         layout.scrollDirection = .horizontal
         let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         _collectionView.backgroundColor = .clear
