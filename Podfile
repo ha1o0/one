@@ -23,6 +23,7 @@ target 'one' do
     pod 'SDWebImage', '~> 5.0'
     pod 'Toast-Swift', '~> 5.0.1'
     pod 'FreeStreamer'
+    pod 'MarqueeLabel'
     pod 'Dplayer', :git =>'https://github.com/weifengsmile/Dplayer.git', :branch => 'master'
     # pod objective-c
     pod 'ZImageCropper'

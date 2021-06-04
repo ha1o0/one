@@ -6,6 +6,7 @@ PODS:
     - Toast-Swift (~> 5.0.1)
   - FreeStreamer (4.0.0):
     - Reachability (~> 3.0)
+  - MarqueeLabel (4.0.5)
   - MJRefresh (3.5.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - DLRadioButton (~> 1.4)
   - Dplayer (from `https://github.com/weifengsmile/Dplayer.git`, branch `master`)
   - FreeStreamer
+  - MarqueeLabel
   - MJRefresh
   - Moya
   - SDWebImage (~> 5.0)
@@ -35,6 +37,7 @@ SPEC REPOS:
     - Alamofire
     - DLRadioButton
     - FreeStreamer
+    - MarqueeLabel
     - MJRefresh
     - Moya
     - Reachability
@@ -58,6 +61,7 @@ SPEC CHECKSUMS:
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   Dplayer: 9279a3322be0a7b8c64c9ca9f8b2ea4ac9436ef3
   FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -66,6 +70,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   ZImageCropper: 1a5518eea94f1ce903bbfebc860bfb023d27fc62
 
-PODFILE CHECKSUM: dd34a44402a3c57a8bd8bf4b0290d0dc74f9f579
+PODFILE CHECKSUM: 896550c725e56c28a47c1691bcb2064cb07f1319
 
 COCOAPODS: 1.9.1
