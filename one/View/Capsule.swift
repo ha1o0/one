@@ -11,16 +11,18 @@ class Capsule: UIView {
     
     var text = ""
     var textColor = UIColor.lightText
+    var textFont: UIFont?
     var bkgColor = UIColor.white
     var borderColor = UIColor.white
     var borderWidth = CGFloat(1)
     
-    convenience init(text: String, bkgColor: UIColor, borderColor: UIColor, textColor: UIColor) {
+    convenience init(text: String, bkgColor: UIColor, borderColor: UIColor, textColor: UIColor, _ textFont: UIFont? = nil) {
         self.init()
         self.text = text
         self.bkgColor = bkgColor
         self.textColor = textColor
         self.borderColor = borderColor
+        self.textFont = textFont
         self.contentScaleFactor = UIScreen.main.scale
     }
     
@@ -51,7 +53,7 @@ class Capsule: UIView {
         let label = UILabel()
         label.text = text
         label.textColor = textColor
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = self.textFont != nil ? self.textFont : UIFont.systemFont(ofSize: 12)
         self.addSubview(label)
         label.snp.makeConstraints { (maker) in
             maker.center.equalToSuperview()

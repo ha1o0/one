@@ -142,7 +142,7 @@ class MusicHomeViewController: BaseTableViewController {
         self.view.addSubview(topShadowView)
         topShadowView.snp.makeConstraints { (maker) in
             maker.top.leading.trailing.equalToSuperview()
-            maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
+            maker.height.equalTo(SCREEN_HEIGHT)
         }
         
 //        self.view.addSubview(toptopShadowView)
@@ -247,6 +247,18 @@ class MusicHomeViewController: BaseTableViewController {
             return 260
         }
         return .leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 2 {
+            return 12
+        }
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+        return footer
     }
     
     func updateTopViewImage(pageIndex: Int) {

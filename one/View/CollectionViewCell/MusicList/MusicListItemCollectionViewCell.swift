@@ -13,11 +13,16 @@ class MusicListItemCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var musicNameLabel: UILabel!
     @IBOutlet weak var musicAuthorLabel: UILabel!
+    @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var musicInfoLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         posterImageView.layer.cornerRadius = 10
-        // Initialization code
+        let tag = Capsule(text: "SQ", bkgColor: .clear, borderColor: .red, textColor: .red, UIFont.systemFont(ofSize: 8))
+        tagView.addSubview(tag)
+        tag.snp.makeConstraints { maker in
+            maker.top.bottom.leading.trailing.equalToSuperview()
+        }
     }
     
     func setContent(data: Music) {

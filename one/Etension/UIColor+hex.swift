@@ -67,7 +67,7 @@ extension UIColor {
     
     /// #aaaaaa
     static var gray4: UIColor {
-        return colorWithHexString("#aaaaaa")
+        return colorWithHexString("#F5F5F5")
     }
     
     static var titleGray: UIColor {
