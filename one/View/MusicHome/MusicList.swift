@@ -23,13 +23,16 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }()
     
     lazy var collectionView: UICollectionView = {
-        let layout = CollectionViewLayout()
-        layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: SCREEN_WIDTH - 20, height: 70)
-        layout.scrollDirection = .horizontal
-        let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let _collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
+        // 必须设置为快速，否则滚动定位会非常慢
+        _collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
         _collectionView.backgroundColor = .clear
         return _collectionView
+    }()
+    
+    var collectionLayout: MusicListCollectionViewLayout = {
+        let layout = MusicListCollectionViewLayout()
+        return layout
     }()
     
     var musics: [Music] = []
@@ -47,6 +50,11 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         print("convenience musiclistview")
         self.musics = musics
         self.headerName = headerName
+        // 补偿不足collectionview宽度整数倍的部分，3为单列的item行数, 20为collectionview与屏幕宽度的差值
+        let subWidth = SCREEN_WIDTH - 20 - collectionLayout.itemSize.width
+        print("subwidth: \(subWidth)")
+        let rightInset = (ceil(CGFloat(musics.count / 3)) - 1) * subWidth
+        self.collectionLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: rightInset)
         self.commonInit()
     }
     
@@ -74,7 +82,8 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isPagingEnabled = true
+        
+//        collectionView.isPagingEnabled = true // 必须为false，否则flowLayout中重写targetContentOffset修改的contentOffset无效
         registerNibWithName("MusicListItemCollectionViewCell", collectionView: collectionView)
     }
     
@@ -90,8 +99,8 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.x / scrollView.frame.width
-        print(offset)
+//        let offset = scrollView.contentOffset.x / scrollView.frame.width
+//        print(offset)x
 //        collectionView.contentOffset = CGPoint(x: (SCREEN_WIDTH - 50) * ceil(offset), y: 0)
     }
 }
