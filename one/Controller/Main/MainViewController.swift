@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
         drawerVc.tabbarVc = tabbarVc
         drawerVc.leftVc = leftVc
         setNotification()
+        CacheManager.shared.getRefreshHeaderImages()
     }
     
     @objc func gotoVc(_ notification: NSNotification) {

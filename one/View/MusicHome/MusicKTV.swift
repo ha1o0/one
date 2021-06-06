@@ -78,7 +78,6 @@ class MusicKTVView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "MusicKTVItemCollectionViewCell", for: indexPath) as! MusicKTVItemCollectionViewCell
         cell.setContent(data: musicKTVs[indexPath.row])
-        print("setCell: \(indexPath)")
         return cell
     }
 }

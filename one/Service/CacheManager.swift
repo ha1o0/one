@@ -11,6 +11,8 @@ import SDWebImage
 class CacheManager {
     static let shared = CacheManager()
     
+    var refreshHeaderImages: [UIImage] = []
+    
     private init() {}
     
     func preCache(urlstrs: [String], callback: (() -> Void)?) {
@@ -28,5 +30,9 @@ class CacheManager {
             }
         }
 
+    }
+    
+    func getRefreshHeaderImages() {
+        self.refreshHeaderImages = UIImage.getImagesFromGif(name: "refresh") ?? []
     }
 }

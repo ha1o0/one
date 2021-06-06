@@ -26,6 +26,25 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 extension UIImage {
     
+    public class func getImagesFromGif(name: String) -> [UIImage]? {
+        guard let bundleURL = Bundle.main
+            .url(forResource: name, withExtension: "gif") else {
+                print("SwiftGif: This image named \"\(name)\" does not exist")
+                return nil
+        }
+        guard let gifSource = CGImageSourceCreateWithURL(bundleURL as CFURL, nil) else { return nil }
+        let gifCount = CGImageSourceGetCount(gifSource)
+        var images: [UIImage] = []
+        for i in 0..<gifCount {
+            if let imageRef = CGImageSourceCreateImageAtIndex(gifSource, i, nil) {
+                let image = UIImage.init(cgImage: imageRef)
+                images.append(image)
+            }
+        }
+        
+        return images
+    }
+    
     public class func gifImageWithData(_ data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("image doesn't exist")

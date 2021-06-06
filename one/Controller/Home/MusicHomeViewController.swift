@@ -47,7 +47,7 @@ class MusicHomeViewController: BaseTableViewController {
         return _topShadowView
     }()
     
-    var header = MJRefreshNormalHeader()
+//    var header = MJRefreshNormalHeader()
     var footer = MJRefreshAutoNormalFooter()
     var posters: [MusicPoster] = []
     var functions: [MusicFunction] = []
@@ -165,6 +165,7 @@ class MusicHomeViewController: BaseTableViewController {
             maker.leading.trailing.bottom.equalToSuperview()
             maker.top.equalToSuperview().offset(hasNotch ? 88 : 64)
         }
+        let header = CustomRefreshHeader1()
         tableView.mj_header = header
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
