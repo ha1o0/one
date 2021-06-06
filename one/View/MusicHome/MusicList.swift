@@ -12,6 +12,7 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     lazy var name: UILabel = {
         let _name = UILabel()
+        _name.textColor = .black
         _name.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return _name
     }()
