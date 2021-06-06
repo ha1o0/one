@@ -31,40 +31,6 @@ class TabBarViewController: UITabBarController {
     lazy var musicControlBar: MusicControlBar = {
         let _musicControlBar = viewFromNib("MusicControlBar") as! MusicControlBar
         return _musicControlBar
-//        _floatView.backgroundColor = .clear
-//        let blurView = getBlurView(style: defaultBlurStyles[currentBlurStyleIndex])
-//        _floatView.addSubview(blurView)
-//        blurView.snp.makeConstraints { (maker) in
-//            maker.bottom.leading.trailing.equalToSuperview()
-//            maker.top.equalToSuperview().offset(10)
-//        }
-//        let topLine = UIView()
-//        topLine.backgroundColor = .lightGray
-//        _floatView.addSubview(topLine)
-//        topLine.snp.makeConstraints { (maker) in
-//            maker.height.equalTo(1)
-//            maker.top.leading.trailing.equalTo(blurView)
-//        }
-//        let _posterOuterView = UIView()
-//        _posterOuterView.backgroundColor = .black
-//        _posterOuterView.layer.cornerRadius = 20
-//        _floatView.addSubview(_posterOuterView)
-//        _posterOuterView.snp.makeConstraints { (maker) in
-//            maker.centerY.equalToSuperview()
-//            maker.width.height.equalTo(40)
-//            maker.leading.equalToSuperview().offset(30)
-//        }
-//        let _posterView = UIImageView()
-//        if let url = URL(string: MockService.shared.getRandomImg()) {
-//            _posterView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
-//            _posterOuterView.addSubview(_posterView)
-//            _posterView.snp.makeConstraints { (maker) in
-//                maker.center.equalToSuperview()
-//                maker.width.height.equalTo(30)
-//            }
-//        }
-        
-//        return _floatView
     }()
     
     override func viewDidLoad() {
