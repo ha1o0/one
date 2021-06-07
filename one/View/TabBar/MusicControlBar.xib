@@ -30,19 +30,19 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE1-Lh-qD1">
-                                        <rect key="frame" x="80" y="12.5" width="57.5" height="17"/>
+                                        <rect key="frame" x="85" y="12.5" width="57.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-mD-OdQ">
-                                        <rect key="frame" x="142.5" y="10.5" width="8" height="21"/>
+                                        <rect key="frame" x="147.5" y="10.5" width="8" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌手名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0c-lg-csc">
-                                        <rect key="frame" x="155.5" y="14" width="37" height="14.5"/>
+                                        <rect key="frame" x="160.5" y="14" width="37" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                     <constraint firstItem="vgf-Wb-vC5" firstAttribute="top" secondItem="8uv-TV-U9X" secondAttribute="top" id="KyI-Am-v7B"/>
                                     <constraint firstItem="p0c-lg-csc" firstAttribute="centerY" secondItem="DE1-Lh-qD1" secondAttribute="centerY" id="QbE-oi-CW3"/>
                                     <constraint firstItem="fBM-Ib-j7e" firstAttribute="centerY" secondItem="8uv-TV-U9X" secondAttribute="centerY" id="XkP-lB-vNh"/>
-                                    <constraint firstItem="DE1-Lh-qD1" firstAttribute="leading" secondItem="8uv-TV-U9X" secondAttribute="leading" constant="80" id="XuY-sD-Qug"/>
+                                    <constraint firstItem="DE1-Lh-qD1" firstAttribute="leading" secondItem="8uv-TV-U9X" secondAttribute="leading" constant="85" id="XuY-sD-Qug"/>
                                     <constraint firstItem="vgf-Wb-vC5" firstAttribute="leading" secondItem="8uv-TV-U9X" secondAttribute="leading" id="Zq6-MA-Ki0"/>
                                     <constraint firstItem="S1Z-nr-RR6" firstAttribute="centerY" secondItem="8uv-TV-U9X" secondAttribute="centerY" id="byG-kV-ooF"/>
                                     <constraint firstItem="zs7-mD-OdQ" firstAttribute="leading" secondItem="DE1-Lh-qD1" secondAttribute="trailing" constant="5" id="i5I-iV-Xja"/>

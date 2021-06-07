@@ -68,6 +68,7 @@ class TabBarViewController: UITabBarController {
             maker.height.equalTo(50)
         }
         musicControlBar.setContent(musicInfo: Music(id: "", poster: MockService.shared.getRandomImg(), name: "起风了", subtitle: "", playCount: 0, author: "乘风破浪的姐姐"))
+        MusicService.shared.musicList = MockService.shared.getRandomMusic()
     }
     
     func setTabbar() {

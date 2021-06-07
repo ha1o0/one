@@ -49,6 +49,9 @@ struct Music {
     var subtitle: String = ""
     var playCount: Int = 0
     var author: String = ""
+    var url: String = ""
+    var isLocal: Bool = false
+    var type: String = "mp3"
 }
 
 struct MusicFunction {

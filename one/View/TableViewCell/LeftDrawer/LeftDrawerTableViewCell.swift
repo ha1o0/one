@@ -31,7 +31,7 @@ class LeftDrawerTableViewCell: BaseTableViewCell {
     func setContent(item: LeftDrawerItem, isFirst: Bool, isLast: Bool) {
         settingIconView.image = UIImage(named: item.iconName)
         settingNameLabel.text = item.name
-        splitLineView.isHidden = isLast
+        splitLineView.isHidden = true
         if item.hasSwitch {
             rightArrow.isHidden = true
             extraView.isHidden = true

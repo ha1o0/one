@@ -94,6 +94,9 @@
 		E9A59F0F266A205F00FA458B /* MusicKTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F0E266A205F00FA458B /* MusicKTV.swift */; };
 		E9A59F11266A261100FA458B /* playing.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F10266A261100FA458B /* playing.gif */; };
 		E9A59F13266A276200FA458B /* playing2.gif in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F12266A276200FA458B /* playing2.gif */; };
+		E9A59F18266DB62D00FA458B /* qfl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F17266DB62D00FA458B /* qfl.mp3 */; };
+		E9A59F1A266DB63300FA458B /* qfl.mid in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F19266DB63300FA458B /* qfl.mid */; };
+		E9A59F1C266DC28400FA458B /* jn.mid in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F1B266DC28400FA458B /* jn.mid */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -245,6 +248,9 @@
 		E9A59F0E266A205F00FA458B /* MusicKTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKTV.swift; sourceTree = "<group>"; };
 		E9A59F10266A261100FA458B /* playing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing.gif; sourceTree = "<group>"; };
 		E9A59F12266A276200FA458B /* playing2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = playing2.gif; sourceTree = "<group>"; };
+		E9A59F17266DB62D00FA458B /* qfl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = qfl.mp3; sourceTree = "<group>"; };
+		E9A59F19266DB63300FA458B /* qfl.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = qfl.mid; sourceTree = "<group>"; };
+		E9A59F1B266DC28400FA458B /* jn.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = jn.mid; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -576,9 +582,20 @@
 			path = gif;
 			sourceTree = "<group>";
 		};
+		E9A59F16266DB61C00FA458B /* music */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59F17266DB62D00FA458B /* qfl.mp3 */,
+				E9A59F1B266DC28400FA458B /* jn.mid */,
+				E9A59F19266DB63300FA458B /* qfl.mid */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		E9A952F6263171140032EADB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59F16266DB61C00FA458B /* music */,
 				E9A59F15266A279300FA458B /* gif */,
 				E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */,
 				E99BC1FE26386B820002C066 /* QRCodeScanLine.png */,
@@ -935,6 +952,7 @@
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9922495266BC0860038BAB7 /* refresh.gif in Resources */,
 				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
+				E9A59F18266DB62D00FA458B /* qfl.mp3 in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9A59F13266A276200FA458B /* playing2.gif in Resources */,
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
@@ -947,6 +965,7 @@
 				E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */,
 				E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */,
 				E99856192652702A006B0E1E /* MemberCardView.xib in Resources */,
+				E9A59F1C266DC28400FA458B /* jn.mid in Resources */,
 				E992242C2666791E0038BAB7 /* MusicListTableViewCell.xib in Resources */,
 				E9A59F052668618200FA458B /* MusicListItemCollectionViewCell.xib in Resources */,
 				E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */,
@@ -960,6 +979,7 @@
 				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
 				E9A59F11266A261100FA458B /* playing.gif in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
+				E9A59F1A266DB63300FA458B /* qfl.mid in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
 				E99224A9266D0FBC0038BAB7 /* MusicControlBar.xib in Resources */,

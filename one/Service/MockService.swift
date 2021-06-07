@@ -49,4 +49,11 @@ class MockService {
         let index = arc4random() % UInt32(images.count)
         return images[Int(index)]
     }
+    
+    func getRandomMusic() -> [Music] {
+        var musicList: [Music] = []
+        musicList.append(Music(id: "1", poster: self.getRandomImg(), name: "起风了", subtitle: "乘风破浪的姐姐", playCount: 1, author: "乘风破浪的姐姐", url: "qfl", isLocal: true, type: "mp3"))
+        musicList.append(Music(id: "2", poster: self.getRandomImg(), name: "江南", subtitle: "林俊杰", playCount: 1, author: "林俊杰", url: "jn", isLocal: true, type: "mid"))
+        return musicList
+    }
 }

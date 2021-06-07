@@ -39,5 +39,10 @@ class MusicControlBar: UIView {
         let newPlayingStatus = !MusicService.shared.isPlaying
         MusicService.shared.isPlaying = newPlayingStatus
         playButton.setImage(UIImage(systemName: "\(newPlayingStatus ? "pause.fill" : "play.fill")"), for: .normal)
+        if newPlayingStatus {
+            MusicService.shared.play()
+        } else {
+            MusicService.shared.pause()
+        }
     }
 }
