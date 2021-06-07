@@ -58,56 +58,7 @@ class MusicHomeViewController: BaseTableViewController {
     override func viewDidLoad() {
         setTableView()
         setNavigation()
-        tableData = []
-        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/BOs7DMaKW86TLc4.jpg", color: .gray))
-        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/rVnT7Sf1N3ICw9j.jpg", color: .blue))
-        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/XFqhaPOEY19rBAJ.jpg", color: .purple))
-        tableData.append(MusicHomeSection(type: .poster, items: posters, title: ""))
-
-        functions.append(MusicFunction(icon: "calendar", name: "每日推荐", to: ""))
-        functions.append(MusicFunction(icon: "bus", name: "私人FM", to: ""))
-        functions.append(MusicFunction(icon: "book", name: "歌单", to: ""))
-        functions.append(MusicFunction(icon: "rank", name: "排行榜", to: ""))
-        functions.append(MusicFunction(icon: "movie", name: "数字专辑", to: ""))
-        functions.append(MusicFunction(icon: "voice", name: "歌房", to: ""))
-        functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
-        tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
-        
-        var posterUrlstrs: [String] = []
-        for _ in 0..<4 {
-            posterUrlstrs.append(MockService.shared.getRandomImg())
-        }
-        
-        recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: posterUrlstrs, playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: [MockService.shared.getRandomImg()], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: [MockService.shared.getRandomImg()], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: [MockService.shared.getRandomImg()], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: [MockService.shared.getRandomImg()], playCount: 0))
-        recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: [MockService.shared.getRandomImg()], playCount: 0))
-        
-        musics.append(Music(id: "1", poster: MockService.shared.getRandomImg(), name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "2", poster: MockService.shared.getRandomImg(), name: "灰色头像", subtitle: "你灰色头不会在跳动", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "3", poster: MockService.shared.getRandomImg(), name: "幻听", subtitle: "如今一个人听歌总是会觉得失落", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "4", poster: MockService.shared.getRandomImg(), name: "城府", subtitle: "你的城府有多深", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "5", poster: MockService.shared.getRandomImg(), name: "断桥残雪", subtitle: "断桥是否下过雪，我望着湖面", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "6", poster: MockService.shared.getRandomImg(), name: "庐州月", subtitle: "庐州的月光在我心上", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "7", poster: MockService.shared.getRandomImg(), name: "星座书上", subtitle: "最后我偷偷把那页撕掉", playCount: 0, author: "许嵩"))
-        musics.append(Music(id: "8", poster: MockService.shared.getRandomImg(), name: "违章动物", subtitle: "一群高贵气质的差人在处罚违章动物", playCount: 0, author: "许嵩"))
-        
-        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "1", roomTitle: "难听歌房营业中", currentMusicName: "星辰大海 - 黄潇潇", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 11))
-        ktvs.append(MusicKTV(roomColors: ["#84fab0", "#8fd3f4"], roomId: "2", roomTitle: "嗯", currentMusicName: "小情歌 - 苏打绿", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 5))
-        ktvs.append(MusicKTV(roomColors: ["#f6d365", "#fda085"], roomId: "3", roomTitle: "在线满30人，送保时捷", currentMusicName: "寂寞的季节 - 陶喆", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 3))
-        ktvs.append(MusicKTV(roomColors: ["#48c6ef", "#6f86d6"], roomId: "4", roomTitle: "Our job is only to love", currentMusicName: "焰火青年 - 刘森", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 102))
-        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "5", roomTitle: "随意", currentMusicName: "不该用情 - 柯积", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 1))
-        
-        CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
-            self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))
-            self.tableData.append(MusicHomeSection(type: .musicList, items: self.musics, title: "送你一壶古风酿的酒"))
-            self.tableData.append(MusicHomeSection(type: .ktv, items: self.ktvs, title: "唱吧KTV"))
-            self.tableView.reloadData()
-        }
-        
-        self.updateTopViewImage(pageIndex: 0)
+        self.getData()
     }
     
     override func setNavigation() {
@@ -174,9 +125,8 @@ class MusicHomeViewController: BaseTableViewController {
     
     @objc func refreshData() {
         sleep(1)
-        self.tableView.reloadData()
+        self.getData()
         self.tableView.mj_header?.endRefreshing()
-        self.updateTopViewImage(pageIndex: 0)
     }
     
     @objc func showLeftVc() {
@@ -288,5 +238,62 @@ class MusicHomeViewController: BaseTableViewController {
         if let url = URL(string: posters[pageIndex].url) {
             topImageView.loadFrom(url: url)
         }
+    }
+    
+    func getData() {
+        self.posters = []
+        self.functions = []
+        self.recommendedMusics = []
+        self.musics = []
+        self.ktvs = []
+        self.tableData = []
+        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/BOs7DMaKW86TLc4.jpg", color: .gray))
+        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/rVnT7Sf1N3ICw9j.jpg", color: .blue))
+        posters.append(MusicPoster(url: "https://i.loli.net/2021/05/26/XFqhaPOEY19rBAJ.jpg", color: .purple))
+        tableData.append(MusicHomeSection(type: .poster, items: posters, title: ""))
+
+        functions.append(MusicFunction(icon: "calendar", name: "每日推荐", to: ""))
+        functions.append(MusicFunction(icon: "bus", name: "私人FM", to: ""))
+        functions.append(MusicFunction(icon: "book", name: "歌单", to: ""))
+        functions.append(MusicFunction(icon: "rank", name: "排行榜", to: ""))
+        functions.append(MusicFunction(icon: "movie", name: "数字专辑", to: ""))
+        functions.append(MusicFunction(icon: "voice", name: "歌房", to: ""))
+        functions.append(MusicFunction(icon: "rmb", name: "游戏专区", to: ""))
+        tableData.append(MusicHomeSection(type: .function, items: functions, title: ""))
+        
+        var posterUrlstrs: [String] = []
+        for _ in 0..<4 {
+            posterUrlstrs.append(MockService.shared.getRandomImg())
+        }
+        
+        recommendedMusics.append(MusicSheet(name: "数尽荒芜过后 必定会有新生", id: "1", posters: posterUrlstrs, playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "今天从《千百度》听起 | 私人雷达", id: "2", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "全网畅销流行热歌", id: "3", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "让耳朵怀孕的抒情网络热歌", id: "4", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "渡过失恋期Cover集", id: "5", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        recommendedMusics.append(MusicSheet(name: "时间治愈的是 愿意自渡之人", id: "6", posters: [MockService.shared.getRandomImg()], playCount: 0))
+        
+        musics.append(Music(id: "1", poster: MockService.shared.getRandomImg(), name: "千百度", subtitle: "众里寻他千百度", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "2", poster: MockService.shared.getRandomImg(), name: "灰色头像", subtitle: "你灰色头不会在跳动", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "3", poster: MockService.shared.getRandomImg(), name: "幻听", subtitle: "如今一个人听歌总是会觉得失落", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "4", poster: MockService.shared.getRandomImg(), name: "城府", subtitle: "你的城府有多深", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "5", poster: MockService.shared.getRandomImg(), name: "断桥残雪", subtitle: "断桥是否下过雪，我望着湖面", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "6", poster: MockService.shared.getRandomImg(), name: "庐州月", subtitle: "庐州的月光在我心上", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "7", poster: MockService.shared.getRandomImg(), name: "星座书上", subtitle: "最后我偷偷把那页撕掉", playCount: 0, author: "许嵩"))
+        musics.append(Music(id: "8", poster: MockService.shared.getRandomImg(), name: "违章动物", subtitle: "一群高贵气质的差人在处罚违章动物", playCount: 0, author: "许嵩"))
+        
+        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "1", roomTitle: "难听歌房营业中", currentMusicName: "星辰大海 - 黄潇潇", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 11))
+        ktvs.append(MusicKTV(roomColors: ["#84fab0", "#8fd3f4"], roomId: "2", roomTitle: "嗯", currentMusicName: "小情歌 - 苏打绿", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 5))
+        ktvs.append(MusicKTV(roomColors: ["#f6d365", "#fda085"], roomId: "3", roomTitle: "在线满30人，送保时捷", currentMusicName: "寂寞的季节 - 陶喆", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 3))
+        ktvs.append(MusicKTV(roomColors: ["#48c6ef", "#6f86d6"], roomId: "4", roomTitle: "Our job is only to love", currentMusicName: "焰火青年 - 刘森", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 102))
+        ktvs.append(MusicKTV(roomColors: ["#a6c0fe", "#f68084"], roomId: "5", roomTitle: "随意", currentMusicName: "不该用情 - 柯积", currentImage: MockService.shared.getRandomImg(), roomUserNumber: 1))
+        
+        CacheManager.shared.preCache(urlstrs: posterUrlstrs) {
+            self.tableData.append(MusicHomeSection(type: .musicSheet, items: self.recommendedMusics, title: "推荐歌单"))
+            self.tableData.append(MusicHomeSection(type: .musicList, items: self.musics, title: "送你一壶古风酿的酒"))
+            self.tableData.append(MusicHomeSection(type: .ktv, items: self.ktvs, title: "唱吧KTV"))
+            self.tableView.reloadData()
+        }
+        self.updateTopViewImage(pageIndex: 0)
     }
 }
