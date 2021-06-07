@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="220" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cio-tE-sEm">
-                                <rect key="frame" x="0.0" y="4" width="46" height="46"/>
+                                <rect key="frame" x="0.0" y="2" width="46" height="46"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-zU-k45">
                                         <rect key="frame" x="10.5" y="10.5" width="25" height="25"/>
@@ -61,7 +61,7 @@
                             <constraint firstItem="eW7-il-HK4" firstAttribute="centerY" secondItem="Gww-lc-s2Q" secondAttribute="centerY" id="4JX-a8-FM3"/>
                             <constraint firstItem="kKe-Fz-P9p" firstAttribute="leading" secondItem="Ku2-h8-pTR" secondAttribute="trailing" constant="5" id="F3o-7Y-Kpq"/>
                             <constraint firstItem="cio-tE-sEm" firstAttribute="leading" secondItem="Gww-lc-s2Q" secondAttribute="leading" id="MRT-Ci-R7h"/>
-                            <constraint firstAttribute="bottom" secondItem="cio-tE-sEm" secondAttribute="bottom" id="T3X-ZC-lVr"/>
+                            <constraint firstAttribute="bottom" secondItem="cio-tE-sEm" secondAttribute="bottom" constant="2" id="T3X-ZC-lVr"/>
                             <constraint firstItem="Ku2-h8-pTR" firstAttribute="centerY" secondItem="eW7-il-HK4" secondAttribute="centerY" id="bz9-7A-Pry"/>
                             <constraint firstItem="eW7-il-HK4" firstAttribute="leading" secondItem="cio-tE-sEm" secondAttribute="trailing" constant="10" id="f4s-aH-xgz"/>
                             <constraint firstItem="eW7-il-HK4" firstAttribute="leading" secondItem="cio-tE-sEm" secondAttribute="trailing" constant="10" id="iMh-ZA-FVy"/>
