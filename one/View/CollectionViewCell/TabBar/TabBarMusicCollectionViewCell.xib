@@ -19,10 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="220" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cio-tE-sEm">
-                                <rect key="frame" x="0.0" y="2" width="46" height="46"/>
+                                <rect key="frame" x="0.0" y="5" width="43" height="43"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnl-zU-k45">
-                                        <rect key="frame" x="10.5" y="10.5" width="25" height="25"/>
+                                        <rect key="frame" x="9" y="9" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="5am-ab-tdI"/>
                                             <constraint firstAttribute="height" constant="25" id="dlh-P9-Nkj"/>
@@ -32,25 +32,25 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="qnl-zU-k45" firstAttribute="centerX" secondItem="cio-tE-sEm" secondAttribute="centerX" id="D2q-wO-tbI"/>
-                                    <constraint firstAttribute="width" constant="46" id="KLx-kk-mSc"/>
+                                    <constraint firstAttribute="width" constant="43" id="KLx-kk-mSc"/>
                                     <constraint firstItem="qnl-zU-k45" firstAttribute="centerY" secondItem="cio-tE-sEm" secondAttribute="centerY" id="dtB-Z2-wts"/>
-                                    <constraint firstAttribute="height" constant="46" id="tv9-Qf-H08"/>
+                                    <constraint firstAttribute="height" constant="43" id="tv9-Qf-H08"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW7-il-HK4">
-                                <rect key="frame" x="56" y="15.5" width="65.5" height="19.5"/>
+                                <rect key="frame" x="53" y="15.5" width="65.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ku2-h8-pTR">
-                                <rect key="frame" x="124.5" y="17" width="6" height="16"/>
+                                <rect key="frame" x="121.5" y="17" width="6" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌手名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKe-Fz-P9p">
-                                <rect key="frame" x="135.5" y="17" width="40" height="16"/>
+                                <rect key="frame" x="132.5" y="17" width="40" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>

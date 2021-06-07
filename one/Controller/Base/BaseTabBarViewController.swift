@@ -16,6 +16,7 @@ class BaseTabBarViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
 //        print("basetabbar willappear")
     }
     

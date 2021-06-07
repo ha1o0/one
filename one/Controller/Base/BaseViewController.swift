@@ -138,9 +138,10 @@ extension UIViewController {
     
     func pushVc(vc: UIViewController, animate: Bool = true) {
         // 解决新vc与tab vc的tabbar显示与否的问题
-        self.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: animate)
-        self.hidesBottomBarWhenPushed = false
+//        self.hidesBottomBarWhenPushed = true
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar()
+//        self.navigationController?.pushViewController(vc, animated: animate)
+//        self.hidesBottomBarWhenPushed = false
     }
 }
 

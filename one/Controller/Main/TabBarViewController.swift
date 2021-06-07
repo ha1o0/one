@@ -96,6 +96,24 @@ class TabBarViewController: UITabBarController {
         }
     }
     
+    func showTabbar() {
+        if self.tabBar.frame.origin.y + self.tabBar.frame.size.height == SCREEN_HEIGHT {
+            return
+        }
+        UIView.animate(withDuration: 1) {
+            self.tabBar.frame.origin.y -= self.tabBar.frame.size.height
+        }
+    }
+    
+    func hideTabbar() {
+        if self.tabBar.frame.origin.y == SCREEN_HEIGHT {
+            return
+        }
+        UIView.animate(withDuration: 1) {
+            self.tabBar.frame.origin.y += self.tabBar.frame.size.height
+        }
+    }
+    
     func setTabbar() {
         tabBar.isTranslucent = true
         tabBar.backgroundImage = UIImage()
