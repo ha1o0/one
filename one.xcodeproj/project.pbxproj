@@ -97,6 +97,9 @@
 		E9A59F18266DB62D00FA458B /* qfl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F17266DB62D00FA458B /* qfl.mp3 */; };
 		E9A59F1A266DB63300FA458B /* qfl.mid in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F19266DB63300FA458B /* qfl.mid */; };
 		E9A59F1C266DC28400FA458B /* jn.mid in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F1B266DC28400FA458B /* jn.mid */; };
+		E9A59F20266E13C100FA458B /* TabBarMusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A59F1E266E13C100FA458B /* TabBarMusicCollectionViewCell.swift */; };
+		E9A59F21266E13C100FA458B /* TabBarMusicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F1F266E13C100FA458B /* TabBarMusicCollectionViewCell.xib */; };
+		E9A59F23266E21FE00FA458B /* jn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9A59F22266E21FE00FA458B /* jn.mp3 */; };
 		E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */; };
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
@@ -251,6 +254,9 @@
 		E9A59F17266DB62D00FA458B /* qfl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = qfl.mp3; sourceTree = "<group>"; };
 		E9A59F19266DB63300FA458B /* qfl.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = qfl.mid; sourceTree = "<group>"; };
 		E9A59F1B266DC28400FA458B /* jn.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = jn.mid; sourceTree = "<group>"; };
+		E9A59F1E266E13C100FA458B /* TabBarMusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMusicCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9A59F1F266E13C100FA458B /* TabBarMusicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarMusicCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9A59F22266E21FE00FA458B /* jn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jn.mp3; sourceTree = "<group>"; };
 		E9A952DF26315FBF0032EADB /* SceneKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitViewController.swift; sourceTree = "<group>"; };
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
@@ -450,6 +456,7 @@
 		E99BC0E826232D840002C066 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9A59F1D266E13A500FA458B /* TabBar */,
 				E9A59F08266A1A5100FA458B /* MusicKTV */,
 				E992243826667E8B0038BAB7 /* MusicList */,
 				E9A59EF52664720200FA458B /* MusicSheet */,
@@ -586,10 +593,20 @@
 			isa = PBXGroup;
 			children = (
 				E9A59F17266DB62D00FA458B /* qfl.mp3 */,
+				E9A59F22266E21FE00FA458B /* jn.mp3 */,
 				E9A59F1B266DC28400FA458B /* jn.mid */,
 				E9A59F19266DB63300FA458B /* qfl.mid */,
 			);
 			path = music;
+			sourceTree = "<group>";
+		};
+		E9A59F1D266E13A500FA458B /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E9A59F1E266E13C100FA458B /* TabBarMusicCollectionViewCell.swift */,
+				E9A59F1F266E13C100FA458B /* TabBarMusicCollectionViewCell.xib */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E9A952F6263171140032EADB /* Resource */ = {
@@ -958,6 +975,7 @@
 				E9E0CDBD2607A3230047DAE9 /* PlayViewController.xib in Resources */,
 				E998562626534C07006B0E1E /* LeftDrawerTableViewCell.xib in Resources */,
 				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
+				E9A59F21266E13C100FA458B /* TabBarMusicCollectionViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
@@ -974,6 +992,7 @@
 				E9A1351B2624271500DEC078 /* BezierPathViewController.xib in Resources */,
 				E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */,
 				E951C70F265501A9007CC3C2 /* MusicHomeViewController.xib in Resources */,
+				E9A59F23266E21FE00FA458B /* jn.mp3 in Resources */,
 				E99BC1282624849A0002C066 /* LoadMoreCollectionReusableView.xib in Resources */,
 				E99BC0ED26232DB00002C066 /* BaseCollectionViewCell.xib in Resources */,
 				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
@@ -1054,6 +1073,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */,
+				E9A59F20266E13C100FA458B /* TabBarMusicCollectionViewCell.swift in Sources */,
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,

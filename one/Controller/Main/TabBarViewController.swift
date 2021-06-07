@@ -61,14 +61,18 @@ class TabBarViewController: UITabBarController {
         setTabbarColor(colors: colors)
         self.viewControllers = items
         self.setTabbar()
+        MusicService.shared.musicList = MockService.shared.getRandomMusic()
+        self.musicControlBar.alpha = 0
         self.view.addSubview(musicControlBar)
         musicControlBar.snp.makeConstraints { (maker) in
             maker.leading.trailing.equalToSuperview()
             maker.bottom.equalTo(self.tabBar.snp.top)
             maker.height.equalTo(50)
         }
-        musicControlBar.setContent(musicInfo: Music(id: "", poster: MockService.shared.getRandomImg(), name: "起风了", subtitle: "", playCount: 0, author: "乘风破浪的姐姐"))
-        MusicService.shared.musicList = MockService.shared.getRandomMusic()
+        musicControlBar.commonInit()
+        UIView.animate(withDuration: 1, delay: 5) {
+            self.musicControlBar.alpha = 1
+        }
     }
     
     func setTabbar() {

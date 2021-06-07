@@ -11,7 +11,7 @@ import AVKit
 
 protocol MusicPlayer {
     var player: AVAudioPlayer! { get set }
-    var isPlaying: Bool { get set }
+    var isPlaying: Bool { get }
     var currentMusicIndex: Int { get set }
     var musicList: [Music] { get set }
     var lastPlayingMusic: Music { get set }
@@ -25,7 +25,14 @@ protocol MusicPlayer {
 
 class MusicService: MusicPlayer {
     static let shared = MusicService()
-    var isPlaying = false
+    var isPlaying: Bool {
+        get {
+            if (player == nil) {
+                return false
+            }
+            return player.isPlaying
+        }
+    }
     var player: AVAudioPlayer!
     var currentMusicIndex: Int = 0
     var lastPlayingMusic: Music = Music()
