@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 
 protocol MusicPlayer {
-    var player: AVAudioPlayer! { get set }
+    var player: AVPlayer! { get set }
     var isPlaying: Bool { get }
     var currentMusicIndex: Int { get set }
     var musicList: [Music] { get set }
@@ -33,7 +33,8 @@ class MusicService: MusicPlayer {
             return player.isPlaying
         }
     }
-    var player: AVAudioPlayer!
+    var player: AVPlayer!
+    var playerItem: AVPlayerItem!
     var currentMusicIndex: Int = 0
     var lastPlayingMusic: Music = Music()
     var currentPlayTime: TimeInterval = 0
@@ -54,19 +55,18 @@ class MusicService: MusicPlayer {
         else {
             return
         }
-        do {
-            if isMusicChanged {
-                try player = AVAudioPlayer(contentsOf: url)
-            }
-            if atTime > 0 {
-                player.play(atTime: atTime)
-            } else {
-                player.play()
-            }
-            lastPlayingMusic = currentMusic
-        } catch {
-            print("play error")
+        if isMusicChanged {
+            playerItem = AVPlayerItem(url: url)
+            player = AVPlayer(playerItem: playerItem)
         }
+        if atTime > 0 {
+            player.seek(to: CMTimeMake(value: Int64(atTime), timescale: 1))
+            player.play()
+        } else {
+            player.play()
+        }
+        lastPlayingMusic = currentMusic
+        
     }
     
     func pause() {
@@ -74,7 +74,6 @@ class MusicService: MusicPlayer {
             return
         }
         player.pause()
-        self.currentPlayTime = player.currentTime
     }
     
     func seekTo(second: Double) {
@@ -85,7 +84,7 @@ class MusicService: MusicPlayer {
         guard let player = player else {
             return
         }
-        player.stop()
+        player.seek(to: CMTime.zero)
     }
     
     func getMusicUrl(urlStr: String, isLocal: Bool = false, ofType: String = "") -> URL? {
