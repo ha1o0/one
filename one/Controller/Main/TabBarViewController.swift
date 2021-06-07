@@ -27,7 +27,7 @@ class TabBarViewController: UITabBarController {
         items.append(item2)
         return items
     }()
-    
+    var musicControlBarHeight: CGFloat = 50
     lazy var musicControlBar: MusicControlBar = {
         let _musicControlBar = viewFromNib("MusicControlBar") as! MusicControlBar
         return _musicControlBar
@@ -64,13 +64,34 @@ class TabBarViewController: UITabBarController {
         MusicService.shared.musicList = MockService.shared.getRandomMusic()
         self.musicControlBar.alpha = 0
         self.view.addSubview(musicControlBar)
+        musicControlBar.layer.zPosition = 109
+        tabBar.layer.zPosition = 110
         musicControlBar.snp.makeConstraints { (maker) in
             maker.leading.trailing.equalToSuperview()
             maker.bottom.equalTo(self.tabBar.snp.top)
-            maker.height.equalTo(50)
+            maker.height.equalTo(musicControlBarHeight)
         }
         musicControlBar.commonInit()
-        UIView.animate(withDuration: 1, delay: 5) {
+    }
+    
+    func hideMusicControlBar() {
+        if musicControlBar.alpha == 0 {
+            return
+        }
+        musicControlBar.frame.origin.y -= musicControlBarHeight
+        UIView.animate(withDuration: 1) {
+            self.musicControlBar.frame.origin.y += self.musicControlBarHeight
+            self.musicControlBar.alpha = 0
+        }
+    }
+    
+    func showMusicControlBar() {
+        if musicControlBar.alpha == 1 {
+            return
+        }
+        musicControlBar.frame.origin.y += musicControlBarHeight
+        UIView.animate(withDuration: 1) {
+            self.musicControlBar.frame.origin.y -= self.musicControlBarHeight
             self.musicControlBar.alpha = 1
         }
     }
