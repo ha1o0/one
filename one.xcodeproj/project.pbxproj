@@ -35,6 +35,8 @@
 		E99224A9266D0FBC0038BAB7 /* MusicControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99224A8266D0FBC0038BAB7 /* MusicControlBar.xib */; };
 		E99224AE266D15140038BAB7 /* MusicControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224AD266D15140038BAB7 /* MusicControlBar.swift */; };
 		E99224B3266D27280038BAB7 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224B2266D27280038BAB7 /* MusicService.swift */; };
+		E99224CC266E6D5B0038BAB7 /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */; };
+		E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -192,6 +194,8 @@
 		E99224A8266D0FBC0038BAB7 /* MusicControlBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicControlBar.xib; sourceTree = "<group>"; };
 		E99224AD266D15140038BAB7 /* MusicControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControlBar.swift; sourceTree = "<group>"; };
 		E99224B2266D27280038BAB7 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
+		E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
+		E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -727,6 +731,7 @@
 				E9E0CD5C2607934D0047DAE9 /* UIColor+hex.swift */,
 				E9E0CD5B2607934D0047DAE9 /* UIImage+Custom.swift */,
 				E9E0CD5D2607934D0047DAE9 /* UIImageView+URL.swift */,
+				E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */,
 			);
 			path = Etension;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 				E9E0CD712607947C0047DAE9 /* SaveFiles.swift */,
 				E9E0CD722607947C0047DAE9 /* StrInt.swift */,
 				E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */,
+				E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1080,6 +1086,7 @@
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
+				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E99224A3266CC0000038BAB7 /* CustomRefreshHeader1.swift in Sources */,
@@ -1152,6 +1159,7 @@
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E9A59EEC265CF0B600FA458B /* Carousel.swift in Sources */,
 				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,
+				E99224CC266E6D5B0038BAB7 /* AnimationUtils.swift in Sources */,
 				E99224AE266D15140038BAB7 /* MusicControlBar.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 				E99224B3266D27280038BAB7 /* MusicService.swift in Sources */,

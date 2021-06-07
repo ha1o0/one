@@ -17,6 +17,7 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.posterOuterView.layer.cornerRadius = self.posterOuterView.bounds.width / 2
+        AnimationUtils.addRotate(layer: posterImageView.layer)
     }
 
     func setContent(data: Music) {
@@ -24,6 +25,16 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
         self.musicAuthorLabel.text = data.author
         if let url = URL(string: data.poster) {
             posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
+            AnimationUtils.resetRotate(layer: posterImageView.layer)
+        }
+        NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
+    }
+    
+    @objc func musicStatusChange() {
+        if MusicService.shared.isPlaying {
+            AnimationUtils.resumeRotate(layer: posterImageView.layer)
+        } else {
+            AnimationUtils.pauseRotate(layer: posterImageView.layer)
         }
     }
 }

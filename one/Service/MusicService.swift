@@ -66,7 +66,7 @@ class MusicService: MusicPlayer {
             player.play()
         }
         lastPlayingMusic = currentMusic
-        
+        NotificationService.shared.musicStatus(true)
     }
     
     func pause() {
@@ -74,6 +74,7 @@ class MusicService: MusicPlayer {
             return
         }
         player.pause()
+        NotificationService.shared.musicStatus(false)
     }
     
     func seekTo(second: Double) {
