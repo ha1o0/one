@@ -64,19 +64,20 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             items.append(navVc)
         }
         self.viewControllers = items
-        MusicService.shared.musicList = MockService.shared.getRandomMusic()
-        self.view.insertSubview(musicControlBar, belowSubview: self.tabBar)
-        let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
-        let bottomMusicBarHeight = bottomTabBarHeight + musicControlBarHeight
-        musicControlBar.snp.makeConstraints { (maker) in
-            maker.leading.trailing.equalToSuperview()
-            maker.bottom.equalToSuperview().offset(bottomMusicBarHeight)
-            maker.height.equalTo(bottomMusicBarHeight)
-        }
-        musicControlBar.commonInit()
         self.setTabbar()
         let colors = defaultBarColors[currentBlurStyleIndex]
         setTabbarColor(colors: colors)
+//        let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
+//        let bottomMusicBarHeight = bottomTabBarHeight + musicControlBarHeight
+        MusicService.shared.musicList = MockService.shared.getRandomMusic()
+//        musicControlBar.frame = CGRect(x: 0, y: SCREEN_HEIGHT, width: SCREEN_WIDTH, height: bottomTabBarHeight)
+        self.view.insertSubview(musicControlBar, at: 1)
+        musicControlBar.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+            maker.top.equalTo(self.view.snp.bottom)
+            maker.height.equalTo(musicControlBarHeight)
+        }
+        musicControlBar.commonInit()
     }
     
     func hideMusicControlBar() {
@@ -92,17 +93,26 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func showTabbar() {
+        var frame = self.musicControlBar.frame
+        frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight
+        frame.size.height = self.musicControlBarHeight
         UIView.animate(withDuration: animationDuration) {
             self.tabBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
-            self.musicControlBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight
+            self.musicControlBar.frame = frame
         }
     }
     
     func hideTabbar() {
-        UIView.animate(withDuration: animationDuration, animations: {
-            self.tabBar.frame.origin.y = SCREEN_HEIGHT
-            self.musicControlBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
-        })
+        var frame = self.musicControlBar.frame
+        frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
+        frame.size.height = self.tabBarHeight
+        UIView.animate(withDuration: self.animationDuration) {
+//            self.tabBar.frame.origin.y = SCREEN_HEIGHT
+            self.musicControlBar.frame = frame
+        } completion: { Result in
+
+        }
+
     }
     
     func setTabbar() {
@@ -111,9 +121,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.barTintColor = .clear
         tabBar.backgroundColor = .clear
         tabBar.layer.backgroundColor = UIColor.clear.cgColor
-//        let blurView = getBlurView(style: defaultBlurStyles[currentBlurStyleIndex])
-//        blurView.frame = self.tabBar.bounds
-//        tabBar.insertSubview(blurView, at: 0)
+        let blurView = getBlurView(style: defaultBlurStyles[currentBlurStyleIndex])
+        blurView.frame = self.tabBar.bounds
+        tabBar.insertSubview(blurView, at: 0)
     }
     
     func getBlurView(style: UIBlurEffect.Style) -> UIVisualEffectView {

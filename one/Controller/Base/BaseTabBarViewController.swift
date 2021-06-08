@@ -10,6 +10,7 @@ import UIKit
 class BaseTabBarViewController: BaseViewController {
     
     override func viewDidLoad() {
+        self.isTabBarVc = true
         super.viewDidLoad()
         print("basetabbar didload")
     }
@@ -32,6 +33,15 @@ class BaseTabBarViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if let topVc = getTopViewController() {
+            if topVc is BaseViewController {
+                let topBaseVc = topVc as! BaseViewController
+                if topBaseVc.isTabBarVc {
+                    return
+                }
+            }
+        }
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar()
 //        print("basetabbar diddisappear")
     }
     

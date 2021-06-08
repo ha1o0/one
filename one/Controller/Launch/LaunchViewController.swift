@@ -53,9 +53,9 @@ class LaunchViewController: BaseViewController {
         countdownTimer.invalidate()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.cancelLaunchWindow()
-        delay(2) {
-            appDelegate.rootVc?.drawerVc.tabbarVc?.showMusicControlBar()
-        }
+//        delay(2) {
+//            appDelegate.rootVc?.drawerVc.tabbarVc?.showMusicControlBar()
+//        }
     }
     /*
     // MARK: - Navigation

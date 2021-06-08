@@ -56,6 +56,7 @@ class MusicHomeViewController: BaseTableViewController {
     var ktvs: [MusicKTV] = []
     
     override func viewDidLoad() {
+        self.isTabBarVc = true
         setTableView()
         setNavigation()
         self.getData()

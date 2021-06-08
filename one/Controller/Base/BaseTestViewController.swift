@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseTestViewController: BaseTabBarViewController {
+class BaseTestViewController: BaseViewController {
     @IBOutlet weak var view1: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()

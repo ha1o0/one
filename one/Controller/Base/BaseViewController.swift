@@ -16,7 +16,7 @@ class BaseViewController: UIViewController {
     
     var showStatusBar = true
     var showNavBar = true
-    var isTabbarVc = false
+    var isTabBarVc = false
     var enterType: VcEnterType = .push
     lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
@@ -126,6 +126,7 @@ class BaseViewController: UIViewController {
 }
 
 extension UIViewController {
+
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -139,7 +140,6 @@ extension UIViewController {
     func pushVc(vc: UIViewController, animate: Bool = true) {
         // 解决新vc与tab vc的tabbar显示与否的问题
 //        self.hidesBottomBarWhenPushed = true
-        appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar()
         self.navigationController?.pushViewController(vc, animated: animate)
 //        self.hidesBottomBarWhenPushed = false
     }
