@@ -28,7 +28,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         return items
     }()
     var musicControlBarHeight: CGFloat = 50
-    var animationDuration: TimeInterval = 0.6
+    var animationDuration: TimeInterval = 0.3
     lazy var musicControlBar: MusicControlBar = {
         let _musicControlBar = viewFromNib("MusicControlBar") as! MusicControlBar
         return _musicControlBar
@@ -67,16 +67,11 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.setTabbar()
         let colors = defaultBarColors[currentBlurStyleIndex]
         setTabbarColor(colors: colors)
-//        let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
+        let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
 //        let bottomMusicBarHeight = bottomTabBarHeight + musicControlBarHeight
         MusicService.shared.musicList = MockService.shared.getRandomMusic()
-//        musicControlBar.frame = CGRect(x: 0, y: SCREEN_HEIGHT, width: SCREEN_WIDTH, height: bottomTabBarHeight)
+        musicControlBar.frame = CGRect(x: 0, y: SCREEN_HEIGHT - bottomTabBarHeight, width: SCREEN_WIDTH, height: self.musicControlBarHeight)
         self.view.insertSubview(musicControlBar, at: 1)
-        musicControlBar.snp.makeConstraints { (maker) in
-            maker.leading.trailing.equalToSuperview()
-            maker.top.equalTo(self.view.snp.bottom)
-            maker.height.equalTo(musicControlBarHeight)
-        }
         musicControlBar.commonInit()
     }
     
@@ -93,26 +88,34 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func showTabbar() {
-        var frame = self.musicControlBar.frame
-        frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight
-        frame.size.height = self.musicControlBarHeight
         UIView.animate(withDuration: animationDuration) {
             self.tabBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
-            self.musicControlBar.frame = frame
+            self.musicControlBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight
+        } completion: { (result) in
+            self.musicControlBar.frame.size.height = self.musicControlBarHeight
         }
+//        UIView.animate(withDuration: self.animationDuration) {
+//            self.musicControlBar.frame.size.height = self.musicControlBarHeight
+//            self.tabBar.center.y = SCREEN_HEIGHT - self.tabBarHeight / 2
+//            self.musicControlBar.center.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight / 2
+//        }
     }
     
+    // 注意这里的动画, 分更改大小和位置两阶段，否则会出现tabbar位置错误
     func hideTabbar() {
-        var frame = self.musicControlBar.frame
-        frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
-        frame.size.height = self.tabBarHeight
         UIView.animate(withDuration: self.animationDuration) {
-//            self.tabBar.frame.origin.y = SCREEN_HEIGHT
-            self.musicControlBar.frame = frame
-        } completion: { Result in
-
+            self.musicControlBar.frame.size.height = self.tabBarHeight
+        } completion: { (result) in
+            UIView.animate(withDuration: self.animationDuration) {
+                self.musicControlBar.frame.origin.y += self.musicControlBarHeight
+                self.tabBar.frame.origin.y = SCREEN_HEIGHT
+            }
         }
-
+//        UIView.animate(withDuration: self.animationDuration) {
+//            self.musicControlBar.frame.size.height = self.tabBarHeight
+//            self.tabBar.center.y = SCREEN_HEIGHT + self.tabBarHeight / 2
+//            self.musicControlBar.center.y = SCREEN_HEIGHT - self.musicControlBarHeight / 2
+//        }
     }
     
     func setTabbar() {
