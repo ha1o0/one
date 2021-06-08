@@ -206,10 +206,10 @@ class ModalViewController: BaseViewController {
     @IBAction func fromBottom(_ sender: UIButton) {
         newVc.enterType = .push
         let transition = CATransition()
-        transition.duration = 0.4
+        transition.duration = 0.45
         transition.type = CATransitionType.moveIn
         transition.subtype = CATransitionSubtype.fromTop
-        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         view.window?.layer.add(transition, forKey: kCATransition)
         self.pushVc(vc: newVc, animate: false)
         

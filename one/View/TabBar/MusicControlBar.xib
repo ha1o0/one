@@ -29,24 +29,6 @@
                                             <constraint firstAttribute="height" constant="1" id="MlW-w4-1wz"/>
                                         </constraints>
                                     </view>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DE1-Lh-qD1">
-                                        <rect key="frame" x="85" y="12.5" width="57.5" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-mD-OdQ">
-                                        <rect key="frame" x="147.5" y="10.5" width="8" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌手名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0c-lg-csc">
-                                        <rect key="frame" x="160.5" y="14" width="37" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBM-Ib-j7e">
                                         <rect key="frame" x="319" y="3.5" width="35" height="35"/>
                                         <subviews>
@@ -78,42 +60,17 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zs7-mD-OdQ" firstAttribute="centerY" secondItem="DE1-Lh-qD1" secondAttribute="centerY" id="0Tj-XU-eNz"/>
                                     <constraint firstAttribute="trailing" secondItem="fBM-Ib-j7e" secondAttribute="trailing" constant="60" id="4a1-Qw-ypw"/>
-                                    <constraint firstItem="p0c-lg-csc" firstAttribute="leading" secondItem="zs7-mD-OdQ" secondAttribute="trailing" constant="5" id="BKK-Y3-EdG"/>
                                     <constraint firstItem="vgf-Wb-vC5" firstAttribute="top" secondItem="8uv-TV-U9X" secondAttribute="top" id="KyI-Am-v7B"/>
-                                    <constraint firstItem="p0c-lg-csc" firstAttribute="centerY" secondItem="DE1-Lh-qD1" secondAttribute="centerY" id="QbE-oi-CW3"/>
-                                    <constraint firstItem="fBM-Ib-j7e" firstAttribute="centerY" secondItem="8uv-TV-U9X" secondAttribute="centerY" id="XkP-lB-vNh"/>
-                                    <constraint firstItem="DE1-Lh-qD1" firstAttribute="leading" secondItem="8uv-TV-U9X" secondAttribute="leading" constant="85" id="XuY-sD-Qug"/>
                                     <constraint firstItem="vgf-Wb-vC5" firstAttribute="leading" secondItem="8uv-TV-U9X" secondAttribute="leading" id="Zq6-MA-Ki0"/>
-                                    <constraint firstItem="S1Z-nr-RR6" firstAttribute="centerY" secondItem="8uv-TV-U9X" secondAttribute="centerY" id="byG-kV-ooF"/>
-                                    <constraint firstItem="zs7-mD-OdQ" firstAttribute="leading" secondItem="DE1-Lh-qD1" secondAttribute="trailing" constant="5" id="i5I-iV-Xja"/>
+                                    <constraint firstItem="S1Z-nr-RR6" firstAttribute="centerY" secondItem="fBM-Ib-j7e" secondAttribute="centerY" id="dfv-tQ-2mx"/>
+                                    <constraint firstItem="fBM-Ib-j7e" firstAttribute="top" secondItem="vgf-Wb-vC5" secondAttribute="bottom" constant="2.5" id="hCX-HR-FYF"/>
                                     <constraint firstAttribute="trailing" secondItem="vgf-Wb-vC5" secondAttribute="trailing" id="ryb-Yf-5eY"/>
                                     <constraint firstAttribute="trailing" secondItem="S1Z-nr-RR6" secondAttribute="trailing" constant="20" id="wIA-Xe-drF"/>
-                                    <constraint firstItem="DE1-Lh-qD1" firstAttribute="centerY" secondItem="8uv-TV-U9X" secondAttribute="centerY" id="zWW-fx-Fnu"/>
                                 </constraints>
                             </view>
                             <blurEffect style="extraLight"/>
                         </visualEffectView>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fc-RQ-CJw">
-                            <rect key="frame" x="30" y="4" width="46" height="46"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOV-kv-CbZ">
-                                    <rect key="frame" x="10.5" y="10.5" width="25" height="25"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="25" id="luz-2e-Q44"/>
-                                        <constraint firstAttribute="width" constant="25" id="tNm-a8-Qb4"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="dOV-kv-CbZ" firstAttribute="centerX" secondItem="6fc-RQ-CJw" secondAttribute="centerX" id="D4a-gU-Ahu"/>
-                                <constraint firstAttribute="width" constant="46" id="Kyq-KR-XUn"/>
-                                <constraint firstAttribute="height" constant="46" id="ONn-YD-SIx"/>
-                                <constraint firstItem="dOV-kv-CbZ" firstAttribute="centerY" secondItem="6fc-RQ-CJw" secondAttribute="centerY" id="wsl-sa-qHM"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJG-Jo-slO">
                             <rect key="frame" x="30" y="4" width="264" height="46"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,10 +81,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="6fc-RQ-CJw" firstAttribute="leading" secondItem="OHT-yA-Ugs" secondAttribute="leading" constant="30" id="0Da-v3-T5T"/>
                         <constraint firstItem="EJG-Jo-slO" firstAttribute="leading" secondItem="OHT-yA-Ugs" secondAttribute="leading" constant="30" id="4yL-0e-wO7"/>
-                        <constraint firstAttribute="bottom" secondItem="6fc-RQ-CJw" secondAttribute="bottom" id="Agw-ZN-X5Y"/>
-                        <constraint firstAttribute="bottom" secondItem="EJG-Jo-slO" secondAttribute="bottom" id="OUz-YO-JWx"/>
+                        <constraint firstItem="EJG-Jo-slO" firstAttribute="top" secondItem="OHT-yA-Ugs" secondAttribute="top" constant="4" id="6Aj-sI-fUy"/>
                         <constraint firstAttribute="bottom" secondItem="9eX-bi-AFF" secondAttribute="bottom" id="SPB-Yh-g8L"/>
                         <constraint firstItem="9eX-bi-AFF" firstAttribute="leading" secondItem="OHT-yA-Ugs" secondAttribute="leading" id="gms-E6-iRM"/>
                         <constraint firstAttribute="trailing" secondItem="9eX-bi-AFF" secondAttribute="trailing" id="klH-Si-dqO"/>
@@ -148,13 +103,8 @@
                 <outlet property="collectionBkgView" destination="EJG-Jo-slO" id="Cfd-ev-3yP"/>
                 <outlet property="collectionBkgViewHeightConstraints" destination="mMT-nY-6K2" id="mTR-aI-91T"/>
                 <outlet property="contentView" destination="OHT-yA-Ugs" id="84o-uP-wwh"/>
-                <outlet property="musicAuthorLabel" destination="p0c-lg-csc" id="ikV-gu-Q8x"/>
-                <outlet property="musicNameLabel" destination="DE1-Lh-qD1" id="U9n-y4-EMY"/>
                 <outlet property="optionView" destination="fBM-Ib-j7e" id="Zm4-GB-9ze"/>
                 <outlet property="playButton" destination="t3k-9M-7cH" id="cF1-0N-qNw"/>
-                <outlet property="posterImage" destination="dOV-kv-CbZ" id="96c-RG-1UT"/>
-                <outlet property="posterImageBkgViewWidth" destination="Kyq-KR-XUn" id="IXa-Lh-fuo"/>
-                <outlet property="posterImageView" destination="6fc-RQ-CJw" id="M0Z-6b-8u1"/>
                 <outlet property="showListButton" destination="S1Z-nr-RR6" id="7cI-oM-ERx"/>
                 <outlet property="topLineView" destination="vgf-Wb-vC5" id="71H-fy-nbJ"/>
                 <outlet property="visualEffectView" destination="9eX-bi-AFF" id="BzY-VX-0IE"/>
