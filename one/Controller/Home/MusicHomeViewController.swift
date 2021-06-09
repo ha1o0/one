@@ -18,7 +18,7 @@ class MusicHomeViewController: BaseTableViewController {
     
     lazy var weatherButton: UIButton = {
         let _weatherButton = UIButton.getSystemIconBtn(name: "sun.max.fill", color: .black)
-        _weatherButton.addTarget(self, action: #selector(changeInterfaceStyle), for: .touchUpInside)
+        _weatherButton.addTarget(self, action: #selector(changeInterfaceStyleMode), for: .touchUpInside)
         return _weatherButton
     }()
     
@@ -62,7 +62,7 @@ class MusicHomeViewController: BaseTableViewController {
         super.setStatusBar()
         super.setNavigation()
 
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = .systemBackground
         self.view.addSubview(navigationView)
         navigationView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview().offset(STATUS_BAR_HEIGHT)
@@ -129,6 +129,10 @@ class MusicHomeViewController: BaseTableViewController {
         guard let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc else { return }
         tabbarVc.switchBlurStyle()
         self.topShadowView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
+    }
+    
+    @objc func changeInterfaceStyleMode() {
+        ThemeManager.shared.changeWindowInterfaceStyle()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

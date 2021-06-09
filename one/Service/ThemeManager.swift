@@ -36,6 +36,10 @@ class ThemeManager {
         self.currentInterfaceStyle = window.traitCollection.userInterfaceStyle
     }
     
+    @objc func changeWindowInterfaceStyle() {
+        appDelegate.window?.overrideUserInterfaceStyle = currentInterfaceStyle == .light ? .dark : .light
+    }
+    
     @objc func changeInterfaceStyle() {
         
     }
