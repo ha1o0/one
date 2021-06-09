@@ -11,13 +11,13 @@ import MJRefresh
 class MusicHomeViewController: BaseTableViewController {
 
     lazy var menuButton: UIButton = {
-        let _menuButton = UIButton.getSystemIconBtn(name: "text.alignleft", color: .black)
+        let _menuButton = UIButton.getSystemIconBtn(name: "text.alignleft", color: .label)
         _menuButton.addTarget(self, action: #selector(showLeftVc), for: .touchUpInside)
         return _menuButton
     }()
     
     lazy var weatherButton: UIButton = {
-        let _weatherButton = UIButton.getSystemIconBtn(name: "sun.max.fill", color: .black)
+        let _weatherButton = UIButton.getSystemIconBtn(name: "sun.max.fill", color: .label)
         _weatherButton.addTarget(self, action: #selector(changeInterfaceStyleMode), for: .touchUpInside)
         return _weatherButton
     }()
@@ -126,8 +126,6 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     @objc func changeInterfaceStyle() {
-        guard let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc else { return }
-        tabbarVc.switchBlurStyle()
         self.topShadowView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
     }
     

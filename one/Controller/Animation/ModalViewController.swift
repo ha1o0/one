@@ -25,12 +25,12 @@ class ModalViewController: BaseViewController {
     }()
     lazy var leftBarView: UIView = {
         let _leftBarView = UIView(frame: CGRect(x: -leftBarViewWidth, y: 0, width: leftBarViewWidth, height: SCREEN_HEIGHT))
-        _leftBarView.backgroundColor = .white
+        _leftBarView.backgroundColor = .systemBackground
         return _leftBarView
     }()
     lazy var backBtn: UIButton = {
         let btn = UIButton()
-        btn.tintColor = .black
+        btn.tintColor = .label
         btn.setTitle("", for: .normal)
         btn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
@@ -40,7 +40,7 @@ class ModalViewController: BaseViewController {
     }()
     lazy var leftViewBackBtn: UIButton = {
         let btn = UIButton()
-        btn.tintColor = .black
+        btn.tintColor = .label
         btn.setTitle("", for: .normal)
         btn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
@@ -73,6 +73,7 @@ class ModalViewController: BaseViewController {
         }
         let textLabel = UILabel()
         textLabel.text = "毒"
+        textLabel.textColor = .label
         textLabel.adjustsFontSizeToFitWidth = true
         leftBarView.addSubview(textLabel)
         textLabel.snp.makeConstraints { (maker) in
@@ -158,7 +159,7 @@ class ModalViewController: BaseViewController {
         if let title = title {
             let titleLabel = UILabel()
             titleLabel.text = title
-            titleLabel.textColor = .black
+            titleLabel.textColor = .label
             navigationView.addSubview(titleLabel)
             titleLabel.snp.makeConstraints { (maker) in
                 maker.center.equalToSuperview()
@@ -255,7 +256,7 @@ class ModalViewController: BaseViewController {
         self.sceneView.pointOfView = self.cameraNode
         UIView.animate(withDuration: self.animationSecondDuration) {
             self.sceneView.isHidden = true
-            self.contentView.backgroundColor = .white
+            self.contentView.backgroundColor = .systemBackground
             let transform3D: CATransform3D = CATransform3DMakeRotation(0, 0, 1, 0)
             self.contentView.layer.transform = self.CATransform3DPerspect(t: transform3D, center: .zero, idz: 600)
         } completion: { (result) in

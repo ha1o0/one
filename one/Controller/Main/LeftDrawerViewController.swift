@@ -17,7 +17,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     lazy var contentView: UIView = {
         let _contentView = UIView()
-        _contentView.backgroundColor = .gray1
+        _contentView.backgroundColor = .clear
         _contentView.frame = CGRect(x: SCREEN_WIDTH - leftVcVisibleViewWidth, y: 0, width: leftVcVisibleViewWidth, height: SCREEN_HEIGHT)
         return _contentView
     }()
@@ -37,13 +37,13 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         let usernameLabel = UILabel()
         usernameLabel.text = "炒饭冷面河粉"
         usernameLabel.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
-        usernameLabel.textColor = .black
+        usernameLabel.textColor = .label
         _topBarView.addSubview(usernameLabel)
         usernameLabel.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
             maker.leading.equalTo(avatarView.snp.trailing).offset(20)
         }
-        let scanIcon = UIButton.getSystemIconBtn(name: "camera.metering.none", color: .black)
+        let scanIcon = UIButton.getSystemIconBtn(name: "camera.metering.none", color: .label)
         _topBarView.addSubview(scanIcon)
         scanIcon.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
@@ -65,6 +65,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         setup()
         print("leftdrawvc didload")
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeView))
+        NotificationService.shared.listenInterfaceStyleChange(target: self, selector: #selector(changeInterfaceStyle))
     }
     
     func setup() {
@@ -184,7 +185,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
             contentView.layer.cornerRadius = 10
             contentView.layer.masksToBounds = true
             contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            contentView.backgroundColor = .white
+            contentView.backgroundColor = .systemGray6
             
             let title = UILabel()
             title.text = data[section].title
@@ -226,5 +227,9 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func sectionHasHeader(section: Int) -> Bool {
         return data[section].title != ""
+    }
+    
+    @objc func changeInterfaceStyle() {
+        self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
     }
 }

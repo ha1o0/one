@@ -37,6 +37,7 @@ class AnimationTableViewCell: BaseTableViewCell {
             maker.leading.top.equalToSuperview().offset(16)
         }
         targetView.backgroundColor = .orange
+        contentView.backgroundColor = .systemGray6
         contentView.addSubview(targetView)
         targetView.snp.makeConstraints { (maker) in
             maker.top.equalTo(self.titleLabel.snp.bottom).offset(16)

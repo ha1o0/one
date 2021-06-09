@@ -16,7 +16,7 @@ class FunctionListTableViewCell: BaseTableViewCell {
         if number > 50 {
             return
         }
-        let capsule = Capsule(text: "测试", bkgColor: .gray, borderColor: .clear, textColor: .white)
+        let capsule = Capsule(text: "测试", bkgColor: .systemGray, borderColor: .clear, textColor: .systemBackground)
         self.contentView.addSubview(capsule)
         capsule.snp.makeConstraints { (maker ) in
             maker.centerY.equalToSuperview()

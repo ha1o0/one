@@ -16,6 +16,7 @@ class BaseTableViewController: BaseViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .systemGray6
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()

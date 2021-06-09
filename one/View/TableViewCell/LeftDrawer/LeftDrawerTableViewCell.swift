@@ -29,6 +29,7 @@ class LeftDrawerTableViewCell: BaseTableViewCell {
     }
     
     func setContent(item: LeftDrawerItem, isFirst: Bool, isLast: Bool) {
+        switchView.isOn = ThemeManager.shared.currentInterfaceStyle == .dark
         settingIconView.image = UIImage(named: item.iconName)
         settingNameLabel.text = item.name
         splitLineView.isHidden = true
@@ -51,6 +52,13 @@ class LeftDrawerTableViewCell: BaseTableViewCell {
         } else {
             bkgView.layer.cornerRadius = 0
             bkgView.layer.maskedCorners = []
+        }
+    }
+    
+    @IBAction func switchInterfaceStyle(_ sender: UISwitch) {
+        appDelegate.rootVc?.drawerVc.closeLeftVc()
+        delay(0.5) {
+            ThemeManager.shared.changeWindowInterfaceStyle()
         }
     }
 }

@@ -33,6 +33,7 @@ class CustomTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        NotificationService.shared.listenInterfaceStyleChange(target: self, selector: #selector(switchBlurStyle))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,13 +95,7 @@ class CustomTabBarViewController: UITabBarController {
         }
     }
     
-    func switchBlurStyle() {
-//        if ThemeManager.shared.currentInterfaceStyle == .light {
-//            ThemeManager.shared.currentInterfaceStyle = .dark
-//        } else {
-//            ThemeManager.shared.currentInterfaceStyle = .light
-//        }
-        
+    @objc func switchBlurStyle() {
         let newBlurEffect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         self.musicControlBar.visualEffectView.effect = newBlurEffect
         self.customTabBar.blurView.effect = newBlurEffect

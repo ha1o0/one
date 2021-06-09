@@ -140,7 +140,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
     
     func setTableView() {
         self.view.addSubview(self.tableView)
-        self.tableView.backgroundColor = .white
+        self.tableView.backgroundColor = .systemGray6
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewData.append(IdName(name: "视频播放器", id: "1"))

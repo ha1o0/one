@@ -45,6 +45,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemGray6Color"/>
                 <constraints>
                     <constraint firstItem="3Sv-Kw-oxf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="24F-sY-9eq"/>
                     <constraint firstItem="tfZ-hh-Bng" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="INX-3e-gDi"/>
@@ -65,6 +66,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
