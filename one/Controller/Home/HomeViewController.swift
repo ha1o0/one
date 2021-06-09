@@ -189,6 +189,19 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc {
+            return tabbarVc.tabBarHeight + tabbarVc.musicControlBarHeight
+        }
+        
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+        return footer
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let row = indexPath.row

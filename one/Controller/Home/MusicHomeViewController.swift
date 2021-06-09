@@ -228,7 +228,9 @@ class MusicHomeViewController: BaseTableViewController {
             return 12
         }
         if section == self.tableData.count - 1 {
-            return appDelegate.rootVc?.drawerVc.tabbarVc?.musicControlBarHeight ?? 0
+            if let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc {
+                return tabbarVc.tabBarHeight + tabbarVc.musicControlBarHeight
+            }
         }
         return .leastNormalMagnitude
     }

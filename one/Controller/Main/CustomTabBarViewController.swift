@@ -21,7 +21,7 @@ class CustomTabBarViewController: UITabBarController {
         return items
     }()
     var musicControlBarHeight: CGFloat = 50
-    var animationDuration: TimeInterval = 0.6
+    var animationDuration: TimeInterval = 0.4
     lazy var musicControlBar: MusicControlBar = {
         let _musicControlBar = viewFromNib("MusicControlBar") as! MusicControlBar
         return _musicControlBar
