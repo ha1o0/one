@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
+
+
 class NotificationService {
     static let shared = NotificationService()
     
     enum State: String {
+        case interfaceStyleChange = "interfaceStyleChange"
         case gotoVc = "gotoVc"
         case stopPosterLoop = "stopPosterLoop"
         case musicStatus = "musicStatus"
@@ -39,6 +42,14 @@ class NotificationService {
     
     func musicStatus(_ isPlaying: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name(State.musicStatus.rawValue), object: nil, userInfo: ["isPlaying": isPlaying])
+    }
+    
+    func listenInterfaceStyleChange(target: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name.init(State.interfaceStyleChange.rawValue), object: nil)
+    }
+    
+    func interfaceStyleChange(style: UIUserInterfaceStyle) {
+        NotificationCenter.default.post(name: NSNotification.Name(State.interfaceStyleChange.rawValue), object: nil, userInfo: ["style": style])
     }
     
     

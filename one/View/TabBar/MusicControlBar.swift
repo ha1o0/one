@@ -46,6 +46,7 @@ class MusicControlBar: UIView, UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func commonInit() {
+        self.visualEffectView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         collectionBkgView.addSubview(collectionView)
         collectionView.snp.makeConstraints { maker in
             maker.width.equalTo(collectionViewWidth)

@@ -8,10 +8,6 @@
 import UIKit
 
 class CustomTabBarViewController: UITabBarController {
-
-    var defaultBlurStyles: [UIBlurEffect.Style] = [.extraLight, .dark]
-    var defaultBarColors: [[UIColor]] = [[UIColor.main, UIColor.tabBarGray], [UIColor.white, UIColor.tabBarGray]]
-    var currentBlurStyleIndex: Int = 0
     var tabbarItems: [TabbarItem] = {
         var items: [TabbarItem] = []
         let item1 = TabbarItem(vc: HomeViewController(), title: "首页", imageName: "home", selectedImageName: "homeSelected")
@@ -96,5 +92,18 @@ class CustomTabBarViewController: UITabBarController {
             self.customTabBar.frame.origin.y = SCREEN_HEIGHT - extraBottomHeight
             self.customTabBar.hideTabBarItems()
         }
+    }
+    
+    func switchBlurStyle() {
+//        if ThemeManager.shared.currentInterfaceStyle == .light {
+//            ThemeManager.shared.currentInterfaceStyle = .dark
+//        } else {
+//            ThemeManager.shared.currentInterfaceStyle = .light
+//        }
+        
+        let newBlurEffect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
+        self.musicControlBar.visualEffectView.effect = newBlurEffect
+        self.customTabBar.blurView.effect = newBlurEffect
+        self.customTabBar.updateTabBarItems(colors: ThemeManager.shared.getBarColor())
     }
 }

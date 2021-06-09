@@ -40,12 +40,13 @@
 		E9937F5826704C800047FA64 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5726704C800047FA64 /* CustomTabBar.swift */; };
 		E9937F5B26705C860047FA64 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5926705C860047FA64 /* CustomTabBarViewController.swift */; };
 		E9937F5C26705C860047FA64 /* CustomTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F5A26705C860047FA64 /* CustomTabBarViewController.xib */; };
+		E9937F5E2670AA200047FA64 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5D2670AA200047FA64 /* ThemeManager.swift */; };
+		E9937F602670BC3F0047FA64 /* BaseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5F2670BC3F0047FA64 /* BaseWindow.swift */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
 		E99855E72648C073006B0E1E /* DrawerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855E52648C073006B0E1E /* DrawerViewController.xib */; };
 		E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855EC2648C786006B0E1E /* MainViewController.swift */; };
-		E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F42648C965006B0E1E /* TabBarViewController.swift */; };
 		E99855FB2648DB6F006B0E1E /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */; };
 		E99855FC2648DB6F006B0E1E /* BaseTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */; };
 		E9985605264A7FBD006B0E1E /* LeftDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */; };
@@ -202,12 +203,13 @@
 		E9937F5726704C800047FA64 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		E9937F5926705C860047FA64 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		E9937F5A26705C860047FA64 /* CustomTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBarViewController.xib; sourceTree = "<group>"; };
+		E9937F5D2670AA200047FA64 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		E9937F5F2670BC3F0047FA64 /* BaseWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWindow.swift; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		E99855E52648C073006B0E1E /* DrawerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerViewController.xib; sourceTree = "<group>"; };
 		E99855EC2648C786006B0E1E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E99855F42648C965006B0E1E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTabBarViewController.xib; sourceTree = "<group>"; };
 		E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDrawerViewController.swift; sourceTree = "<group>"; };
@@ -433,11 +435,18 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		E9937F612670BC450047FA64 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				E9937F5F2670BC3F0047FA64 /* BaseWindow.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
 		E99855EB2648C76E006B0E1E /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				E99855EC2648C786006B0E1E /* MainViewController.swift */,
-				E99855F42648C965006B0E1E /* TabBarViewController.swift */,
 				E99855E42648C073006B0E1E /* DrawerViewController.swift */,
 				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
 				E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */,
@@ -529,6 +538,7 @@
 				E9A59F00266615F600FA458B /* CacheManager.swift */,
 				E9A59F062668788400FA458B /* MockService.swift */,
 				E99224B2266D27280038BAB7 /* MusicService.swift */,
+				E9937F5D2670AA200047FA64 /* ThemeManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -659,6 +669,7 @@
 		E9E0CB4D26062A860047DAE9 /* one */ = {
 			isa = PBXGroup;
 			children = (
+				E9937F612670BC450047FA64 /* Window */,
 				E9A952F6263171140032EADB /* Resource */,
 				E99BC1812627495C0002C066 /* Service */,
 				E9E0CDCF2608E69C0047DAE9 /* Model */,
@@ -1094,7 +1105,6 @@
 				E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
-				E99855F52648C965006B0E1E /* TabBarViewController.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
 				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
@@ -1131,6 +1141,7 @@
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
+				E9937F5E2670AA200047FA64 /* ThemeManager.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
 				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
@@ -1173,6 +1184,7 @@
 				E93E0EC12612262100D43B4C /* Animation.swift in Sources */,
 				E99224CC266E6D5B0038BAB7 /* AnimationUtils.swift in Sources */,
 				E99224AE266D15140038BAB7 /* MusicControlBar.swift in Sources */,
+				E9937F602670BC3F0047FA64 /* BaseWindow.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
 				E99224B3266D27280038BAB7 /* MusicService.swift in Sources */,
 			);

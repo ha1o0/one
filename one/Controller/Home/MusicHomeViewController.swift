@@ -18,7 +18,7 @@ class MusicHomeViewController: BaseTableViewController {
     
     lazy var weatherButton: UIButton = {
         let _weatherButton = UIButton.getSystemIconBtn(name: "sun.max.fill", color: .black)
-        _weatherButton.addTarget(self, action: #selector(changeTabbar), for: .touchUpInside)
+        _weatherButton.addTarget(self, action: #selector(changeInterfaceStyle), for: .touchUpInside)
         return _weatherButton
     }()
     
@@ -37,13 +37,8 @@ class MusicHomeViewController: BaseTableViewController {
         return _topView
     }()
     
-    lazy var topShadowView: UIView = {
-        let _topShadowView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-        return _topShadowView
-    }()
-    
-    lazy var toptopShadowView: UIView = {
-        let _topShadowView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+    lazy var topShadowView: UIVisualEffectView = {
+        let _topShadowView = UIVisualEffectView(effect: UIBlurEffect(style: ThemeManager.shared.getBlurStyle()))
         return _topShadowView
     }()
     
@@ -59,6 +54,7 @@ class MusicHomeViewController: BaseTableViewController {
         self.isTabBarVc = true
         setTableView()
         setNavigation()
+        NotificationService.shared.listenInterfaceStyleChange(target: self, selector: #selector(changeInterfaceStyle))
         self.getData()
     }
     
@@ -87,7 +83,7 @@ class MusicHomeViewController: BaseTableViewController {
             maker.trailing.equalToSuperview().offset(-20)
         })
         
-        let transColor: UIColor = UIColor.white.withAlphaComponent(0.5)
+        let transColor: UIColor = .clear
         self.statusBarView.backgroundColor = transColor
         self.navigationView.backgroundColor = transColor
     }
@@ -104,12 +100,7 @@ class MusicHomeViewController: BaseTableViewController {
             maker.top.leading.trailing.equalToSuperview()
             maker.height.equalTo(SCREEN_HEIGHT)
         }
-        
-//        self.view.addSubview(toptopShadowView)
-//        toptopShadowView.snp.makeConstraints { (maker) in
-//            maker.top.leading.trailing.equalToSuperview()
-//            maker.height.equalTo(STATUS_NAV_HEIGHT + 180)
-//        }
+
         self.view.addSubview(self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -120,7 +111,7 @@ class MusicHomeViewController: BaseTableViewController {
         let header = CustomRefreshHeader1()
         tableView.mj_header = header
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        tableView.backgroundColor = .clear
         header.setRefreshingTarget(self, refreshingAction: #selector(refreshData))
     }
     
@@ -134,8 +125,10 @@ class MusicHomeViewController: BaseTableViewController {
         appDelegate.rootVc?.drawerVc.openLeftVc()
     }
     
-    @objc func changeTabbar() {
-//        appDelegate.rootVc?.drawerVc.tabbarVc?.switchBlurStyle()
+    @objc func changeInterfaceStyle() {
+        guard let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc else { return }
+        tabbarVc.switchBlurStyle()
+        self.topShadowView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

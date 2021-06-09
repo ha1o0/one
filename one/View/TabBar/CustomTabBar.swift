@@ -21,9 +21,6 @@ class CustomTabBar: UIView {
     var musicControlBarHeight: CGFloat = 50
     var animationDuration: TimeInterval = 0.3
     var tabBarItems: [TabbarItem] = []
-    var defaultBlurStyles: [UIBlurEffect.Style] = [.extraLight, .dark]
-    var defaultBarColors: [[UIColor]] = [[UIColor.main, UIColor.tabBarGray], [UIColor.white, UIColor.tabBarGray]]
-    var currentBlurStyleIndex: Int = 0
     var selectTabCallback: ((_ index: Int) -> Void)?
 
     lazy var contentView: UIView = {
@@ -68,7 +65,7 @@ class CustomTabBar: UIView {
             maker.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        self.setBlurForTabbar(style: defaultBlurStyles[currentBlurStyleIndex])
+        self.setBlurForTabbar(style: ThemeManager.shared.getBlurStyle())
         
         contentView.addSubview(self.tabBarItemStackView)
         tabBarItemStackView.snp.makeConstraints { maker in
@@ -115,7 +112,7 @@ class CustomTabBar: UIView {
             return
         }
         self.selectedIndex = recognizerView.tag
-        self.updateTabBarItems(colors: defaultBarColors[currentBlurStyleIndex])
+        self.updateTabBarItems(colors: ThemeManager.shared.getBarColor())
         if let selectTabCallback = selectTabCallback {
             selectTabCallback(self.selectedIndex)
         }
@@ -126,7 +123,7 @@ class CustomTabBar: UIView {
             let tabBarItem = self.tabBarItems[index]
             for subview in arsubview.subviews {
 //                print(subview)
-                let textColor = index == selectedIndex ? UIColor.main : UIColor.gray
+                let textColor = index == selectedIndex ? colors[0] : colors[1]
                 if subview is UIImageView {
                     let iconImageView = subview as! UIImageView
                     let iconImage = UIImage(named: index == selectedIndex ? tabBarItem.selectedImageName : tabBarItem.imageName)?.withRenderingMode(.alwaysTemplate)
@@ -134,7 +131,7 @@ class CustomTabBar: UIView {
                     iconImageView.image = iconImage
                 } else if subview is UILabel {
                     let titleLabel = subview as! UILabel
-                    titleLabel.textColor = index == selectedIndex ? colors[0] : colors[1]
+                    titleLabel.textColor = textColor
                 }
             }
         }
@@ -153,16 +150,6 @@ class CustomTabBar: UIView {
                 subview.removeFromSuperview()
             }
         }
-    }
-    
-    func switchBlurStyle() {
-        let defaultTotalStyleCount = defaultBlurStyles.count
-        currentBlurStyleIndex += 1
-        if currentBlurStyleIndex == defaultTotalStyleCount {
-            currentBlurStyleIndex = 0
-        }
-        setBlurForTabbar(style: defaultBlurStyles[currentBlurStyleIndex])
-        updateTabBarItems(colors: defaultBarColors[currentBlurStyleIndex])
     }
     
     func setBlurForTabbar(style: UIBlurEffect.Style) {

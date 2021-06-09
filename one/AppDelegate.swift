@@ -13,7 +13,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    var window: BaseWindow?
     var launchWindow: UIWindow?
     var deviceOrientation = UIInterfaceOrientationMask.portrait
     var rootVc: MainViewController?
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = BaseWindow(frame: UIScreen.main.bounds)
 //        UIApplication.shared.statusBarUIView?.backgroundColor = UIColor.main
         rootVc = MainViewController()
         window?.rootViewController = rootVc
@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("DidBecomeActive")
+        ThemeManager.shared.updateInterfaceStyle()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
