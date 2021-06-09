@@ -24,7 +24,7 @@ class DrawerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
     }
 
-    var tabbarVc: TabBarViewController? {
+    var tabbarVc: CustomTabBarViewController? {
         didSet {
             if tabbarVc != nil {
                 contentView.addSubview(tabbarVc!.view)

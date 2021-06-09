@@ -7,13 +7,6 @@
 
 import UIKit
 
-struct TabbarItem {
-    var vc: UIViewController
-    var title = ""
-    var imageName = ""
-    var selectedImageName = ""
-}
-
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     var defaultBlurStyles: [UIBlurEffect.Style] = [.extraLight, .dark]

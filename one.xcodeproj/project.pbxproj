@@ -37,6 +37,9 @@
 		E99224B3266D27280038BAB7 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224B2266D27280038BAB7 /* MusicService.swift */; };
 		E99224CC266E6D5B0038BAB7 /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */; };
 		E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */; };
+		E9937F5826704C800047FA64 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5726704C800047FA64 /* CustomTabBar.swift */; };
+		E9937F5B26705C860047FA64 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F5926705C860047FA64 /* CustomTabBarViewController.swift */; };
+		E9937F5C26705C860047FA64 /* CustomTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F5A26705C860047FA64 /* CustomTabBarViewController.xib */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -196,6 +199,9 @@
 		E99224B2266D27280038BAB7 /* MusicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
 		E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		E9937F5726704C800047FA64 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		E9937F5926705C860047FA64 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		E9937F5A26705C860047FA64 /* CustomTabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTabBarViewController.xib; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 			children = (
 				E99224A8266D0FBC0038BAB7 /* MusicControlBar.xib */,
 				E99224AD266D15140038BAB7 /* MusicControlBar.swift */,
+				E9937F5726704C800047FA64 /* CustomTabBar.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -435,6 +442,8 @@
 				E99855E52648C073006B0E1E /* DrawerViewController.xib */,
 				E9985603264A7FBD006B0E1E /* LeftDrawerViewController.swift */,
 				E9985604264A7FBD006B0E1E /* LeftDrawerViewController.xib */,
+				E9937F5926705C860047FA64 /* CustomTabBarViewController.swift */,
+				E9937F5A26705C860047FA64 /* CustomTabBarViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -984,6 +993,7 @@
 				E9A59F21266E13C100FA458B /* TabBarMusicCollectionViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
+				E9937F5C26705C860047FA64 /* CustomTabBarViewController.xib in Resources */,
 				E99BC1DC26340F580002C066 /* BaseWebViewController.xib in Resources */,
 				E9E0CB93260659560047DAE9 /* HomeViewController.xib in Resources */,
 				E9A59EF9266472CA00FA458B /* MusicSheetCollectionViewCell.xib in Resources */,
@@ -1116,6 +1126,7 @@
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,
 				E992242B2666791E0038BAB7 /* MusicListTableViewCell.swift in Sources */,
+				E9937F5826704C800047FA64 /* CustomTabBar.swift in Sources */,
 				E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
@@ -1133,6 +1144,7 @@
 				E99BC1DB26340F580002C066 /* BaseWebViewController.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9A1351A2624271500DEC078 /* BezierPathViewController.swift in Sources */,
+				E9937F5B26705C860047FA64 /* CustomTabBarViewController.swift in Sources */,
 				E9A952E126315FBF0032EADB /* SceneKitViewController.swift in Sources */,
 				E9A59F01266615F600FA458B /* CacheManager.swift in Sources */,
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 // 初始root vc
 class MainViewController: UIViewController {
 
-    let tabbarVc = TabBarViewController()
+    let tabbarVc = CustomTabBarViewController()
     let leftVc = LeftDrawerViewController()
     let drawerVc = DrawerViewController()
     

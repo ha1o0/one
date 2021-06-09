@@ -135,7 +135,7 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     @objc func changeTabbar() {
-        appDelegate.rootVc?.drawerVc.tabbarVc?.switchBlurStyle()
+//        appDelegate.rootVc?.drawerVc.tabbarVc?.switchBlurStyle()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
