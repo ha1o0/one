@@ -137,9 +137,11 @@ extension UIViewController {
         view.endEditing(true)
     }
     
-    func pushVc(vc: UIViewController, animate: Bool = true) {
+    func pushVc(vc: UIViewController, animate: Bool = true, hideAll: Bool = false) {
         // 解决新vc与tab vc的tabbar显示与否的问题
 //        self.hidesBottomBarWhenPushed = true
+//        NotificationService.shared.hideAll = hideAll
+//        print("pushvc before: \(hideAll)")
         self.navigationController?.pushViewController(vc, animated: animate)
 //        self.hidesBottomBarWhenPushed = false
     }

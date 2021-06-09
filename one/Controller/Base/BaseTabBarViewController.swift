@@ -33,6 +33,7 @@ class BaseTabBarViewController: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+//        print("basetabbar diddisappear \(NotificationService.shared.hideAll)")
         if let topVc = getTopViewController() {
             if topVc is BaseViewController {
                 let topBaseVc = topVc as! BaseViewController
@@ -42,7 +43,7 @@ class BaseTabBarViewController: BaseViewController {
             }
         }
         appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar()
-//        print("basetabbar diddisappear")
+
     }
     
     override func viewWillLayoutSubviews() {

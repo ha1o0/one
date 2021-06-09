@@ -165,7 +165,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
     }
     
     @objc func toScanQRCodeVc() {
-        self.pushVc(vc: ScanQrCodeViewController())
+        self.pushVc(vc: ScanQrCodeViewController(), hideAll: true)
     }
     
     @objc func toMessageVc() {

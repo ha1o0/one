@@ -99,10 +99,11 @@ class CustomTabBarViewController: UITabBarController {
 
     func hideTabbar() {
         let extraBottomHeight: CGFloat = hasNotch ? 34 : 0
+        let hideAll = NotificationService.shared.hideAll
         UIView.animate(withDuration: self.animationDuration) {
-            self.bottomBlurView.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight + 8
-            self.musicControlBar.frame.origin.y = SCREEN_HEIGHT - extraBottomHeight - self.musicControlBarHeight
-            self.customTabBar.frame.origin.y = SCREEN_HEIGHT - extraBottomHeight
+            self.bottomBlurView.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - self.tabBarHeight + 8
+            self.musicControlBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - extraBottomHeight - self.musicControlBarHeight
+            self.customTabBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - extraBottomHeight
             self.customTabBar.hideTabBarItems()
         }
     }

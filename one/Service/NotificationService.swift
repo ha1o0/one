@@ -20,6 +20,8 @@ class NotificationService {
         case musicStatus = "musicStatus"
     }
     
+    var hideAll: Bool = false
+    
     func listenGotoVc(target: Any, selector: Selector) {
         NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil)
     }
