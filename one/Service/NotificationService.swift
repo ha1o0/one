@@ -26,8 +26,8 @@ class NotificationService {
         NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil)
     }
     
-    func gotoVc(_ vc: UIViewController) {
-        NotificationCenter.default.post(name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil, userInfo: ["vc": vc])
+    func gotoVc(_ vc: UIViewController, _ hideAll: Bool = false) {
+        NotificationCenter.default.post(name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil, userInfo: ["vc": vc, "hideAll": hideAll])
     }
     
     func listenStopPosterLoop(target: Any, selector: Selector) {

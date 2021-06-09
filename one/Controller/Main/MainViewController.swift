@@ -26,11 +26,11 @@ class MainViewController: UIViewController {
     
     @objc func gotoVc(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
-            if let vc = dict["vc"] as? UIViewController {
+            if let vc = dict["vc"] as? UIViewController, let hideAll = dict["hideAll"] as? Bool {
                 let drawVc = appDelegate.window?.rootViewController as? DrawerViewController
                 drawVc?.closeLeftVcWithoutAnimation()
                 if let topVc = getTopViewController() {
-                    topVc.pushVc(vc: vc)
+                    topVc.pushVc(vc: vc, hideAll: hideAll)
                 }
             }
         }

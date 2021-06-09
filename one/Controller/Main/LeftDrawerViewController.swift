@@ -142,7 +142,7 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func toScanQRCodeVc() {
-        NotificationService.shared.gotoVc(ScanQrCodeViewController())
+        NotificationService.shared.gotoVc(ScanQrCodeViewController(), true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -207,6 +207,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         let row = indexPath.row
         let selectedRow = self.tableViewData[row]
         var targetController: UIViewController? = nil
+        var hideAllTabBar = false
         switch selectedRow.id {
         case "1":
             targetController = PlayViewController()
@@ -226,13 +227,15 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
             targetController = SceneKitViewController()
         case "9":
             targetController = BaseWebViewController.create(with: "https://blog.iword.win")
+            hideAllTabBar = true
         case "10":
             targetController = ScanQrCodeViewController()
+            hideAllTabBar = true
         default:
             targetController = BaseTestViewController()
         }
         if let targetController = targetController {
-            self.pushVc(vc: targetController)
+            self.pushVc(vc: targetController, hideAll: hideAllTabBar)
         }
     }
 }
