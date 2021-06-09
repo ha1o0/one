@@ -55,10 +55,14 @@ class MusicService: MusicPlayer {
         else {
             return
         }
+        if self.playerItem != nil {
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.playerItem)
+        }
         if isMusicChanged {
             playerItem = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: playerItem)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(playToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.playerItem)
         if atTime > 0 {
             player.seek(to: CMTimeMake(value: Int64(atTime), timescale: 1))
             player.play()
@@ -88,6 +92,11 @@ class MusicService: MusicPlayer {
         player.seek(to: CMTime.zero)
     }
     
+    @objc func playToEnd() {
+        self.player.seek(to: CMTime.zero)
+        self.play()
+    }
+
     func getMusicUrl(urlStr: String, isLocal: Bool = false, ofType: String = "") -> URL? {
         var url: URL?
         if isLocal {
