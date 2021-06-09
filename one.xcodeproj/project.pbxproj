@@ -110,6 +110,8 @@
 		E9A952E226315FBF0032EADB /* SceneKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A952E026315FBF0032EADB /* SceneKitViewController.xib */; };
 		E9A952F9263171290032EADB /* BrickLandspeeder4501.obj in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */; };
 		E9A952FA263171290032EADB /* BrickLandspeeder4501.mtl in Resources */ = {isa = PBXBuildFile; fileRef = E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */; };
+		E9BB1BFB26710DEC0016406B /* MusicControlBar1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BB1BFA26710DEC0016406B /* MusicControlBar1.xib */; };
+		E9BB1C0026710DFB0016406B /* MusicControlBar1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB1BFF26710DFB0016406B /* MusicControlBar1.swift */; };
 		E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */; };
 		E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CB5726062A860047DAE9 /* one.xcdatamodeld */; };
 		E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CB5A26062A890047DAE9 /* Assets.xcassets */; };
@@ -273,6 +275,8 @@
 		E9A952E026315FBF0032EADB /* SceneKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneKitViewController.xib; sourceTree = "<group>"; };
 		E9A952F7263171290032EADB /* BrickLandspeeder4501.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.obj; sourceTree = "<group>"; };
 		E9A952F8263171290032EADB /* BrickLandspeeder4501.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BrickLandspeeder4501.mtl; sourceTree = "<group>"; };
+		E9BB1BFA26710DEC0016406B /* MusicControlBar1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicControlBar1.xib; sourceTree = "<group>"; };
+		E9BB1BFF26710DFB0016406B /* MusicControlBar1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControlBar1.swift; sourceTree = "<group>"; };
 		E9E0CB4B26062A860047DAE9 /* one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = one.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E0CB4E26062A860047DAE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E0CB5826062A860047DAE9 /* one.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = one.xcdatamodel; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 				E99224A8266D0FBC0038BAB7 /* MusicControlBar.xib */,
 				E99224AD266D15140038BAB7 /* MusicControlBar.swift */,
 				E9937F5726704C800047FA64 /* CustomTabBar.swift */,
+				E9BB1BFA26710DEC0016406B /* MusicControlBar1.xib */,
+				E9BB1BFF26710DFB0016406B /* MusicControlBar1.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -992,6 +998,7 @@
 				E99BC16426272A300002C066 /* MapViewController.xib in Resources */,
 				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
+				E9BB1BFB26710DEC0016406B /* MusicControlBar1.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9922495266BC0860038BAB7 /* refresh.gif in Resources */,
 				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
@@ -1173,6 +1180,7 @@
 				E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */,
 				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
+				E9BB1C0026710DFB0016406B /* MusicControlBar1.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9A59EFF2665FF4D00FA458B /* TimerManager.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,

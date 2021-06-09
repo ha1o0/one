@@ -28,7 +28,7 @@ class CustomTabBar: UIView {
         return _contentView
     }()
     
-    lazy var blurView: UIVisualEffectView = UIVisualEffectView()
+    lazy var blurView: UIView = UIView()
     
     lazy var tabBarItemStackView: UIStackView = {
         let _stackView: UIStackView = UIStackView()
@@ -65,7 +65,7 @@ class CustomTabBar: UIView {
             maker.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        self.setBlurForTabbar(style: ThemeManager.shared.getBlurStyle())
+        self.setBlurForTabbar()
         
         contentView.addSubview(self.tabBarItemStackView)
         tabBarItemStackView.snp.makeConstraints { maker in
@@ -122,7 +122,6 @@ class CustomTabBar: UIView {
         for (index, arsubview) in tabBarItemStackView.arrangedSubviews.enumerated() {
             let tabBarItem = self.tabBarItems[index]
             for subview in arsubview.subviews {
-//                print(subview)
                 let textColor = index == selectedIndex ? colors[0] : colors[1]
                 if subview is UIImageView {
                     let iconImageView = subview as! UIImageView
@@ -137,24 +136,8 @@ class CustomTabBar: UIView {
         }
     }
     
-    func getBlurView(style: UIBlurEffect.Style) -> UIVisualEffectView {
-        let _blurEffect = UIBlurEffect(style: style)
-        let _blurView = UIVisualEffectView(effect: _blurEffect)
-        _blurView.autoresizingMask = .flexibleHeight
-        return _blurView
-    }
-    
-    func removeBlurView() {
-        for subview in contentView.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
-            }
-        }
-    }
-    
-    func setBlurForTabbar(style: UIBlurEffect.Style) {
-        let _blurEffect = UIBlurEffect(style: style)
-        self.blurView = UIVisualEffectView(effect: _blurEffect)
+    func setBlurForTabbar() {
+        self.blurView.backgroundColor = .clear
         self.contentView.addSubview(self.blurView)
         self.blurView.snp.makeConstraints { maker in
             maker.top.bottom.leading.trailing.equalToSuperview()

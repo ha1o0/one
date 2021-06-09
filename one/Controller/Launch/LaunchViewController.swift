@@ -16,6 +16,7 @@ class LaunchViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .main
         timeLabel.text = "\(countdownSeconds)"
         countdownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             if self.countdownSeconds > 0 {
