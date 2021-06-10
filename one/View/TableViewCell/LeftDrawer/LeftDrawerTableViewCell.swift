@@ -30,7 +30,7 @@ class LeftDrawerTableViewCell: BaseTableViewCell {
     
     func setContent(item: LeftDrawerItem, isFirst: Bool, isLast: Bool) {
         switchView.isOn = ThemeManager.shared.currentInterfaceStyle == .dark
-        settingIconView.image = UIImage(named: item.iconName)
+        settingIconView.image = UIImage(named: item.iconName)?.withRenderingMode(.alwaysTemplate)
         settingNameLabel.text = item.name
         splitLineView.isHidden = true
         if item.hasSwitch {

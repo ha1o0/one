@@ -10,12 +10,10 @@ import UIKit
 
 class ThemeManager {
     static let shared = ThemeManager()
-    
+
     var defaultBlurStyle: [UIUserInterfaceStyle: UIBlurEffect.Style] = [.light: .extraLight, .dark: .dark]
-    var defaultBarColor: [UIUserInterfaceStyle: [UIColor]] = [.light: [.main, .tabBarGray], .dark: [.white, .tabBarGray]]
     var currentInterfaceStyle: UIUserInterfaceStyle = .light
-    
-    
+
     private init() {
         self.updateInterfaceStyle()
         NotificationService.shared.listenInterfaceStyleChange(target: self, selector: #selector(changeInterfaceStyle))
@@ -26,7 +24,7 @@ class ThemeManager {
     }
     
     func getBarColor() -> [UIColor] {
-        return self.defaultBarColor[currentInterfaceStyle]!
+        return [UIColor.tabbarColor(), .tabBarGray]
     }
     
     func updateInterfaceStyle() {

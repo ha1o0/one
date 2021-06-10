@@ -51,9 +51,10 @@ class CustomTabBar: UIView {
         super.init(coder: aDecoder)
     }
     
-    convenience init(tabBarItems: [TabbarItem], frame: CGRect) {
+    convenience init(tabBarItems: [TabbarItem], frame: CGRect, _ selectTabCallback: ((_ index: Int) -> Void)? = nil) {
         self.init(frame: frame)
         self.tabBarItems = tabBarItems
+        self.selectTabCallback = selectTabCallback
         self.commonInit()
     }
     
@@ -86,7 +87,7 @@ class CustomTabBar: UIView {
                 maker.centerX.equalToSuperview()
             }
             let titleLabel = UILabel()
-            titleLabel.font = UIFont.systemFont(ofSize: 12)
+            titleLabel.font = UIFont.systemFont(ofSize: 10)
             titleLabel.text = tabBarItem.title
             titleLabel.textColor = textColor
             tabBarItemView.addSubview(titleLabel)
@@ -120,14 +121,11 @@ class CustomTabBar: UIView {
     
     func updateTabBarItems(colors: [UIColor]) {
         for (index, arsubview) in tabBarItemStackView.arrangedSubviews.enumerated() {
-            let tabBarItem = self.tabBarItems[index]
             for subview in arsubview.subviews {
                 let textColor = index == selectedIndex ? colors[0] : colors[1]
                 if subview is UIImageView {
                     let iconImageView = subview as! UIImageView
-                    let iconImage = UIImage(named: index == selectedIndex ? tabBarItem.selectedImageName : tabBarItem.imageName)?.withRenderingMode(.alwaysTemplate)
                     iconImageView.tintColor = textColor
-                    iconImageView.image = iconImage
                 } else if subview is UILabel {
                     let titleLabel = subview as! UILabel
                     titleLabel.textColor = textColor

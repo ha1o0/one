@@ -49,6 +49,15 @@ extension UIColor {
 
 extension UIColor {
     
+    static func tabbarColor() -> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor.init { (trait) -> UIColor in
+                return trait.userInterfaceStyle == .dark ? UIColor.white : UIColor.main
+            }
+        }
+        else { return UIColor.main }
+    }
+    
     static var main: UIColor {
         // #FF6E82
         // #0396FF

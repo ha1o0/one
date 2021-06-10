@@ -51,9 +51,6 @@ class CustomTabBarViewController: UITabBarController {
         for barItem in tabbarItems {
             let navVc = BaseNavigationViewController(rootViewController: barItem.vc)
             navVc.navigationBar.isHidden = true
-            navVc.tabBarItem.title = barItem.title
-            navVc.tabBarItem.image = UIImage(named: barItem.imageName)?.withRenderingMode(.alwaysOriginal)
-            navVc.tabBarItem.selectedImage = UIImage(named: barItem.selectedImageName)?.withRenderingMode(.alwaysOriginal)
             items.append(navVc)
         }
         self.viewControllers = items
@@ -65,8 +62,7 @@ class CustomTabBarViewController: UITabBarController {
             maker.bottom.leading.trailing.equalToSuperview()
             maker.height.equalTo(bottomBlurViewHeight - 8)
         }
-        self.customTabBar = CustomTabBar(tabBarItems: self.tabbarItems, frame: frame)
-        self.customTabBar.selectTabCallback = self.changeSelectedIndex
+        self.customTabBar = CustomTabBar(tabBarItems: self.tabbarItems, frame: frame, self.changeSelectedIndex)
         self.view.addSubview(self.customTabBar)
         self.customTabBar.snp.makeConstraints { maker in
             maker.bottom.leading.trailing.equalToSuperview()
@@ -111,6 +107,5 @@ class CustomTabBarViewController: UITabBarController {
     @objc func switchBlurStyle() {
         let newBlurEffect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         self.bottomBlurView.effect = newBlurEffect
-        self.customTabBar.updateTabBarItems(colors: ThemeManager.shared.getBarColor())
     }
 }
