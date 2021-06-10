@@ -36,12 +36,10 @@ class MusicSheetView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakefromnib")
     }
     
     convenience init(musicSheets: [MusicSheet] = [], headerName: String = "") {
         self.init()
-        print("convenience init")
         self.musicSheets = musicSheets
         self.headerName = headerName
         self.commonInit()

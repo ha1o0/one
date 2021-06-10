@@ -9,12 +9,10 @@ import Foundation
 import UIKit
 
 class SwitchTabCollectionLayout: UICollectionViewFlowLayout {
-    
+
     override init() {
         super.init()
         self.minimumInteritemSpacing = 0
-        self.minimumLineSpacing = 10
-//        self.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         self.scrollDirection = .horizontal
     }
     

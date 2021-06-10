@@ -23,12 +23,10 @@ class MusicFunctionView: UIView, UICollectionViewDelegate, UICollectionViewDataS
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakefromnib")
     }
     
     convenience init(functions: [MusicFunction] = []) {
         self.init()
-        print("convenience init")
         self.functions = functions
         self.commonInit()
     }

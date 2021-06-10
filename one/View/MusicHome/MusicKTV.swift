@@ -36,12 +36,10 @@ class MusicKTVView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakefromnib")
     }
     
     convenience init(musicKTVs: [MusicKTV] = [], headerName: String = "") {
         self.init()
-        print("convenience init")
         self.musicKTVs = musicKTVs
         self.headerName = headerName
         self.commonInit()

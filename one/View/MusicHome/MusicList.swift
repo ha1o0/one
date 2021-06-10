@@ -42,12 +42,10 @@ class MusicListView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakefromnib")
     }
     
     convenience init(musics: [Music] = [], headerName: String = "") {
         self.init()
-        print("convenience musiclistview")
         self.musics = musics
         self.headerName = headerName
         // 补偿不足collectionview宽度整数倍的部分，3为单列的item行数, 20为collectionview与屏幕宽度的差值
