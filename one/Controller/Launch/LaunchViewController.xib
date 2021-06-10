@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,30 +19,33 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImg2" translatesAutoresizingMaskIntoConstraints="NO" id="Kgt-lm-rRk">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是开屏启动页，放置广告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQ2-y0-GPr">
-                    <rect key="frame" x="103" y="442.5" width="208" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="121.5" y="696" width="171.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-i1-Oie">
-                    <rect key="frame" x="358" y="44" width="33" height="32"/>
+                    <rect key="frame" x="358" y="50" width="33" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="跳过">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="ignoreAd:" destination="-1" eventType="touchUpInside" id="iey-O2-aow"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mco-2X-bm5">
-                    <rect key="frame" x="202" y="493.5" width="10.5" height="20.5"/>
+                    <rect key="frame" x="202" y="743" width="10.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yA-bR-6bw">
-                    <rect key="frame" x="187" y="484" width="40" height="40"/>
+                    <rect key="frame" x="187" y="733.5" width="40" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Z3R-UL-Y9m"/>
@@ -51,22 +53,26 @@
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemPinkColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bBq-i1-Oie" secondAttribute="trailing" constant="23" id="L8B-cM-t4x"/>
+                <constraint firstItem="Kgt-lm-rRk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gtc-kv-Aro"/>
+                <constraint firstAttribute="trailing" secondItem="bBq-i1-Oie" secondAttribute="trailing" constant="23" id="L8B-cM-t4x"/>
                 <constraint firstItem="Mco-2X-bm5" firstAttribute="top" secondItem="LQ2-y0-GPr" secondAttribute="bottom" constant="30" id="N78-NB-Tro"/>
                 <constraint firstItem="0yA-bR-6bw" firstAttribute="centerY" secondItem="Mco-2X-bm5" secondAttribute="centerY" id="RHF-BG-P63"/>
-                <constraint firstItem="LQ2-y0-GPr" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="TwR-hx-kLR"/>
-                <constraint firstItem="Mco-2X-bm5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="cXT-YG-tAt"/>
+                <constraint firstItem="Mco-2X-bm5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cXT-YG-tAt"/>
                 <constraint firstItem="0yA-bR-6bw" firstAttribute="centerX" secondItem="Mco-2X-bm5" secondAttribute="centerX" id="gye-Sp-62G"/>
-                <constraint firstItem="LQ2-y0-GPr" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="k1s-ZP-kVk"/>
-                <constraint firstItem="bBq-i1-Oie" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pkO-j8-aBc"/>
+                <constraint firstItem="LQ2-y0-GPr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="k1s-ZP-kVk"/>
+                <constraint firstAttribute="bottom" secondItem="Kgt-lm-rRk" secondAttribute="bottom" id="kNq-CI-pkD"/>
+                <constraint firstItem="bBq-i1-Oie" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="pkO-j8-aBc"/>
+                <constraint firstItem="Kgt-lm-rRk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r8m-ND-neh"/>
+                <constraint firstItem="LQ2-y0-GPr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="-200" id="vdK-Fq-n0V"/>
+                <constraint firstAttribute="trailing" secondItem="Kgt-lm-rRk" secondAttribute="trailing" id="yGv-O7-urP"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="70.982142857142847"/>
         </view>
     </objects>
     <resources>
+        <image name="LaunchImg2" width="414" height="896"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
