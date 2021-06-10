@@ -29,7 +29,7 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         self.init(frame: frame)
         self.callback = callback
         self.pageViewList = pageViewList
-        let collectionLayout = UICollectionViewFlowLayout.init()
+        let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.itemSize = frame.size
         collectionLayout.minimumLineSpacing = 0
         collectionLayout.minimumInteritemSpacing = 0
@@ -42,12 +42,9 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         collectionView?.delegate = self
         collectionView?.showsHorizontalScrollIndicator = true
         collectionView?.showsVerticalScrollIndicator = true
-        if (pageViewList.count > 0) {
-            for index in 0...pageViewList.count {
-                collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "\(index)")
-            }
+        for index in 0...pageViewList.count {
+            collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "\(index)")
         }
-        
     }
     
     // MARK: dataSource

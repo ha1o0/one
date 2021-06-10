@@ -14,6 +14,8 @@ class CustomTabBarViewController: UITabBarController {
         items.append(item1)
         let item2 = TabbarItem(vc: MusicHomeViewController(), title: "我的", imageName: "my", selectedImageName: "mySelected")
         items.append(item2)
+        let item3 = TabbarItem(vc: OpenHomeViewController(), title: "开放", imageName: "open", selectedImageName: "openSelected")
+        items.append(item3)
         return items
     }()
     var musicControlBarHeight: CGFloat = 50

@@ -31,6 +31,7 @@ class ScrollTabView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("initframe")
+        self.setUp()
     }
     
     required init?(coder: NSCoder) {
@@ -44,8 +45,8 @@ class ScrollTabView: UIView {
     }
     
     
-    func setUpView() {
-        tabScrollView.backgroundColor = UIColor.white
+    func setUp() {
+        tabScrollView.backgroundColor = UIColor.systemBackground
         self.addSubview(tabScrollView)
         tabScrollView.snp.makeConstraints { (maker) in
             maker.top.equalToSuperview()
@@ -125,15 +126,6 @@ class ScrollTabView: UIView {
             return
         }
         let relativeOffset = offset - CGFloat(currentIndex)
-//        if (abs(relativeOffset) > 1) {
-//            if (relativeOffset > 0) {
-//                currentIndex += 1
-//            } else {
-//                currentIndex -= 1
-//            }
-//            slideUnderline(offset: offset)
-//            return
-//        }
         print(relativeOffset)
         let buttons:[UIButton] = tabScrollView.subviews as! [UIButton]
         let currentButton = buttons[currentIndex]
