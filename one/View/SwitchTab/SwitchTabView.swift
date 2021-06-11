@@ -20,22 +20,16 @@ struct SwitchTab {
 }
 
 protocol SwitchTabDelegate: AnyObject {
-    func switchTabTo(index: Int)
+    func switchTabTo(index: Int, fromClick: Bool)
 }
 
 class SwitchTabView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SwitchTabDelegate {
     var switchTab: SwitchTab = SwitchTab()
-    var currentIndex = 0 {
-        didSet {
-            UIView.performWithoutAnimation {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-
+    var currentIndex = 0
     var collectionView: UICollectionView!
-    
     var underLineView = UIView()
+    var changeTabCallback: ((Int) -> Void)?
+    weak var delegate: SwitchTabDelegate?
     
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +44,6 @@ class SwitchTabView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     func commonInit() {
         self.backgroundColor = .clear
         let layout = UICollectionViewFlowLayout()
-        print(self.switchTab.linespacing)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -88,15 +81,25 @@ class SwitchTabView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let title = self.switchTab.titles[indexPath.section]
-        print(title)
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: self.switchTab.titleSelectedSize)]
         let width = (title.boundingRect(with: CGSize(width: UIScreen.main.bounds.width, height: STATUS_NAV_HEIGHT - STATUS_BAR_HEIGHT), options: NSStringDrawingOptions.usesFontLeading, attributes: attributes, context: nil).size.width) + 15
         return CGSize(width: width, height: collectionView.bounds.height)
     }
     
-    @objc func switchTabTo(index: Int) {
-        print(index)
+    @objc func switchTabTo(index: Int, fromClick: Bool) {
+        print("点击了cell: \(index)")
         self.currentIndex = index
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadData()
+            if !fromClick {
+                return
+            }
+            self.delegate?.switchTabTo(index: self.currentIndex, fromClick: true)
+        }
+    }
+    
+    func scrollOffset(offset: CGFloat) {
+        // 仅做切换动画
     }
     
 }

@@ -18,7 +18,7 @@ class SwitchTabCollectionViewCell: BaseCollectionViewCell {
     }
 
     @IBAction func switchTab(_ sender: UIButton) {
-        self.delegate?.switchTabTo(index: sender.tag)
+        self.delegate?.switchTabTo(index: sender.tag, fromClick: true)
     }
     
     func setContent(data: SwitchTab, index: Int, selectedIndex: Int) {

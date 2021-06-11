@@ -9,13 +9,14 @@
 import UIKit
 import SnapKit
 
-class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, SwitchTabDelegate {
+
     private var collectionView: UICollectionView?
     private var pageViewList: [UIView]?
     private var callback : ((_ offset: CGFloat) -> ())?
     private var currentIndex: Int?
-    private var doCallbackInvock: Bool = true
+    private var isScrollingLock: Bool = false
+    private var switchTabView: SwitchTabView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,10 +26,12 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         super.init(coder: coder)
     }
     
-    convenience init(frame: CGRect, pageViewList: [UIView], callback: @escaping (_ offset: CGFloat) -> ()) {
+    convenience init(frame: CGRect, pageViewList: [UIView], switchTabView: SwitchTabView, callback: @escaping (_ offset: CGFloat) -> ()) {
         self.init(frame: frame)
         self.callback = callback
         self.pageViewList = pageViewList
+        self.switchTabView = switchTabView
+        self.switchTabView?.delegate = self
         let collectionLayout = UICollectionViewFlowLayout()
         print(frame.size)
         collectionLayout.itemSize = frame.size
@@ -80,23 +83,31 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     // MARK: delegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let contentOffset = collectionView?.contentOffset {
-            if contentOffset.x == 0 {
-                callback?(0)
-            } else if doCallbackInvock {
-                callback?(contentOffset.x / self.frame.width)
-            }
+            let offset = contentOffset.x / self.frame.width
+            callback?(offset)
+            self.switchTabView?.scrollOffset(offset: offset)
         }
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        doCallbackInvock = true
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        isScrollingLock = false
+        self.switchTabView?.switchTabTo(index: Int(scrollView.contentOffset.x / self.frame.width), fromClick: false)
+        print("scrollViewDidEndDecelerating: \(isScrollingLock)")
     }
     
-    func setPage(index: Int) {
-        let point = CGPoint(x: CGFloat(index) * collectionView!.frame.size.width, y: collectionView!.frame.origin.y)
-        doCallbackInvock = false
-        collectionView?.setContentOffset(point, animated: true)
-        currentIndex = index
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        isScrollingLock = false
+        print("scrollViewDidEndScrollingAnimation: \(isScrollingLock)")
+    }
+    
+    func switchTabTo(index: Int, fromClick: Bool) {
+        print("执行vc滚动\(isScrollingLock)")
+        if isScrollingLock {
+            return
+        }
+        isScrollingLock = true
+        print("执行delegate即将滚到：\(index)")
+        collectionView?.scrollToItem(at: IndexPath(row: 0, section: index), at: .centeredHorizontally, animated: true)
     }
 
 }

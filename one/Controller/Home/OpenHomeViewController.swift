@@ -9,14 +9,17 @@ import UIKit
 
 class OpenHomeViewController: BaseTabBarViewController {
 
+    let titles = ["关注", "广场", "精选"]
+    var switchTabData = SwitchTab()
+    var switchTabView: SwitchTabView = SwitchTabView()
+    var liveListView: LiveListView = LiveListView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomNav(color: .clear)
-        let titles = ["关注", "广场", "精选"]
-        let switchTabData = SwitchTab(titles: titles, hasBottomLine: false, titleSelectedColor: .label, titleColor: .systemGray, titleSize: 18, titleSelectedSize: 18, linespacing: 10)
-        let switchTabView = SwitchTabView(switchTab: switchTabData)
+        switchTabData = SwitchTab(titles: titles, hasBottomLine: false, titleSelectedColor: .label, titleColor: .systemGray, titleSize: 18, titleSelectedSize: 18, linespacing: 10.0)
+        switchTabView = SwitchTabView(switchTab: switchTabData)
         self.view.addSubview(switchTabView)
-        
         switchTabView.snp.makeConstraints { (maker) in
             maker.height.equalTo(STATUS_NAV_HEIGHT - STATUS_BAR_HEIGHT)
             maker.width.equalTo(getCollectionWidth(titles: titles, linespacing: switchTabData.linespacing))
@@ -37,9 +40,11 @@ class OpenHomeViewController: BaseTabBarViewController {
             self.addChild(controller)
         }
         
-        let liveListView = LiveListView(frame: CGRect(x: 0, y: STATUS_NAV_HEIGHT, width: SCREEN_WIDTH, height: viewHeight), pageViewList: pageViewList, callback: { (offset) in
-            print(offset)
+        liveListView = LiveListView(frame: CGRect(x: 0, y: STATUS_NAV_HEIGHT, width: SCREEN_WIDTH, height: viewHeight), pageViewList: pageViewList, switchTabView: self.switchTabView, callback: { (offset) in
+//            print(offset)
         })
+        
+        
         self.view.addSubview(liveListView)
     }
     
