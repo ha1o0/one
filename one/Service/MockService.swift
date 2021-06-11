@@ -57,4 +57,13 @@ class MockService {
         musicList.append(Music(id: "3", poster: self.getRandomImg(), name: "难念的经", subtitle: "....", playCount: 2, author: "周华健", url: "https://blog.iword.win/music/nndj.mp3", isLocal: false, type: "mp3" ))
         return musicList
     }
+    
+    func getRandomVideo() -> [SimpleVideo] {
+        var videoList: [SimpleVideo] = []
+        videoList.append(SimpleVideo(id: "1", name: "日常混剪", title: "导演：让他来演个杀人犯，他直接把自己演进今日说法", poster: self.getRandomImg(), duration: 126, playCount: 3400, likeCount: 120, author: Author(id: "", avatar: self.getRandomImg())))
+        videoList.append(SimpleVideo(id: "2", name: "今日热门", title: "等了十年的刀郎终于复出了，太好听了！", poster: self.getRandomImg(), duration: 245, playCount: 1400, likeCount: 20, author: Author(id: "", avatar: self.getRandomImg())))
+        videoList.append(SimpleVideo(id: "3", name: "焰火青年", title: "小众歌曲", poster: self.getRandomImg(), duration: 286, playCount: 3398, likeCount: 220, author: Author(id: "", avatar: self.getRandomImg())))
+        videoList.append(SimpleVideo(id: "4", name: "周传雄", title: "周传雄倾情唱《寂寞沙洲冷》，全场欢呼！", poster: self.getRandomImg(), duration: 502, playCount: 6852, likeCount: 523, author: Author(id: "", avatar: self.getRandomImg())))
+        return videoList
+    }
 }

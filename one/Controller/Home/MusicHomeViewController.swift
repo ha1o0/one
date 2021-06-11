@@ -116,9 +116,10 @@ class MusicHomeViewController: BaseTableViewController {
     }
     
     @objc func refreshData() {
-        sleep(1)
-        self.getData()
-        self.tableView.mj_header?.endRefreshing()
+        delay(1) {
+            self.getData()
+            self.tableView.mj_header?.endRefreshing()
+        }
     }
     
     @objc func showLeftVc() {

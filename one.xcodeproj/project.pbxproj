@@ -48,6 +48,12 @@
 		E9937F6A26720BCE0047FA64 /* SwitchTabCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F6926720BCE0047FA64 /* SwitchTabCollectionLayout.swift */; };
 		E9937F6E26720F090047FA64 /* SwitchTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F6C26720F090047FA64 /* SwitchTabCollectionViewCell.swift */; };
 		E9937F6F26720F090047FA64 /* SwitchTabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F6D26720F090047FA64 /* SwitchTabCollectionViewCell.xib */; };
+		E9937F732672FE1B0047FA64 /* Tab1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F712672FE1B0047FA64 /* Tab1ViewController.swift */; };
+		E9937F742672FE1B0047FA64 /* Tab1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F722672FE1B0047FA64 /* Tab1ViewController.xib */; };
+		E9937F772673069B0047FA64 /* Tab2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F752673069B0047FA64 /* Tab2ViewController.swift */; };
+		E9937F782673069B0047FA64 /* Tab2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F762673069B0047FA64 /* Tab2ViewController.xib */; };
+		E9937F7B26732DE00047FA64 /* Tab2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9937F7926732DE00047FA64 /* Tab2CollectionViewCell.swift */; };
+		E9937F7C26732DE00047FA64 /* Tab2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9937F7A26732DE00047FA64 /* Tab2CollectionViewCell.xib */; };
 		E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855DA264509F9006B0E1E /* BaseTestViewController.swift */; };
 		E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99855DB264509F9006B0E1E /* BaseTestViewController.xib */; };
 		E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99855E42648C073006B0E1E /* DrawerViewController.swift */; };
@@ -219,6 +225,12 @@
 		E9937F6926720BCE0047FA64 /* SwitchTabCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTabCollectionLayout.swift; sourceTree = "<group>"; };
 		E9937F6C26720F090047FA64 /* SwitchTabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTabCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9937F6D26720F090047FA64 /* SwitchTabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTabCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9937F712672FE1B0047FA64 /* Tab1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1ViewController.swift; sourceTree = "<group>"; };
+		E9937F722672FE1B0047FA64 /* Tab1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab1ViewController.xib; sourceTree = "<group>"; };
+		E9937F752673069B0047FA64 /* Tab2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2ViewController.swift; sourceTree = "<group>"; };
+		E9937F762673069B0047FA64 /* Tab2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab2ViewController.xib; sourceTree = "<group>"; };
+		E9937F7926732DE00047FA64 /* Tab2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2CollectionViewCell.swift; sourceTree = "<group>"; };
+		E9937F7A26732DE00047FA64 /* Tab2CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab2CollectionViewCell.xib; sourceTree = "<group>"; };
 		E99855DA264509F9006B0E1E /* BaseTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestViewController.swift; sourceTree = "<group>"; };
 		E99855DB264509F9006B0E1E /* BaseTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTestViewController.xib; sourceTree = "<group>"; };
 		E99855E42648C073006B0E1E /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -480,6 +492,17 @@
 			path = SwitchTab;
 			sourceTree = "<group>";
 		};
+		E9937F702672FDFA0047FA64 /* OpenHome */ = {
+			isa = PBXGroup;
+			children = (
+				E9937F712672FE1B0047FA64 /* Tab1ViewController.swift */,
+				E9937F722672FE1B0047FA64 /* Tab1ViewController.xib */,
+				E9937F752673069B0047FA64 /* Tab2ViewController.swift */,
+				E9937F762673069B0047FA64 /* Tab2ViewController.xib */,
+			);
+			path = OpenHome;
+			sourceTree = "<group>";
+		};
 		E99855EB2648C76E006B0E1E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +568,8 @@
 			children = (
 				E99BC0F526232DFC0002C066 /* PictureCollectionViewCell.swift */,
 				E99BC0F626232DFC0002C066 /* PictureCollectionViewCell.xib */,
+				E9937F7926732DE00047FA64 /* Tab2CollectionViewCell.swift */,
+				E9937F7A26732DE00047FA64 /* Tab2CollectionViewCell.xib */,
 			);
 			path = Picture;
 			sourceTree = "<group>";
@@ -745,6 +770,7 @@
 		E9E0CB8426063A050047DAE9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E9937F702672FDFA0047FA64 /* OpenHome */,
 				E9E0CB90260659560047DAE9 /* HomeViewController.swift */,
 				E9E0CB91260659560047DAE9 /* HomeViewController.xib */,
 				E951C70C265501A9007CC3C2 /* MusicHomeViewController.swift */,
@@ -1031,11 +1057,14 @@
 				E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */,
 				E99BC16426272A300002C066 /* MapViewController.xib in Resources */,
 				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
+				E9937F742672FE1B0047FA64 /* Tab1ViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
 				E9BB1BFB26710DEC0016406B /* MusicControlBar1.xib in Resources */,
+				E9937F7C26732DE00047FA64 /* Tab2CollectionViewCell.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
 				E9922495266BC0860038BAB7 /* refresh.gif in Resources */,
 				E9985606264A7FBD006B0E1E /* LeftDrawerViewController.xib in Resources */,
+				E9937F782673069B0047FA64 /* Tab2ViewController.xib in Resources */,
 				E9A59F18266DB62D00FA458B /* qfl.mp3 in Resources */,
 				E9E0CBA72606604A0047DAE9 /* LaunchViewController.xib in Resources */,
 				E9A59F13266A276200FA458B /* playing2.gif in Resources */,
@@ -1149,7 +1178,9 @@
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
+				E9937F7B26732DE00047FA64 /* Tab2CollectionViewCell.swift in Sources */,
 				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
+				E9937F772673069B0047FA64 /* Tab2ViewController.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E99224A3266CC0000038BAB7 /* CustomRefreshHeader1.swift in Sources */,
@@ -1188,6 +1219,7 @@
 				E9937F5E2670AA200047FA64 /* ThemeManager.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
+				E9937F732672FE1B0047FA64 /* Tab1ViewController.swift in Sources */,
 				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,
 				E9922490266A5D4D0038BAB7 /* MusicListCollectionViewLayout.swift in Sources */,

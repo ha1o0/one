@@ -1,22 +1,24 @@
 //
-//  TestTableViewController.swift
+//  Tab1ViewController.swift
 //  one
 //
-//  Created by sidney on 2021/4/13.
+//  Created by sidney on 6/11/21.
 //
 
 import UIKit
 import MJRefresh
 
-class TestTableViewController: BaseTableViewController {
-
+class Tab1ViewController: BaseTableViewController {
+    
     var header = MJRefreshNormalHeader()
     var footer = MJRefreshAutoNormalFooter()
     
     override func viewDidLoad() {
+        tableView = UITableView(frame: .zero, style: .plain)
         super.viewDidLoad()
-        title = "使用MJ_REFRESH"
-        setCustomNav()
+        tableView.snp.remakeConstraints({ maker in
+            maker.top.leading.trailing.bottom.equalToSuperview()
+        })
         tableView.mj_header = header
         tableView.mj_footer = footer
         for index in 1..<16 {
@@ -32,6 +34,20 @@ class TestTableViewController: BaseTableViewController {
         cell.setContent()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return COLLECTION_VIEW_FOOTER_HEIGHT - footer.frame.height
+//    }
+    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footer = UIView()
+//        footer.backgroundColor = .yellow
+//        return footer
+//    }
     
     @objc func refreshData() {
         delay(2) {

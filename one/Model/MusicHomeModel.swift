@@ -68,3 +68,21 @@ struct MusicKTV {
     var currentImage: String = ""
     var roomUserNumber: Int = 0
 }
+
+struct Author {
+    var id = ""
+    var avatar = ""
+    var name = ""
+}
+
+struct SimpleVideo {
+    var id = ""
+    var name = ""
+    var title = ""
+    var poster = ""
+    var duration = 0
+    var playCount = 0
+    var likeCount = 0
+    var author = Author()
+    var url = ""
+}

@@ -30,12 +30,13 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         self.callback = callback
         self.pageViewList = pageViewList
         let collectionLayout = UICollectionViewFlowLayout()
+        print(frame.size)
         collectionLayout.itemSize = frame.size
         collectionLayout.minimumLineSpacing = 0
         collectionLayout.minimumInteritemSpacing = 0
         collectionLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         collectionView = UICollectionView.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: frame.size), collectionViewLayout: collectionLayout)
-        collectionView?.backgroundColor = UIColor.blue
+        collectionView?.backgroundColor = .clear
         collectionView?.isPagingEnabled = true
         addSubview(collectionView!)
         collectionView?.dataSource = self
@@ -48,7 +49,8 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     // MARK: dataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         if let count  = self.pageViewList?.count {
             return count
         } else {
@@ -56,14 +58,19 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(indexPath.row)", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(indexPath.section)", for: indexPath)
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.bounces = true
-        if let view = self.pageViewList?[indexPath.row] {
+        if let view = self.pageViewList?[indexPath.section] {
             scrollView.addSubview(view)
+            print("contetnsize: \(view.bounds)")
             scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
         }
         cell.contentView.addSubview(scrollView)

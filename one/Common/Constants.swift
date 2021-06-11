@@ -15,6 +15,15 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let STATUS_BAR_HEIGHT = CGFloat(hasNotch ? 44.0 : 20.0)
 let leftVcleftVcVisibleViewWidthPercent = CGFloat(0.85)
 let STATUS_NAV_HEIGHT: CGFloat = hasNotch ? 88 : 64
+let BOTTOM_EXTRA_HEIGHT: CGFloat = hasNotch ? 34 : 0
+var COLLECTION_VIEW_FOOTER_HEIGHT: CGFloat {
+    get {
+        guard let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc else {
+            return 0
+        }
+        return tabbarVc.bottomBlurView.bounds.height
+    }
+ }
 let RAND_IMAGES = [
     "https://is3-ssl.mzstatic.com/image/thumb/Music124/v4/00/67/0d/00670d8a-5674-4a9b-93c7-58c2de3151ef/source/600x600bb.jpg",
     "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/aa/d4/70/aad470fd-e8cd-88f6-c00c-c194ebbb783d/source/600x600bb.jpg",

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 enum LoadMoreStatus {
     case Loading
@@ -18,9 +19,10 @@ private let reuseIdentifier = "Cell"
 class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     lazy var collectionView = UICollectionView()
+    let header = CustomRefreshHeader1()
+    let footer = MJRefreshAutoNormalFooter()
     var data: [Any] = []
     var dataCount = 0
-    var loadMoreStatus: LoadMoreStatus = .HaveMore
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +35,43 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate
             maker.leading.trailing.bottom.equalToSuperview()
             maker.top.equalToSuperview().offset(44 + STATUS_BAR_HEIGHT)
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        self.collectionView.mj_header = header
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerLoad))
+        self.collectionView.mj_footer = footer
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // 子类重写
+    func getData() {
+        self.data = []
+        // 重新生成新数据
     }
-    */
+    
+    // 子类重写
+    func loadData() {
+        // 添加新数据
+    }
+    
+    @objc func headerRefresh() {
+        print("下拉刷新")
+        delay(2) {
+            self.getData()
+            self.collectionView.reloadData()
+            self.collectionView.mj_header?.endRefreshing()
+        }
+    }
 
+    @objc func footerLoad() {
+        print("上拉加载")
+        delay(2) {
+            self.loadData()
+            self.collectionView.reloadData()
+            self.collectionView.mj_footer?.endRefreshing()
+        }
+    }
+    
     func getCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 10
