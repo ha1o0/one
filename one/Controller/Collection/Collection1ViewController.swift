@@ -11,6 +11,7 @@ import UIKit
 class Collection1ViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: getCollectionViewFlowLayout())
         super.viewDidLoad()
         self.title = "集合"
         setCustomNav()

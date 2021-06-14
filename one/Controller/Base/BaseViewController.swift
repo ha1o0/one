@@ -20,6 +20,8 @@ class BaseViewController: UIViewController {
     var enterType: VcEnterType = .push
     lazy var statusBarView = UIView()
     lazy var navigationView = UIView()
+    lazy var leftView = UIView()
+    lazy var titleLabel = UILabel()
     
     class func create() -> BaseViewController {
         let vc = BaseViewController()
@@ -67,7 +69,6 @@ class BaseViewController: UIViewController {
             maker.height.equalTo(44)
         }
         navigationView.backgroundColor = color
-        let leftView = UIView()
         navigationView.addSubview(leftView)
         leftView.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
@@ -89,7 +90,6 @@ class BaseViewController: UIViewController {
         leftArrowImageView.addGestureRecognizer(backRecognizer)
         
         if let title = title {
-            let titleLabel = UILabel()
             titleLabel.text = title
             titleLabel.textColor = .white
             navigationView.addSubview(titleLabel)

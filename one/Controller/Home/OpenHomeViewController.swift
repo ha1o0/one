@@ -17,6 +17,7 @@ class OpenHomeViewController: BaseTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomNav(color: .clear)
+        self.leftView.removeFromSuperview()
         switchTabData = SwitchTab(titles: titles, hasBottomLine: false, titleSelectedColor: .label, titleColor: .systemGray, titleSize: 18, titleSelectedSize: 18, linespacing: 10.0)
         switchTabView = SwitchTabView(switchTab: switchTabData)
         self.view.addSubview(switchTabView)

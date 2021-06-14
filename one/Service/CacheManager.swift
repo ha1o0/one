@@ -12,6 +12,7 @@ class CacheManager {
     static let shared = CacheManager()
     
     var refreshHeaderImages: [UIImage] = []
+    var imageInfos: [String: ImageInfo] = [:]
     
     private init() {}
     
@@ -34,5 +35,16 @@ class CacheManager {
     
     func getRefreshHeaderImages() {
         self.refreshHeaderImages = UIImage.getImagesFromGif(name: "refresh") ?? []
+    }
+    
+    private func getImagesInfo(urls: [String], callback: @escaping () -> Void) {
+        let notCacheUrls = urls.filter { (url) -> Bool in
+            return !self.imageInfos.keys.contains(url)
+        }
+        if notCacheUrls.count == 0 {
+            callback()
+            return
+        }
+        
     }
 }

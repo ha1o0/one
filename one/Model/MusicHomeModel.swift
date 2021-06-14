@@ -85,4 +85,5 @@ struct SimpleVideo {
     var likeCount = 0
     var author = Author()
     var url = ""
+    var image: ImageInfo = ImageInfo()
 }
