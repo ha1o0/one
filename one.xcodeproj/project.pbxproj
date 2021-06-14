@@ -22,6 +22,8 @@
 		E951C70F265501A9007CC3C2 /* MusicHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */; };
 		E951C71126550C3E007CC3C2 /* MusicHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */; };
 		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
+		E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3552677A5F900041A77 /* Tab3ViewController.swift */; };
+		E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA3562677A5F900041A77 /* Tab3ViewController.xib */; };
 		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
 		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
 		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
@@ -200,6 +202,8 @@
 		E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicHomeViewController.xib; sourceTree = "<group>"; };
 		E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeModel.swift; sourceTree = "<group>"; };
 		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E97FA3552677A5F900041A77 /* Tab3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3ViewController.swift; sourceTree = "<group>"; };
+		E97FA3562677A5F900041A77 /* Tab3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab3ViewController.xib; sourceTree = "<group>"; };
 		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
 		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
@@ -501,6 +505,8 @@
 				E9937F722672FE1B0047FA64 /* Tab1ViewController.xib */,
 				E9937F752673069B0047FA64 /* Tab2ViewController.swift */,
 				E9937F762673069B0047FA64 /* Tab2ViewController.xib */,
+				E97FA3552677A5F900041A77 /* Tab3ViewController.swift */,
+				E97FA3562677A5F900041A77 /* Tab3ViewController.xib */,
 			);
 			path = OpenHome;
 			sourceTree = "<group>";
@@ -1108,6 +1114,7 @@
 				E99BC14C2625EBEE0002C066 /* TestTableViewCell.xib in Resources */,
 				E9A59F11266A261100FA458B /* playing.gif in Resources */,
 				E9E0CBB4260666370047DAE9 /* BaseNavigationViewController.xib in Resources */,
+				E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */,
 				E9A59F1A266DB63300FA458B /* qfl.mid in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
@@ -1228,6 +1235,7 @@
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
 				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
 				E9937F5E2670AA200047FA64 /* ThemeManager.swift in Sources */,
+				E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */,
 				E9A135B02624472200DEC078 /* DoubleCircle.swift in Sources */,
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
 				E9937F732672FE1B0047FA64 /* Tab1ViewController.swift in Sources */,

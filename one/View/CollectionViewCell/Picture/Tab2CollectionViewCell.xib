@@ -74,17 +74,27 @@
                                     <constraint firstItem="Sgl-Md-kd5" firstAttribute="leading" secondItem="QKJ-vw-b07" secondAttribute="trailing" constant="2" id="uSM-tX-6sG"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCF-vQ-atX">
+                                <rect key="frame" x="120" y="10" width="20" height="22"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="x.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteItem:" destination="gTV-IL-0wX" eventType="touchUpInside" id="a4B-gz-4jm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Fc6-gJ-a4m" secondAttribute="trailing" constant="8" id="2Kf-Ei-wle"/>
                             <constraint firstItem="Fc6-gJ-a4m" firstAttribute="top" secondItem="1sx-RM-B0g" secondAttribute="bottom" constant="8" id="51V-M7-4zg"/>
                             <constraint firstAttribute="bottom" secondItem="Lrv-el-P00" secondAttribute="bottom" constant="8" id="GNW-fi-eKA"/>
+                            <constraint firstAttribute="trailing" secondItem="sCF-vQ-atX" secondAttribute="trailing" constant="10" id="IBb-MO-YRq"/>
                             <constraint firstAttribute="trailing" secondItem="1sx-RM-B0g" secondAttribute="trailing" id="KGB-Y4-kVq"/>
                             <constraint firstItem="Fc6-gJ-a4m" firstAttribute="leading" secondItem="cPj-a3-N9P" secondAttribute="leading" constant="8" id="WuV-Iu-ynk"/>
                             <constraint firstItem="1sx-RM-B0g" firstAttribute="top" secondItem="cPj-a3-N9P" secondAttribute="top" id="YN8-vL-BGZ"/>
                             <constraint firstItem="Lrv-el-P00" firstAttribute="leading" secondItem="cPj-a3-N9P" secondAttribute="leading" constant="8" id="ha6-4y-RAQ"/>
                             <constraint firstItem="1sx-RM-B0g" firstAttribute="leading" secondItem="cPj-a3-N9P" secondAttribute="leading" id="hlu-4a-jMV"/>
+                            <constraint firstItem="sCF-vQ-atX" firstAttribute="top" secondItem="cPj-a3-N9P" secondAttribute="top" constant="10" id="iD8-cO-j8i"/>
                             <constraint firstItem="Lrv-el-P00" firstAttribute="top" secondItem="Fc6-gJ-a4m" secondAttribute="bottom" constant="9" id="wnh-mA-e4O"/>
                             <constraint firstAttribute="trailing" secondItem="Lrv-el-P00" secondAttribute="trailing" constant="8" id="yhC-Lt-gMB"/>
                         </constraints>
@@ -102,6 +112,7 @@
             <connections>
                 <outlet property="bkgView" destination="cPj-a3-N9P" id="In0-Yy-D13"/>
                 <outlet property="bottomView" destination="Lrv-el-P00" id="vrs-FD-oUT"/>
+                <outlet property="deleteButton" destination="sCF-vQ-atX" id="qSc-Ss-5cy"/>
                 <outlet property="imageHeightConstraint" destination="ohx-rj-tF0" id="zsw-Dd-5Y6"/>
                 <outlet property="imageView" destination="1sx-RM-B0g" id="g0E-e9-qJd"/>
                 <outlet property="likeCountLabel" destination="Sgl-Md-kd5" id="2ii-hf-L9Q"/>
@@ -114,6 +125,10 @@
     <resources>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="play" catalog="system" width="120" height="128"/>
+        <image name="x.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

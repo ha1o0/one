@@ -9,6 +9,7 @@ import UIKit
 
 protocol CollectionViewCellDelegate: AnyObject {
     func reloadIndexPath(_ indexPath: IndexPath)
+    func deleteIndexPath(_ indexPath: IndexPath)
 }
 
 class Tab2ViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -145,5 +146,10 @@ class Tab2ViewController: BaseCollectionViewController, UICollectionViewDelegate
 extension Tab2ViewController: CollectionViewCellDelegate {
     func reloadIndexPath(_ indexPath: IndexPath) {
         self.collectionView.reloadItems(at: [indexPath])
+    }
+    
+    func deleteIndexPath(_ indexPath: IndexPath) {
+        self.data.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
 }

@@ -15,13 +15,15 @@ class PictureCollectionViewCell: BaseCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentView.layer.cornerRadius = 10
+        contentView.clipsToBounds = true
         contentView.backgroundColor = .white
         avatarImageView.image = avatarImageView.image?.toCircle()
     }
     
     func setCell(data: Video) {
         if let url = URL(string: data.poster) {
-            posterImageView.loadFrom(url: url)
+            posterImageView.sd_setImage(with: url, completed: nil)
         }
         
         titleLabel.text = data.title

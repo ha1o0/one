@@ -31,7 +31,7 @@ class OpenHomeViewController: BaseTabBarViewController {
         let viewHeight = SCREEN_HEIGHT - STATUS_NAV_HEIGHT
         let a = Tab1ViewController()
         let b = Tab2ViewController()
-        let c = Tab1ViewController()
+        let c = Tab3ViewController()
         let controllers = [a, b, c]
         var pageViewList = [UIView]()
         for controller in controllers {

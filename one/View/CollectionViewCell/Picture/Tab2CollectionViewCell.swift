@@ -17,18 +17,9 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var playCountLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var deleteButton: UIButton!
     
     weak var delegate: CollectionViewCellDelegate?
-    
-    var maxWidth: CGFloat? {
-        didSet {
-            guard let maxWidth = maxWidth else {
-                return
-            }
-//            containerViewWidthAnchor.constant = maxWidth
-//            containerViewWidthAnchor.isActive = true
-        }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +31,7 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
     func setContent(data: SimpleVideo, indexPath: IndexPath) {
         print("set content")
         self.titleLabel.text = data.title
+        self.deleteButton.tag = indexPath.row
         if let url = URL(string: data.poster) {
             self.imageView.sd_setImage(with: url) { image, _, _, _ in
 //                print("get image")
@@ -57,6 +49,11 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
         }
     }
     
+    @IBAction func deleteItem(_ sender: UIButton) {
+        let indexRow = sender.tag
+        self.delegate?.deleteIndexPath(IndexPath(row: indexRow, section: 0))
+    }
+
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
             let targetSize = CGSize(width: (SCREEN_WIDTH - 30) / 2, height: 0)
             layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)

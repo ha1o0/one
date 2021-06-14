@@ -16,13 +16,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="263" height="164"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxu-at-eUl" userLabel="ContentView">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxu-at-eUl" userLabel="ContentView">
                         <rect key="frame" x="0.0" y="0.0" width="263" height="164"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjl-bF-fzP">
                                 <rect key="frame" x="0.0" y="0.0" width="263" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="DVQ-uX-cli">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster" translatesAutoresizingMaskIntoConstraints="NO" id="DVQ-uX-cli">
                                         <rect key="frame" x="0.0" y="0.0" width="263" height="100"/>
                                     </imageView>
                                 </subviews>
@@ -84,7 +84,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gxu-at-eUl" secondAttribute="trailing" id="9Ac-a0-rEl"/>
                 <constraint firstItem="gxu-at-eUl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EuS-fh-Zbg"/>
@@ -105,9 +105,6 @@
         <image name="avatar" width="286.5" height="286.5"/>
         <image name="poster" width="960" height="540"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
