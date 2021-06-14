@@ -74,7 +74,7 @@ class Tab3ViewController: BaseCollectionViewController, UICollectionViewDelegate
     func generateData() -> [Video] {
         var newData: [Video] = []
         for index in 0..<16 {
-            newData.append(Video(id: "1", type: "1", title: "《乘风破浪的姐姐》我曾难自拔于世界之大", subtitle: "猜你喜欢 · 芒果视频\(index)-", poster: MockService.shared.getRandomImg(), url: "https://blog.iword.win/langjie.mp4"))
+            newData.append(Video(id: "1", type: "1", title: "我曾难自拔于世界之大", subtitle: "猜你喜欢 · 芒果视频\(index)-", poster: MockService.shared.getRandomImg(), url: "https://blog.iword.win/langjie.mp4", avatar: MockService.shared.getRandomImg()))
         }
         return newData
     }

@@ -18,14 +18,16 @@ class PictureCollectionViewCell: BaseCollectionViewCell {
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
         contentView.backgroundColor = .white
-        avatarImageView.image = avatarImageView.image?.toCircle()
+        avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
     }
     
     func setCell(data: Video) {
         if let url = URL(string: data.poster) {
             posterImageView.sd_setImage(with: url, completed: nil)
         }
-        
+        if data.avatar.count > 0, let avatar = URL(string: data.avatar) {
+            avatarImageView.sd_setImage(with: avatar, completed: nil)
+        }
         titleLabel.text = data.title
         subtitleLabel.text = "\(data.subtitle)-\(arc4random() % 1000)"
     }

@@ -149,7 +149,16 @@ extension Tab2ViewController: CollectionViewCellDelegate {
     }
     
     func deleteIndexPath(_ indexPath: IndexPath) {
+        let targetIndex = indexPath.row
         self.data.remove(at: indexPath.row)
+        let minIndex = max(targetIndex - 5, 0)
+        let maxIndex = min(targetIndex + 5, self.data.count)
+        let willReloadItemIndexs: [IndexPath] = (minIndex..<maxIndex).enumerated().map { (_, element) -> IndexPath in
+            return IndexPath(row: element, section: 0)
+        }
         self.collectionView.deleteItems(at: [indexPath])
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadItems(at: willReloadItemIndexs)
+        }
     }
 }

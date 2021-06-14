@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 struct Video {
-    var id: String
-    var type: String
-    var title: String
-    var subtitle: String
-    var poster: String
-    var url: String
+    var id: String = ""
+    var type: String = ""
+    var title: String = ""
+    var subtitle: String = ""
+    var poster: String = ""
+    var url: String = ""
+    var avatar: String = ""
 }
 
 struct ImageInfo {
