@@ -28,11 +28,28 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="H6O-on-LZM">
                             <rect key="frame" x="60" y="200" width="278" height="300"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZl-2J-pBq">
+                                    <rect key="frame" x="0.0" y="0.0" width="278" height="43"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqw-t4-fGw">
+                                            <rect key="frame" x="8" y="6.5" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="fullScreen:" destination="-1" eventType="touchUpInside" id="CsA-Sn-l6c"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="gqw-t4-fGw" firstAttribute="centerY" secondItem="CZl-2J-pBq" secondAttribute="centerY" id="0ul-82-yJJ"/>
+                                        <constraint firstItem="gqw-t4-fGw" firstAttribute="leading" secondItem="CZl-2J-pBq" secondAttribute="leading" constant="8" id="3TY-2Q-PVx"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wco-2A-4Dl">
-                                    <rect key="frame" x="0.0" y="0.0" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="43" width="278" height="42.5"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhL-tH-F50">
-                                            <rect key="frame" x="8" y="10" width="125" height="30"/>
+                                            <rect key="frame" x="8" y="6.5" width="125" height="30"/>
                                             <state key="normal" title="底部滑入(present)"/>
                                             <connections>
                                                 <action selector="coverVertical:" destination="-1" eventType="touchUpInside" id="INg-lm-8Yz"/>
@@ -46,10 +63,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHF-wC-znU">
-                                    <rect key="frame" x="0.0" y="50" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="85.5" width="278" height="43"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-Xf-JEV">
-                                            <rect key="frame" x="8" y="10" width="125" height="30"/>
+                                            <rect key="frame" x="8" y="6.5" width="125" height="30"/>
                                             <state key="normal" title="水平翻转(present)"/>
                                             <connections>
                                                 <action selector="flipHorizontal:" destination="-1" eventType="touchUpInside" id="xef-1s-4wi"/>
@@ -63,10 +80,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIj-Pv-W7C">
-                                    <rect key="frame" x="0.0" y="100" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="128.5" width="278" height="43"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-Bh-wZs">
-                                            <rect key="frame" x="8" y="10" width="94" height="30"/>
+                                            <rect key="frame" x="8" y="6.5" width="94" height="30"/>
                                             <state key="normal" title="渐隐(present)"/>
                                             <connections>
                                                 <action selector="crossDissolve:" destination="-1" eventType="touchUpInside" id="Ot1-Js-3FT"/>
@@ -80,10 +97,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLi-zK-ctR">
-                                    <rect key="frame" x="0.0" y="150" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="171.5" width="278" height="43"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hq-Fz-4hL">
-                                            <rect key="frame" x="8" y="10" width="31" height="30"/>
+                                            <rect key="frame" x="8" y="6.5" width="31" height="30"/>
                                             <state key="normal" title="渐隐"/>
                                             <connections>
                                                 <action selector="partialCurl:" destination="-1" eventType="touchUpInside" id="0Dw-3A-aJa"/>
@@ -97,10 +114,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmP-Rb-ZMF">
-                                    <rect key="frame" x="0.0" y="200" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="214.5" width="278" height="42.5"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-AD-PhI">
-                                            <rect key="frame" x="8" y="10" width="62" height="30"/>
+                                            <rect key="frame" x="8" y="6" width="62" height="30"/>
                                             <state key="normal" title="底部滑入"/>
                                             <connections>
                                                 <action selector="fromBottom:" destination="-1" eventType="touchUpInside" id="AYb-Ym-DT4"/>
@@ -114,10 +131,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-A0-OxH">
-                                    <rect key="frame" x="0.0" y="250" width="278" height="50"/>
+                                    <rect key="frame" x="0.0" y="257" width="278" height="43"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rt3-4F-77y">
-                                            <rect key="frame" x="8" y="10" width="108" height="30"/>
+                                            <rect key="frame" x="8" y="6.5" width="108" height="30"/>
                                             <state key="normal" title="折叠（仿得物）"/>
                                             <connections>
                                                 <action selector="fold:" destination="-1" eventType="touchUpInside" id="upu-Uj-L8F"/>
@@ -153,7 +170,7 @@
                 <constraint firstAttribute="trailing" secondItem="QiV-Fe-2be" secondAttribute="trailing" id="mH5-kr-Wnl"/>
                 <constraint firstAttribute="bottom" secondItem="QiV-Fe-2be" secondAttribute="bottom" id="sqS-Gl-jsY"/>
             </constraints>
-            <point key="canvasLocation" x="63.768115942028992" y="78.348214285714278"/>
+            <point key="canvasLocation" x="377" y="66"/>
         </view>
     </objects>
     <resources>

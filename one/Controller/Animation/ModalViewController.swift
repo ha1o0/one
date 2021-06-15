@@ -175,6 +175,12 @@ class ModalViewController: BaseViewController {
         super.back()
     }
 
+    @IBAction func fullScreen(_ sender: UIButton) {
+        let navigationController = UINavigationController(rootViewController: BaseTestViewController())
+        navigationController.modalPresentationStyle = .overCurrentContext
+        self.present(navigationController, animated: true, completion: nil)
+    }
+    
     @IBAction func coverVertical(_ sender: UIButton) {
         newVc.enterType = .present
         newVc.modalTransitionStyle = .coverVertical
