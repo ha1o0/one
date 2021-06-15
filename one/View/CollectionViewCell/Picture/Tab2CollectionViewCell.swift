@@ -29,7 +29,7 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
     }
 
     func setContent(data: SimpleVideo, indexPath: IndexPath) {
-        print("set content")
+//        print("set content")
         self.titleLabel.text = data.title
         self.deleteButton.tag = indexPath.row
         if let url = URL(string: data.poster) {

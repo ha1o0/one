@@ -73,7 +73,7 @@ class LiveListView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
         scrollView.bounces = true
         if let view = self.pageViewList?[indexPath.section] {
             scrollView.addSubview(view)
-            print("contetnsize: \(view.bounds)")
+//            print("contentsize: \(view.bounds)")
             scrollView.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
         }
         cell.contentView.addSubview(scrollView)
