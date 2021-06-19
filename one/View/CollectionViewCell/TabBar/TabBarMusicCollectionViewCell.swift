@@ -28,6 +28,7 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
             AnimationUtils.resetRotate(layer: posterImageView.layer)
         }
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
+        NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
     }
     
     @objc func musicStatusChange() {
@@ -36,5 +37,16 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
         } else {
             AnimationUtils.pauseRotate(layer: posterImageView.layer)
         }
+    }
+    
+    @objc func musicChange() {
+        let currentMusic = MusicService.shared.getCurrentMusic()
+        self.musicNameLabel.text = currentMusic.name
+        self.musicAuthorLabel.text = currentMusic.author
+        if let url = URL(string: currentMusic.poster) {
+            posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
+            AnimationUtils.resetRotate(layer: posterImageView.layer)
+        }
+        self.musicStatusChange()
     }
 }

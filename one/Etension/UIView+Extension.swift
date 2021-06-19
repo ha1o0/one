@@ -108,6 +108,10 @@ extension UIView {
         self.layer.position = position
         self.layer.anchorPoint = anchorPoint
     }
+    
+    func setCircleCornerRadius() {
+        self.layer.cornerRadius = self.bounds.width / 2
+    }
 }
 
 extension UIButton {

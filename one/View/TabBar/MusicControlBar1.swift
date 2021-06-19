@@ -53,6 +53,24 @@ class MusicControlBar1: UIView, UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.isPagingEnabled = true
         registerNibWithName("TabBarMusicCollectionViewCell", collectionView: collectionView)
         self.playButton.addTarget(self, action: #selector(playOrPauseMusic), for: .touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMusicVc))
+        self.addGestureRecognizer(tapGesture)
+        self.isUserInteractionEnabled = true
+        NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
+        NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
+    }
+    
+    @objc func musicStatusChange() {
+        playButton.setImage(UIImage(systemName: "\(MusicService.shared.isPlaying ? "pause.fill" : "play.fill")"), for: .normal)
+    }
+    
+    @objc func musicChange() {
+        self.collectionView.scrollToItem(at: IndexPath(row: MusicService.shared.currentMusicIndex, section: 0), at: .centeredHorizontally, animated: false)
+    }
+    
+    @objc func openMusicVc() {
+        let topVc = getTopViewController()
+        topVc?.pushVc(vc: MusicPlayerViewController(), animate: true, hideAll: true)
     }
     
     @objc func playOrPauseMusic() {

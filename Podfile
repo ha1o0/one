@@ -3,7 +3,7 @@
 #source 'https://github.com/CocoaPods/Specs.git'
 source 'https://cdn.cocoapods.org/'
 platform :ios, '10.0'
-#use_frameworks!
+use_frameworks!
 use_modular_headers!
 inhibit_all_warnings!
 

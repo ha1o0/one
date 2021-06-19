@@ -18,9 +18,14 @@ class NotificationService {
         case gotoVc = "gotoVc"
         case stopPosterLoop = "stopPosterLoop"
         case musicStatus = "musicStatus"
+        case musicChange = "musicChange"
     }
     
     var hideAll: Bool = false
+    
+    func removeNotification(target: Any) {
+        NotificationCenter.default.removeObserver(target)
+    }
     
     func listenGotoVc(target: Any, selector: Selector) {
         NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name.init(State.gotoVc.rawValue), object: nil)
@@ -42,8 +47,16 @@ class NotificationService {
         NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name(State.musicStatus.rawValue), object: nil)
     }
     
+    func listenMusicChange(target: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name(State.musicChange.rawValue), object: nil)
+    }
+    
     func musicStatus(_ isPlaying: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name(State.musicStatus.rawValue), object: nil, userInfo: ["isPlaying": isPlaying])
+    }
+    
+    func musicChange() {
+        NotificationCenter.default.post(name: NSNotification.Name(State.musicChange.rawValue), object: nil, userInfo: nil)
     }
     
     func listenInterfaceStyleChange(target: Any, selector: Selector) {

@@ -85,6 +85,22 @@ class MusicService: MusicPlayer {
         
     }
     
+    func next() {
+        self.pause()
+        let nextIndex = self.currentMusicIndex + 1
+        self.currentMusicIndex = nextIndex >= self.musicIndexList.count ? 0 : nextIndex
+        self.play()
+        NotificationService.shared.musicChange()
+    }
+    
+    func last() {
+        self.pause()
+        let lastIndex = self.currentMusicIndex - 1
+        self.currentMusicIndex = lastIndex <= -1 ? (self.musicIndexList.count - 1) : lastIndex
+        self.play()
+        NotificationService.shared.musicChange()
+    }
+    
     func stop() {
         guard let player = player else {
             return
@@ -115,5 +131,10 @@ class MusicService: MusicPlayer {
         self.musicIndexList = self.musicList.enumerated().map({ (index, music) in
             return index
         })
+    }
+    
+    func getCurrentMusic() -> Music {
+        let music = self.musicList[self.musicIndexList[self.currentMusicIndex]]
+        return music
     }
 }
