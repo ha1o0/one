@@ -14,8 +14,6 @@ class MusicPlayerViewController: BaseViewController {
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var musicInfoViewInNavBar: UIView!
-    @IBOutlet weak var musicNameLabel: MarqueeLabel!
-    @IBOutlet weak var musicAuthorLabel: MarqueeLabel!
     @IBOutlet weak var soundBar: UIView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var controlBar: UIView!
@@ -29,11 +27,39 @@ class MusicPlayerViewController: BaseViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var moreBtn: UIButton!
     
+    lazy var musicNameLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 15)
+        return label
+    }()
+    
+    lazy var musicAuthorLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
     let musicInstance = MusicService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.visualEffectView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
+        self.musicInfoViewInNavBar.addSubview(musicNameLabel)
+        musicNameLabel.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.leading.trailing.equalToSuperview()
+            maker.top.equalToSuperview().offset(5)
+        }
+        self.musicInfoViewInNavBar.addSubview(musicAuthorLabel)
+        musicAuthorLabel.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-3)
+            maker.leading.trailing.equalToSuperview()
+        }
         self.playBtnView.layer.borderWidth = 1
         self.playBtnView.layer.borderColor = UIColor.white.cgColor
         self.playBtnView.setCircleCornerRadius()

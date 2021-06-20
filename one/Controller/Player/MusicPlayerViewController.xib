@@ -17,9 +17,7 @@
                 <outlet property="lastBtn" destination="m6t-lT-RQt" id="QDL-LL-HM6"/>
                 <outlet property="loopBtn" destination="edn-Wy-tgZ" id="pD9-F6-5Ap"/>
                 <outlet property="moreBtn" destination="UGw-6P-Vml" id="obX-qf-lgO"/>
-                <outlet property="musicAuthorLabel" destination="dMh-5I-nnr" id="dTX-ZY-xav"/>
                 <outlet property="musicInfoViewInNavBar" destination="rFf-vV-pO7" id="kE7-sL-VBv"/>
-                <outlet property="musicNameLabel" destination="Yme-1x-tLj" id="9VE-g3-6jV"/>
                 <outlet property="navBar" destination="uhu-1E-fHm" id="HVb-jW-cXT"/>
                 <outlet property="nextBtn" destination="2LX-u7-Rwh" id="PNM-Pp-vzs"/>
                 <outlet property="playBtn" destination="I9z-3O-oZC" id="Fgu-IP-4Jx"/>
@@ -76,31 +74,10 @@
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFf-vV-pO7">
                                     <rect key="frame" x="107" y="0.0" width="200" height="44"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yme-1x-tLj" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                            <rect key="frame" x="0.0" y="5" width="200" height="18"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-5I-nnr" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                            <rect key="frame" x="0.0" y="29.5" width="200" height="14.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="dMh-5I-nnr" firstAttribute="leading" secondItem="rFf-vV-pO7" secondAttribute="leading" id="3cJ-Ay-N7E"/>
-                                        <constraint firstAttribute="trailing" secondItem="Yme-1x-tLj" secondAttribute="trailing" id="ICu-Qx-f8I"/>
-                                        <constraint firstItem="Yme-1x-tLj" firstAttribute="top" secondItem="rFf-vV-pO7" secondAttribute="top" constant="5" id="dR8-3q-p15"/>
-                                        <constraint firstAttribute="trailing" secondItem="dMh-5I-nnr" secondAttribute="trailing" id="e2U-yS-wc8"/>
-                                        <constraint firstItem="Yme-1x-tLj" firstAttribute="leading" secondItem="rFf-vV-pO7" secondAttribute="leading" id="hfT-fr-C93"/>
                                         <constraint firstAttribute="width" constant="200" id="mxW-e4-ngM"/>
                                         <constraint firstAttribute="height" constant="44" id="n0P-8x-ExK"/>
-                                        <constraint firstAttribute="bottom" secondItem="dMh-5I-nnr" secondAttribute="bottom" id="uiE-SM-204"/>
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoe-Ep-oBG">
@@ -363,14 +340,6 @@
             <point key="canvasLocation" x="10" y="263"/>
         </view>
     </objects>
-    <designables>
-        <designable name="Yme-1x-tLj">
-            <size key="intrinsicContentSize" width="46" height="18"/>
-        </designable>
-        <designable name="dMh-5I-nnr">
-            <size key="intrinsicContentSize" width="31" height="14.5"/>
-        </designable>
-    </designables>
     <resources>
         <image name="airplayvideo" catalog="system" width="128" height="98"/>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>

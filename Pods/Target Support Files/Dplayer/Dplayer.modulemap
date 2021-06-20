@@ -1,4 +1,4 @@
-module Dplayer {
+framework module Dplayer {
   umbrella header "Dplayer-umbrella.h"
 
   export *

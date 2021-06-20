@@ -1,4 +1,4 @@
-module FreeStreamer {
+framework module FreeStreamer {
   umbrella header "FreeStreamer-umbrella.h"
 
   export *

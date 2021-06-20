@@ -1,4 +1,4 @@
-module ZImageCropper {
+framework module ZImageCropper {
   umbrella header "ZImageCropper-umbrella.h"
 
   export *

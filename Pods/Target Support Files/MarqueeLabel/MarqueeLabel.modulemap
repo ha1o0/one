@@ -1,4 +1,4 @@
-module MarqueeLabel {
+framework module MarqueeLabel {
   umbrella header "MarqueeLabel-umbrella.h"
 
   export *
