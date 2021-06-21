@@ -46,7 +46,9 @@ class MusicService: MusicPlayer {
     }
     var musicIndexList: [Int] = []
     
-    private init() {}
+    private init() {
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+    }
     
     func play(atTime: TimeInterval = 0) {
         let currentMusic: Music = musicList[musicIndexList[currentMusicIndex]]
