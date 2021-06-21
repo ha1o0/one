@@ -83,7 +83,7 @@ class MusicPlayerViewController: BaseViewController {
         }
     }
     
-    @objc func musicChange() {
+    @objc func musicChange(needResetAnimation: Bool = true) {
         let currentMusic = musicInstance.getCurrentMusic()
         self.musicNameLabel.text = currentMusic.name
         self.musicAuthorLabel.text = currentMusic.author
@@ -92,11 +92,16 @@ class MusicPlayerViewController: BaseViewController {
             self.posterImageView.sd_setImage(with: url, completed: nil)
             self.posterImageView.setCircleCornerRadius()
         }
-        self.playBtn.setImage(UIImage(systemName: "\(musicInstance.isPlaying ? "pause.fill" : "play.fill")"), for: .normal)
-        AnimationUtils.resetRotate(layer: posterImageView.layer)
+        self.updatePlayBtn()
+        if needResetAnimation {
+            AnimationUtils.resetRotate(layer: posterImageView.layer)
+        }
         self.musicStatusChange()
     }
     
+    func updatePlayBtn() {
+        self.playBtn.setImage(UIImage(systemName: "\(musicInstance.isPlaying ? "pause.fill" : "play.fill")"), for: .normal)
+    }
     
     @IBAction func dismiss(_ sender: UIButton) {
         appDelegate.musicWindow?.hide()

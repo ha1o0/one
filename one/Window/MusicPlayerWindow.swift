@@ -59,12 +59,13 @@ class MusicPlayerWindow: BaseWindow {
         self.makeKeyAndVisible()
         UIView.animate(withDuration: 0.45, delay: 0, options: .curveEaseInOut) {
             self.frame.origin.y = 0
+        } completion: { (result) in
+            appDelegate.musicVc.updatePlayBtn()
         }
-        
     }
     
     func hide() {
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.45, delay: 0, options: .curveEaseInOut) {
             self.frame.origin.y = SCREEN_HEIGHT
         }
         self.resignKey()
