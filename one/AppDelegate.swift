@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: BaseWindow?
     var launchWindow: UIWindow?
+    var musicWindow: MusicPlayerWindow?
     var deviceOrientation = UIInterfaceOrientationMask.portrait
     var rootVc: MainViewController?
+    var musicVc: MusicPlayerViewController = MusicPlayerViewController()
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return deviceOrientation
@@ -29,13 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootVc = MainViewController()
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
-        
-        self.showLaunchWindown()
+
+        let frame = CGRect(x: 0, y: SCREEN_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+        self.musicWindow = MusicPlayerWindow(frame: frame)
+        self.showLaunchWindow()
         
         return true
     }
 
-    func showLaunchWindown() {
+    func showLaunchWindow() {
         launchWindow = UIWindow(frame: UIScreen.main.bounds)
         let launchNavigationViewController = BaseNavigationViewController.init(rootViewController: LaunchViewController())
         launchWindow?.rootViewController = launchNavigationViewController;
@@ -46,6 +50,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.launchWindow?.resignKey()
         self.launchWindow = nil
     }
+    
+//    func initMusicWindow() {
+//        let frame = CGRect(x: 0, y: SCREEN_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+//        self.musicWindow = MusicPlayerWindow(frame: frame)
+//        let musicPlayerNavigationViewController = BaseNavigationViewController(rootViewController: self.musicVc)
+//        musicWindow?.rootViewController = musicPlayerNavigationViewController
+//    }
+//    
+//    func showMusicWindow() {
+//        musicWindow?.makeKeyAndVisible()
+//        UIView.animate(withDuration: 0.45, delay: 0, options: .curveEaseInOut) {
+//            self.musicWindow?.frame.origin.y = 0
+//        }
+//    }
+//    
+//    func hideMusicWindow() {
+//        UIView.animate(withDuration: 0.4) {
+//            self.musicWindow?.frame.origin.y = SCREEN_HEIGHT
+//        }
+//        musicWindow?.resignKey()
+//    }
 
     // MARK: AppDelegate LifeCycle
     

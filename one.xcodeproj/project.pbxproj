@@ -26,6 +26,7 @@
 		E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA3562677A5F900041A77 /* Tab3ViewController.xib */; };
 		E97FA35E267E396900041A77 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */; };
 		E97FA35F267E396900041A77 /* MusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */; };
+		E97FA3B92680DD7F00041A77 /* MusicPlayerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */; };
 		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
 		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
 		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
@@ -208,6 +209,7 @@
 		E97FA3562677A5F900041A77 /* Tab3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab3ViewController.xib; sourceTree = "<group>"; };
 		E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayerViewController.xib; sourceTree = "<group>"; };
+		E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerWindow.swift; sourceTree = "<group>"; };
 		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
 		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				E9937F5F2670BC3F0047FA64 /* BaseWindow.swift */,
+				E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -1232,6 +1235,7 @@
 				E9A59EF3265CFAC100FA458B /* CarouselCollectionViewCell.swift in Sources */,
 				E99BC10526233C770002C066 /* Video.swift in Sources */,
 				E9937F6A26720BCE0047FA64 /* SwitchTabCollectionLayout.swift in Sources */,
+				E97FA3B92680DD7F00041A77 /* MusicPlayerWindow.swift in Sources */,
 				E9A59EEF265CF5CB00FA458B /* CollectionViewLayout.swift in Sources */,
 				E99BC14B2625EBEE0002C066 /* TestTableViewCell.swift in Sources */,
 				E99855DC264509F9006B0E1E /* BaseTestViewController.swift in Sources */,

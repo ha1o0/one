@@ -69,8 +69,7 @@ class MusicControlBar1: UIView, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @objc func openMusicVc() {
-        let topVc = getTopViewController()
-        topVc?.pushVc(vc: MusicPlayerViewController(), animate: true, hideAll: true)
+        appDelegate.musicWindow?.show()
     }
     
     @objc func playOrPauseMusic() {

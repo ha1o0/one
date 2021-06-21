@@ -74,7 +74,7 @@ class MusicPlayerViewController: BaseViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     @objc func musicStatusChange() {
         if self.musicInstance.isPlaying {
             AnimationUtils.resumeRotate(layer: posterImageView.layer)
@@ -99,7 +99,7 @@ class MusicPlayerViewController: BaseViewController {
     
     
     @IBAction func dismiss(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        appDelegate.musicWindow?.hide()
     }
     
     @IBAction func share(_ sender: UIButton) {
