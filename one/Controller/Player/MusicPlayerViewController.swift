@@ -43,10 +43,23 @@ class MusicPlayerViewController: BaseViewController {
         return label
     }()
     
+    lazy var musicProgressBar: ProgressBar = {
+        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 100, showTimeLabel: true)
+        progressBar.backgroundColor = .clear
+        return progressBar
+    }()
+    
     let musicInstance = MusicService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressBarView.addSubview(self.musicProgressBar)
+        self.musicProgressBar.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.height.equalTo(30)
+            maker.leading.equalToSuperview().offset(30)
+            maker.trailing.equalToSuperview().offset(-30)
+        }
 //        self.visualEffectView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         self.musicInfoViewInNavBar.addSubview(musicNameLabel)
         musicNameLabel.snp.makeConstraints { (maker) in
@@ -65,6 +78,8 @@ class MusicPlayerViewController: BaseViewController {
         self.playBtnView.setCircleCornerRadius()
         self.centerOuterCircleView.setCircleCornerRadius()
         AnimationUtils.addRotate(layer: posterImageView.layer)
+        self.view.layer.cornerRadius = 30
+        self.view.clipsToBounds = true
         self.musicChange()
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))

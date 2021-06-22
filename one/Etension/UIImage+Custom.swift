@@ -32,4 +32,9 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return maskedImage
     }
+    
+    public class func getUIImageByName(_ name: String) -> UIImage? {
+        let result = UIImage(named: name, in: Bundle.main, compatibleWith: nil)
+        return result ?? nil
+    }
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 let SECONDS_PER_MINUTE = 60
+let MINUTES_PER_HOUR = 60
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let STATUS_BAR_HEIGHT = CGFloat(hasNotch ? 44.0 : 20.0)

@@ -27,6 +27,7 @@
 		E97FA35E267E396900041A77 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */; };
 		E97FA35F267E396900041A77 /* MusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */; };
 		E97FA3B92680DD7F00041A77 /* MusicPlayerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */; };
+		E97FA3BF26822F0500041A77 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3BE26822F0500041A77 /* ProgressBar.swift */; };
 		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
 		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
 		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
@@ -210,6 +211,7 @@
 		E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
 		E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayerViewController.xib; sourceTree = "<group>"; };
 		E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerWindow.swift; sourceTree = "<group>"; };
+		E97FA3BE26822F0500041A77 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
 		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
@@ -427,6 +429,14 @@
 				E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		E97FA3BD26822EF400041A77 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				E97FA3BE26822F0500041A77 /* ProgressBar.swift */,
+			);
+			path = Progress;
 			sourceTree = "<group>";
 		};
 		E9922412265FC7810038BAB7 /* Function */ = {
@@ -878,6 +888,7 @@
 		E9E0CD84260794FE0047DAE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E97FA3BD26822EF400041A77 /* Progress */,
 				E9BB1C2226753B590016406B /* CollectionFlowLayout */,
 				E9937F66267207650047FA64 /* SwitchTab */,
 				E99224A7266D0F9F0038BAB7 /* TabBar */,
@@ -1279,6 +1290,7 @@
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
 				E9937F642671DC5F0047FA64 /* OpenHomeViewController.swift in Sources */,
 				E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */,
+				E97FA3BF26822F0500041A77 /* ProgressBar.swift in Sources */,
 				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E9BB1C0026710DFB0016406B /* MusicControlBar1.swift in Sources */,
