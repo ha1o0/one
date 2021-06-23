@@ -19,6 +19,7 @@ class NotificationService {
         case stopPosterLoop = "stopPosterLoop"
         case musicStatus = "musicStatus"
         case musicChange = "musicChange"
+        case musicProgress = "musicProgress"
     }
     
     var hideAll: Bool = false
@@ -51,12 +52,20 @@ class NotificationService {
         NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name(State.musicChange.rawValue), object: nil)
     }
     
+    func listenMusicProgress(target: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(target, selector: selector, name: NSNotification.Name(State.musicProgress.rawValue), object: nil)
+    }
+    
     func musicStatus(_ isPlaying: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name(State.musicStatus.rawValue), object: nil, userInfo: ["isPlaying": isPlaying])
     }
     
     func musicChange() {
         NotificationCenter.default.post(name: NSNotification.Name(State.musicChange.rawValue), object: nil, userInfo: nil)
+    }
+    
+    func musicProgress() {
+        NotificationCenter.default.post(name: NSNotification.Name(State.musicProgress.rawValue), object: nil, userInfo: nil)
     }
     
     func listenInterfaceStyleChange(target: Any, selector: Selector) {
@@ -66,6 +75,4 @@ class NotificationService {
     func interfaceStyleChange(style: UIUserInterfaceStyle) {
         NotificationCenter.default.post(name: NSNotification.Name(State.interfaceStyleChange.rawValue), object: nil, userInfo: ["style": style])
     }
-    
-    
 }

@@ -16,7 +16,8 @@ protocol MusicPlayer {
     var musicList: [Music] { get set }
     var lastPlayingMusic: Music { get set }
     var musicIndexList: [Int] { get set }
-    var currentPlayTime: TimeInterval { get set }
+    var currentPlayTime: TimeInterval { get }
+    var totalPlayTime: TimeInterval { get }
     func play(atTime: TimeInterval)
     func pause()
     func seekTo(second: Double)
@@ -37,7 +38,16 @@ class MusicService: MusicPlayer {
     var playerItem: AVPlayerItem!
     var currentMusicIndex: Int = 0
     var lastPlayingMusic: Music = Music()
-    var currentPlayTime: TimeInterval = 0
+    var currentPlayTime: TimeInterval {
+        get {
+            return playerItem.currentTime().seconds
+        }
+    }
+    var totalPlayTime: TimeInterval {
+        get {
+            return playerItem.duration.seconds
+        }
+    }
     var musicList: [Music] = [] {
         didSet {
             currentMusicIndex = 0
@@ -45,6 +55,7 @@ class MusicService: MusicPlayer {
         }
     }
     var musicIndexList: [Int] = []
+    var musicPlayProgressTimer: Timer!
     
     private init() {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
@@ -73,6 +84,13 @@ class MusicService: MusicPlayer {
         }
         lastPlayingMusic = currentMusic
         NotificationService.shared.musicStatus(true)
+        if (TimerManager.shared.getTimer(timerName: .musicPlayProgress) != nil) {
+            return
+        }
+        self.musicPlayProgressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+            NotificationService.shared.musicProgress()
+        })
+        TimerManager.shared.setTimer(timerName: .musicPlayProgress, timer: self.musicPlayProgressTimer)
     }
     
     func pause() {
@@ -81,10 +99,12 @@ class MusicService: MusicPlayer {
         }
         player.pause()
         NotificationService.shared.musicStatus(false)
+        TimerManager.shared.invalidateTimer(timerName: .musicPlayProgress)
+        TimerManager.shared.deleteTimer(timerName: .musicPlayProgress)
     }
     
     func seekTo(second: Double) {
-        
+        self.play(atTime: TimeInterval(second))
     }
     
     func next() {

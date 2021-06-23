@@ -25,6 +25,7 @@
                 <outlet property="posterImageView" destination="wjS-DQ-Ogb" id="stF-NR-ILD"/>
                 <outlet property="progressBarView" destination="jJE-QA-sUP" id="SkN-bO-eAh"/>
                 <outlet property="soundBar" destination="j3r-qE-8qR" id="FTv-r2-fCL"/>
+                <outlet property="soundBarContainerView" destination="Jqe-x3-SvA" id="Mne-5A-UHO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="visualEffectView" destination="jlM-BK-R7O" id="oyM-vh-BeK"/>
             </connections>
@@ -111,6 +112,10 @@
                                         <action selector="mute:" destination="-1" eventType="touchUpInside" id="YUm-tu-TAa"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqe-x3-SvA">
+                                    <rect key="frame" x="59" y="0.0" width="296.5" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U60-JV-LD9">
                                     <rect key="frame" x="375.5" y="11" width="23.5" height="22"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,8 +129,13 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="1JY-tZ-qeY"/>
                                 <constraint firstItem="U60-JV-LD9" firstAttribute="centerY" secondItem="j3r-qE-8qR" secondAttribute="centerY" id="HOb-ht-Wuh"/>
+                                <constraint firstItem="Jqe-x3-SvA" firstAttribute="leading" secondItem="CCb-hh-wpC" secondAttribute="trailing" constant="20" id="I0A-sg-h2I"/>
+                                <constraint firstItem="U60-JV-LD9" firstAttribute="leading" secondItem="Jqe-x3-SvA" secondAttribute="trailing" constant="20" id="KpY-uR-rwW"/>
+                                <constraint firstItem="Jqe-x3-SvA" firstAttribute="centerY" secondItem="j3r-qE-8qR" secondAttribute="centerY" id="LL4-q1-jsJ"/>
                                 <constraint firstAttribute="trailing" secondItem="U60-JV-LD9" secondAttribute="trailing" constant="15" id="MLA-BN-8Ph"/>
+                                <constraint firstItem="Jqe-x3-SvA" firstAttribute="top" secondItem="j3r-qE-8qR" secondAttribute="top" id="PfW-GL-y9n"/>
                                 <constraint firstItem="CCb-hh-wpC" firstAttribute="leading" secondItem="j3r-qE-8qR" secondAttribute="leading" constant="15" id="Qnt-dl-Dkq"/>
+                                <constraint firstAttribute="bottom" secondItem="Jqe-x3-SvA" secondAttribute="bottom" id="TlG-yH-2NA"/>
                                 <constraint firstItem="CCb-hh-wpC" firstAttribute="centerY" secondItem="j3r-qE-8qR" secondAttribute="centerY" id="cHY-AZ-eXp"/>
                             </constraints>
                         </view>
@@ -337,7 +347,7 @@
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4kT-rf-4nD"/>
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GS2-km-LGp"/>
             </constraints>
-            <point key="canvasLocation" x="-310" y="236"/>
+            <point key="canvasLocation" x="-310.14492753623193" y="235.71428571428569"/>
         </view>
     </objects>
     <resources>

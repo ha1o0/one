@@ -7,14 +7,16 @@
 
 import UIKit
 import MarqueeLabel
+import MediaPlayer
 
-class MusicPlayerViewController: BaseViewController {
+class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     @IBOutlet weak var bkgView: UIView!
     @IBOutlet weak var bkgImageView: UIImageView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var musicInfoViewInNavBar: UIView!
     @IBOutlet weak var soundBar: UIView!
+    @IBOutlet weak var soundBarContainerView: UIView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var controlBar: UIView!
     @IBOutlet weak var centerBkgView: UIView!
@@ -26,6 +28,7 @@ class MusicPlayerViewController: BaseViewController {
     @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var moreBtn: UIButton!
+    var systemVolumeView = MPVolumeView()
     
     lazy var musicNameLabel: MarqueeLabel = {
         let label = MarqueeLabel()
@@ -44,7 +47,13 @@ class MusicPlayerViewController: BaseViewController {
     }()
     
     lazy var musicProgressBar: ProgressBar = {
-        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 100, showTimeLabel: true)
+        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 0, showTimeLabel: true)
+        progressBar.backgroundColor = .clear
+        return progressBar
+    }()
+    
+    lazy var musicSoundBar: ProgressBar = {
+        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 100, showTimeLabel: false)
         progressBar.backgroundColor = .clear
         return progressBar
     }()
@@ -53,12 +62,20 @@ class MusicPlayerViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.initMPVolumeView()
         self.progressBarView.addSubview(self.musicProgressBar)
         self.musicProgressBar.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
             maker.height.equalTo(30)
             maker.leading.equalToSuperview().offset(30)
             maker.trailing.equalToSuperview().offset(-30)
+        }
+        self.soundBarContainerView.addSubview(self.musicSoundBar)
+        self.musicSoundBar.snp.makeConstraints { (maker) in
+            maker.centerY.equalToSuperview()
+            maker.height.equalTo(30)
+            maker.leading.equalToSuperview().offset(0)
+            maker.trailing.equalToSuperview().offset(0)
         }
 //        self.visualEffectView.effect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         self.musicInfoViewInNavBar.addSubview(musicNameLabel)
@@ -78,14 +95,69 @@ class MusicPlayerViewController: BaseViewController {
         self.playBtnView.setCircleCornerRadius()
         self.centerOuterCircleView.setCircleCornerRadius()
         AnimationUtils.addRotate(layer: posterImageView.layer)
-        self.view.layer.cornerRadius = 30
+        self.view.layer.cornerRadius = hasNotch ? 20 : 0
         self.view.clipsToBounds = true
         self.musicChange()
+        self.musicProgressBar.delegate = self
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
+        NotificationService.shared.listenMusicProgress(target: self, selector: #selector(musicProgress))
     }
 
+    override func viewDidLayoutSubviews() {
+        print(self.getSystemVolumValue())
+    }
 
+    func initMPVolumeView() {
+        systemVolumeView.frame.size = CGSize(width: 200, height: 1)
+        systemVolumeView.center = self.view.center
+        systemVolumeView.isHidden = true
+        self.view.addSubview(systemVolumeView)
+        musicSoundBar.changeValueCallback = self.setSystemVolumeValue
+    }
+
+    private func getSystemVolumSlider() -> UISlider {
+        let systemVolumView = MPVolumeView()
+        systemVolumView.frame.size = CGSize.init(width: 200, height: 4)
+        systemVolumView.center = self.view.center
+        var volumViewSlider = UISlider()
+        for subView in systemVolumView.subviews {
+            if type(of: subView).description() == "MPVolumeSlider" {
+                volumViewSlider = subView as! UISlider
+                return volumViewSlider
+            }
+            /*方法2
+             if subView.isKind(of: UISlider.self) {
+             print("---\(object_getClassName(subView))---")//0x0000000196cb9a68
+             print("---\(NSStringFromClass(type(of: subView)))---")//MPVolumeSlider
+             volumViewSlider = subView as! UISlider
+             return volumViewSlider
+             }*/
+        }
+        return volumViewSlider
+    }
+
+    //获取系统音量大小
+    private func getSystemVolumValue() -> Float {
+        return getSystemVolumSlider().value
+
+    }
+
+    //调节系统音量大小
+    private func setSystemVolumeValue(_ value: Float) {
+        print("start set voice: \(value)")
+        self.getSystemVolumSlider().value = value
+    }
+    
+//    private func getSystemVolumeValue() -> Float {
+//        return self.getSystemVolumeSlider().value
+//    }
+//
+//    private func setSystemVolumeValue(_ value: Float) {
+//        print("start set voice: \(value)")
+//        self.getSystemVolumeSlider().value = value
+//    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -112,6 +184,10 @@ class MusicPlayerViewController: BaseViewController {
             AnimationUtils.resetRotate(layer: posterImageView.layer)
         }
         self.musicStatusChange()
+    }
+    
+    @objc func musicProgress() {
+        self.musicProgressBar.updateView(currentCount: Float(musicInstance.currentPlayTime), totalCount: Float(musicInstance.totalPlayTime))
     }
     
     func updatePlayBtn() {
@@ -153,5 +229,16 @@ class MusicPlayerViewController: BaseViewController {
     }
     
     @IBAction func more(_ sender: UIButton) {
+    }
+    
+    func changeSliderValue(value: Float) {
+        delay(0) {
+            self.musicInstance.seekTo(second: Double(value))
+            AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
+        }
+    }
+    
+    func startChangeSliderValue(value: Float) {
+        
     }
 }

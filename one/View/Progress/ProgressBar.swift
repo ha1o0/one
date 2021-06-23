@@ -8,12 +8,20 @@
 import Foundation
 import UIKit
 
+protocol ProgressBarDelegate: NSObject {
+    func changeSliderValue(value: Float)
+    func startChangeSliderValue(value: Float)
+}
+
 class ProgressBar: UIView {
     
     var currentCount: Float = 0
     var totalCount: Float = 0
     var showTimeLabel: Bool = true
     var width: CGFloat = 0
+    var isDragging: Bool = false
+    var changeValueCallback: ((_ value: Float) -> Void)?
+    weak var delegate: ProgressBarDelegate?
     var progressBarView: UISlider = {
         let progressBar = UISlider()
         return progressBar
@@ -67,21 +75,62 @@ class ProgressBar: UIView {
         self.progressBarView.maximumTrackTintColor = .systemGray4
         self.progressBarView.value = self.currentCount
         self.progressBarView.maximumValue = self.totalCount
+        self.progressBarView.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
+        self.progressBarView.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSlider(sender:)))
+        self.progressBarView.addGestureRecognizer(tapGesture)
+        self.progressBarView.isUserInteractionEnabled = true
         self.updateView(currentCount: self.currentCount, totalCount: self.totalCount)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.progressBarView.snp.updateConstraints { (maker) in
-            maker.width.equalTo(self.bounds.width * 0.7)
+            maker.width.equalTo(self.bounds.width * (self.showTimeLabel ? 0.7 : 1))
         }
     }
     
-    func updateView(currentCount: Float, totalCount: Float) {
+    @objc func execChangeValue(value: Float) {
+        if let callback = self.changeValueCallback {
+            callback(value)
+        }
+    }
+    
+    @objc func changeSliderValue(slider: UISlider) {
+        self.isDragging = false
+        self.updateView(currentCount: slider.value, totalCount: self.totalCount)
+        self.delegate?.changeSliderValue(value: slider.value)
+        self.execChangeValue(value: slider.value)
+    }
+    
+    @objc func tapSlider(sender: UITapGestureRecognizer) {
+        self.isDragging = false
+        let tapPoint = sender.location(in: self.progressBarView)
+        let value = CGFloat((self.progressBarView.maximumValue - self.progressBarView.minimumValue)) * tapPoint.x / self.progressBarView.frame.width
+        self.updateView(currentCount: Float(value), totalCount: self.totalCount)
+        self.delegate?.changeSliderValue(value: Float(value))
+        self.execChangeValue(value: Float(value))
+    }
+    
+    @objc func startToChangeSliderValue(slider: UISlider) {
+        self.isDragging = true
+        self.updateView(currentCount: slider.value, totalCount: self.totalCount, fromSliderDrag: true)
+        self.delegate?.startChangeSliderValue(value: slider.value)
+    }
+    
+    func updateView(currentCount: Float, totalCount: Float, fromSliderDrag: Bool = false) {
+        if isDragging && !fromSliderDrag {
+            return
+        }
         self.currentCount = currentCount
         self.totalCount = totalCount
         self.progressBarView.value = currentCount
+        if totalCount > 0 {
+            self.progressBarView.maximumValue = totalCount
+            self.totalTimeLabel.text = "\(TimeUtil.getTimeBySeconds(Int(totalCount)))"
+        } else {
+            self.totalTimeLabel.text = "\(TimeUtil.getTimeBySeconds(0))"
+        }
         self.currentProgressLabel.text = "\(TimeUtil.getTimeBySeconds(Int(currentCount)))"
-        self.totalTimeLabel.text = "\(TimeUtil.getTimeBySeconds(Int(totalCount)))"
     }
 }
