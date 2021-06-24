@@ -22,6 +22,7 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         appDelegate.deviceOrientation = .portrait
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar(true)
     }
 
     var diyPlayerView: DplayerView!
@@ -142,6 +143,7 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

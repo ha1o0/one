@@ -62,7 +62,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.initMPVolumeView()
+        self.initMPVolumeView()
         self.progressBarView.addSubview(self.musicProgressBar)
         self.musicProgressBar.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
@@ -117,11 +117,8 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     }
 
     private func getSystemVolumSlider() -> UISlider {
-        let systemVolumView = MPVolumeView()
-        systemVolumView.frame.size = CGSize.init(width: 200, height: 4)
-        systemVolumView.center = self.view.center
         var volumViewSlider = UISlider()
-        for subView in systemVolumView.subviews {
+        for subView in systemVolumeView.subviews {
             if type(of: subView).description() == "MPVolumeSlider" {
                 volumViewSlider = subView as! UISlider
                 return volumViewSlider
