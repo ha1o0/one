@@ -34,7 +34,6 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
     }
     
     @objc func musicStatusChange() {
-        print("tabbar musicStatusChange")
         if MusicService.shared.isPlaying {
             AnimationUtils.resumeRotate(layer: posterImageView.layer)
         } else {
@@ -43,7 +42,6 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
     }
     
     @objc func musicChange() {
-        print("tabbar musicchange")
         let currentMusic = MusicService.shared.getCurrentMusic()
         self.musicNameLabel.text = currentMusic.name
         self.musicAuthorLabel.text = currentMusic.author

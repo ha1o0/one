@@ -99,7 +99,6 @@ class MusicService: MusicPlayer {
         player.play()
         lastPlayingMusic = currentMusic
         if !isPlaying {
-            print("send music status")
             NotificationService.shared.musicStatus(true)
         }
         if (TimerManager.shared.getTimer(timerName: .musicPlayProgress) != nil) {
