@@ -67,6 +67,16 @@ class MusicService: MusicPlayer {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
     }
     
+    func listenVolumeButton(target: Any) {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(true, options: [])
+            audioSession.addObserver(target as! NSObject, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        } catch {
+            print("Error")
+        }
+     }
+    
     func play(atTime: TimeInterval = 0) {
         let currentMusic: Music = musicList[musicIndexList[currentMusicIndex]]
         let isMusicChanged: Bool = currentMusic.id != lastPlayingMusic.id

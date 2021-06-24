@@ -103,8 +103,26 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
         NotificationService.shared.listenMusicProgress(target: self, selector: #selector(musicProgress))
+        musicInstance.listenVolumeButton(target: self)
     }
 
+    func listenVolumeButton() {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(true, options: [])
+            audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+        } catch {
+            print("Error")
+        }
+     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "outputVolume"{
+            let audioSession = AVAudioSession.sharedInstance()
+            self.musicSoundBar.updateView(currentCount: audioSession.outputVolume, totalCount: 1)
+        }
+     }
+    
     func initMPVolumeView() {
         systemVolumeView.frame.size = CGSize(width: 200, height: 1)
         systemVolumeView.center = self.view.center
@@ -159,10 +177,6 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
             self.posterImageView.setCircleCornerRadius()
         }
         self.updatePlayBtn()
-        if needResetAnimation {
-            AnimationUtils.resetRotate(layer: posterImageView.layer)
-        }
-        self.musicStatusChange()
     }
     
     @objc func musicProgress() {
