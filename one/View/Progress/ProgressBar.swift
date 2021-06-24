@@ -20,6 +20,7 @@ class ProgressBar: UIView {
     var showTimeLabel: Bool = true
     var width: CGFloat = 0
     var isDragging: Bool = false
+    var isContinuous: Bool = false
     var changeValueCallback: ((_ value: Float) -> Void)?
     weak var delegate: ProgressBarDelegate?
     var progressBarView: CustomSlider = {
@@ -41,11 +42,12 @@ class ProgressBar: UIView {
         return label
     }()
     
-    convenience init(width: CGFloat, currentCount: Float, totalCount: Float, showTimeLabel: Bool = true) {
+    convenience init(width: CGFloat, currentCount: Float, totalCount: Float, isContinuous: Bool = false, showTimeLabel: Bool = true) {
         self.init()
         self.currentCount = currentCount
         self.totalCount = totalCount
         self.showTimeLabel = showTimeLabel
+        self.isContinuous = isContinuous
         self.width = width
         self.commonInit()
     }
@@ -76,7 +78,7 @@ class ProgressBar: UIView {
         self.progressBarView.value = self.currentCount
         self.progressBarView.maximumValue = self.totalCount
         // 如果为true，valueChanged事件也会在拖动时实时触发，false只会在拖动结束时触发
-        self.progressBarView.isContinuous = false
+        self.progressBarView.isContinuous = self.isContinuous
         self.progressBarView.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         self.progressBarView.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSlider(sender:)))

@@ -53,7 +53,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     }()
     
     lazy var musicSoundBar: ProgressBar = {
-        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 1, showTimeLabel: false)
+        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 1, isContinuous: true, showTimeLabel: false)
         progressBar.backgroundColor = .clear
         return progressBar
     }()
@@ -177,6 +177,12 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
             self.posterImageView.setCircleCornerRadius()
         }
         self.updatePlayBtn()
+        AnimationUtils.resetRotate(layer: posterImageView.layer)
+        if musicInstance.isPlaying {
+            delay(0) {
+                AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
+            }
+        }
     }
     
     @objc func musicProgress() {
@@ -226,7 +232,6 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     func changeSliderValue(value: Float) {
         self.musicInstance.seekTo(second: Double(value))
-        AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
     }
     
     func startChangeSliderValue(value: Float) {

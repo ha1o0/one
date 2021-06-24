@@ -78,6 +78,7 @@ class MusicService: MusicPlayer {
      }
     
     func play(atTime: TimeInterval = 0) {
+        let isPlaying = self.isPlaying
         let currentMusic: Music = musicList[musicIndexList[currentMusicIndex]]
         let isMusicChanged: Bool = currentMusic.id != lastPlayingMusic.id
         guard let url: URL = getMusicUrl(urlStr: currentMusic.url, isLocal: currentMusic.isLocal, ofType: currentMusic.type)
@@ -94,12 +95,12 @@ class MusicService: MusicPlayer {
         NotificationCenter.default.addObserver(self, selector: #selector(playToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.playerItem)
         if atTime > 0 {
             player.seek(to: CMTimeMake(value: Int64(atTime), timescale: 1))
-            player.play()
-        } else {
-            player.play()
         }
+        player.play()
         lastPlayingMusic = currentMusic
-        NotificationService.shared.musicStatus(true)
+        if !isPlaying {
+            NotificationService.shared.musicStatus(true)
+        }
         if (TimerManager.shared.getTimer(timerName: .musicPlayProgress) != nil) {
             return
         }
