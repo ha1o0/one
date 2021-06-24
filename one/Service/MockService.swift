@@ -52,9 +52,9 @@ class MockService {
     
     func getRandomMusic() -> [Music] {
         var musicList: [Music] = []
-        musicList.append(Music(id: "1", poster: self.getRandomImg(), name: "起风了", subtitle: "乘风破浪的姐姐", playCount: 1, author: "乘风破浪的姐姐", url: "qfl", isLocal: true, type: "mp3"))
-        musicList.append(Music(id: "2", poster: self.getRandomImg(), name: "江南", subtitle: "林俊杰", playCount: 1, author: "林俊杰", url: "jn", isLocal: true, type: "mp3"))
-        musicList.append(Music(id: "3", poster: self.getRandomImg(), name: "难念的经", subtitle: "....", playCount: 2, author: "周华健", url: "https://blog.iword.win/music/nndj.mp3", isLocal: false, type: "mp3" ))
+        musicList.append(Music(id: "1", poster: self.getRandomImg(), name: "起风了", subtitle: "乘风破浪的姐姐", playCount: 1, author: "乘风破浪的姐姐", url: "qfl", isLocal: true, type: "mp3", duration: 306))
+        musicList.append(Music(id: "2", poster: self.getRandomImg(), name: "江南", subtitle: "林俊杰", playCount: 1, author: "林俊杰", url: "jn", isLocal: true, type: "mp3", duration: 267))
+        musicList.append(Music(id: "3", poster: self.getRandomImg(), name: "难念的经", subtitle: "....", playCount: 2, author: "周华健", url: "https://blog.iword.win/music/nndj.mp3", isLocal: false, type: "mp3", duration: 287 ))
         return musicList
     }
     

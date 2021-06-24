@@ -52,6 +52,7 @@ struct Music {
     var url: String = ""
     var isLocal: Bool = false
     var type: String = "mp3"
+    var duration: Float = 0
 }
 
 struct MusicFunction {

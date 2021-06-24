@@ -54,6 +54,12 @@ class MusicService: MusicPlayer {
             self.generateMusicIndexList()
         }
     }
+    var systemVol: Float {
+        get {
+            let vol = AVAudioSession.sharedInstance().outputVolume
+            return vol
+        }
+    }
     var musicIndexList: [Int] = []
     var musicPlayProgressTimer: Timer!
     

@@ -53,7 +53,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     }()
     
     lazy var musicSoundBar: ProgressBar = {
-        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 100, showTimeLabel: false)
+        let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 1, showTimeLabel: false)
         progressBar.backgroundColor = .clear
         return progressBar
     }()
@@ -99,13 +99,10 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
         self.view.clipsToBounds = true
         self.musicChange()
         self.musicProgressBar.delegate = self
+        self.musicProgressBar.updateView(currentCount: 0, totalCount: musicInstance.getCurrentMusic().duration)
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
         NotificationService.shared.listenMusicProgress(target: self, selector: #selector(musicProgress))
-    }
-
-    override func viewDidLayoutSubviews() {
-        print(self.getSystemVolumValue())
     }
 
     func initMPVolumeView() {
@@ -114,6 +111,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
         systemVolumeView.isHidden = true
         self.view.addSubview(systemVolumeView)
         musicSoundBar.changeValueCallback = self.setSystemVolumeValue
+        musicSoundBar.updateView(currentCount: musicInstance.systemVol, totalCount: 1)
     }
 
     private func getSystemVolumSlider() -> UISlider {
@@ -123,13 +121,6 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
                 volumViewSlider = subView as! UISlider
                 return volumViewSlider
             }
-            /*方法2
-             if subView.isKind(of: UISlider.self) {
-             print("---\(object_getClassName(subView))---")//0x0000000196cb9a68
-             print("---\(NSStringFromClass(type(of: subView)))---")//MPVolumeSlider
-             volumViewSlider = subView as! UISlider
-             return volumViewSlider
-             }*/
         }
         return volumViewSlider
     }
@@ -142,24 +133,15 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
 
     //调节系统音量大小
     private func setSystemVolumeValue(_ value: Float) {
-        print("start set voice: \(value)")
         self.getSystemVolumSlider().value = value
     }
-    
-//    private func getSystemVolumeValue() -> Float {
-//        return self.getSystemVolumeSlider().value
-//    }
-//
-//    private func setSystemVolumeValue(_ value: Float) {
-//        print("start set voice: \(value)")
-//        self.getSystemVolumeSlider().value = value
-//    }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
     @objc func musicStatusChange() {
+        self.updatePlayBtn()
         if self.musicInstance.isPlaying {
             AnimationUtils.resumeRotate(layer: posterImageView.layer)
         } else {
@@ -229,10 +211,8 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     }
     
     func changeSliderValue(value: Float) {
-        delay(0) {
-            self.musicInstance.seekTo(second: Double(value))
-            AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
-        }
+        self.musicInstance.seekTo(second: Double(value))
+        AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
     }
     
     func startChangeSliderValue(value: Float) {

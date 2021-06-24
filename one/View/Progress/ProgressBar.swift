@@ -22,8 +22,8 @@ class ProgressBar: UIView {
     var isDragging: Bool = false
     var changeValueCallback: ((_ value: Float) -> Void)?
     weak var delegate: ProgressBarDelegate?
-    var progressBarView: UISlider = {
-        let progressBar = UISlider()
+    var progressBarView: CustomSlider = {
+        let progressBar = CustomSlider()
         return progressBar
     }()
     
@@ -65,7 +65,7 @@ class ProgressBar: UIView {
         }
         self.addSubview(progressBarView)
         progressBarView.snp.makeConstraints { (maker) in
-            maker.centerX.equalToSuperview()
+            maker.center.equalToSuperview()
             maker.width.equalTo(self.width)
             maker.top.bottom.equalToSuperview()
         }
@@ -75,6 +75,8 @@ class ProgressBar: UIView {
         self.progressBarView.maximumTrackTintColor = .systemGray4
         self.progressBarView.value = self.currentCount
         self.progressBarView.maximumValue = self.totalCount
+        // 如果为true，valueChanged事件也会在拖动时实时触发，false只会在拖动结束时触发
+        self.progressBarView.isContinuous = false
         self.progressBarView.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         self.progressBarView.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSlider(sender:)))

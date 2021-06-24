@@ -169,6 +169,7 @@
 		E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */; };
 		E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */; };
 		E9E68BE52648376200929383 /* Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E68BE42648376100929383 /* Capsule.swift */; };
+		E9E6F75C268471F8008327B6 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6F75B268471F8008327B6 /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +360,7 @@
 		E9E0CDF1260DA4330047DAE9 /* Collection1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection1ViewController.swift; sourceTree = "<group>"; };
 		E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Collection1ViewController.xib; sourceTree = "<group>"; };
 		E9E68BE42648376100929383 /* Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capsule.swift; sourceTree = "<group>"; };
+		E9E6F75B268471F8008327B6 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				E97FA3BE26822F0500041A77 /* ProgressBar.swift */,
+				E9E6F75B268471F8008327B6 /* CustomSlider.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */,
+				E9E6F75C268471F8008327B6 /* CustomSlider.swift in Sources */,
 				E9A59F20266E13C100FA458B /* TabBarMusicCollectionViewCell.swift in Sources */,
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */,
