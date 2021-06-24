@@ -168,14 +168,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     }
     
     @objc func musicChange(needResetAnimation: Bool = true) {
-        let currentMusic = musicInstance.getCurrentMusic()
-        self.musicNameLabel.text = currentMusic.name
-        self.musicAuthorLabel.text = currentMusic.author
-        if let url = URL(string: currentMusic.poster) {
-            self.bkgImageView.sd_setImage(with: url, completed: nil)
-            self.posterImageView.sd_setImage(with: url, completed: nil)
-            self.posterImageView.setCircleCornerRadius()
-        }
+        self.updateMusicInfo()
         self.updatePlayBtn()
         AnimationUtils.resetRotate(layer: posterImageView.layer)
         if musicInstance.isPlaying {
@@ -187,6 +180,17 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     @objc func musicProgress() {
         self.musicProgressBar.updateView(currentCount: Float(musicInstance.currentPlayTime), totalCount: Float(musicInstance.totalPlayTime))
+    }
+    
+    func updateMusicInfo() {
+        let currentMusic = musicInstance.getCurrentMusic()
+        self.musicNameLabel.text = currentMusic.name
+        self.musicAuthorLabel.text = currentMusic.author
+        if let url = URL(string: currentMusic.poster) {
+            self.bkgImageView.sd_setImage(with: url, completed: nil)
+            self.posterImageView.sd_setImage(with: url, completed: nil)
+            self.posterImageView.setCircleCornerRadius()
+        }
     }
     
     func updatePlayBtn() {

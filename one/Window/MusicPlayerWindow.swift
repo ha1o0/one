@@ -61,6 +61,7 @@ class MusicPlayerWindow: BaseWindow {
             self.frame.origin.y = 0
         } completion: { (result) in
             appDelegate.musicVc.updatePlayBtn()
+            appDelegate.musicVc.updateMusicInfo()
         }
     }
     

@@ -27,11 +27,13 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
             posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
             AnimationUtils.resetRotate(layer: posterImageView.layer)
         }
+        NotificationService.shared.removeNotification(target: self)
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
     }
     
     @objc func musicStatusChange() {
+        print("tabbar musicStatusChange")
         if MusicService.shared.isPlaying {
             AnimationUtils.resumeRotate(layer: posterImageView.layer)
         } else {
@@ -40,13 +42,18 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
     }
     
     @objc func musicChange() {
+        print("tabbar musicchange")
         let currentMusic = MusicService.shared.getCurrentMusic()
         self.musicNameLabel.text = currentMusic.name
         self.musicAuthorLabel.text = currentMusic.author
         if let url = URL(string: currentMusic.poster) {
             posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
-            AnimationUtils.resetRotate(layer: posterImageView.layer)
         }
-        self.musicStatusChange()
+        AnimationUtils.resetRotate(layer: posterImageView.layer)
+        if MusicService.shared.isPlaying {
+            delay(0) {
+                AnimationUtils.resumeRotate(layer: self.posterImageView.layer)
+            }
+        }
     }
 }
