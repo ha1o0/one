@@ -25,8 +25,9 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
         self.musicAuthorLabel.text = data.author
         if let url = URL(string: data.poster) {
             posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
-            AnimationUtils.resetRotate(layer: posterImageView.layer)
+            
         }
+        self.startRotate()
         NotificationService.shared.removeNotification(target: self)
         NotificationService.shared.listenMusicStatus(target: self, selector: #selector(musicStatusChange))
         NotificationService.shared.listenMusicChange(target: self, selector: #selector(musicChange))
@@ -49,6 +50,10 @@ class TabBarMusicCollectionViewCell: BaseCollectionViewCell {
         if let url = URL(string: currentMusic.poster) {
             posterImageView.loadFrom(url: url, isCircle: true, contentMode: .scaleAspectFill)
         }
+        self.startRotate()
+    }
+    
+    func startRotate() {
         AnimationUtils.resetRotate(layer: posterImageView.layer)
         if MusicService.shared.isPlaying {
             delay(0) {

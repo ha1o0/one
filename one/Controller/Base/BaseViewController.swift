@@ -117,6 +117,7 @@ class BaseViewController: UIViewController {
     
     deinit {
         print("---deinit---:\(self)")
+        NotificationService.shared.removeNotification(target: self)
     }
     
     override func didReceiveMemoryWarning() {

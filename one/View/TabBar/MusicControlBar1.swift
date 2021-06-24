@@ -113,5 +113,6 @@ class MusicControlBar1: UIView, UICollectionViewDelegate, UICollectionViewDataSo
         MusicService.shared.pause()
         MusicService.shared.currentMusicIndex = currentIndex
         self.playOrPauseMusic()
+        self.collectionView.reloadItems(at: [IndexPath(row: newIndex, section: 0)])
     }
 }
