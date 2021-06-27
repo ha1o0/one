@@ -81,8 +81,12 @@ class CustomTabBarViewController: UITabBarController {
     func setupMusicControlBar() {
         let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
         MusicService.shared.musicList = MockService.shared.getRandomMusic()
-        musicControlBar.frame = CGRect(x: 0, y: SCREEN_HEIGHT - bottomTabBarHeight, width: SCREEN_WIDTH, height: self.musicControlBarHeight)
         self.view.insertSubview(musicControlBar, belowSubview: self.customTabBar)
+        musicControlBar.snp.makeConstraints { (maker) in
+            maker.leading.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-bottomTabBarHeight)
+            maker.height.equalTo(self.musicControlBarHeight)
+        }
         musicControlBar.commonInit()
     }
     
@@ -110,4 +114,17 @@ class CustomTabBarViewController: UITabBarController {
         let newBlurEffect = UIBlurEffect(style: ThemeManager.shared.getBlurStyle())
         self.bottomBlurView.effect = newBlurEffect
     }
+    
+    func hideBottom() {
+        self.musicControlBar.isHidden = true
+        self.customTabBar.isHidden = true
+        self.bottomBlurView.isHidden = true
+    }
+    
+    func showBottom() {
+        self.musicControlBar.isHidden = false
+        self.customTabBar.isHidden = false
+        self.bottomBlurView.isHidden = false
+    }
+    
 }

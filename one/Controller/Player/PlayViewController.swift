@@ -16,12 +16,14 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         appDelegate.deviceOrientation = .landscapeRight
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideBottom()
     }
     
     func exitFullScreen() {
         appDelegate.deviceOrientation = .portrait
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        appDelegate.rootVc?.drawerVc.tabbarVc?.showBottom()
         appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar(true)
     }
 
