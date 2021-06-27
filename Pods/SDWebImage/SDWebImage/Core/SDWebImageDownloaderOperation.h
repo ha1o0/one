@@ -65,7 +65,7 @@
 
 /**
  * The collected metrics from `-URLSession:task:didFinishCollectingMetrics:`.
- * This can be used to collect the network metrics like download duration, DNS lookup duration, SSL handshake dureation, etc. See Apple's documentation: https://developer.apple.com/documentation/foundation/urlsessiontaskmetrics
+ * This can be used to collect the network metrics like download duration, DNS lookup duration, SSL handshake duration, etc. See Apple's documentation: https://developer.apple.com/documentation/foundation/urlsessiontaskmetrics
  */
 @property (strong, nonatomic, readonly, nullable) NSURLSessionTaskMetrics *metrics API_AVAILABLE(macosx(10.12), ios(10.0), watchos(3.0), tvos(10.0));
 
@@ -128,7 +128,7 @@
                                 context:(nullable SDWebImageContext *)context NS_DESIGNATED_INITIALIZER;
 
 /**
- *  Adds handlers for progress and completion. Returns a tokent that can be passed to -cancel: to cancel this set of
+ *  Adds handlers for progress and completion. Returns a token that can be passed to -cancel: to cancel this set of
  *  callbacks.
  *
  *  @param progressBlock  the block executed when a new chunk of data arrives.

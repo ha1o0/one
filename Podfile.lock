@@ -1,21 +1,21 @@
 PODS:
-  - Alamofire (5.1.0)
+  - Alamofire (5.4.3)
   - DLRadioButton (1.4.12)
-  - Dplayer (1.0.5):
+  - Dplayer (1.0.6):
     - SnapKit (~> 5.0.0)
     - Toast-Swift (~> 5.0.1)
   - FreeStreamer (4.0.0):
     - Reachability (~> 3.0)
-  - MarqueeLabel (4.0.5)
-  - MJRefresh (3.5.0)
+  - MarqueeLabel (4.1.0)
+  - MJRefresh (3.6.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Reachability (3.2)
-  - SDWebImage (5.7.3):
-    - SDWebImage/Core (= 5.7.3)
-  - SDWebImage/Core (5.7.3)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - SnapKit (5.0.1)
   - Toast-Swift (5.0.1)
   - ZImageCropper (0.1.0)
@@ -53,19 +53,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Dplayer:
-    :commit: 2af42ea690cef080a8066a04a8c948a2bddd88d3
+    :commit: bf2488abcdd4b5b28588d5d6e6351f5d500d897e
     :git: https://github.com/weifengsmile/Dplayer.git
 
 SPEC CHECKSUMS:
-  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
-  Dplayer: 9279a3322be0a7b8c64c9ca9f8b2ea4ac9436ef3
+  Dplayer: 696b04acf792d2ded701c3d436d66d830dc49f3b
   FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
-  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
-  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  MarqueeLabel: 47ee0c9b3f8da874bb376aef59e8f31c40feaeda
+  MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   ZImageCropper: 1a5518eea94f1ce903bbfebc860bfb023d27fc62

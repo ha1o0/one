@@ -18,9 +18,11 @@ public enum PanType {
     case progress
 }
 
-public protocol DplayerDelegate: AnyObject {
-    func fullScreen()
-    func exitFullScreen()
+@objc public protocol DplayerDelegate: AnyObject {
+    @objc optional func beforeFullScreen()
+    @objc optional func fullScreen()
+    @objc optional func beforeExitFullScreen()
+    @objc optional func exitFullScreen()
 }
 
 public class DplayerView: UIView {
@@ -34,17 +36,24 @@ public class DplayerView: UIView {
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var cacheSlider: UISlider!
     @IBOutlet weak var controlView: UIView!
+    @IBOutlet weak var bottomControlContent1View: UIView!
     @IBOutlet weak var topControlView: UIView!
+    @IBOutlet weak var topControlContent1View: UIView!
     @IBOutlet weak var dateTimeDisplayLabel: UILabel!
     @IBOutlet weak var gestureView: UIView!
     @IBOutlet weak var controlViewHeight: NSLayoutConstraint!
     @IBOutlet weak var centerProgressDisplayLabel: UILabel!
     @IBOutlet weak var bottomProgressView: UIProgressView!
+    @IBOutlet weak var rateTipView: UIView!
+    @IBOutlet weak var rateTipLabel: UILabel!
     
     var loadingImageView: UIImageView!
     var playerItem: AVPlayerItem!
     var player: AVPlayer! = nil
     var playerLayer: AVPlayerLayer!
+    var playerRate: Float = 1.0
+    var currentPlayerRate: Float = 1.0
+    var longPressPlayRate: Float = 2.0
     var systemVolumeView = MPVolumeView()
     var videoUrl = ""
     var totalTimeSeconds = 0
@@ -83,6 +92,7 @@ public class DplayerView: UIView {
         let viewFromXib = getBundle().loadNibNamed("DplayerView", owner: self, options: nil)![0] as! UIView
         viewFromXib.frame = self.bounds
         addSubview(viewFromXib)
+        self.commonInit()
     }
     
     func addGesture() {
@@ -94,6 +104,9 @@ public class DplayerView: UIView {
         let doubleTap = UITapGestureRecognizer(target: self, action:#selector(doubleTapPlayer))
         doubleTap.numberOfTapsRequired = 2
         gestureView.addGestureRecognizer(doubleTap)
+        // 长按倍速播放手势
+        let longTap = UILongPressGestureRecognizer(target: self, action:#selector(longPressPlayer(recognizer:)))
+        gestureView.addGestureRecognizer(longTap)
         // 滑动进度手势+-音量手势
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(changeVolumeProgress(_:)))
         gestureView.addGestureRecognizer(panGesture)
@@ -126,6 +139,9 @@ public class DplayerView: UIView {
     }
 
     public func commonInit() {
+        self.currentPlayerRate = self.playerRate
+        self.rateTipView.layer.cornerRadius = 2
+        self.rateTipLabel.text = "\(self.longPressPlayRate)x倍速播放中"
         let loadingGif = UIImage.gifImageWithName("juhua")
         loadingImageView = UIImageView(image: loadingGif)
         self.playerView.addSubview(loadingImageView)
@@ -159,6 +175,8 @@ public class DplayerView: UIView {
         progressSlider.isContinuous = false
         progressSlider.addTarget(self, action: #selector(changeSliderValue(slider:)), for: UIControl.Event.valueChanged)
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSliderValue(sender:)))
+        progressSlider.addGestureRecognizer(tapGesture)
         bottomProgressView.progressTintColor = UIColor.main
         bottomProgressView.trackTintColor = UIColor.clear
         
@@ -224,14 +242,14 @@ public class DplayerView: UIView {
                     
                     if let bufferEmpty = self.player.currentItem?.isPlaybackBufferEmpty {
                         if (bufferEmpty && self.player.isPlaying) {
-                            self.player.play()
+                            self.customPlay()
                         }
                     }
                     
                     if (self.player.currentItem?.isPlaybackBufferFull) != nil {
                         self.loadingImageView.isHidden = true
                         if (self.player.isPlaying) {
-                            self.player.play()
+                            self.customPlay()
                         }
                     }
    
@@ -284,39 +302,65 @@ public class DplayerView: UIView {
     }
     
     @objc public func fullScreen() {
+        self.resetControlViewTimer()
+        if let delegate = delegate, let beforeFullScreenFunc = delegate.beforeFullScreen {
+            beforeFullScreenFunc()
+        }
         isFullScreen = true
         self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width)
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = 0
-        if let delegate = delegate {
-            delegate.fullScreen()
+        if let delegate = delegate, let fullScreenFunc = delegate.fullScreen {
+            fullScreenFunc()
         }
-//        playerLayer.videoGravity = .resizeAspectFill
-        
     }
     
     @objc public func exitFullScreen() {
+        self.resetControlViewTimer()
+        if let delegate = delegate, let beforeExitFullScreenFunc = delegate.beforeExitFullScreen {
+            beforeExitFullScreenFunc()
+        }
         isFullScreen = false
         self.frame = originalFrame
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = showControlView ? 0 : 1
-        if let delegate = delegate {
-            delegate.exitFullScreen()
+        if let delegate = delegate, let beforeExitFullScreenFunc = delegate.beforeExitFullScreen {
+            beforeExitFullScreenFunc()
+        }
+        if let delegate = delegate, let exitFullScreenFunc = delegate.exitFullScreen {
+            exitFullScreenFunc()
         }
     }
     
     @IBAction func playOrPause(_ sender: UIButton) {
+        self.resetControlViewTimer()
         if player == nil {
             return
         }
-        player.isPlaying ? player.pause() : player.play()
+        if player.isPlaying {
+            player.pause()
+        } else {
+            self.customPlay()
+        }
         sender.setImage(player.isPlaying ? UIImage.getUIImageByName("pause") : UIImage.getUIImageByName("play"), for: .normal)
         loadingImageView.isHidden = !player.isPlaying
         print("isplaying", player.isPlaying)
     }
 
+    @objc func tapSliderValue(sender: UITapGestureRecognizer) {
+        self.resetControlViewTimer()
+        let location = sender.location(in: self.progressSlider)
+        let percent = Float(location.x / self.progressSlider.frame.width)
+        print(percent)
+        player.pause()
+        player.seek(to: CMTimeMakeWithSeconds(Float64(percent * self.progressSlider.maximumValue), preferredTimescale: 64))
+        self.customPlay()
+        loadingImageView.isHidden = !player.isPlaying
+        self.playBtn.setImage(UIImage.getUIImageByName("pause"), for: .normal)
+    }
+    
     // 开始拖动
     @objc func startToChangeSliderValue(slider: UISlider) {
         print("start slider.value = %d",slider.value)
@@ -334,7 +378,7 @@ public class DplayerView: UIView {
         justDrag = 2
         player.pause()
         player.seek(to: CMTimeMakeWithSeconds(Float64(slider.value), preferredTimescale: 64))
-        player.play()
+        self.customPlay()
         loadingImageView.isHidden = !player.isPlaying
         self.playBtn.setImage(UIImage.getUIImageByName("pause"), for: .normal)
         self.centerProgressDisplayLabel.isHidden = true
@@ -361,6 +405,23 @@ public class DplayerView: UIView {
         playOrPause(self.playBtn)
     }
 
+    @objc func longPressPlayer(recognizer: UILongPressGestureRecognizer) {
+        print("long tap")
+        self.hideControlView()
+        if (recognizer.state == .began) {
+            self.currentPlayerRate = self.longPressPlayRate
+            self.player.pause()
+            self.customPlay(isLongPress: true)
+        } else {
+            if (recognizer.state == .cancelled || recognizer.state == .failed || recognizer.state == .ended) {
+                self.currentPlayerRate = self.playerRate
+                self.player.pause()
+                self.customPlay(isLongPress: true)
+            }
+        }
+        
+    }
+    
     @objc func changeVolumeProgress(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: gestureView)
         let absx = abs(Int32(translation.x))
@@ -411,6 +472,13 @@ public class DplayerView: UIView {
         }
     }
     
+    private func customPlay(isLongPress: Bool = false) {
+        self.player.playImmediately(atRate: self.currentPlayerRate)
+        if isLongPress {
+            self.rateTipView.isHidden = self.currentPlayerRate == 1.0
+        }
+    }
+    
     public func playUrl(url: String) {
         if url == videoUrl {
             print("地址未变化")
@@ -439,7 +507,6 @@ public class DplayerView: UIView {
         playOrPause(self.playBtn)
         videoUrl = url
         startHideControlViewTimer()
-        print("playeee")
         print(videoUrl)
     }
     
@@ -499,8 +566,7 @@ extension DplayerView {
             self.showControlView = !self.showControlView
             self.fadeControlViewLock = 0
             if self.showControlView {
-                self.stopHideControlViewTimer()
-                self.startHideControlViewTimer()
+                self.resetControlViewTimer()
             }
             
         }
@@ -534,6 +600,11 @@ extension DplayerView {
         hideControlViewTimer.invalidate()
         hideControlViewTimer = nil
         isHideControlViewTimerRun = false
+    }
+    
+    @objc func resetControlViewTimer() {
+        self.stopHideControlViewTimer()
+        self.startHideControlViewTimer()
     }
 }
 

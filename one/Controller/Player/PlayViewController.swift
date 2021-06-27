@@ -43,7 +43,6 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         diyPlayerView.layer.zPosition = 999
         diyPlayerView.delegate = self
         view.addSubview(diyPlayerView)
-        diyPlayerView.commonInit()
         diyPlayerView.playUrl(url: videos[0])
         setSeries()
     }
