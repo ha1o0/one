@@ -47,20 +47,14 @@ public class DplayerView: UIView {
     @IBOutlet weak var rateTipView: UIView!
     @IBOutlet weak var rateTipLabel: UILabel!
     
+    
+    private var playerItem: AVPlayerItem!
+    private var player: AVPlayer! = nil
+    private var playerLayer: AVPlayerLayer!
+    private var currentPlayerRate: Float = 1.0
     var loadingImageView: UIImageView!
-    var playerItem: AVPlayerItem!
-    var player: AVPlayer! = nil
-    var playerLayer: AVPlayerLayer!
-    var playerRate: Float = 1.0
-    var currentPlayerRate: Float = 1.0
-    var longPressPlayRate: Float = 2.0
     var systemVolumeView = MPVolumeView()
     var videoUrl = ""
-    var totalTimeSeconds = 0
-    var totalTime = "00:00"
-    var currentTime = "00:00"
-    var sliderThumbFollowGesture = false
-    var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
     var isFullScreen = false
     var originalFrame = CGRect.zero
     var hasSetControlView = false
@@ -74,18 +68,27 @@ public class DplayerView: UIView {
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
     var clickDebounceTimer: Timer!
+    public var playerRate: Float = 1.0
+    public var longPressPlayRate: Float = 2.0
+    private var totalTimeSeconds = 0
+    private var totalTime = "00:00"
+    private var currentTime = "00:00"
+    private var sliderThumbFollowGesture = false
+    private var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
+    public var bottomProgressBarViewColor: UIColor = .clear {
+        didSet {
+            self.bottomProgressView.progressTintColor = bottomProgressBarViewColor
+        }
+    }
     public weak var delegate: DplayerDelegate?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        print("frame")
         nibInit()
-//        self.frame = frame
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        print("coder")
     }
     
     public func nibInit() {
@@ -177,7 +180,7 @@ public class DplayerView: UIView {
         progressSlider.addTarget(self, action: #selector(startToChangeSliderValue(slider:)), for: UIControl.Event.touchDragInside)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapSliderValue(sender:)))
         progressSlider.addGestureRecognizer(tapGesture)
-        bottomProgressView.progressTintColor = UIColor.main
+        self.bottomProgressBarViewColor = .clear
         bottomProgressView.trackTintColor = UIColor.clear
         
     }
@@ -194,7 +197,7 @@ public class DplayerView: UIView {
     }
     
     public override func layoutSubviews() {
-        print("layout")
+//        print("layout")
         super.layoutSubviews()
         if controlView != nil && topControlView != nil {
             setControlView()
@@ -346,14 +349,13 @@ public class DplayerView: UIView {
         }
         sender.setImage(player.isPlaying ? UIImage.getUIImageByName("pause") : UIImage.getUIImageByName("play"), for: .normal)
         loadingImageView.isHidden = !player.isPlaying
-        print("isplaying", player.isPlaying)
     }
 
     @objc func tapSliderValue(sender: UITapGestureRecognizer) {
         self.resetControlViewTimer()
         let location = sender.location(in: self.progressSlider)
         let percent = Float(location.x / self.progressSlider.frame.width)
-        print(percent)
+//        print(percent)
         player.pause()
         player.seek(to: CMTimeMakeWithSeconds(Float64(percent * self.progressSlider.maximumValue), preferredTimescale: 64))
         self.customPlay()
@@ -363,7 +365,7 @@ public class DplayerView: UIView {
     
     // 开始拖动
     @objc func startToChangeSliderValue(slider: UISlider) {
-        print("start slider.value = %d",slider.value)
+//        print("start slider.value = %d",slider.value)
         self.timeDisplay.text = "\(TimeUtil.getTimeMinutesBySeconds(Int(slider.value))):\(TimeUtil.getTimeSecondBySeconds(Int(slider.value)))/\(self.totalTime)"
         self.centerProgressDisplayLabel.isHidden = false
         self.centerProgressDisplayLabel.text = self.timeDisplay.text
@@ -374,7 +376,7 @@ public class DplayerView: UIView {
     
     // 拖动结束
     @objc func changeSliderValue(slider: UISlider) {
-        print("slider.value = %d",slider.value)
+//        print("slider.value = %d",slider.value)
         justDrag = 2
         player.pause()
         player.seek(to: CMTimeMakeWithSeconds(Float64(slider.value), preferredTimescale: 64))
@@ -397,7 +399,7 @@ public class DplayerView: UIView {
     }
     
     @objc func doubleTapPlayer() {
-        print("double tap")
+//        print("double tap")
         if clickDebounceTimer != nil {
             clickDebounceTimer.invalidate()
             clickDebounceTimer = nil
@@ -406,7 +408,7 @@ public class DplayerView: UIView {
     }
 
     @objc func longPressPlayer(recognizer: UILongPressGestureRecognizer) {
-        print("long tap")
+//        print("long tap")
         self.hideControlView()
         if (recognizer.state == .began) {
             self.currentPlayerRate = self.longPressPlayRate
@@ -426,7 +428,7 @@ public class DplayerView: UIView {
         let translation = sender.translation(in: gestureView)
         let absx = abs(Int32(translation.x))
         let absy = abs(Int32(translation.y))
-        print("\(translation)")
+//        print("\(translation)")
         if (absx > 20 || absy > 20) && currentPanType == nil {
             currentPanType = absx > absy ? .progress : .volume
         }
@@ -462,9 +464,9 @@ public class DplayerView: UIView {
         bottomProgressView.progress = 0
     }
     
-    public func closePlayer(){
+    public func closePlayer() {
         if (player != nil) {
-            print("关闭播放器")
+//            print("关闭播放器")
             player.pause()
             removePlayerObserver(playerItem: playerItem)
             player = nil
@@ -481,15 +483,15 @@ public class DplayerView: UIView {
     
     public func playUrl(url: String) {
         if url == videoUrl {
-            print("地址未变化")
+//            print("地址未变化")
             return
         }
         guard let urlURL = URL(string: url) else {
-            print(url)
+//            print(url)
             fatalError("播放地址错误")
         }
         if player != nil {
-            print("移除")
+//            print("移除")
             playToEnd()
             closePlayer()
             playerView.layer.sublayers?.remove(at: 0)

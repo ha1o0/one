@@ -81,7 +81,7 @@
                             <constraints>
                                 <constraint firstItem="Mfl-aT-a7w" firstAttribute="trailing" secondItem="6uW-NI-AMm" secondAttribute="trailing" id="3iD-Wa-8AL"/>
                                 <constraint firstAttribute="bottom" secondItem="6uW-NI-AMm" secondAttribute="bottom" id="Xme-5G-pFj"/>
-                                <constraint firstAttribute="height" constant="44" id="egj-lK-F5d"/>
+                                <constraint firstAttribute="height" priority="999" constant="44" id="egj-lK-F5d"/>
                                 <constraint firstItem="6uW-NI-AMm" firstAttribute="leading" secondItem="Mfl-aT-a7w" secondAttribute="leading" id="k0g-Rd-jar"/>
                                 <constraint firstItem="6uW-NI-AMm" firstAttribute="top" secondItem="Mfl-aT-a7w" secondAttribute="top" id="xWl-G6-hyh"/>
                             </constraints>
@@ -193,7 +193,7 @@
                                 <constraint firstItem="D3J-Yf-7ZY" firstAttribute="top" secondItem="0Cy-qc-igu" secondAttribute="top" id="SJt-S0-BBi"/>
                                 <constraint firstItem="cwJ-SQ-Xq6" firstAttribute="bottom" secondItem="D3J-Yf-7ZY" secondAttribute="bottom" id="e83-Xy-xze"/>
                                 <constraint firstItem="D3J-Yf-7ZY" firstAttribute="leading" secondItem="cwJ-SQ-Xq6" secondAttribute="leading" id="tEQ-Hd-wmq"/>
-                                <constraint firstAttribute="height" constant="44" id="vgx-vx-VNf"/>
+                                <constraint firstAttribute="height" priority="999" constant="44" id="vgx-vx-VNf"/>
                             </constraints>
                         </view>
                         <progressView alpha="0.0" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iaf-OW-zQ9">
@@ -232,7 +232,7 @@
                 <constraint firstItem="hjP-xm-UaE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="v5b-XF-6OZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="136.28185907046478" y="1509.5999999999999"/>
+            <point key="canvasLocation" x="-220" y="1660"/>
         </view>
     </objects>
     <resources>

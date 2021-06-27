@@ -12,11 +12,14 @@ import Dplayer
 
 class PlayViewController: BaseViewController, DplayerDelegate {
     
+    func beforeFullScreen() {
+        appDelegate.rootVc?.drawerVc.tabbarVc?.hideBottom()
+    }
+    
     func fullScreen() {
         appDelegate.deviceOrientation = .landscapeRight
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
-        appDelegate.rootVc?.drawerVc.tabbarVc?.hideBottom()
     }
     
     func exitFullScreen() {
@@ -42,6 +45,7 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         diyPlayerView = DplayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_WIDTH / 16 * 9))
         diyPlayerView.layer.zPosition = 999
         diyPlayerView.delegate = self
+        diyPlayerView.bottomProgressBarViewColor = .main
         view.addSubview(diyPlayerView)
         diyPlayerView.playUrl(url: videos[0])
         setSeries()

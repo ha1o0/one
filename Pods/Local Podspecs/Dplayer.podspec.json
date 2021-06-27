@@ -1,6 +1,6 @@
 {
   "name": "Dplayer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "summary": "A video player.",
   "description": "A video player developed by Swift.",
   "homepage": "https://github.com/weifengsmile/Dplayer",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/weifengsmile/Dplayer.git",
-    "tag": "1.0.6"
+    "tag": "1.0.7"
   },
   "platforms": {
     "ios": "10.0"
