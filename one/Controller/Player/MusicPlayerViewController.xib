@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +20,7 @@
                 <outlet property="musicInfoViewInNavBar" destination="rFf-vV-pO7" id="kE7-sL-VBv"/>
                 <outlet property="navBar" destination="uhu-1E-fHm" id="HVb-jW-cXT"/>
                 <outlet property="nextBtn" destination="2LX-u7-Rwh" id="PNM-Pp-vzs"/>
+                <outlet property="optionBarView" destination="4ZP-Iu-M5I" id="Ozt-Xr-sxI"/>
                 <outlet property="playBtn" destination="I9z-3O-oZC" id="Fgu-IP-4Jx"/>
                 <outlet property="playBtnView" destination="ljh-ar-I61" id="VwC-1t-fwm"/>
                 <outlet property="posterImageView" destination="wjS-DQ-Ogb" id="stF-NR-ILD"/>
@@ -139,11 +140,11 @@
                                 <constraint firstItem="CCb-hh-wpC" firstAttribute="centerY" secondItem="j3r-qE-8qR" secondAttribute="centerY" id="cHY-AZ-eXp"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDi-ns-96u">
-                            <rect key="frame" x="0.0" y="132" width="414" height="594"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDi-ns-96u" userLabel="centerBkgView">
+                            <rect key="frame" x="0.0" y="132" width="414" height="534"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMF-f4-jBB">
-                                    <rect key="frame" x="92" y="182" width="230" height="230"/>
+                                    <rect key="frame" x="92" y="152" width="230" height="230"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wjS-DQ-Ogb">
                                             <rect key="frame" x="5" y="5" width="220" height="220"/>
@@ -166,6 +167,98 @@
                             <constraints>
                                 <constraint firstItem="pMF-f4-jBB" firstAttribute="centerX" secondItem="cDi-ns-96u" secondAttribute="centerX" id="Kve-4j-vOQ"/>
                                 <constraint firstItem="pMF-f4-jBB" firstAttribute="centerY" secondItem="cDi-ns-96u" secondAttribute="centerY" id="bEl-LQ-TSo"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-Iu-M5I">
+                            <rect key="frame" x="0.0" y="666" width="414" height="60"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aRO-Vt-Ffs">
+                                    <rect key="frame" x="16" y="0.0" width="382" height="60"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XE1-6F-ftX">
+                                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="60"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjd-m7-jsM">
+                                                    <rect key="frame" x="34.5" y="19" width="26.5" height="22.5"/>
+                                                    <color key="tintColor" white="0.89862143589999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Yjd-m7-jsM" firstAttribute="centerX" secondItem="XE1-6F-ftX" secondAttribute="centerX" id="Ve0-0W-yn1"/>
+                                                <constraint firstItem="Yjd-m7-jsM" firstAttribute="centerY" secondItem="XE1-6F-ftX" secondAttribute="centerY" id="mxo-AX-Doj"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5S-xX-uxg">
+                                            <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNb-WZ-nBU">
+                                                    <rect key="frame" x="35" y="17.5" width="26" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal">
+                                                        <imageReference key="image" image="arrow.down.circle" catalog="system" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="oNb-WZ-nBU" firstAttribute="centerX" secondItem="G5S-xX-uxg" secondAttribute="centerX" id="AAY-rZ-5H2"/>
+                                                <constraint firstItem="oNb-WZ-nBU" firstAttribute="centerY" secondItem="G5S-xX-uxg" secondAttribute="centerY" id="Sii-Fp-V4z"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDw-xj-9Cj">
+                                            <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Py-OW-NXL">
+                                                    <rect key="frame" x="34" y="18" width="27.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="text.bubble" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="large"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="1Py-OW-NXL" firstAttribute="centerY" secondItem="kDw-xj-9Cj" secondAttribute="centerY" id="3Qg-Wz-GBx"/>
+                                                <constraint firstItem="1Py-OW-NXL" firstAttribute="centerX" secondItem="kDw-xj-9Cj" secondAttribute="centerX" id="XTL-0S-miJ"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoB-eH-BGh">
+                                            <rect key="frame" x="286.5" y="0.0" width="95.5" height="60"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjB-GY-03u">
+                                                    <rect key="frame" x="34.5" y="18" width="26.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="circle.grid.2x2" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="YjB-GY-03u" firstAttribute="centerX" secondItem="yoB-eH-BGh" secondAttribute="centerX" id="C4E-tM-Wh1"/>
+                                                <constraint firstItem="YjB-GY-03u" firstAttribute="centerY" secondItem="yoB-eH-BGh" secondAttribute="centerY" id="cGR-94-TWS"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="aRO-Vt-Ffs" secondAttribute="bottom" id="EBl-VZ-t4R"/>
+                                <constraint firstItem="aRO-Vt-Ffs" firstAttribute="leading" secondItem="4ZP-Iu-M5I" secondAttribute="leading" constant="16" id="XdD-Jy-afc"/>
+                                <constraint firstItem="aRO-Vt-Ffs" firstAttribute="top" secondItem="4ZP-Iu-M5I" secondAttribute="top" id="fUT-tt-owY"/>
+                                <constraint firstAttribute="height" constant="60" id="l1G-3W-dMf"/>
+                                <constraint firstAttribute="trailing" secondItem="aRO-Vt-Ffs" secondAttribute="trailing" constant="16" id="lL1-Bl-3xg"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJE-QA-sUP" userLabel="progressBar">
@@ -241,7 +334,9 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <state key="normal" image="play.fill" catalog="system"/>
+                                                            <state key="normal" image="play.fill" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="playOrPause:" destination="-1" eventType="touchUpInside" id="64S-Yc-7T7"/>
                                                             </connections>
@@ -266,9 +361,11 @@
                                             <rect key="frame" x="229" y="0.0" width="76.5" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2LX-u7-Rwh">
-                                                    <rect key="frame" x="28" y="20.5" width="20.5" height="19.5"/>
+                                                    <rect key="frame" x="28" y="20" width="20.5" height="20.5"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="forward.end" catalog="system"/>
+                                                    <state key="normal" image="forward.end" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="next:" destination="-1" eventType="touchUpInside" id="J73-8g-T3S"/>
                                                     </connections>
@@ -284,7 +381,7 @@
                                             <rect key="frame" x="305.5" y="0.0" width="76.5" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGw-6P-Vml">
-                                                    <rect key="frame" x="30" y="18.5" width="17" height="23.5"/>
+                                                    <rect key="frame" x="31.5" y="20" width="14" height="20"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="music.note" catalog="system"/>
                                                     <connections>
@@ -315,22 +412,25 @@
                     <constraints>
                         <constraint firstItem="uhu-1E-fHm" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="1eq-tn-MMz"/>
                         <constraint firstAttribute="trailing" secondItem="cDi-ns-96u" secondAttribute="trailing" id="2xn-0M-Z1V"/>
+                        <constraint firstItem="4ZP-Iu-M5I" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="4Zy-1Z-Qez"/>
+                        <constraint firstItem="jJE-QA-sUP" firstAttribute="top" secondItem="4ZP-Iu-M5I" secondAttribute="bottom" id="7DZ-nI-BAZ"/>
                         <constraint firstAttribute="trailing" secondItem="j3r-qE-8qR" secondAttribute="trailing" id="8xq-cN-6a9"/>
                         <constraint firstAttribute="bottom" secondItem="pLd-1I-pFH" secondAttribute="bottom" id="9Jo-g3-HAo"/>
                         <constraint firstAttribute="bottom" secondItem="jlM-BK-R7O" secondAttribute="bottom" id="A6d-aA-BTu"/>
                         <constraint firstItem="pLd-1I-pFH" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="DmN-j8-C9M"/>
                         <constraint firstAttribute="trailing" secondItem="uhu-1E-fHm" secondAttribute="trailing" id="GHb-4z-6Bj"/>
                         <constraint firstItem="j3r-qE-8qR" firstAttribute="top" secondItem="uhu-1E-fHm" secondAttribute="bottom" id="J07-q2-gd0"/>
+                        <constraint firstItem="4ZP-Iu-M5I" firstAttribute="top" secondItem="cDi-ns-96u" secondAttribute="bottom" id="KzA-gv-ZFR"/>
                         <constraint firstItem="jlM-BK-R7O" firstAttribute="top" secondItem="6QE-qm-c4f" secondAttribute="top" id="N30-7A-u0z"/>
                         <constraint firstItem="cDi-ns-96u" firstAttribute="top" secondItem="j3r-qE-8qR" secondAttribute="bottom" id="P0L-xm-xBg"/>
                         <constraint firstAttribute="trailing" secondItem="nMs-Ah-rlo" secondAttribute="trailing" id="QFh-gv-gBP"/>
                         <constraint firstAttribute="bottom" secondItem="nMs-Ah-rlo" secondAttribute="bottom" constant="50" id="QK6-GA-uK3"/>
                         <constraint firstAttribute="trailing" secondItem="jlM-BK-R7O" secondAttribute="trailing" id="S3j-bx-w7D"/>
+                        <constraint firstAttribute="trailing" secondItem="4ZP-Iu-M5I" secondAttribute="trailing" id="S8O-HU-YMD"/>
                         <constraint firstAttribute="trailing" secondItem="jJE-QA-sUP" secondAttribute="trailing" id="Us2-bh-14a"/>
                         <constraint firstItem="cDi-ns-96u" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="W3W-VI-Ye4"/>
                         <constraint firstItem="nMs-Ah-rlo" firstAttribute="top" secondItem="jJE-QA-sUP" secondAttribute="bottom" id="WlH-Rz-GZa"/>
                         <constraint firstItem="jJE-QA-sUP" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="azm-K7-Msu"/>
-                        <constraint firstItem="jJE-QA-sUP" firstAttribute="top" secondItem="cDi-ns-96u" secondAttribute="bottom" id="cJw-hM-zAa"/>
                         <constraint firstItem="jlM-BK-R7O" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="gO3-mo-Uns"/>
                         <constraint firstAttribute="trailing" secondItem="pLd-1I-pFH" secondAttribute="trailing" id="gyr-Ip-Esj"/>
                         <constraint firstItem="j3r-qE-8qR" firstAttribute="leading" secondItem="6QE-qm-c4f" secondAttribute="leading" id="lVe-eA-w5p"/>
@@ -347,18 +447,22 @@
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4kT-rf-4nD"/>
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GS2-km-LGp"/>
             </constraints>
-            <point key="canvasLocation" x="-310.14492753623193" y="235.71428571428569"/>
+            <point key="canvasLocation" x="184" y="216"/>
         </view>
     </objects>
     <resources>
         <image name="airplayvideo" catalog="system" width="128" height="98"/>
         <image name="arrow.2.circlepath" catalog="system" width="128" height="101"/>
+        <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.right" catalog="system" width="128" height="112"/>
         <image name="backward.end" catalog="system" width="128" height="120"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
         <image name="forward.end" catalog="system" width="128" height="120"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="speaker.wave.2.fill" catalog="system" width="128" height="90"/>
+        <image name="text.bubble" catalog="system" width="128" height="110"/>
     </resources>
 </document>

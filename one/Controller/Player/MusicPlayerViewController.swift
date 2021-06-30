@@ -17,6 +17,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     @IBOutlet weak var musicInfoViewInNavBar: UIView!
     @IBOutlet weak var soundBar: UIView!
     @IBOutlet weak var soundBarContainerView: UIView!
+    @IBOutlet weak var optionBarView: UIView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var controlBar: UIView!
     @IBOutlet weak var centerBkgView: UIView!
@@ -54,7 +55,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     lazy var musicSoundBar: ProgressBar = {
         let progressBar = ProgressBar(width: 0, currentCount: 0, totalCount: 1, isContinuous: true, showTimeLabel: false)
-        progressBar.backgroundColor = .clear
+        progressBar.backgroundColor = UIColor.clear
         return progressBar
     }()
     
