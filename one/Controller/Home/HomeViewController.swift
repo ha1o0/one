@@ -226,8 +226,12 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         case "8":
             targetController = SceneKitViewController()
         case "9":
-            targetController = BaseWebViewController.create(with: "https://blog.iword.win")
             hideAllTabBar = true
+            print("start: \(Date())")
+            targetController = BaseWebViewController.create(with: "https://blog.iword.win")
+//            let a: WebViewController = WebViewController()
+//            a.url = "https://blog.iword.win"
+//            targetController = a
         case "10":
             targetController = ScanQrCodeViewController()
             hideAllTabBar = true

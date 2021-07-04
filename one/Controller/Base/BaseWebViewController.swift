@@ -15,17 +15,17 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
     lazy var webView: WKWebView = {
         let _webView = WKWebView()
         _webView.allowsBackForwardNavigationGestures = true
-        let configuration = WKWebViewConfiguration()
-        configuration.preferences = WKPreferences()
-        configuration.preferences.minimumFontSize = 12.0
-        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-        configuration.userContentController = WKUserContentController()
-        if #available(iOS 13.0, *) {
-            configuration.defaultWebpagePreferences.preferredContentMode = .mobile
-        }
-        let jsStr = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'); document.getElementsByTagName('head')[0].appendChild(meta);"
-        let wkUserScript = WKUserScript(source: jsStr, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
-        configuration.userContentController.addUserScript(wkUserScript)
+//        let configuration = WKWebViewConfiguration()
+//        configuration.preferences = WKPreferences()
+//        configuration.preferences.minimumFontSize = 12.0
+//        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+//        configuration.userContentController = WKUserContentController()
+//        if #available(iOS 13.0, *) {
+//            configuration.defaultWebpagePreferences.preferredContentMode = .mobile
+//        }
+//        let jsStr = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'); document.getElementsByTagName('head')[0].appendChild(meta);"
+//        let wkUserScript = WKUserScript(source: jsStr, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
+//        configuration.userContentController.addUserScript(wkUserScript)
         _webView.backgroundColor = UIColor.clear
         _webView.navigationDelegate = self
         _webView.uiDelegate = self
@@ -55,6 +55,7 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         setCustomNav()
         setWebView()
         webView.load(URLRequest(url: URL(string: url)!))
+        print("didload: \(Date())")
         // Do any additional setup after loading the view.
     }
 

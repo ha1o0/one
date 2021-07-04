@@ -21,6 +21,8 @@
 		E951C70E265501A9007CC3C2 /* MusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C70C265501A9007CC3C2 /* MusicHomeViewController.swift */; };
 		E951C70F265501A9007CC3C2 /* MusicHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */; };
 		E951C71126550C3E007CC3C2 /* MusicHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */; };
+		E95ED2D02691A8CE00960EFF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ED2CE2691A8CE00960EFF /* WebViewController.swift */; };
+		E95ED2D12691A8CE00960EFF /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95ED2CF2691A8CE00960EFF /* WebViewController.xib */; };
 		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
 		E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3552677A5F900041A77 /* Tab3ViewController.swift */; };
 		E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA3562677A5F900041A77 /* Tab3ViewController.xib */; };
@@ -206,6 +208,8 @@
 		E951C70C265501A9007CC3C2 /* MusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeViewController.swift; sourceTree = "<group>"; };
 		E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicHomeViewController.xib; sourceTree = "<group>"; };
 		E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeModel.swift; sourceTree = "<group>"; };
+		E95ED2CE2691A8CE00960EFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		E95ED2CF2691A8CE00960EFF /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E97FA3552677A5F900041A77 /* Tab3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3ViewController.swift; sourceTree = "<group>"; };
 		E97FA3562677A5F900041A77 /* Tab3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab3ViewController.xib; sourceTree = "<group>"; };
@@ -832,6 +836,8 @@
 				E99855DB264509F9006B0E1E /* BaseTestViewController.xib */,
 				E99855F92648DB6F006B0E1E /* BaseTabBarViewController.swift */,
 				E99855FA2648DB6F006B0E1E /* BaseTabBarViewController.xib */,
+				E95ED2CE2691A8CE00960EFF /* WebViewController.swift */,
+				E95ED2CF2691A8CE00960EFF /* WebViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1099,6 +1105,7 @@
 				E99855DD264509F9006B0E1E /* BaseTestViewController.xib in Resources */,
 				E9937F742672FE1B0047FA64 /* Tab1ViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
+				E95ED2D12691A8CE00960EFF /* WebViewController.xib in Resources */,
 				E9BB1BFB26710DEC0016406B /* MusicControlBar1.xib in Resources */,
 				E9937F7C26732DE00047FA64 /* Tab2CollectionViewCell.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
@@ -1313,6 +1320,7 @@
 				E99224AE266D15140038BAB7 /* MusicControlBar.swift in Sources */,
 				E9937F602670BC3F0047FA64 /* BaseWindow.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
+				E95ED2D02691A8CE00960EFF /* WebViewController.swift in Sources */,
 				E97FA35E267E396900041A77 /* MusicPlayerViewController.swift in Sources */,
 				E99224B3266D27280038BAB7 /* MusicService.swift in Sources */,
 			);

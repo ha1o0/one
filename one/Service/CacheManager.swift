@@ -14,7 +14,9 @@ class CacheManager {
     var refreshHeaderImages: [UIImage] = []
     var imageInfos: [String: ImageInfo] = [:]
     
-    private init() {}
+    private init() {
+        let _ = BaseWebViewController.create(with: "https://www.baidu.com")
+    }
     
     func preCache(urlstrs: [String], callback: (() -> Void)?) {
         var urls: [URL] = []
