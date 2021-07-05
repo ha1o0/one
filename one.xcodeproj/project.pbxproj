@@ -23,6 +23,7 @@
 		E951C71126550C3E007CC3C2 /* MusicHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */; };
 		E95ED2D02691A8CE00960EFF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ED2CE2691A8CE00960EFF /* WebViewController.swift */; };
 		E95ED2D12691A8CE00960EFF /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95ED2CF2691A8CE00960EFF /* WebViewController.xib */; };
+		E95ED2D62693582200960EFF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ED2D52693582200960EFF /* UserDefault.swift */; };
 		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
 		E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3552677A5F900041A77 /* Tab3ViewController.swift */; };
 		E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA3562677A5F900041A77 /* Tab3ViewController.xib */; };
@@ -210,6 +211,7 @@
 		E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeModel.swift; sourceTree = "<group>"; };
 		E95ED2CE2691A8CE00960EFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E95ED2CF2691A8CE00960EFF /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		E95ED2D52693582200960EFF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E97FA3552677A5F900041A77 /* Tab3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3ViewController.swift; sourceTree = "<group>"; };
 		E97FA3562677A5F900041A77 /* Tab3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab3ViewController.xib; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				E9A59F062668788400FA458B /* MockService.swift */,
 				E99224B2266D27280038BAB7 /* MusicService.swift */,
 				E9937F5D2670AA200047FA64 /* ThemeManager.swift */,
+				E95ED2D52693582200960EFF /* UserDefault.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1300,6 +1303,7 @@
 				E99BC0EC26232DB00002C066 /* BaseCollectionViewCell.swift in Sources */,
 				E93E0EB02612039800D43B4C /* Animation1TableViewCell.swift in Sources */,
 				E9937F642671DC5F0047FA64 /* OpenHomeViewController.swift in Sources */,
+				E95ED2D62693582200960EFF /* UserDefault.swift in Sources */,
 				E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */,
 				E97FA3BF26822F0500041A77 /* ProgressBar.swift in Sources */,
 				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
