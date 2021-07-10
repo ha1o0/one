@@ -18,6 +18,17 @@ class CacheManager {
         let _ = BaseWebViewController.create(with: "https://www.baidu.com")
     }
     
+    private func getImagesInfo(urls: [String], callback: @escaping () -> Void) {
+        let notCacheUrls = urls.filter { (url) -> Bool in
+            return !self.imageInfos.keys.contains(url)
+        }
+        if notCacheUrls.count == 0 {
+            callback()
+            return
+        }
+        
+    }
+    
     func preCache(urlstrs: [String], callback: (() -> Void)?) {
         var urls: [URL] = []
         for urlstr in urlstrs {
@@ -39,14 +50,9 @@ class CacheManager {
         self.refreshHeaderImages = UIImage.getImagesFromGif(name: "refresh") ?? []
     }
     
-    private func getImagesInfo(urls: [String], callback: @escaping () -> Void) {
-        let notCacheUrls = urls.filter { (url) -> Bool in
-            return !self.imageInfos.keys.contains(url)
-        }
-        if notCacheUrls.count == 0 {
-            callback()
+    func downloadFile(urlStr: String, name: String) {
+        guard let url = URL(string: urlStr) else {
             return
         }
-        
     }
 }

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,6 +15,7 @@
                 <outlet property="centerBkgView" destination="cDi-ns-96u" id="Kcz-cK-jBZ"/>
                 <outlet property="centerOuterCircleView" destination="pMF-f4-jBB" id="7Nx-OV-iQe"/>
                 <outlet property="controlBar" destination="nMs-Ah-rlo" id="A54-LG-pYa"/>
+                <outlet property="isDownloadedImageView" destination="8zN-j3-6gj" id="DeW-Ms-vB7"/>
                 <outlet property="lastBtn" destination="m6t-lT-RQt" id="QDL-LL-HM6"/>
                 <outlet property="loopBtn" destination="edn-Wy-tgZ" id="pD9-F6-5Ap"/>
                 <outlet property="moreBtn" destination="UGw-6P-Vml" id="obX-qf-lgO"/>
@@ -169,7 +171,7 @@
                                 <constraint firstItem="pMF-f4-jBB" firstAttribute="centerY" secondItem="cDi-ns-96u" secondAttribute="centerY" id="bEl-LQ-TSo"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-Iu-M5I">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-Iu-M5I" userLabel="optionBarView">
                             <rect key="frame" x="0.0" y="666" width="414" height="60"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aRO-Vt-Ffs">
@@ -197,30 +199,43 @@
                                             <rect key="frame" x="95.5" y="0.0" width="95.5" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNb-WZ-nBU">
-                                                    <rect key="frame" x="35" y="17.5" width="26" height="25"/>
+                                                    <rect key="frame" x="33.5" y="16" width="28.5" height="28.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal">
                                                         <imageReference key="image" image="arrow.down.circle" catalog="system" symbolScale="large"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="download:" destination="-1" eventType="touchUpInside" id="Ick-Ng-6F7"/>
+                                                    </connections>
                                                 </button>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8zN-j3-6gj">
+                                                    <rect key="frame" x="52" y="33" width="15" height="14"/>
+                                                    <color key="tintColor" name="AccentColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="V1B-hF-ShE"/>
+                                                        <constraint firstAttribute="height" constant="15" id="fjE-7P-nWL"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="oNb-WZ-nBU" firstAttribute="centerX" secondItem="G5S-xX-uxg" secondAttribute="centerX" id="AAY-rZ-5H2"/>
+                                                <constraint firstItem="oNb-WZ-nBU" firstAttribute="bottom" secondItem="8zN-j3-6gj" secondAttribute="bottom" constant="-3" id="C0E-7Y-rT2"/>
                                                 <constraint firstItem="oNb-WZ-nBU" firstAttribute="centerY" secondItem="G5S-xX-uxg" secondAttribute="centerY" id="Sii-Fp-V4z"/>
+                                                <constraint firstItem="oNb-WZ-nBU" firstAttribute="trailing" secondItem="8zN-j3-6gj" secondAttribute="trailing" constant="-5" id="xD9-oL-1Qw"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDw-xj-9Cj">
                                             <rect key="frame" x="191" y="0.0" width="95.5" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Py-OW-NXL">
-                                                    <rect key="frame" x="34" y="18" width="27.5" height="24"/>
+                                                    <rect key="frame" x="33.5" y="17.5" width="29" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="text.bubble" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17" scale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18" scale="large"/>
                                                     </state>
                                                 </button>
                                             </subviews>
@@ -381,7 +396,7 @@
                                             <rect key="frame" x="305.5" y="0.0" width="76.5" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGw-6P-Vml">
-                                                    <rect key="frame" x="31.5" y="20" width="14" height="20"/>
+                                                    <rect key="frame" x="30" y="18.5" width="17" height="23.5"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="music.note" catalog="system"/>
                                                     <connections>
@@ -447,7 +462,7 @@
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4kT-rf-4nD"/>
                 <constraint firstItem="6QE-qm-c4f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GS2-km-LGp"/>
             </constraints>
-            <point key="canvasLocation" x="184" y="216"/>
+            <point key="canvasLocation" x="381" y="152"/>
         </view>
     </objects>
     <resources>
@@ -456,6 +471,7 @@
         <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.right" catalog="system" width="128" height="112"/>
         <image name="backward.end" catalog="system" width="128" height="120"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
         <image name="forward.end" catalog="system" width="128" height="120"/>
@@ -464,5 +480,8 @@
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="speaker.wave.2.fill" catalog="system" width="128" height="90"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

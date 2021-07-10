@@ -31,6 +31,7 @@
 		E97FA35F267E396900041A77 /* MusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */; };
 		E97FA3B92680DD7F00041A77 /* MusicPlayerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */; };
 		E97FA3BF26822F0500041A77 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3BE26822F0500041A77 /* ProgressBar.swift */; };
+		E991AA712699F32200BB7C8F /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991AA702699F32200BB7C8F /* FileDownloader.swift */; };
 		E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */; };
 		E9922416265FC7A50038BAB7 /* FunctionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */; };
 		E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992241D265FCDB40038BAB7 /* MusicFunction.swift */; };
@@ -219,6 +220,7 @@
 		E97FA35D267E396900041A77 /* MusicPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayerViewController.xib; sourceTree = "<group>"; };
 		E97FA3B82680DD7F00041A77 /* MusicPlayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerWindow.swift; sourceTree = "<group>"; };
 		E97FA3BE26822F0500041A77 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		E991AA702699F32200BB7C8F /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		E9922413265FC7A50038BAB7 /* FunctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9922414265FC7A50038BAB7 /* FunctionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionCollectionViewCell.xib; sourceTree = "<group>"; };
 		E992241D265FCDB40038BAB7 /* MusicFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFunction.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				E99224B2266D27280038BAB7 /* MusicService.swift */,
 				E9937F5D2670AA200047FA64 /* ThemeManager.swift */,
 				E95ED2D52693582200960EFF /* UserDefault.swift */,
+				E991AA702699F32200BB7C8F /* FileDownloader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -907,11 +910,11 @@
 				E9922499266BC1FE0038BAB7 /* Refresh */,
 				E9A59F0D266A1DD200FA458B /* MusicHome */,
 				E998560F26526F01006B0E1E /* Drawer */,
-				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
 				E99BC0E826232D840002C066 /* CollectionViewCell */,
 				E9E0CDCE2608E6600047DAE9 /* TableViewCell */,
 				E9E0CD85260795070047DAE9 /* Player */,
 				E9A1357D262443A000DEC078 /* Bezier */,
+				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
 				E9E68BE42648376100929383 /* Capsule.swift */,
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
 			);
@@ -1232,6 +1235,7 @@
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
 				E9937F7B26732DE00047FA64 /* Tab2CollectionViewCell.swift in Sources */,
+				E991AA712699F32200BB7C8F /* FileDownloader.swift in Sources */,
 				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
 				E9937F772673069B0047FA64 /* Tab2ViewController.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,

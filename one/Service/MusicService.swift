@@ -81,8 +81,7 @@ class MusicService: MusicPlayer {
         let isPlaying = self.isPlaying
         let currentMusic: Music = musicList[musicIndexList[currentMusicIndex]]
         let isMusicChanged: Bool = currentMusic.id != lastPlayingMusic.id
-        guard let url: URL = getMusicUrl(urlStr: currentMusic.url, isLocal: currentMusic.isLocal, ofType: currentMusic.type)
-        else {
+        guard let url: URL = getMusicUrl(urlStr: currentMusic.url, isLocal: currentMusic.isLocal, ofType: currentMusic.type) else {
             return
         }
         if self.playerItem != nil {
@@ -154,9 +153,14 @@ class MusicService: MusicPlayer {
 
     func getMusicUrl(urlStr: String, isLocal: Bool = false, ofType: String = "") -> URL? {
         var url: URL?
-        if isLocal {
-            if let bundlePath = Bundle.main.path(forResource: urlStr, ofType: ofType) {
-                url = URL(fileURLWithPath: bundlePath)
+        let localUrl = Storage.mediaCache[urlStr] ?? ""
+        if isLocal || localUrl != "" {
+            if isLocal {
+                if let bundlePath = Bundle.main.path(forResource: urlStr, ofType: ofType) {
+                    url = URL(fileURLWithPath: bundlePath)
+                }
+            } else {
+                url = FileDownloader.getFileUrl(originUrlStr: urlStr)
             }
         } else {
             if let urlPath = URL(string: urlStr) {
@@ -164,6 +168,12 @@ class MusicService: MusicPlayer {
             }
         }
         return url
+    }
+    
+    func isCurrentMusicDownloaded() -> Bool {
+        let music = self.getCurrentMusic()
+        let localUrl = Storage.mediaCache[music.url] ?? ""
+        return music.isLocal || localUrl != ""
     }
     
     func generateMusicIndexList() {

@@ -22,6 +22,7 @@ extension Key {
     static let isFirstLaunch: Key = "isFirstLaunch"
     static let musicPlayProgress: Key = "musicPlayProgress"
     static let themeStyle: Key = "themeStyle"
+    static let mediaCache: Key = "mediaCache"
 
 }
 
@@ -30,12 +31,14 @@ struct Storage {
     @UserDefault(.isFirstLaunch, defaultValue: true)
     static var isFirstLaunch: Bool
     
-    
     @UserDefault(.musicPlayProgress, defaultValue: [:])
     static var musicPlayProgress: [String: Int]
     
     @UserDefault(.themeStyle, defaultValue: -1)
     static var themeStyle: Int
+    
+    @UserDefault(.mediaCache, defaultValue: [:])
+    static var mediaCache: [String: String]
 }
 
 

@@ -9,7 +9,8 @@ import UIKit
 import MarqueeLabel
 import MediaPlayer
 
-class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
+class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDownloadDelegate {
+    
     @IBOutlet weak var bkgView: UIView!
     @IBOutlet weak var bkgImageView: UIImageView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
@@ -18,6 +19,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     @IBOutlet weak var soundBar: UIView!
     @IBOutlet weak var soundBarContainerView: UIView!
     @IBOutlet weak var optionBarView: UIView!
+    @IBOutlet weak var isDownloadedImageView: UIImageView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var controlBar: UIView!
     @IBOutlet weak var centerBkgView: UIView!
@@ -192,6 +194,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
             self.posterImageView.sd_setImage(with: url, completed: nil)
             self.posterImageView.setCircleCornerRadius()
         }
+        self.isDownloadedImageView.isHidden = !MusicService.shared.isCurrentMusicDownloaded()
     }
     
     func updatePlayBtn() {
@@ -200,6 +203,25 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     @IBAction func dismiss(_ sender: UIButton) {
         appDelegate.musicWindow?.hide()
+    }
+    
+    @IBAction func download(_ sender: UIButton) {
+        let music = MusicService.shared.getCurrentMusic()
+//        Storage.mediaCache[music.url] = ""
+        if music.isLocal {
+            self.view.makeToast("该歌曲已下载")
+            return
+        }
+        let currentMusicUrlStr = music.url
+        let currentMusicLocalPath = Storage.mediaCache[currentMusicUrlStr] ?? ""
+        if currentMusicLocalPath != "" {
+            self.view.makeToast("该歌曲已下载")
+            return
+        }
+        
+        let downloader = FileDownloader()
+        downloader.download(urlStr: currentMusicUrlStr, delegate: self)
+        self.view.makeToast("歌曲正在下载")
     }
     
     @IBAction func share(_ sender: UIButton) {
@@ -241,5 +263,18 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate {
     
     func startChangeSliderValue(value: Float) {
         
+    }
+    
+    func updateDownloadProgress(progress: Float, urlStr: String) {
+        print("下载进度：\(progress)")
+    }
+    
+    func downloadSuccess(location: URL, urlStr: String) {
+        self.isDownloadedImageView.isHidden = !MusicService.shared.isCurrentMusicDownloaded()
+        self.view.makeToast("下载成功")
+    }
+    
+    func downloadFail(error: Error, urlStr: String) {
+        print("下载失败：\(urlStr)")
     }
 }
