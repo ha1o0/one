@@ -194,7 +194,7 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDo
             self.posterImageView.sd_setImage(with: url, completed: nil)
             self.posterImageView.setCircleCornerRadius()
         }
-        self.isDownloadedImageView.isHidden = !MusicService.shared.isCurrentMusicDownloaded()
+        self.isDownloadedImageView.isHidden = MusicService.shared.getCurrentMusicDownloadStatus() != .downloaded
     }
     
     func updatePlayBtn() {
@@ -208,20 +208,22 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDo
     @IBAction func download(_ sender: UIButton) {
         let music = MusicService.shared.getCurrentMusic()
 //        Storage.mediaCache[music.url] = ""
-        if music.isLocal {
-            self.view.makeToast("该歌曲已下载")
+        let status = MusicService.shared.getCurrentMusicDownloadStatus()
+        if status == .downloaded {
+            if music.isLocal {
+                self.view.makeToast("歌曲已下载, Bundle资源不能删除")
+                return
+            } else {
+                self.willDeleteFileAlert(music.url)
+            }
+            return
+        } else if status == .downloading {
+            self.view.makeToast("歌曲正在下载")
             return
         }
-        let currentMusicUrlStr = music.url
-        let currentMusicLocalPath = Storage.mediaCache[currentMusicUrlStr] ?? ""
-        if currentMusicLocalPath != "" {
-            self.view.makeToast("该歌曲已下载")
-            return
-        }
-        
         let downloader = FileDownloader()
-        downloader.download(urlStr: currentMusicUrlStr, delegate: self)
-        self.view.makeToast("歌曲正在下载")
+        downloader.download(urlStr: music.url, delegate: self)
+        self.view.makeToast("歌曲开始下载")
     }
     
     @IBAction func share(_ sender: UIButton) {
@@ -265,12 +267,29 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDo
         
     }
     
+    func willDeleteFileAlert(_ willDeleteFileUrl: String) {
+        let alertVC = UIAlertController(title: "提示", message: "确定删除本地文件吗？", preferredStyle: UIAlertController.Style.alert)
+        let acSure = UIAlertAction(title: "确定", style: UIAlertAction.Style.destructive) { (UIAlertAction) -> Void in
+            let result = CacheManager.shared.deleteFile(willDeleteCacheKey: willDeleteFileUrl)
+            if result {
+                self.view.makeToast("删除成功")
+                DispatchQueue.main.async {
+                    self.updateMusicInfo()
+                }
+            }
+        }
+        let acCancel = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel) { (UIAlertAction) -> Void in }
+        alertVC.addAction(acSure)
+        alertVC.addAction(acCancel)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     func updateDownloadProgress(progress: Float, urlStr: String) {
         print("下载进度：\(progress)")
     }
     
     func downloadSuccess(location: URL, urlStr: String) {
-        self.isDownloadedImageView.isHidden = !MusicService.shared.isCurrentMusicDownloaded()
+        self.updateMusicInfo()
         self.view.makeToast("下载成功")
     }
     

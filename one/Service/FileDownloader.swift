@@ -32,16 +32,21 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
         return destinationUrl
     }
     
+    static func getFileName(originUrlStr: String) -> String {
+        return URL(string: originUrlStr)!.lastPathComponent
+    }
+    
     func saveFile(originUrlStr: String, location: URL) {
         let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let musicFolder = documentsDirectoryURL.appendingPathComponent(FileDownloader.getFolder(urlStr: originUrlStr))
-        let destinationUrl = musicFolder.appendingPathComponent(URL(string: originUrlStr)!.lastPathComponent)
+        let fileName = FileDownloader.getFileName(originUrlStr: originUrlStr)
+        let destinationUrl = musicFolder.appendingPathComponent(fileName)
         print("下载成功：\(originUrlStr), 本地tmp路径是：\(location.absoluteString), document路径：\(destinationUrl.absoluteString)")
         do {
             try FileManager.default.createDirectory(at: musicFolder, withIntermediateDirectories: true, attributes: nil)
             try FileManager.default.moveItem(at: location, to: destinationUrl)
             print("文件由tmp移动至指定文件夹成功！")
-            Storage.mediaCache[originUrlStr] = destinationUrl.absoluteString
+            Storage.mediaCache[originUrlStr] = fileName
             DispatchQueue.main.async {
                 self.delegate?.downloadSuccess(location: location, urlStr: originUrlStr)
             }
@@ -83,8 +88,7 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
         let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
         let task = session.downloadTask(with: url)
         task.resume()
+        Storage.mediaCache[urlStr] = "downloading"
     }
-    
-    
-    
+
 }

@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 import AVKit
 
+enum mediaDownloadStatus: String {
+    case notDownload = "notDownload"
+    case downloading = "downloading"
+    case downloaded = "downloaded"
+}
+
 protocol MusicPlayer {
     var player: AVPlayer! { get set }
     var isPlaying: Bool { get }
@@ -153,8 +159,8 @@ class MusicService: MusicPlayer {
 
     func getMusicUrl(urlStr: String, isLocal: Bool = false, ofType: String = "") -> URL? {
         var url: URL?
-        let localUrl = Storage.mediaCache[urlStr] ?? ""
-        if isLocal || localUrl != "" {
+        let downloadStatus = self.getCurrentMusicDownloadStatus()
+        if downloadStatus == .downloaded {
             if isLocal {
                 if let bundlePath = Bundle.main.path(forResource: urlStr, ofType: ofType) {
                     url = URL(fileURLWithPath: bundlePath)
@@ -170,10 +176,18 @@ class MusicService: MusicPlayer {
         return url
     }
     
-    func isCurrentMusicDownloaded() -> Bool {
+    func getCurrentMusicDownloadStatus() -> mediaDownloadStatus {
         let music = self.getCurrentMusic()
         let localUrl = Storage.mediaCache[music.url] ?? ""
-        return music.isLocal || localUrl != ""
+        var status: mediaDownloadStatus = .notDownload
+        if localUrl == "downloading" {
+            status = .downloading
+        } else {
+            if music.isLocal || localUrl != "" {
+                status = .downloaded
+            }
+        }
+        return status
     }
     
     func generateMusicIndexList() {
