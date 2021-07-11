@@ -49,10 +49,4 @@ class CacheManager {
     func getRefreshHeaderImages() {
         self.refreshHeaderImages = UIImage.getImagesFromGif(name: "refresh") ?? []
     }
-    
-    func downloadFile(urlStr: String, name: String) {
-        guard let url = URL(string: urlStr) else {
-            return
-        }
-    }
 }
