@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AVKit
+import MediaPlayer
 
 enum mediaDownloadStatus: String {
     case notDownload = "notDownload"
@@ -68,9 +69,18 @@ class MusicService: MusicPlayer {
     }
     var musicIndexList: [Int] = []
     var musicPlayProgressTimer: Timer!
+    var isListenRemoteControl: Bool = false
+    var imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    var playTarget: Any? = nil
+    var pauseTarget: Any? = nil
+    var nextTarget: Any? = nil
+    var lastTarget: Any? = nil
+    var seekTarget: Any? = nil
     
     private init() {
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+        addRemoteTransportControls()
     }
     
     func listenVolumeButton(target: Any) {
@@ -97,11 +107,14 @@ class MusicService: MusicPlayer {
             playerItem = AVPlayerItem(url: url)
             player = AVPlayer(playerItem: playerItem)
         }
+        addRemoteTransportControls()
+        self.setupNowPlaying()
         NotificationCenter.default.addObserver(self, selector: #selector(playToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.playerItem)
         if atTime > 0 {
             player.seek(to: CMTimeMake(value: Int64(atTime), timescale: 1))
         }
         player.play()
+        
         lastPlayingMusic = currentMusic
         if !isPlaying {
             NotificationService.shared.musicStatus(true)
@@ -111,6 +124,7 @@ class MusicService: MusicPlayer {
         }
         self.musicPlayProgressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
             NotificationService.shared.musicProgress()
+            self.updateNowPlaying()
         })
         TimerManager.shared.setTimer(timerName: .musicPlayProgress, timer: self.musicPlayProgressTimer)
     }
@@ -199,5 +213,138 @@ class MusicService: MusicPlayer {
     func getCurrentMusic() -> Music {
         let music = self.musicList[self.musicIndexList[self.currentMusicIndex]]
         return music
+    }
+}
+
+extension MusicService {
+    
+    @objc func handleInterruption(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+        switch type {
+        case .began:
+            self.pause()
+            break
+        case .ended:
+//            self.playMusic(isSame: true)
+            break
+        default: ()
+        }
+    }
+    
+    func setupRemoteTransportControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        playTarget = commandCenter.playCommand.addTarget { [unowned self] event in
+            if !self.isPlaying {
+                self.play()
+                self.updateNowPlaying()
+                return .success
+            }
+
+            return .commandFailed
+        }
+
+        // Add handler for Pause Command
+        pauseTarget = commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.isPlaying {
+                self.pause()
+                self.updateNowPlaying()
+                return .success
+            }
+            
+            return .commandFailed
+        }
+        
+        lastTarget = commandCenter.previousTrackCommand.addTarget { [unowned self] event in
+            if self.musicList.count > 0 {
+                self.last()
+                self.updateNowPlaying()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        nextTarget = commandCenter.nextTrackCommand.addTarget { [unowned self] event in
+            if self.musicList.count > 0 {
+                self.next()
+                self.updateNowPlaying()
+                return .success
+            }
+            return .commandFailed
+        }
+        
+        seekTarget = commandCenter.changePlaybackPositionCommand.addTarget { [unowned self] event in
+            let positionEvent = event as! MPChangePlaybackPositionCommandEvent
+            let currentPosition = Double(positionEvent.positionTime)
+            let isPause = !self.isPlaying
+            self.seekTo(second: currentPosition)
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = currentPosition
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
+            if isPause {
+                self.play()
+            }
+            return .success
+            
+        }
+    }
+    
+    func removeRemoteTransportControls() {
+        if !isListenRemoteControl {
+            return
+        }
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.removeTarget(playTarget)
+        playTarget = nil
+        commandCenter.pauseCommand.removeTarget(pauseTarget)
+        pauseTarget = nil
+        commandCenter.previousTrackCommand.removeTarget(lastTarget)
+        lastTarget = nil
+        commandCenter.nextTrackCommand.removeTarget(nextTarget)
+        nextTarget = nil
+        commandCenter.changePlaybackPositionCommand.removeTarget(seekTarget)
+        seekTarget = nil
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [:]
+        isListenRemoteControl = false
+    }
+    
+    func addRemoteTransportControls() {
+        if isListenRemoteControl {
+            return
+        }
+        setupRemoteTransportControls()
+        isListenRemoteControl = true
+    }
+    
+    func setupNowPlaying() {
+        // Set the metadata
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = self.getCurrentMusic().name
+        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = Float(self.currentPlayTime)
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = Float(self.totalPlayTime)
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 1
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        self.updateNowPlayingImage()
+    }
+    
+    func updateNowPlaying() {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = Float(self.currentPlayTime)
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = Float(self.totalPlayTime)
+        if MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] == nil {
+            self.updateNowPlayingImage()
+        }
+    }
+    
+    func updateNowPlayingImage() {
+        imageView.sd_setImage(with: URL(string: self.getCurrentMusic().poster)) { (image, error, cacheType, url) in
+            if let image = self.imageView.image {
+                MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] =
+                    MPMediaItemArtwork(boundsSize: image.size) { size in
+                        return image
+                }
+            }
+        }
     }
 }
