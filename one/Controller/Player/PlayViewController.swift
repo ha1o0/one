@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Dplayer
+import AVKit
 
 class PlayViewController: BaseViewController, DplayerDelegate {
     
@@ -29,7 +30,16 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         appDelegate.rootVc?.drawerVc.tabbarVc?.showBottom()
         appDelegate.rootVc?.drawerVc.tabbarVc?.hideTabbar(true)
     }
-
+    
+    func pip() {
+        pipController = self.diyPlayerView.getPipVc()
+        pipController?.delegate = self
+        self.diyPlayerView.startPip(pipController)
+    }
+    
+    var pipController: AVPictureInPictureController?
+    var vc: PlayViewController?
+    var popForPip = false
     var diyPlayerView: DplayerView!
     var responseButton = UIButton()
     var domainName = UITextField()
@@ -157,6 +167,9 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if self.popForPip {
+            return
+        }
         self.diyPlayerView.closePlayer()
     }
     
@@ -177,5 +190,23 @@ class PlayViewController: BaseViewController, DplayerDelegate {
 //                print(error)
 //            }
 //        }
+    }
+}
+
+extension PlayViewController: AVPictureInPictureControllerDelegate {
+    // 保持当前VC不被销毁
+    func pictureInPictureControllerWillStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        self.vc = self
+        self.popForPip = true
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    // 销毁原VC，push新VC
+    func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        self.vc = nil
+        if let topVc = getTopViewController() {
+            topVc.navigationController?.pushViewController(PlayViewController(), animated: true)
+        }
+        print("pictureInPictureControllerDidStopPictureInPicture")
     }
 }
