@@ -23,6 +23,7 @@ public enum PanType {
     @objc optional func fullScreen()
     @objc optional func beforeExitFullScreen()
     @objc optional func exitFullScreen()
+    @objc optional func pip()
 }
 
 public class DplayerView: UIView {
@@ -46,11 +47,11 @@ public class DplayerView: UIView {
     @IBOutlet weak var bottomProgressView: UIProgressView!
     @IBOutlet weak var rateTipView: UIView!
     @IBOutlet weak var rateTipLabel: UILabel!
-    
-    
-    private var playerItem: AVPlayerItem!
-    private var player: AVPlayer! = nil
-    private var playerLayer: AVPlayerLayer!
+    @IBOutlet weak var pipBtn: UIButton!
+
+    public var playerItem: AVPlayerItem!
+    public var player: AVPlayer! = nil
+    public var playerLayer: AVPlayerLayer!
     private var currentPlayerRate: Float = 1.0
     var loadingImageView: UIImageView!
     var systemVolumeView = MPVolumeView()
@@ -141,6 +142,33 @@ public class DplayerView: UIView {
         self.getSystemVolumeSlider().value = value
     }
 
+    public func getPipVc() -> AVPictureInPictureController? {
+        if !AVPictureInPictureController.isPictureInPictureSupported() {
+            return nil
+        }
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playback)
+            try session.setActive(true, options: [])
+        } catch {
+            print("AVAudioSession error")
+            return nil
+        }
+        return AVPictureInPictureController(playerLayer: self.playerLayer)
+    }
+    
+    public func startPip(_ pipVc: AVPictureInPictureController?) {
+        guard let pipVc = pipVc else { return }
+        let time = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            if pipVc.isPictureInPictureActive == true {
+                pipVc.stopPictureInPicture()
+            } else {
+                pipVc.startPictureInPicture()
+            }
+        }
+    }
+    
     public func commonInit() {
         self.currentPlayerRate = self.playerRate
         self.rateTipView.layer.cornerRadius = 2
@@ -182,9 +210,8 @@ public class DplayerView: UIView {
         progressSlider.addGestureRecognizer(tapGesture)
         self.bottomProgressBarViewColor = .clear
         bottomProgressView.trackTintColor = UIColor.clear
-        
     }
-    
+
     func setControlView() {
         if hasSetControlView {
             controlView.layer.sublayers?.remove(at: 0)
@@ -334,6 +361,12 @@ public class DplayerView: UIView {
         }
         if let delegate = delegate, let exitFullScreenFunc = delegate.exitFullScreen {
             exitFullScreenFunc()
+        }
+    }
+    
+    @IBAction func pip(_ sender: UIButton) {
+        if let delegate = delegate, let pip = delegate.pip {
+            pip()
         }
     }
     

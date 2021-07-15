@@ -21,6 +21,7 @@
                 <outlet property="dateTimeDisplayLabel" destination="33g-sw-A88" id="unG-Lp-2WK"/>
                 <outlet property="fullBtn" destination="Z4c-xI-hoI" id="nNq-vi-yPM"/>
                 <outlet property="gestureView" destination="DWW-gs-m1W" id="nd4-nj-hPj"/>
+                <outlet property="pipBtn" destination="yTL-i4-wn8" id="v5c-pC-bk3"/>
                 <outlet property="playBtn" destination="6u3-HC-jMk" id="zpl-x4-idE"/>
                 <outlet property="playerView" destination="hjP-xm-UaE" id="Aa2-OE-I6E"/>
                 <outlet property="progressSlider" destination="juP-7I-eUG" id="gE1-GV-4rc"/>
@@ -66,11 +67,49 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-SI-7Lf">
+                                            <rect key="frame" x="160" y="0.0" width="200" height="44"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4g-yP-5bj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQF-ag-juY">
+                                                    <rect key="frame" x="66.5" y="0.0" width="67" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIM-s9-iin">
+                                                    <rect key="frame" x="133.5" y="0.0" width="66.5" height="44"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTL-i4-wn8">
+                                                            <rect key="frame" x="17.5" y="12" width="32" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" image="pip.enter" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="pip:" destination="-1" eventType="touchUpInside" id="zYR-ex-9cu"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="pSl-Zb-She"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="KQF-SI-7Lf" secondAttribute="trailing" constant="15" id="5BI-GO-VjA"/>
+                                        <constraint firstItem="KQF-SI-7Lf" firstAttribute="top" secondItem="6uW-NI-AMm" secondAttribute="top" id="HlJ-m8-1Db"/>
                                         <constraint firstItem="33g-sw-A88" firstAttribute="centerX" secondItem="6uW-NI-AMm" secondAttribute="centerX" id="OGg-t9-1SX"/>
                                         <constraint firstItem="uZp-ap-PbX" firstAttribute="leading" secondItem="6uW-NI-AMm" secondAttribute="leading" constant="8" id="ZXg-Pe-NB3"/>
+                                        <constraint firstAttribute="bottom" secondItem="KQF-SI-7Lf" secondAttribute="bottom" id="hVh-ce-J5f"/>
                                         <constraint firstItem="uZp-ap-PbX" firstAttribute="centerY" secondItem="6uW-NI-AMm" secondAttribute="centerY" id="oQ5-TR-xp0"/>
                                         <constraint firstItem="33g-sw-A88" firstAttribute="centerY" secondItem="6uW-NI-AMm" secondAttribute="centerY" id="vpb-oj-N5r"/>
                                     </constraints>
@@ -232,12 +271,13 @@
                 <constraint firstItem="hjP-xm-UaE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="v5b-XF-6OZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-220" y="1660"/>
+            <point key="canvasLocation" x="-220.83958020989508" y="1660"/>
         </view>
     </objects>
     <resources>
         <image name="full" width="100" height="100"/>
         <image name="leftBack" width="100" height="100"/>
+        <image name="pip.enter" catalog="system" width="128" height="96"/>
         <image name="play" width="100" height="100"/>
         <systemColor name="lightTextColor">
             <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
