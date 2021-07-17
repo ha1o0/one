@@ -23,7 +23,7 @@ extension Key {
     static let musicPlayProgress: Key = "musicPlayProgress"
     static let themeStyle: Key = "themeStyle"
     static let mediaCache: Key = "mediaCache"
-
+    static let pipVideo: Key = "pipVideo"
 }
 
 struct Storage {
@@ -39,6 +39,9 @@ struct Storage {
     
     @UserDefault(.mediaCache, defaultValue: [:])
     static var mediaCache: [String: String]
+    
+    @UserDefault(.pipVideo, defaultValue: [:])
+    static var pipVideo: [String: String]
 }
 
 

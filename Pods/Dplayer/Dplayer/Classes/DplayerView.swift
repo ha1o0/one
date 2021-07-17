@@ -24,6 +24,7 @@ public enum PanType {
     @objc optional func beforeExitFullScreen()
     @objc optional func exitFullScreen()
     @objc optional func pip()
+    @objc optional func playing(progress: Float, url: String)
 }
 
 public class DplayerView: UIView {
@@ -52,7 +53,7 @@ public class DplayerView: UIView {
     public var playerItem: AVPlayerItem!
     public var player: AVPlayer! = nil
     public var playerLayer: AVPlayerLayer!
-    private var currentPlayerRate: Float = 1.0
+    public var currentProgress = 0.0
     var loadingImageView: UIImageView!
     var systemVolumeView = MPVolumeView()
     var videoUrl = ""
@@ -61,10 +62,10 @@ public class DplayerView: UIView {
     var hasSetControlView = false
     var currentPanType: PanType! = nil
     var currentVolume = 0.0
-    var currentProgress = 0.0
     var showControlView = true
     var fadeControlViewLock = 0
     var autoFadeControlViewSecond = 5
+    var currentPlayerRate: Float = 1.0
     var isHideControlViewTimerRun = false
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
@@ -290,6 +291,9 @@ public class DplayerView: UIView {
                         } else {
                             self.progressSlider.value = Float(CMTimeGetSeconds(time))
                             self.bottomProgressView.progress = self.progressSlider.value / self.progressSlider.maximumValue
+                            if let playing = self.delegate?.playing {
+                                playing(self.progressSlider.value, self.videoUrl)
+                            }
                         }
                     }
                 })
@@ -514,7 +518,7 @@ public class DplayerView: UIView {
         }
     }
     
-    public func playUrl(url: String) {
+    public func playUrl(url: String, progress: Float = 0.0) {
         if url == videoUrl {
 //            print("地址未变化")
             return
@@ -541,6 +545,9 @@ public class DplayerView: UIView {
         playerView.layer.insertSublayer(playerLayer, at: 0)
         playOrPause(self.playBtn)
         videoUrl = url
+        if progress > 0 {
+            player.seek(to: CMTimeMakeWithSeconds(Float64(progress), preferredTimescale: 64))
+        }
         startHideControlViewTimer()
         print(videoUrl)
     }

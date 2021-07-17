@@ -37,12 +37,18 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         self.diyPlayerView.startPip(pipController)
     }
     
+    func playing(progress: Float, url: String) {
+        Storage.pipVideo["progress"] = "\(progress)"
+        Storage.pipVideo["url"] = url
+    }
+    
     var pipController: AVPictureInPictureController?
     var vc: PlayViewController?
     var popForPip = false
     var diyPlayerView: DplayerView!
     var responseButton = UIButton()
     var domainName = UITextField()
+    var video: [String: String] = [:]
     var videos = ["https://blog.iword.win/langjie.mp4", "http://192.168.6.242/2.mp4", "https://blog.iword.win/5.mp4", "http://192.168.6.242/3.wmv", "https://blog.iword.win/mjpg.avi", "https://iqiyi.cdn9-okzy.com/20201104/17638_8f3022ce/index.m3u8"]
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,8 +63,14 @@ class PlayViewController: BaseViewController, DplayerDelegate {
         diyPlayerView.delegate = self
         diyPlayerView.bottomProgressBarViewColor = .main
         view.addSubview(diyPlayerView)
-        diyPlayerView.playUrl(url: videos[0])
-        setSeries()
+        if self.video["url"] == nil {
+            self.video["url"] = videos[0]
+        }
+        let videoProgress = self.video["progress"] ?? "0"
+        if let url = self.video["url"] {
+            diyPlayerView.playUrl(url: url, progress: Float(videoProgress) ?? 0.0)
+            setSeries()
+        }
     }
     
     func setSeries() {
@@ -201,12 +213,19 @@ extension PlayViewController: AVPictureInPictureControllerDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 
-    // 销毁原VC，push新VC
+    // 销毁原VC
     func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        self.vc = nil
-        if let topVc = getTopViewController() {
-            topVc.navigationController?.pushViewController(PlayViewController(), animated: true)
-        }
         print("pictureInPictureControllerDidStopPictureInPicture")
+        self.vc = nil
+    }
+    
+    // push新VC
+    func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        print("restoreUserInterfaceForPictureInPictureStopWithCompletionHandler")
+        if let topVc = getTopViewController() {
+            let newVc = PlayViewController()
+            newVc.video = Storage.pipVideo
+            topVc.navigationController?.pushViewController(newVc, animated: true)
+        }
     }
 }
