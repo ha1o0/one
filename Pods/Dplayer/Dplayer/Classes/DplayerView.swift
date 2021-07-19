@@ -345,6 +345,8 @@ public class DplayerView: UIView {
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = 0
+        let value = UIInterfaceOrientation.landscapeRight.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         if let delegate = delegate, let fullScreenFunc = delegate.fullScreen {
             fullScreenFunc()
         }
@@ -360,9 +362,8 @@ public class DplayerView: UIView {
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = showControlView ? 0 : 1
-        if let delegate = delegate, let beforeExitFullScreenFunc = delegate.beforeExitFullScreen {
-            beforeExitFullScreenFunc()
-        }
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         if let delegate = delegate, let exitFullScreenFunc = delegate.exitFullScreen {
             exitFullScreenFunc()
         }

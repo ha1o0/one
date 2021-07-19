@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: BaseWindow?
     var launchWindow: UIWindow?
     var musicWindow: MusicPlayerWindow?
-    var deviceOrientation = UIInterfaceOrientationMask.portrait
+    var deviceOrientation = UIInterfaceOrientationMask.all
     var rootVc: MainViewController?
     var musicVc: MusicPlayerViewController = MusicPlayerViewController()
     
