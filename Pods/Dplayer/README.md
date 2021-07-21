@@ -26,24 +26,55 @@ This lib support playing videos that system supports natively.
 ```
 /// VC: DplayerDelegate
 func fullScreen() {
-    appDelegate.deviceOrientation = .landscapeRight
-    let value = UIInterfaceOrientation.landscapeRight.rawValue
-    UIDevice.current.setValue(value, forKey: "orientation")
+
 }
 
 func exitFullScreen() {
-    appDelegate.deviceOrientation = .portrait
-    let value = UIInterfaceOrientation.portrait.rawValue
-    UIDevice.current.setValue(value, forKey: "orientation")
+
 }
 
 let diyPlayerView = DplayerView(frame: CGRect(x: 0, y: 100, width: SCREEN_WIDTH, height: height))
 diyPlayerView.layer.zPosition = 999
 diyPlayerView.delegate = self
+diyPlayerView.bottomProgressBarViewColor = UIColor.red
 view.addSubview(diyPlayerView)
 diyPlayerView.playUrl(url: videoUrl)
 ```
 
+If you want to use picture in picture(pip), please check the example codes.
+```
+/// VC: DplayerDelegate
+func pip() {
+    pipController = self.diyPlayerView.getPipVc()
+    pipController?.delegate = self
+    self.diyPlayerView.startPip(pipController)
+}
+
+
+/// You'd better to record the play progress to UserDefaults, so that you can recover the origin progress when pip closed.
+extension ViewController: AVPictureInPictureControllerDelegate {
+    // 保持当前VC不被销毁
+    func pictureInPictureControllerWillStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        self.vc = self
+        self.popForPip = true
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    // 销毁原VC，push新VC
+    func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        self.vc = nil
+        print("pictureInPictureControllerDidStopPictureInPicture")
+    }
+    
+    func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        let newVc = ViewController()
+        newVc.video = Storage.pipVideo
+        appDelegate.rootVc.navigationController?.pushViewController(newVc, animated: true)
+        print("pictureInPictureControllerDidStopPictureInPicture")
+    }
+}
+
+```
 ## Author
 
 sidney, 516202795@qq.com

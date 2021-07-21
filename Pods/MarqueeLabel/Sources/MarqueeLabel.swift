@@ -154,6 +154,31 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     }
     
     /**
+     A boolean property that sets whether the `MarqueeLabel` should scroll, even if the specificed test string
+     can be fully contained within the label frame.
+     
+     If this property is set to `true`, the `MarqueeLabel` will automatically scroll regardless of text string
+     length, although this can still be overridden by the `tapToScroll` and `holdScrolling` properties.
+     
+     Defaults to `false`.
+     
+     - Warning: Forced scrolling may have unexpected edge cases or have unusual characteristics compared to the
+     'normal' scrolling feature.
+     
+     - SeeAlso: holdScrolling
+     - SeeAlso: tapToScroll
+     */
+    @IBInspectable public var forceScrolling: Bool = false {
+        didSet {
+            if forceScrolling != oldValue {
+                if !(awayFromHome || holdScrolling || tapToScroll ) && labelShouldScroll() {
+                    updateAndScroll()
+                }
+            }
+        }
+    }
+	
+    /**
      A boolean property that sets whether the `MarqueeLabel` should only begin a scroll when tapped.
      
      If this property is set to `true`, the `MarqueeLabel` will only begin a scroll animation cycle when tapped. The label will
@@ -611,7 +636,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             homeLabelFrame = labelFrame
             awayOffset = 0.0
             
-            // Remove an additional sublabels (for continuous types)
+            // Remove any additional sublabels (for continuous types)
             repliLayer?.instanceCount = 1
 
             // Set the sublabel frame to calculated labelFrame
@@ -667,7 +692,10 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             sublabel.frame = homeLabelFrame
             
             // Configure replication
-            repliLayer?.instanceCount = 2
+            // Determine replication count required
+            let fitFactor: CGFloat = bounds.size.width/(expectedLabelSize.width + leadingBuffer)
+            let repliCount = 1 + Int(ceil(fitFactor))
+            repliLayer?.instanceCount = repliCount
             repliLayer?.instanceTransform = CATransform3DMakeTranslation(-awayOffset, 0.0, 0.0)
             
         case .leftRight, .left, .rightLeft, .right:
@@ -780,7 +808,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         }
 
         let animationHasDuration = speed.value > 0.0
-        return (!labelize && labelTooLarge && animationHasDuration)
+        return (!labelize && (forceScrolling || labelTooLarge) && animationHasDuration)
     }
     
     private func labelReadyForScroll() -> Bool {
