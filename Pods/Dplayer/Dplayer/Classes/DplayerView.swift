@@ -13,6 +13,29 @@ import SnapKit
 import MediaPlayer
 import Toast_Swift
 
+public struct DanmuConfig {
+    public init() {}
+    public var enable: Bool = true
+    public var channelHeight: CGFloat = 22.0
+    public var maxChannelNumber: Int = 10
+    public var defaultFontColor: UIColor = UIColor.white.withAlphaComponent(0.7)
+    public var defaultFontSize: CGFloat = 17.0
+    public var speed: CGFloat = 414.0 / 6.0
+}
+
+public struct Danmu {
+    public init() {}
+    public var id: String = ""
+    public var author: String = ""
+    public var content: String = ""
+    public var color: UIColor = .clear
+    public var fontSize: CGFloat = 0.0
+    public var time: Float = 0
+    public var createdAt: Date = Date()
+    public var like: Int = 0
+    public var width: CGFloat = 0
+}
+
 public enum PanType {
     case volume
     case progress
@@ -25,7 +48,7 @@ public enum PanType {
     @objc optional func exitFullScreen()
     @objc optional func pip()
     @objc optional func playing(progress: Float, url: String)
-    @objc optional func readyToPlay()
+    @objc optional func readyToPlay(totalTimeSeconds: Float)
 }
 
 public class DplayerView: UIView {
@@ -50,14 +73,21 @@ public class DplayerView: UIView {
     @IBOutlet weak var rateTipView: UIView!
     @IBOutlet weak var rateTipLabel: UILabel!
     @IBOutlet weak var pipBtn: UIButton!
-
+    
     public var playerItem: AVPlayerItem!
     public var player: AVPlayer! = nil
     public var playerLayer: AVPlayerLayer!
     public var danmuLayer: CALayer?
     public var currentProgress = 0.0
+    public var playerRate: Float = 1.0
+    public var longPressPlayRate: Float = 2.0
+    public var danmuConfig: DanmuConfig = DanmuConfig()
     public var danmus: [Danmu] = []
-    public var danmuDict: [Int: [Danmu]] = [:]
+    var danmuDict: [Float: [Danmu]] = [:]
+    var danmuChannelDict: [Int: CGFloat] = [:]
+    var danmuDictHandled: [Float: [Int: Danmu?]] = [:]
+    var latestDanmuTimes: CapacityArray<Float> = CapacityArray<Float>(capacity: 5)
+    var isSeekDanmu = false
     var loadingImageView: UIImageView!
     var systemVolumeView = MPVolumeView()
     var videoUrl = ""
@@ -74,18 +104,18 @@ public class DplayerView: UIView {
     var hideControlViewTimer: Timer!
     var dateTimeDisplayTimer: Timer!
     var clickDebounceTimer: Timer!
-    public var playerRate: Float = 1.0
-    public var longPressPlayRate: Float = 2.0
-    private var totalTimeSeconds = 0
-    private var totalTime = "00:00"
-    private var currentTime = "00:00"
-    private var sliderThumbFollowGesture = false
-    private var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
+    var danmuListenTimer: Timer!
+    public var totalTimeSeconds = 0
+    var totalTime = "00:00"
+    var currentTime = "00:00"
+    var sliderThumbFollowGesture = false
+    var justDrag: Int = 0 //防止拖动播放瞬间滑块闪回
     public var bottomProgressBarViewColor: UIColor = .clear {
         didSet {
             self.bottomProgressView.progressTintColor = bottomProgressBarViewColor
         }
     }
+    
     public weak var delegate: DplayerDelegate?
     
     public override init(frame: CGRect) {
@@ -196,6 +226,7 @@ public class DplayerView: UIView {
         originalFrame = self.frame
         startDateTimeTimer()
         print(videoUrl)
+        danmuListenTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(checkDanmuLayer), userInfo: nil, repeats: true)
     }
     
     func initSlider() {
@@ -264,17 +295,17 @@ public class DplayerView: UIView {
                 totalTime = "\(TimeUtil.getTimeMinutesBySeconds(totalTimeSeconds)):\(TimeUtil.getTimeSecondBySeconds(totalTimeSeconds))"
                 timeDisplay.text = "00:00/\(totalTime)"
                 if let delegate = self.delegate, let readyToPlay = delegate.readyToPlay {
-                    readyToPlay()
+                    readyToPlay(Float(totalTimeSeconds))
                 }
+                self.prepareDanmu()
                 print("ready play")
                 NotificationCenter.default.addObserver(self, selector: #selector(playToEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player.currentItem)
 
-                player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1.0, preferredTimescale: Int32(NSEC_PER_SEC)), queue: nil, using: { (time) in
+                player.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1 / 10.0, preferredTimescale: Int32(NSEC_PER_SEC)), queue: nil, using: { (time) in
                     if (self.player == nil) {
                         return
                     }
                     if let isPlaybackLikelyToKeepUp = self.player.currentItem?.isPlaybackLikelyToKeepUp {
-                        //do what ever you want with isPlaybackLikelyToKeepUp value, for example, show or hide a activity indicator.
                         self.loadingImageView.isHidden = isPlaybackLikelyToKeepUp || !self.player.isPlaying
                     }
                     
@@ -395,8 +426,9 @@ public class DplayerView: UIView {
         } else {
             self.customPlay()
         }
-        sender.setImage(player.isPlaying ? UIImage.getUIImageByName("pause") : UIImage.getUIImageByName("play"), for: .normal)
+        sender.setImage(UIImage.getUIImageByName(player.isPlaying ? "pause" : "play"), for: .normal)
         loadingImageView.isHidden = !player.isPlaying
+        self.playOrPauseDanmu()
     }
     
     public func playOrPause() {
@@ -407,17 +439,11 @@ public class DplayerView: UIView {
         self.resetControlViewTimer()
         let location = sender.location(in: self.progressSlider)
         let percent = Float(location.x / self.progressSlider.frame.width)
-//        print(percent)
-        player.pause()
-        player.seek(to: CMTimeMakeWithSeconds(Float64(percent * self.progressSlider.maximumValue), preferredTimescale: 64))
-        self.customPlay()
-        loadingImageView.isHidden = !player.isPlaying
-        self.playBtn.setImage(UIImage.getUIImageByName("pause"), for: .normal)
+        self.seekToTime(percent * self.progressSlider.maximumValue)
     }
     
     // 开始拖动
     @objc func startToChangeSliderValue(slider: UISlider) {
-//        print("start slider.value = %d",slider.value)
         self.timeDisplay.text = "\(TimeUtil.getTimeMinutesBySeconds(Int(slider.value))):\(TimeUtil.getTimeSecondBySeconds(Int(slider.value)))/\(self.totalTime)"
         self.centerProgressDisplayLabel.isHidden = false
         self.centerProgressDisplayLabel.text = self.timeDisplay.text
@@ -428,18 +454,26 @@ public class DplayerView: UIView {
     
     // 拖动结束
     @objc func changeSliderValue(slider: UISlider) {
-//        print("slider.value = %d",slider.value)
         justDrag = 2
-        player.pause()
-        player.seek(to: CMTimeMakeWithSeconds(Float64(slider.value), preferredTimescale: 64))
-        self.customPlay()
-        loadingImageView.isHidden = !player.isPlaying
-        self.playBtn.setImage(UIImage.getUIImageByName("pause"), for: .normal)
+        self.seekToTime(slider.value)
         self.centerProgressDisplayLabel.isHidden = true
         sliderThumbFollowGesture = false
         if showControlView {
             self.startHideControlViewTimer()
         }
+    }
+    
+    func seekToTime(_ value: Float) {
+        let isPlaying = self.player.isPlaying
+        player.pause()
+        player.seek(to: CMTimeMakeWithSeconds(Float64(value), preferredTimescale: 64))
+        self.customPlay()
+        if !isPlaying {
+            player.pause()
+        }
+        self.playBtn.setImage(UIImage.getUIImageByName(player.isPlaying ? "pause" : "play"), for: .normal)
+        loadingImageView.isHidden = !player.isPlaying
+        seekToTimeDanmu(time: value)
     }
     
     @objc func clickTapPlayer(_ sender: UITapGestureRecognizer) {
@@ -451,7 +485,6 @@ public class DplayerView: UIView {
     }
     
     @objc func doubleTapPlayer() {
-//        print("double tap")
         if clickDebounceTimer != nil {
             clickDebounceTimer.invalidate()
             clickDebounceTimer = nil
@@ -460,7 +493,6 @@ public class DplayerView: UIView {
     }
 
     @objc func longPressPlayer(recognizer: UILongPressGestureRecognizer) {
-//        print("long tap")
         self.hideControlView()
         if (recognizer.state == .began) {
             self.currentPlayerRate = self.longPressPlayRate
@@ -480,7 +512,6 @@ public class DplayerView: UIView {
         let translation = sender.translation(in: gestureView)
         let absx = abs(Int32(translation.x))
         let absy = abs(Int32(translation.y))
-//        print("\(translation)")
         if (absx > 20 || absy > 20) && currentPanType == nil {
             currentPanType = absx > absy ? .progress : .volume
         }
@@ -518,7 +549,6 @@ public class DplayerView: UIView {
     
     public func closePlayer() {
         if (player != nil) {
-//            print("关闭播放器")
             player.pause()
             removePlayerObserver(playerItem: playerItem)
             player = nil
@@ -534,10 +564,10 @@ public class DplayerView: UIView {
     }
     
     public func playUrl(url: String, progress: Float = 0.0) {
-        if url == videoUrl {
-//            print("地址未变化")
-            return
-        }
+//        if url == videoUrl {
+////            print("地址未变化")
+//            return
+//        }
         guard let urlURL = URL(string: url) else {
 //            print(url)
             fatalError("播放地址错误")
@@ -547,7 +577,6 @@ public class DplayerView: UIView {
             playToEnd()
             closePlayer()
             playerView.layer.sublayers?.remove(at: 0)
-            playerView.layer.sublayers?.remove(at: 1)
             stopHideControlViewTimer()
         }
         
@@ -566,7 +595,7 @@ public class DplayerView: UIView {
             player.seek(to: CMTimeMakeWithSeconds(Float64(progress), preferredTimescale: 64))
         }
         startHideControlViewTimer()
-        
+        self.resetDanmuData()
         self.addDanmuLayer()
         print(videoUrl)
     }
@@ -594,6 +623,7 @@ public class DplayerView: UIView {
         self.danmuLayer = nil
         DispatchQueue.main.async {
             self.danmuLayer = CALayer()
+            self.danmuLayer?.masksToBounds = true
             self.danmuLayer?.frame = self.bounds
             guard let danmuLayer = self.danmuLayer else {
                 return
@@ -620,6 +650,8 @@ public class DplayerView: UIView {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        self.danmuListenTimer.invalidate()
+        self.danmuListenTimer = nil
     }
 }
 
@@ -700,58 +732,246 @@ extension DplayerView {
 }
 
 extension DplayerView {
-    public func initDanmu() {
-        for i in 0..<4500 {
-            var danmu = Danmu()
-            danmu.id = "\(i + 1)"
-            danmu.time = Int(arc4random() % UInt32(self.totalTimeSeconds))
-            danmu.content = "第\(danmu.time)秒的弹幕\(danmu.id)"
-            self.danmus.append(danmu)
+
+    func resetDanmuData() {
+        self.danmus = []
+        self.danmuDict = [:]
+        self.danmuChannelDict = [:]
+        self.danmuDictHandled = [:]
+        self.latestDanmuTimes.clear()
+    }
+    
+    // TODO: refine the logic
+    func seekToTimeDanmu(time: Float) {
+        print("seek to: \(time)")
+        guard let danmuLayer = self.danmuLayer, let sublayers = danmuLayer.sublayers else {
+            return
+        }
+        self.isSeekDanmu = true
+        let danmuLayerWidth = danmuLayer.bounds.width
+        for sublayer in sublayers {
+            sublayer.removeFromSuperlayer()
+        }
+        return
+        let shouldDisplayDuration: Float = (Float(danmuLayerWidth) / Float(self.danmuConfig.speed) / self.currentPlayerRate).roundTo(count: 1)
+        let startTime = (time - shouldDisplayDuration).roundTo(count: 1)
+        for secondTemp in Int(startTime * 10)..<Int((time).roundTo(count: 1) * 10) {
+            let second = Float(secondTemp) / 10.0
+            let currentTimeKey = second.roundTo(count: 1)
+            guard let currentTimeDanmuDict = self.danmuDictHandled[currentTimeKey] else {
+                continue
+            }
+            let currentTimeChannels = currentTimeDanmuDict.keys
+            for channelNumber in currentTimeChannels {
+                if let currentTimeDanmuOptional = currentTimeDanmuDict[channelNumber], let currentTimeDanmu = currentTimeDanmuOptional {
+                    print(currentTimeDanmu.content)
+                    let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentTimeDanmu)
+                    danmuTextLayer.isSeek = true
+                    let hasMovedX: CGFloat = CGFloat(time - second) * self.danmuConfig.speed
+                    let y: CGFloat = self.danmuConfig.channelHeight * CGFloat(channelNumber)
+                    danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: y, width: currentTimeDanmu.width, height: self.danmuConfig.channelHeight)
+                    let animation = self.generateDanmuAnimation(duration: (danmuLayerWidth - hasMovedX) / CGFloat(self.danmuConfig.speed))
+                    animation.fromValue = danmuLayerWidth + currentTimeDanmu.width - hasMovedX
+                    animation.toValue = 0 - currentTimeDanmu.width
+                    danmuTextLayer.add(animation, forKey: nil)
+                    self.danmuLayer?.addSublayer(danmuTextLayer)
+                    self.pauseLayer(layer: danmuTextLayer)
+                    latestDanmuTimes.push(element: currentTimeKey)
+                }
+            }
+        }
+        self.isSeekDanmu = false
+    }
+    
+    func generateDanmuAnimation(duration: CGFloat) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "position.x")
+        animation.duration = CFTimeInterval(duration)
+        animation.beginTime = CACurrentMediaTime()
+        animation.fillMode = .removed
+        
+        return animation
+    }
+    
+    func generateDanmuTextLayer(danmu: Danmu) -> CustomCATextLayer {
+        let danmuTextLayer = CustomCATextLayer()
+        danmuTextLayer.foregroundColor = danmu.color == UIColor.clear ? self.danmuConfig.defaultFontColor.cgColor : danmu.color.cgColor
+        let defaultFontSize = danmu.fontSize == 0.0 ? self.danmuConfig.defaultFontSize : danmu.fontSize
+        danmuTextLayer.font = UIFont.systemFont(ofSize: defaultFontSize)
+        danmuTextLayer.fontSize = defaultFontSize
+        danmuTextLayer.string = danmu.content
+        danmuTextLayer.alignmentMode = .center
+        danmuTextLayer.contentsScale = UIScreen.main.scale
+        return danmuTextLayer
+    }
+
+    func prepareDanmu() {
+        for i in 0..<self.danmuConfig.maxChannelNumber {
+            self.danmuChannelDict[i] = 0
+        }
+        if !self.danmuConfig.enable {
+            return
+        }
+        for danmu in self.danmus {
             if !self.danmuDict.keys.contains(danmu.time) {
                 self.danmuDict[danmu.time] = []
             }
             self.danmuDict[danmu.time]?.append(danmu)
         }
+        // 按照视频时长，生成每0.1s的弹幕textlayer
+        // 如果当前时间点存在弹幕就均匀分布在n个弹幕轨道
+        // 但是要注意当前轨道上一个弹幕layer的宽度，不能重叠，如出现重叠就尝试移动到下一个轨道，如果全部轨道都占满，则舍弃该弹幕
+        // 如果当前时间点不存在弹幕就跳过
+        for second in 0..<(self.totalTimeSeconds * 10) {
+            let currentTime = Float(second) / 10.0
+            if let currentTimeDanmus = self.danmuDict[currentTime] {
+                let currentTimeChannelCount = min(currentTimeDanmus.count, self.danmuConfig.maxChannelNumber)
+                for i in 0..<currentTimeChannelCount {
+                    if self.danmuDictHandled[currentTime] == nil {
+                        self.danmuDictHandled[currentTime] = [:]
+                    }
+                    
+                    var currentTimeDanmu = currentTimeDanmus[i]
+                    let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentTimeDanmu)
+                    for j in 0..<self.danmuConfig.maxChannelNumber {
+                        let currentShouldWidth = CGFloat(currentTime) * CGFloat(self.danmuConfig.speed)
+                        if self.danmuChannelDict[j] ?? 0.0 > currentShouldWidth {
+                            continue
+                        }
+                        var danmuTextLayerWidth = danmuTextLayer.preferredFrameSize().width
+                        danmuTextLayerWidth = max(danmuTextLayerWidth, 0.1 * CGFloat(self.danmuConfig.speed))
+                        currentTimeDanmu.width = danmuTextLayerWidth
+                        self.danmuDictHandled[currentTime]?[j] = currentTimeDanmu
+                        let newWidth = CGFloat(currentTime) * CGFloat(self.danmuConfig.speed) + danmuTextLayerWidth
+                        self.danmuChannelDict[j] = newWidth
+                        break
+                    }
+                }
+            }
+        }
     }
     
+
     func playingDanmu(currentTime: Float) {
+//        if self.isSeekDanmu {
+//            return
+//        }
+        if !self.danmuConfig.enable {
+            return
+        }
         guard let danmuLayer = self.danmuLayer else {
             return
         }
-        let currentTimeKey = Int(currentTime)
-        let maxChannel = 6
-        let channelHeight: CGFloat = 18.0
-        let animation = CABasicAnimation(keyPath: "position.x")
-        animation.toValue = 0
-        var duration = self.isFullScreen ? 7 : 3.8
-        duration = duration / Double(self.currentPlayerRate)
-        animation.duration = duration
-        animation.beginTime = CACurrentMediaTime()
-        animation.fillMode = .removed
+        
+        let currentTimeKey = currentTime.roundTo(count: 1)
+        if self.latestDanmuTimes.value.contains(currentTimeKey) {
+            return
+        }
+//        let speed: CGFloat = 414.0 / 6.0 * CGFloat(self.currentPlayerRate)
         if !self.danmuDict.keys.contains(currentTimeKey) {
             return
         }
         guard let currentTimeDanmus = self.danmuDict[currentTimeKey] else {
             return
         }
-        let danmuChannelCount = min(currentTimeDanmus.count, maxChannel)
-        for i in 0..<danmuChannelCount {
+        let currentTimeChannelCount = min(currentTimeDanmus.count, self.danmuConfig.maxChannelNumber)
+        var currentTimeHasGenerateChannelNumbers: [Int] = []
+        for i in 0..<currentTimeChannelCount {
             let currentChannelDanmu = currentTimeDanmus[i]
-            let danmuTextLayer = CATextLayer()
-            danmuTextLayer.foregroundColor = currentChannelDanmu.color.cgColor
-            danmuTextLayer.font = UIFont.systemFont(ofSize: currentChannelDanmu.fontSize)
-            danmuTextLayer.fontSize = currentChannelDanmu.fontSize
-            danmuTextLayer.string = currentChannelDanmu.content
+            let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentChannelDanmu)
             let size = danmuTextLayer.preferredFrameSize()
+
+            var channelNumber = -1
+            for j in 0..<self.danmuConfig.maxChannelNumber {
+                if currentTimeHasGenerateChannelNumbers.contains(j) {
+                    continue
+                }
+                guard let currentTimeDamuDict = self.danmuDictHandled[currentTimeKey], let danmu = currentTimeDamuDict[j] else {
+                    continue
+                }
+                if danmu?.content != "" {
+                    channelNumber = j
+                    currentTimeHasGenerateChannelNumbers.append(j)
+                    break
+                }
+            }
+
+            /// 未找到合适的轨道
+            if channelNumber == -1 {
+                return
+            }
             
+//            danmuChannelDict[channelNumber]! += size.width
+            let duration = (danmuLayer.bounds.width / self.danmuConfig.speed) + CGFloat(arc4random() % UInt32(3)) / 10
+            let animation = generateDanmuAnimation(duration: duration)
             DispatchQueue.main.async {
-                danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: channelHeight * CGFloat(i), width: size.width, height: channelHeight)
-                self.danmuLayer?.addSublayer(danmuTextLayer)
-                animation.fromValue = danmuLayer.bounds.width
+                danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: self.danmuConfig.channelHeight * CGFloat(channelNumber), width: size.width, height: self.danmuConfig.channelHeight)
+                animation.fromValue = danmuLayer.bounds.width + size.width
                 animation.toValue = 0 - size.width
+                animation.delegate = LayerRemover(for: danmuTextLayer)
+                danmuTextLayer.channel = channelNumber
+                danmuTextLayer.time = currentTimeKey
                 danmuTextLayer.add(animation, forKey: nil)
+                self.danmuLayer?.addSublayer(danmuTextLayer)
+                self.latestDanmuTimes.push(element: currentTimeKey)
+                if !self.player.isPlaying {
+                    self.pauseLayer(layer: danmuTextLayer)
+                }
+                guard let sublayers = danmuLayer.sublayers else {
+                    return
+                }
+                for sublayer in sublayers {
+                    if sublayer.speed != self.currentPlayerRate {
+                        sublayer.timeOffset = sublayer.convertTime(CACurrentMediaTime(), from: nil)
+                        sublayer.beginTime = CACurrentMediaTime()
+                        sublayer.speed = 1.0 * self.currentPlayerRate
+                    }
+                }
             }
         }
+    }
+    
+    @objc func checkDanmuLayer() {
+        if self.player == nil {
+            return
+        }
+        guard let danmuLayer = self.danmuLayer, let subLayers = danmuLayer.sublayers else {
+            return
+        }
+        let isPlaying = self.player.isPlaying
+        if isPlaying {
+            return
+        }
+        for subLayer in subLayers {
+            self.pauseLayer(layer: subLayer)
+        }
+    }
+    
+    func playOrPauseDanmu() {
+        guard let danmuLayer = self.danmuLayer, let subLayers = danmuLayer.sublayers else {
+            return
+        }
+        let isPlaying = self.player.isPlaying
+        if !isPlaying {
+            return
+        }
+        for subLayer in subLayers {
+            self.resumeLayer(layer: subLayer)
+        }
+    }
+    
+    func pauseLayer(layer: CALayer) {
+        let pausedTime: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from: nil)
+        layer.speed = 0.0
+        layer.timeOffset = pausedTime
+    }
+
+    func resumeLayer(layer: CALayer) {
+        let pausedTime: CFTimeInterval = layer.timeOffset
+        layer.speed = 1.0 * self.currentPlayerRate
+        layer.timeOffset = 0.0
+        layer.beginTime = 0.0
+        let timeSincePause: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        layer.beginTime = timeSincePause
     }
 }
 
@@ -761,18 +981,48 @@ extension AVPlayer {
     }
 }
 
-
-public struct DanmuConfig {
-    
+extension Float {
+    func roundTo(count: Int) -> Float {
+        let divisor = pow(10, Float(count))
+        return (self * divisor).rounded() / divisor
+    }
 }
 
-public struct Danmu {
-    var id: String = ""
-    var author: String = ""
-    var content: String = ""
-    var color: UIColor = UIColor.white.withAlphaComponent(0.7)
-    var fontSize: CGFloat = 17.0
-    var time: Int = 0
-    var createdAt: Date = Date()
-    var like: Int = 0
+class CustomCATextLayer: CATextLayer {
+    var time: Float = 0.0
+    var channel: Int = 0
+    var isSeek = false
+}
+
+class LayerRemover: NSObject, CAAnimationDelegate {
+    private weak var layer: CALayer?
+
+    init(for layer: CALayer) {
+        self.layer = layer
+        super.init()
+    }
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        layer?.removeFromSuperlayer()
+    }
+}
+
+struct CapacityArray<T> {
+    var value: [T] = []
+    var capacity: Int = 5
+    
+    init(capacity: Int) {
+        self.capacity = capacity
+    }
+    
+    mutating func push(element: T) {
+        if self.value.count >= self.capacity {
+            self.value.remove(at: 0)
+        }
+        self.value.append(element)
+    }
+    
+    mutating func clear() {
+        self.value = []
+    }
 }
