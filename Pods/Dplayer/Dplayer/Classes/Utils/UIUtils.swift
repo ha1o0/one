@@ -23,3 +23,49 @@ extension UIView {
         return nil
     }
 }
+
+class CustomCATextLayer: CATextLayer {
+    var time: Float = 0.0
+    var channel: Int = 0
+    var isSeek = false
+}
+
+class LayerRemover: NSObject, CAAnimationDelegate {
+    private weak var layer: CALayer?
+
+    init(for layer: CALayer) {
+        self.layer = layer
+        super.init()
+    }
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        layer?.removeFromSuperlayer()
+    }
+}
+
+struct CapacityArray<T> {
+    var value: [T] = []
+    var capacity: Int = 5
+    
+    init(capacity: Int) {
+        self.capacity = capacity
+    }
+    
+    mutating func push(element: T) {
+        if self.value.count >= self.capacity {
+            self.value.remove(at: 0)
+        }
+        self.value.append(element)
+    }
+    
+    mutating func clear() {
+        self.value = []
+    }
+}
+
+extension Float {
+    func roundTo(count: Int) -> Float {
+        let divisor = pow(10, Float(count))
+        return (self * divisor).rounded() / divisor
+    }
+}

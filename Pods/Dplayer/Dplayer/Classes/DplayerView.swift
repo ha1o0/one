@@ -13,29 +13,6 @@ import SnapKit
 import MediaPlayer
 import Toast_Swift
 
-public struct DanmuConfig {
-    public init() {}
-    public var enable: Bool = true
-    public var channelHeight: CGFloat = 22.0
-    public var maxChannelNumber: Int = 10
-    public var defaultFontColor: UIColor = UIColor.white.withAlphaComponent(0.7)
-    public var defaultFontSize: CGFloat = 17.0
-    public var speed: CGFloat = 414.0 / 6.0
-}
-
-public struct Danmu {
-    public init() {}
-    public var id: String = ""
-    public var author: String = ""
-    public var content: String = ""
-    public var color: UIColor = .clear
-    public var fontSize: CGFloat = 0.0
-    public var time: Float = 0
-    public var createdAt: Date = Date()
-    public var like: Int = 0
-    public var width: CGFloat = 0
-}
-
 public enum PanType {
     case volume
     case progress
@@ -384,7 +361,7 @@ public class DplayerView: UIView {
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = 0
-        self.addDanmuLayer()
+        self.resetDanmuLayer()
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         if let delegate = delegate, let fullScreenFunc = delegate.fullScreen {
@@ -402,7 +379,7 @@ public class DplayerView: UIView {
         playerLayer.frame = self.bounds
         dateTimeDisplayLabel.isHidden = !isFullScreen
         bottomProgressView.alpha = showControlView ? 0 : 1
-        self.addDanmuLayer()
+        self.resetDanmuLayer()
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         if let delegate = delegate, let exitFullScreenFunc = delegate.exitFullScreen {
@@ -595,8 +572,7 @@ public class DplayerView: UIView {
             player.seek(to: CMTimeMakeWithSeconds(Float64(progress), preferredTimescale: 64))
         }
         startHideControlViewTimer()
-        self.resetDanmuData()
-        self.addDanmuLayer()
+        self.resetDanmuLayer()
         print(videoUrl)
     }
     
@@ -618,7 +594,9 @@ public class DplayerView: UIView {
         self.parentViewController?.navigationController?.popViewController(animated: true)
     }
     
-    func addDanmuLayer() {
+    func resetDanmuLayer() {
+        self.resetDanmuData()
+        self.prepareDanmu()
         self.danmuLayer?.removeFromSuperlayer()
         self.danmuLayer = nil
         DispatchQueue.main.async {
@@ -731,10 +709,13 @@ extension DplayerView {
     }
 }
 
+// 弹幕相关设置
 extension DplayerView {
 
     func resetDanmuData() {
-        self.danmus = []
+        for i in 0..<self.danmuConfig.maxChannelNumber {
+            self.danmuChannelDict[i] = 0
+        }
         self.danmuDict = [:]
         self.danmuChannelDict = [:]
         self.danmuDictHandled = [:]
@@ -765,49 +746,25 @@ extension DplayerView {
             for channelNumber in currentTimeChannels {
                 if let currentTimeDanmuOptional = currentTimeDanmuDict[channelNumber], let currentTimeDanmu = currentTimeDanmuOptional {
                     print(currentTimeDanmu.content)
-                    let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentTimeDanmu)
+                    let danmuTextLayer = DanmuService.generateDanmuTextLayer(danmu: currentTimeDanmu, danmuConfig: self.danmuConfig)
                     danmuTextLayer.isSeek = true
                     let hasMovedX: CGFloat = CGFloat(time - second) * self.danmuConfig.speed
                     let y: CGFloat = self.danmuConfig.channelHeight * CGFloat(channelNumber)
                     danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: y, width: currentTimeDanmu.width, height: self.danmuConfig.channelHeight)
-                    let animation = self.generateDanmuAnimation(duration: (danmuLayerWidth - hasMovedX) / CGFloat(self.danmuConfig.speed))
+                    let animation = DanmuService.generateDanmuAnimation(duration: (danmuLayerWidth - hasMovedX) / CGFloat(self.danmuConfig.speed))
                     animation.fromValue = danmuLayerWidth + currentTimeDanmu.width - hasMovedX
                     animation.toValue = 0 - currentTimeDanmu.width
                     danmuTextLayer.add(animation, forKey: nil)
                     self.danmuLayer?.addSublayer(danmuTextLayer)
-                    self.pauseLayer(layer: danmuTextLayer)
+                    DanmuService.pauseLayer(layer: danmuTextLayer)
                     latestDanmuTimes.push(element: currentTimeKey)
                 }
             }
         }
         self.isSeekDanmu = false
     }
-    
-    func generateDanmuAnimation(duration: CGFloat) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "position.x")
-        animation.duration = CFTimeInterval(duration)
-        animation.beginTime = CACurrentMediaTime()
-        animation.fillMode = .removed
-        
-        return animation
-    }
-    
-    func generateDanmuTextLayer(danmu: Danmu) -> CustomCATextLayer {
-        let danmuTextLayer = CustomCATextLayer()
-        danmuTextLayer.foregroundColor = danmu.color == UIColor.clear ? self.danmuConfig.defaultFontColor.cgColor : danmu.color.cgColor
-        let defaultFontSize = danmu.fontSize == 0.0 ? self.danmuConfig.defaultFontSize : danmu.fontSize
-        danmuTextLayer.font = UIFont.systemFont(ofSize: defaultFontSize)
-        danmuTextLayer.fontSize = defaultFontSize
-        danmuTextLayer.string = danmu.content
-        danmuTextLayer.alignmentMode = .center
-        danmuTextLayer.contentsScale = UIScreen.main.scale
-        return danmuTextLayer
-    }
 
     func prepareDanmu() {
-        for i in 0..<self.danmuConfig.maxChannelNumber {
-            self.danmuChannelDict[i] = 0
-        }
         if !self.danmuConfig.enable {
             return
         }
@@ -831,7 +788,7 @@ extension DplayerView {
                     }
                     
                     var currentTimeDanmu = currentTimeDanmus[i]
-                    let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentTimeDanmu)
+                    let danmuTextLayer = DanmuService.generateDanmuTextLayer(danmu: currentTimeDanmu, danmuConfig: self.danmuConfig)
                     for j in 0..<self.danmuConfig.maxChannelNumber {
                         let currentShouldWidth = CGFloat(currentTime) * CGFloat(self.danmuConfig.speed)
                         if self.danmuChannelDict[j] ?? 0.0 > currentShouldWidth {
@@ -849,7 +806,6 @@ extension DplayerView {
             }
         }
     }
-    
 
     func playingDanmu(currentTime: Float) {
 //        if self.isSeekDanmu {
@@ -877,7 +833,7 @@ extension DplayerView {
         var currentTimeHasGenerateChannelNumbers: [Int] = []
         for i in 0..<currentTimeChannelCount {
             let currentChannelDanmu = currentTimeDanmus[i]
-            let danmuTextLayer = self.generateDanmuTextLayer(danmu: currentChannelDanmu)
+            let danmuTextLayer = DanmuService.generateDanmuTextLayer(danmu: currentChannelDanmu, danmuConfig: self.danmuConfig)
             let size = danmuTextLayer.preferredFrameSize()
 
             var channelNumber = -1
@@ -902,7 +858,7 @@ extension DplayerView {
             
 //            danmuChannelDict[channelNumber]! += size.width
             let duration = (danmuLayer.bounds.width / self.danmuConfig.speed) + CGFloat(arc4random() % UInt32(3)) / 10
-            let animation = generateDanmuAnimation(duration: duration)
+            let animation = DanmuService.generateDanmuAnimation(duration: duration)
             DispatchQueue.main.async {
                 danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: self.danmuConfig.channelHeight * CGFloat(channelNumber), width: size.width, height: self.danmuConfig.channelHeight)
                 animation.fromValue = danmuLayer.bounds.width + size.width
@@ -914,7 +870,7 @@ extension DplayerView {
                 self.danmuLayer?.addSublayer(danmuTextLayer)
                 self.latestDanmuTimes.push(element: currentTimeKey)
                 if !self.player.isPlaying {
-                    self.pauseLayer(layer: danmuTextLayer)
+                    DanmuService.pauseLayer(layer: danmuTextLayer)
                 }
                 guard let sublayers = danmuLayer.sublayers else {
                     return
@@ -942,7 +898,7 @@ extension DplayerView {
             return
         }
         for subLayer in subLayers {
-            self.pauseLayer(layer: subLayer)
+            DanmuService.pauseLayer(layer: subLayer)
         }
     }
     
@@ -955,74 +911,13 @@ extension DplayerView {
             return
         }
         for subLayer in subLayers {
-            self.resumeLayer(layer: subLayer)
+            DanmuService.resumeLayer(layer: subLayer, playerRate: self.currentPlayerRate)
         }
-    }
-    
-    func pauseLayer(layer: CALayer) {
-        let pausedTime: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from: nil)
-        layer.speed = 0.0
-        layer.timeOffset = pausedTime
-    }
-
-    func resumeLayer(layer: CALayer) {
-        let pausedTime: CFTimeInterval = layer.timeOffset
-        layer.speed = 1.0 * self.currentPlayerRate
-        layer.timeOffset = 0.0
-        layer.beginTime = 0.0
-        let timeSincePause: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-        layer.beginTime = timeSincePause
     }
 }
 
 extension AVPlayer {
     public var isPlaying: Bool {
         return self.rate != 0 && self.error == nil
-    }
-}
-
-extension Float {
-    func roundTo(count: Int) -> Float {
-        let divisor = pow(10, Float(count))
-        return (self * divisor).rounded() / divisor
-    }
-}
-
-class CustomCATextLayer: CATextLayer {
-    var time: Float = 0.0
-    var channel: Int = 0
-    var isSeek = false
-}
-
-class LayerRemover: NSObject, CAAnimationDelegate {
-    private weak var layer: CALayer?
-
-    init(for layer: CALayer) {
-        self.layer = layer
-        super.init()
-    }
-
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        layer?.removeFromSuperlayer()
-    }
-}
-
-struct CapacityArray<T> {
-    var value: [T] = []
-    var capacity: Int = 5
-    
-    init(capacity: Int) {
-        self.capacity = capacity
-    }
-    
-    mutating func push(element: T) {
-        if self.value.count >= self.capacity {
-            self.value.remove(at: 0)
-        }
-        self.value.append(element)
-    }
-    
-    mutating func clear() {
-        self.value = []
     }
 }

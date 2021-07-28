@@ -14,10 +14,18 @@ import AVKit
 class PlayViewController: BaseViewController, DplayerDelegate {
     
     func beforeFullScreen() {
+        self.diyPlayerView.danmuConfig.speed = 896.0 / 8.0
+        self.diyPlayerView.danmuConfig.maxChannelNumber = 15
         appDelegate.rootVc?.drawerVc.tabbarVc?.hideBottom()
     }
-    
+
     func fullScreen() {
+
+    }
+    
+    func beforeExitFullScreen() {
+        self.diyPlayerView.danmuConfig.speed = 414.0 / 8.0
+        self.diyPlayerView.danmuConfig.maxChannelNumber = 10
     }
     
     func exitFullScreen() {
