@@ -130,10 +130,30 @@ class PlayViewController: BaseViewController, DplayerDelegate {
             button.addTarget(self, action: #selector(playVideo), for: .touchUpInside)
         }
         seriesView.contentSize.width -= 20
+        
+        let sendSelfDamuBtn = UIButton()
+        sendSelfDamuBtn.setTitle("模拟发送自己的弹幕", for: .normal)
+        sendSelfDamuBtn.setTitleColor(UIColor.main, for: .normal)
+        sendSelfDamuBtn.tag = 1
+        self.view.addSubview(sendSelfDamuBtn)
+        sendSelfDamuBtn.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.top.equalTo(seriesView.snp.bottom).offset(20)
+        }
+        sendSelfDamuBtn.addTarget(self, action: #selector(sendDanmu(button:)), for: .touchUpInside)
+        
     }
     
     @objc func playVideo(target: UIButton) {
         diyPlayerView.playUrl(url: videos[target.tag])
+    }
+    
+    @objc func sendDanmu(button: UIButton) {
+        var danmu = DanmuModel()
+        danmu.isSelf = button.tag == 1
+        danmu.content = "发送了一条弹幕"
+        // 发送弹幕到服务器后呈现在播放器中
+        self.diyPlayerView.danmu.sendDanmu(danmu: &danmu)
     }
     
     func setDomainView() {

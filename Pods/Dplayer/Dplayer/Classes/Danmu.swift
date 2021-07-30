@@ -15,6 +15,7 @@ public struct DanmuConfig {
     public var defaultFontColor: UIColor = UIColor.white.withAlphaComponent(0.7)
     public var defaultFontSize: CGFloat = 17.0
     public var speed: CGFloat = 414.0 / 8.0
+    public var mode: DanmuMode = .video
 }
 
 public struct DanmuModel {
@@ -37,6 +38,11 @@ public protocol DanmuDelegate: AnyObject {
     func getPlayerLayer() -> CALayer?
     func getPlayerRate() -> Float
     func getTotalTimeSeconds() -> Int
+}
+
+public enum DanmuMode {
+    case live
+    case video
 }
 
 public class Danmu {
@@ -132,6 +138,10 @@ public class Danmu {
             return
         }
         if !self.danmuConfig.enable {
+            return
+        }
+        if self.danmuConfig.mode == .live {
+            self.resetDanmuData()
             return
         }
         self.danmuListenTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(checkDanmuLayer), userInfo: nil, repeats: true)
@@ -242,10 +252,6 @@ public class Danmu {
         let danmuTextLayer = Danmu.generateDanmuTextLayer(danmu: danmu, danmuConfig: self.danmuConfig)
         let duration = (danmuLayer.bounds.width / self.danmuConfig.speed) + CGFloat(arc4random() % UInt32(3)) / 10
         let animation = Danmu.generateDanmuAnimation(duration: duration)
-        if danmu.isSelf {
-            danmuTextLayer.borderWidth = 1
-            danmuTextLayer.borderColor = danmu.color.cgColor
-        }
         let size = danmuTextLayer.preferredFrameSize()
         DispatchQueue.main.async {
             danmuTextLayer.frame = CGRect(x: danmuLayer.bounds.width, y: self.danmuConfig.channelHeight * CGFloat(channelNumber), width: size.width, height: self.danmuConfig.channelHeight)
@@ -300,6 +306,20 @@ public class Danmu {
         }
     }
     
+    public func sendDanmu(danmu: inout DanmuModel) {
+        guard let player = self.delegate?.getPlayer(), let danmuLayer = self.danmuLayer else {
+            return
+        }
+        let currentTime = player.currentTime()
+        let currentTimeKey = Float(CMTimeGetSeconds(currentTime)).roundTo(count: 1)
+        danmu.time = currentTimeKey
+//        if self.danmuDictHandled[currentTimeKey] == nil {
+//            self.danmuDictHandled[currentTimeKey] = [:]
+//        }
+        let randomChannelNumber = Int(arc4random() % UInt32(min(self.danmuConfig.maxChannelNumber, 9)))
+        self.putDanmuTextLayer(danmu: danmu, channelNumber: randomChannelNumber, currentTimeKey: currentTimeKey, danmuLayer: danmuLayer)
+    }
+    
     static func pauseLayer(layer: CALayer) {
         let pausedTime: CFTimeInterval = layer.convertTime(CACurrentMediaTime(), from: nil)
         layer.speed = 0.0
@@ -333,6 +353,10 @@ public class Danmu {
         danmuTextLayer.string = danmu.content
         danmuTextLayer.alignmentMode = .center
         danmuTextLayer.contentsScale = UIScreen.main.scale
+        if danmu.isSelf {
+            danmuTextLayer.borderWidth = 1
+            danmuTextLayer.borderColor = danmuTextLayer.foregroundColor
+        }
         return danmuTextLayer
     }
     

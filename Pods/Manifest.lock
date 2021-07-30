@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (5.4.3)
   - DLRadioButton (1.4.12)
-  - Dplayer (1.1.9):
+  - Dplayer (1.2.0):
     - SnapKit (~> 5.0.0)
     - Toast-Swift (~> 5.0.1)
   - FreeStreamer (4.0.0):
@@ -53,13 +53,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Dplayer:
-    :commit: 26c9c59c15f1db21d4a062e984d9d7cb0817013c
+    :commit: c28ad6e265f49c554543c2e61461366736ca22bb
     :git: https://github.com/weifengsmile/Dplayer.git
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
-  Dplayer: b9ee37054be457c518e960d3194c9694ec555d0d
+  Dplayer: 561f2af4d10e81c5143dc67f10881441363727ce
   FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
   MarqueeLabel: f4117d82a55209171e8f66bd4859fa11ade335a1
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
