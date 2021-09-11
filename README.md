@@ -6,6 +6,7 @@ An iOS App.
 
 ### 融合常用的App功能与控件
 
+0. 启动广告页
 1. 导航
 2. 抽屉菜单
 3. 列表（table/collection）
@@ -17,8 +18,9 @@ An iOS App.
 9. SceneKit 3D展示
 10. 相机扫码
 11. 视频播放器, 使用自己开源的[iOS播放器](https://cocoapods.org/pods/Dplayer)
-12. 音频播放器（支持离线下载与播放）
-13. 暗黑模式切换等功能
+12. 音频播放器（支持离线下载与播放），含控制中心播放控制和底部tabbar控制条（仿网易云）
+13. 暗黑模式切换
+14. 自定义底部tabbar
 
 以上除table使用了MJRefresh库, autolayout使用了SnapKit, 图片下载使用了SDWebImage, 文字滚动使用MarqueeLabel, 其余全部基于原生控件实现。
 
