@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import AVKit
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var deviceOrientation = UIInterfaceOrientationMask.all
     var rootVc: MainViewController?
     var musicVc: MusicPlayerViewController = MusicPlayerViewController()
+    var currentPlayer: AVPlayer?
+    var currentPlayerLayer: AVPlayerLayer?
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return deviceOrientation
@@ -65,11 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.shared.statusBarView?.backgroundColor = UIColor.main
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // 保持后台播放
+        self.currentPlayerLayer?.player = nil
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         print("WillEnterForeground")
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // 恢复播放器画面
+        self.currentPlayerLayer?.player = self.currentPlayer
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

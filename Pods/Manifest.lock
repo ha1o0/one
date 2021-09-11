@@ -1,16 +1,16 @@
 PODS:
   - Alamofire (5.4.3)
   - DLRadioButton (1.4.12)
-  - Dplayer (1.2.0):
+  - Dplayer (1.3.0):
     - SnapKit (~> 5.0.0)
     - Toast-Swift (~> 5.0.1)
   - FreeStreamer (4.0.0):
     - Reachability (~> 3.0)
-  - MarqueeLabel (4.2.0)
+  - MarqueeLabel (4.3.0)
   - MJRefresh (3.7.2)
-  - Moya (14.0.0):
-    - Moya/Core (= 14.0.0)
-  - Moya/Core (14.0.0):
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Reachability (3.2)
   - SDWebImage (5.11.1):
@@ -53,17 +53,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Dplayer:
-    :commit: c28ad6e265f49c554543c2e61461366736ca22bb
+    :commit: da3ce1f7d81f487acc48995522c31668409f81da
     :git: https://github.com/weifengsmile/Dplayer.git
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
-  Dplayer: 561f2af4d10e81c5143dc67f10881441363727ce
+  Dplayer: 0afcf68c45c74ef7bc4ae6b2ded0f958379b72ff
   FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
-  MarqueeLabel: f4117d82a55209171e8f66bd4859fa11ade335a1
+  MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
-  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb

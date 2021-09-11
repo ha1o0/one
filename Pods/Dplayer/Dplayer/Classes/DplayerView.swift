@@ -125,8 +125,19 @@ public class DplayerView: UIView {
         systemVolumeView.center = self.playerView.center
         systemVolumeView.isHidden = true
         self.playerView.addSubview(systemVolumeView)
+        setPlayback()
     }
 
+    func setPlayback() {
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(.playback)
+            try session.setActive(true, options: [])
+        } catch {
+            print("AVAudioSession error")
+        }
+    }
+    
     private func getSystemVolumeSlider() -> UISlider {
         var volumeViewSlider = UISlider()
         for subView in systemVolumeView.subviews {
@@ -148,14 +159,6 @@ public class DplayerView: UIView {
 
     public func getPipVc() -> AVPictureInPictureController? {
         if !AVPictureInPictureController.isPictureInPictureSupported() {
-            return nil
-        }
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try session.setCategory(.playback)
-            try session.setActive(true, options: [])
-        } catch {
-            print("AVAudioSession error")
             return nil
         }
         return AVPictureInPictureController(playerLayer: self.playerLayer)

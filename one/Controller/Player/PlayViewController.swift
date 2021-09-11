@@ -96,6 +96,8 @@ class PlayViewController: BaseViewController, DplayerDelegate {
             diyPlayerView.playUrl(url: url, progress: Float(videoProgress) ?? 0.0)
             setSeries()
         }
+        appDelegate.currentPlayer = diyPlayerView.player
+        appDelegate.currentPlayerLayer = diyPlayerView.playerLayer
     }
     
     func setSeries() {
