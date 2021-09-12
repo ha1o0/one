@@ -59,6 +59,7 @@ class MusicService: MusicPlayer {
         didSet {
             currentMusicIndex = 0
             self.generateMusicIndexList()
+            appDelegate.rootVc?.tabbarVc.musicControlBar.collectionView.reloadData()
         }
     }
     var systemVol: Float {

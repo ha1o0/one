@@ -144,6 +144,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewData.append(IdName(name: "视频播放器", id: "1"))
+        self.tableViewData.append(IdName(name: "音乐播放器", id: "12"))
         self.tableViewData.append(IdName(name: "动画", id: "2"))
         self.tableViewData.append(IdName(name: "贝塞尔曲线", id: "3"))
         self.tableViewData.append(IdName(name: "UITableView", id: "4"))
@@ -153,6 +154,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         self.tableViewData.append(IdName(name: "SceneKit", id: "8"))
         self.tableViewData.append(IdName(name: "WebView", id: "9"))
         self.tableViewData.append(IdName(name: "相机", id: "10"))
+        self.tableViewData.append(IdName(name: "录音", id: "11"))
         self.tableViewData.append(IdName(name: "测试", id: "0"))
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
@@ -227,7 +229,6 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
             targetController = SceneKitViewController()
         case "9":
             hideAllTabBar = true
-            print("start: \(Date())")
             targetController = BaseWebViewController.create(with: "https://blog.iword.win")
 //            let a: WebViewController = WebViewController()
 //            a.url = "https://blog.iword.win"
@@ -235,6 +236,16 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         case "10":
             targetController = ScanQrCodeViewController()
             hideAllTabBar = true
+        case "11":
+            targetController = RecordViewController()
+        case "12":
+            if MusicService.shared.isPlaying && MusicService.shared.musicList.count > 1 {
+                return
+            }
+            MusicService.shared.musicList = MockService.shared.getRandomMusic()
+            appDelegate.musicWindow?.show()
+            MusicService.shared.play()
+            return
         default:
             targetController = BaseTestViewController()
         }

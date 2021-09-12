@@ -19,8 +19,11 @@ class FileDownloader: NSObject, URLSessionDownloadDelegate {
     private weak var delegate: FileDownloadDelegate?
     
     static func getFolder(urlStr: String) -> String {
-        if urlStr.hasSuffix(".mp3") || urlStr.hasSuffix(".m4a") || urlStr.hasSuffix("wav") {
+        if urlStr.hasSuffix(".mp3") || urlStr.hasSuffix(".m4a") {
             return "music"
+        }
+        if urlStr.hasSuffix("wav") {
+            return "record"
         }
         return "movie"
     }

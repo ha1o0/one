@@ -227,6 +227,26 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDo
     }
     
     @IBAction func share(_ sender: UIButton) {
+        let currentMusic = MusicService.shared.getCurrentMusic()
+        if (currentMusic.isLocal) {
+            return
+        }
+        do {
+            let currentMusicUrl: URL = FileDownloader.getFileUrl(originUrlStr: currentMusic.url)
+            print(currentMusicUrl.absoluteString)
+//            let data = try Data(contentsOf: currentMusicUrl)
+            let objectsToShare = [currentMusicUrl] as [Any]
+            let activityController = UIActivityViewController(
+                    activityItems: objectsToShare,
+                    applicationActivities: nil)
+
+            activityController.popoverPresentationController?.sourceRect = view.frame
+            activityController.popoverPresentationController?.sourceView = view
+            activityController.popoverPresentationController?.permittedArrowDirections = .any
+            present(activityController, animated: true, completion: nil)
+        } catch let error {
+            print(error)
+        }
     }
     
     @IBAction func mute(_ sender: UIButton) {

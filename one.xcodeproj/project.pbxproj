@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DC2F42DE8D443519841727F0 /* Pods_one.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */; };
+		E93D436D26ECC42E0070EA34 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D436B26ECC42E0070EA34 /* RecordViewController.swift */; };
+		E93D436E26ECC42E0070EA34 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D436C26ECC42E0070EA34 /* RecordViewController.xib */; };
+		E93D437626ECFBC80070EA34 /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D437526ECFBC80070EA34 /* RecordService.swift */; };
+		E93D437B26ED166B0070EA34 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D437A26ED166B0070EA34 /* Date+Extension.swift */; };
+		E93D439426EDFAB60070EA34 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D439326EDFAB60070EA34 /* Observable.swift */; };
 		E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */; };
 		E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */; };
 		E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EA72611DF6A00D43B4C /* LiveListView.swift */; };
@@ -197,6 +202,11 @@
 		4A6108A952F3F17ACF4B4E2C /* Pods-one.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one.debug.xcconfig"; path = "Target Support Files/Pods-one/Pods-one.debug.xcconfig"; sourceTree = "<group>"; };
 		54814271B70437C46126C7F5 /* Pods-one.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one.release.xcconfig"; path = "Target Support Files/Pods-one/Pods-one.release.xcconfig"; sourceTree = "<group>"; };
 		570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_one.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E93D436B26ECC42E0070EA34 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		E93D436C26ECC42E0070EA34 /* RecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
+		E93D437526ECFBC80070EA34 /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
+		E93D437A26ED166B0070EA34 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		E93D439326EDFAB60070EA34 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E93E0E9C2611D80A00D43B4C /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTabView.swift; sourceTree = "<group>"; };
 		E93E0EA72611DF6A00D43B4C /* LiveListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveListView.swift; sourceTree = "<group>"; };
@@ -412,6 +422,15 @@
 				570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E93D436A26ECC41B0070EA34 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				E93D436B26ECC42E0070EA34 /* RecordViewController.swift */,
+				E93D436C26ECC42E0070EA34 /* RecordViewController.xib */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		E93E0E9B2611D2F800D43B4C /* Animation */ = {
@@ -640,6 +659,7 @@
 				E9937F5D2670AA200047FA64 /* ThemeManager.swift */,
 				E95ED2D52693582200960EFF /* UserDefault.swift */,
 				E991AA702699F32200BB7C8F /* FileDownloader.swift */,
+				E93D437526ECFBC80070EA34 /* RecordService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -866,6 +886,7 @@
 				E9E0CD5B2607934D0047DAE9 /* UIImage+Custom.swift */,
 				E9E0CD5D2607934D0047DAE9 /* UIImageView+URL.swift */,
 				E99224D0266E6D9E0038BAB7 /* CGPoint+Extension.swift */,
+				E93D437A26ED166B0070EA34 /* Date+Extension.swift */,
 			);
 			path = Etension;
 			sourceTree = "<group>";
@@ -879,6 +900,7 @@
 				E9E0CD722607947C0047DAE9 /* StrInt.swift */,
 				E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */,
 				E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */,
+				E93D439326EDFAB60070EA34 /* Observable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -886,6 +908,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E93D436A26ECC41B0070EA34 /* Record */,
 				E99855EB2648C76E006B0E1E /* Main */,
 				E99BC1F3263869310002C066 /* Camera */,
 				E99BC16026272A170002C066 /* Map */,
@@ -1112,6 +1135,7 @@
 				E9937F742672FE1B0047FA64 /* Tab1ViewController.xib in Resources */,
 				E99BC1422625E11B0002C066 /* TestTableViewController.xib in Resources */,
 				E95ED2D12691A8CE00960EFF /* WebViewController.xib in Resources */,
+				E93D436E26ECC42E0070EA34 /* RecordViewController.xib in Resources */,
 				E9BB1BFB26710DEC0016406B /* MusicControlBar1.xib in Resources */,
 				E9937F7C26732DE00047FA64 /* Tab2CollectionViewCell.xib in Resources */,
 				E9E0CDE42608EDE90047DAE9 /* FunctionListTableViewCell.xib in Resources */,
@@ -1238,6 +1262,7 @@
 				E991AA712699F32200BB7C8F /* FileDownloader.swift in Sources */,
 				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
 				E9937F772673069B0047FA64 /* Tab2ViewController.swift in Sources */,
+				E93D437626ECFBC80070EA34 /* RecordService.swift in Sources */,
 				E99BC1412625E11B0002C066 /* TestTableViewController.swift in Sources */,
 				E93E0EA82611DF6A00D43B4C /* ScrollTabView.swift in Sources */,
 				E99224A3266CC0000038BAB7 /* CustomRefreshHeader1.swift in Sources */,
@@ -1297,6 +1322,7 @@
 				E9E0CD752607947C0047DAE9 /* SaveFiles.swift in Sources */,
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
+				E93D436D26ECC42E0070EA34 /* RecordViewController.swift in Sources */,
 				E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */,
 				E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
@@ -1310,9 +1336,11 @@
 				E95ED2D62693582200960EFF /* UserDefault.swift in Sources */,
 				E99855E62648C073006B0E1E /* DrawerViewController.swift in Sources */,
 				E97FA3BF26822F0500041A77 /* ProgressBar.swift in Sources */,
+				E93D439426EDFAB60070EA34 /* Observable.swift in Sources */,
 				E99855ED2648C786006B0E1E /* MainViewController.swift in Sources */,
 				E9E0CB92260659560047DAE9 /* HomeViewController.swift in Sources */,
 				E9BB1C0026710DFB0016406B /* MusicControlBar1.swift in Sources */,
+				E93D437B26ED166B0070EA34 /* Date+Extension.swift in Sources */,
 				E99BC1272624849A0002C066 /* LoadMoreCollectionReusableView.swift in Sources */,
 				E9A59EFF2665FF4D00FA458B /* TimerManager.swift in Sources */,
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
