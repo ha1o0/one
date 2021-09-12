@@ -21,6 +21,8 @@ An iOS App.
 12. 音频播放器（支持离线下载与播放），含控制中心播放控制和底部tabbar控制条（仿网易云）
 13. 暗黑模式切换
 14. 自定义底部tabbar
+15. 录音机，录制音频，并支持同时录其他应用正在播放的音频并分享至云盘，如网易云音乐云盘/阿里云盘等，**开发此功能是被网易云音乐版权太少给逼的。。。**
+
 
 以上除table使用了MJRefresh库, autolayout使用了SnapKit, 图片下载使用了SDWebImage, 文字滚动使用MarqueeLabel, 其余全部基于原生控件实现。
 
@@ -37,6 +39,10 @@ An iOS App.
 ![1501631352699_ pic](https://user-images.githubusercontent.com/11461723/132943396-c5fe1674-e0c5-4435-8a76-488d59744904.jpg)
 ![1481631352698_ pic](https://user-images.githubusercontent.com/11461723/132943402-e125dc92-5e51-4d74-a7b8-7791c76fa2cf.jpg)
 ![1601631353006_ pic](https://user-images.githubusercontent.com/11461723/132943578-a5b88009-62b5-4fc4-adb7-84887975832d.jpg)
+![1611631459474_ pic](https://user-images.githubusercontent.com/11461723/132992937-a2de751e-ca32-4517-831b-229d259fd5e1.jpg)
+![1621631459475_ pic](https://user-images.githubusercontent.com/11461723/132992950-7b630b9a-e830-4c96-a1f6-066890844689.jpg)
+![1631631459476_ pic](https://user-images.githubusercontent.com/11461723/132992951-fcd227ca-67a0-46c7-b59d-36acf990deea.jpg)
+
 
 
 
