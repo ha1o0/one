@@ -83,6 +83,9 @@ class PlayViewController: BaseViewController, DplayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatusBar()
+        if MusicService.shared.isPlaying {
+            MusicService.shared.pause()
+        }
         diyPlayerView = DplayerView(frame: CGRect(x: 0, y: STATUS_BAR_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_WIDTH / 16 * 9))
         diyPlayerView.layer.zPosition = 999
         diyPlayerView.delegate = self
