@@ -8,14 +8,12 @@
 import UIKit
 
 class BaseTestViewController: BaseViewController {
-    @IBOutlet weak var view1: UIView!
-    
+    var view1 = UIView()
     var view3 = UIView()
     var view4 = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomNav()
-        let view1 = UIView()
         view1.backgroundColor = .orange
         view1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(view1)
@@ -43,7 +41,7 @@ class BaseTestViewController: BaseViewController {
         
         let width = SCREEN_WIDTH - 40
         let view2 = UIView(frame: CGRect(x: 20, y: 300, width: width, height: 200))
-        view2.backgroundColor = .blue
+        view2.backgroundColor = .clear
         self.view.addSubview(view2)
         let oldFrame2 = view2.frame
         view2.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
@@ -59,6 +57,11 @@ class BaseTestViewController: BaseViewController {
         btn2.tintColor = .white
         btn2.addTarget(self, action: #selector(clickButton2), for: .touchUpInside)
         view.addSubview(btn2)
+        let btn3 = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 30))
+        btn3.setTitle("按钮3", for: .normal)
+        btn3.tintColor = .white
+        btn3.addTarget(self, action: #selector(clickButton3), for: .touchUpInside)
+        view.addSubview(btn3)
 
         
         view3.frame = CGRect(x: 0, y: SCREEN_HEIGHT - 100 - 200, width: SCREEN_WIDTH, height: 40)
@@ -95,6 +98,15 @@ class BaseTestViewController: BaseViewController {
             self.view3.frame.size.height -= 30
 //            self.view4.frame.origin.y += 20
 //            self.view4.transform = CGAffineTransform(translationX: 0, y: -20)
+        }
+    }
+    
+    @objc func clickButton3() {
+        self.view1.snp.updateConstraints { (maker) in
+            maker.top.equalToSuperview().offset(200)
+        }
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
         }
     }
 }

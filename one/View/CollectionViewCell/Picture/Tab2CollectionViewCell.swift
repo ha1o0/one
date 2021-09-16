@@ -55,9 +55,9 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-            let targetSize = CGSize(width: (SCREEN_WIDTH - 30) / 2, height: 0)
-            layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
-            return layoutAttributes
-        }
+        let targetSize = CGSize(width: (SCREEN_WIDTH - 30) / 2, height: 0)
+        layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+        return layoutAttributes
+    }
 
 }

@@ -154,8 +154,10 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         self.tableViewData.append(IdName(name: "SceneKit", id: "8"))
         self.tableViewData.append(IdName(name: "WebView", id: "9"))
         self.tableViewData.append(IdName(name: "相机", id: "10"))
+        self.tableViewData.append(IdName(name: "多线程", id: "13"))
         self.tableViewData.append(IdName(name: "录音", id: "11"))
         self.tableViewData.append(IdName(name: "测试", id: "0"))
+
         self.tableView.snp.makeConstraints { (maker) in
             maker.leading.equalToSuperview()
             maker.trailing.equalToSuperview()
@@ -246,6 +248,8 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
             appDelegate.musicWindow?.show()
             MusicService.shared.play()
             return
+        case "13":
+            targetController = ThreadViewController()
         default:
             targetController = BaseTestViewController()
         }
