@@ -28,7 +28,7 @@ class CoreDataViewController: BaseViewController, UITableViewDataSource, UITable
         return _tableView
     }()
     
-    var schoolClasses: [SchoolClass] = []
+    var schoolClasses: [SchoolClassModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,29 +71,36 @@ class CoreDataViewController: BaseViewController, UITableViewDataSource, UITable
         let schoolClass = SchoolClassCoreData.shared.insertData(context: coreDataContext)
         let student = StudentCoreData.shared.insertData(context: coreDataContext)
         schoolClass.monitor = student
-        let result: ()? = try? coreDataContext.save()
-        print(result ?? "...")
-        self.query()
+        try? coreDataContext.save()
     }
     
     @objc func query() {
         guard let coreDataContext = CoreDataService.shared.getContext(modelFileName: "Class", sqliteFileName: "SchoolSQL") else {
             return
         }
-        let result = SchoolClassCoreData.shared.query(context: coreDataContext, condition: "studentCount > 0")
-        if (result.finalResult?.count ?? 0) > 0 {
-            self.schoolClasses = result.finalResult!
-            self.tableView.reloadData()
+        SchoolClassCoreData.shared.query(context: coreDataContext, condition: "studentCount > 0", success: self.refreshData(data:))
+    }
+    
+    @objc func refreshData(data: [SchoolClass]) {
+        var classes: [SchoolClassModel] = []
+        for item in data {
+            let temp = SchoolClassModel(studentCount: item.studentCount, name: item.name ?? "")
+            classes.append(temp)
         }
-        
+        self.schoolClasses = classes
+        self.tableView.reloadData()
     }
 
 }
 
 extension CoreDataViewController {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schoolClasses.count
+        return self.schoolClasses.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

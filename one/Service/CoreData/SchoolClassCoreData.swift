@@ -15,10 +15,13 @@ class SchoolClassCoreData {
     
     private init() {}
     
-    func query(context: NSManagedObjectContext, condition: String) -> NSAsynchronousFetchResult<SchoolClass> {
+    func query(context: NSManagedObjectContext, condition: String, success: @escaping ([SchoolClass]) -> Void) {
         let request = NSFetchRequest<SchoolClass>(entityName: entityName)
         request.predicate = NSPredicate(format: condition)
-        return try! context.execute(request) as! NSAsynchronousFetchResult<SchoolClass>
+        let asyncFetch = NSAsynchronousFetchRequest(fetchRequest: request) { (result: NSAsynchronousFetchResult<SchoolClass>) in
+            success(result.finalResult ?? [])
+        }
+        try! context.execute(asyncFetch)
     }
     
     func insertData(context: NSManagedObjectContext) -> SchoolClass {

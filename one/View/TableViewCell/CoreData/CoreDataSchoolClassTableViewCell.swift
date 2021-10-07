@@ -23,9 +23,7 @@ class CoreDataSchoolClassTableViewCell: BaseTableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(schoolClass: SchoolClass) {
-        print(schoolClass)
-        print("\(schoolClass.name):\(schoolClass.studentCount)")
+    func setCell(schoolClass: SchoolClassModel) {
         self.classNameLabel.text = schoolClass.name
         self.studentCountLabel.text = "\(schoolClass.studentCount)"
     }

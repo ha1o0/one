@@ -194,6 +194,7 @@
 		E9F34D8D270DA42A0082BA8E /* StudentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D8C270DA42A0082BA8E /* StudentCoreData.swift */; };
 		E9F34D94270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D92270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift */; };
 		E9F34D95270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F34D93270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib */; };
+		E9F34D9D270F3A040082BA8E /* SchoolClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D9C270F3A040082BA8E /* SchoolClassModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +410,7 @@
 		E9F34D8C270DA42A0082BA8E /* StudentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCoreData.swift; sourceTree = "<group>"; };
 		E9F34D92270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSchoolClassTableViewCell.swift; sourceTree = "<group>"; };
 		E9F34D93270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataSchoolClassTableViewCell.xib; sourceTree = "<group>"; };
+		E9F34D9C270F3A040082BA8E /* SchoolClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolClassModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1037,6 +1039,7 @@
 				E99BC10426233C770002C066 /* Video.swift */,
 				E998560A265268B0006B0E1E /* LeftDrawerItem.swift */,
 				E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */,
+				E9F34D9C270F3A040082BA8E /* SchoolClassModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				E99224AE266D15140038BAB7 /* MusicControlBar.swift in Sources */,
 				E9937F602670BC3F0047FA64 /* BaseWindow.swift in Sources */,
 				E9E0CD762607947C0047DAE9 /* StrInt.swift in Sources */,
+				E9F34D9D270F3A040082BA8E /* SchoolClassModel.swift in Sources */,
 				E95ED2D02691A8CE00960EFF /* WebViewController.swift in Sources */,
 				E97FA35E267E396900041A77 /* MusicPlayerViewController.swift in Sources */,
 				E99224B3266D27280038BAB7 /* MusicService.swift in Sources */,
