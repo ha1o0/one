@@ -14,6 +14,7 @@ class ThreadService {
     var age = 0
     var dispatchGroup = DispatchGroup()
     var lock = NSLock()
+    var recursiveLock = NSRecursiveLock()
     
     private init() {}
     

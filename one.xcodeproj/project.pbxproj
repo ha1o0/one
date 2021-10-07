@@ -182,6 +182,18 @@
 		E9E0CDF4260DA4330047DAE9 /* Collection1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */; };
 		E9E68BE52648376200929383 /* Capsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E68BE42648376100929383 /* Capsule.swift */; };
 		E9E6F75C268471F8008327B6 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6F75B268471F8008327B6 /* CustomSlider.swift */; };
+		E9F34D3F270D97A40082BA8E /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D3D270D97A40082BA8E /* CoreDataViewController.swift */; };
+		E9F34D40270D97A40082BA8E /* CoreDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F34D3E270D97A40082BA8E /* CoreDataViewController.xib */; };
+		E9F34D4D270D98EA0082BA8E /* Class.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D4B270D98EA0082BA8E /* Class.xcdatamodeld */; };
+		E9F34D63270D9A2E0082BA8E /* SchoolClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D5F270D9A2E0082BA8E /* SchoolClass+CoreDataClass.swift */; };
+		E9F34D64270D9A2E0082BA8E /* SchoolClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D60270D9A2E0082BA8E /* SchoolClass+CoreDataProperties.swift */; };
+		E9F34D65270D9A2E0082BA8E /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D61270D9A2E0082BA8E /* Student+CoreDataClass.swift */; };
+		E9F34D66270D9A2E0082BA8E /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D62270D9A2E0082BA8E /* Student+CoreDataProperties.swift */; };
+		E9F34D7C270D9BF40082BA8E /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D7B270D9BF40082BA8E /* CoreDataService.swift */; };
+		E9F34D82270DA2ED0082BA8E /* SchoolClassCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D81270DA2ED0082BA8E /* SchoolClassCoreData.swift */; };
+		E9F34D8D270DA42A0082BA8E /* StudentCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D8C270DA42A0082BA8E /* StudentCoreData.swift */; };
+		E9F34D94270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34D92270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift */; };
+		E9F34D95270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9F34D93270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +397,18 @@
 		E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Collection1ViewController.xib; sourceTree = "<group>"; };
 		E9E68BE42648376100929383 /* Capsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capsule.swift; sourceTree = "<group>"; };
 		E9E6F75B268471F8008327B6 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		E9F34D3D270D97A40082BA8E /* CoreDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewController.swift; sourceTree = "<group>"; };
+		E9F34D3E270D97A40082BA8E /* CoreDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataViewController.xib; sourceTree = "<group>"; };
+		E9F34D4C270D98EA0082BA8E /* Class.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Class.xcdatamodel; sourceTree = "<group>"; };
+		E9F34D5F270D9A2E0082BA8E /* SchoolClass+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolClass+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E9F34D60270D9A2E0082BA8E /* SchoolClass+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SchoolClass+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E9F34D61270D9A2E0082BA8E /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E9F34D62270D9A2E0082BA8E /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E9F34D7B270D9BF40082BA8E /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		E9F34D81270DA2ED0082BA8E /* SchoolClassCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolClassCoreData.swift; sourceTree = "<group>"; };
+		E9F34D8C270DA42A0082BA8E /* StudentCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCoreData.swift; sourceTree = "<group>"; };
+		E9F34D92270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSchoolClassTableViewCell.swift; sourceTree = "<group>"; };
+		E9F34D93270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoreDataSchoolClassTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +452,13 @@
 				570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E90BBCBF270AD10100725ECF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E93D436A26ECC41B0070EA34 /* Record */ = {
@@ -656,6 +687,7 @@
 		E99BC1812627495C0002C066 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E9F34D80270DA2CA0082BA8E /* CoreData */,
 				E99BC182262749700002C066 /* LocationService.swift */,
 				E9628EBB2654B5C200F5BECF /* NotificationService.swift */,
 				E9A59EFE2665FF4D00FA458B /* TimerManager.swift */,
@@ -814,6 +846,8 @@
 		E9E0CB4D26062A860047DAE9 /* one */ = {
 			isa = PBXGroup;
 			children = (
+				E9F34D31270D95130082BA8E /* CoreData */,
+				E90BBCBF270AD10100725ECF /* Network */,
 				E9937F612670BC450047FA64 /* Window */,
 				E9A952F6263171140032EADB /* Resource */,
 				E99BC1812627495C0002C066 /* Service */,
@@ -924,6 +958,7 @@
 		E9E0CD7A260794980047DAE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9F34D44270D97AA0082BA8E /* CoreData */,
 				E9DC4F7826F3936C00038C97 /* Thread */,
 				E93D436A26ECC41B0070EA34 /* Record */,
 				E99855EB2648C76E006B0E1E /* Main */,
@@ -984,6 +1019,7 @@
 		E9E0CDCE2608E6600047DAE9 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E9F34D91270F1DC00082BA8E /* CoreData */,
 				E9922428266679050038BAB7 /* Music */,
 				E998562226534BE4006B0E1E /* LeftDrawer */,
 				E93E0EAD2612027D00D43B4C /* Animation */,
@@ -1032,6 +1068,46 @@
 				E9E0CDF2260DA4330047DAE9 /* Collection1ViewController.xib */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		E9F34D31270D95130082BA8E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9F34D5F270D9A2E0082BA8E /* SchoolClass+CoreDataClass.swift */,
+				E9F34D60270D9A2E0082BA8E /* SchoolClass+CoreDataProperties.swift */,
+				E9F34D61270D9A2E0082BA8E /* Student+CoreDataClass.swift */,
+				E9F34D62270D9A2E0082BA8E /* Student+CoreDataProperties.swift */,
+				E9F34D4B270D98EA0082BA8E /* Class.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E9F34D44270D97AA0082BA8E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9F34D3D270D97A40082BA8E /* CoreDataViewController.swift */,
+				E9F34D3E270D97A40082BA8E /* CoreDataViewController.xib */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E9F34D80270DA2CA0082BA8E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9F34D7B270D9BF40082BA8E /* CoreDataService.swift */,
+				E9F34D81270DA2ED0082BA8E /* SchoolClassCoreData.swift */,
+				E9F34D8C270DA42A0082BA8E /* StudentCoreData.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E9F34D91270F1DC00082BA8E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9F34D92270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift */,
+				E9F34D93270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1168,6 +1244,7 @@
 				E9A59EF4265CFAC100FA458B /* CarouselCollectionViewCell.xib in Resources */,
 				E97FA35F267E396900041A77 /* MusicPlayerViewController.xib in Resources */,
 				E9A59F21266E13C100FA458B /* TabBarMusicCollectionViewCell.xib in Resources */,
+				E9F34D95270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.xib in Resources */,
 				E99BC1F7263869620002C066 /* ScanQrCodeViewController.xib in Resources */,
 				E9937F652671DC5F0047FA64 /* OpenHomeViewController.xib in Resources */,
 				E99BC1AC2628958A0002C066 /* ModalViewController.xib in Resources */,
@@ -1196,6 +1273,7 @@
 				E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */,
 				E9A59F1A266DB63300FA458B /* qfl.mid in Resources */,
 				E9E0CB5B26062A890047DAE9 /* Assets.xcassets in Resources */,
+				E9F34D40270D97A40082BA8E /* CoreDataViewController.xib in Resources */,
 				E9E0CD89260795270047DAE9 /* DiyPlayerView.xib in Resources */,
 				E99224A9266D0FBC0038BAB7 /* MusicControlBar.xib in Resources */,
 				E99855E72648C073006B0E1E /* DrawerViewController.xib in Resources */,
@@ -1270,12 +1348,15 @@
 			files = (
 				E9E0CDB42607A1D90047DAE9 /* BaseTableViewController.swift in Sources */,
 				E9E6F75C268471F8008327B6 /* CustomSlider.swift in Sources */,
+				E9F34D82270DA2ED0082BA8E /* SchoolClassCoreData.swift in Sources */,
+				E9F34D7C270D9BF40082BA8E /* CoreDataService.swift in Sources */,
 				E9A59F20266E13C100FA458B /* TabBarMusicCollectionViewCell.swift in Sources */,
 				E9E0CD612607934D0047DAE9 /* UIImageView+URL.swift in Sources */,
 				E998560B265268B0006B0E1E /* LeftDrawerItem.swift in Sources */,
 				E9E0CB8826063A450047DAE9 /* BaseViewController.swift in Sources */,
 				E9E0CDD12608E88D0047DAE9 /* Functions.swift in Sources */,
 				E99BC100262335730002C066 /* BaseCollectionViewController.swift in Sources */,
+				E9F34D64270D9A2E0082BA8E /* SchoolClass+CoreDataProperties.swift in Sources */,
 				E9937F7B26732DE00047FA64 /* Tab2CollectionViewCell.swift in Sources */,
 				E991AA712699F32200BB7C8F /* FileDownloader.swift in Sources */,
 				E99224D1266E6D9E0038BAB7 /* CGPoint+Extension.swift in Sources */,
@@ -1294,7 +1375,9 @@
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
 				E992249B266BC21F0038BAB7 /* CustomRefreshHeader.swift in Sources */,
+				E9F34D3F270D97A40082BA8E /* CoreDataViewController.swift in Sources */,
 				E9E0CD57260792B80047DAE9 /* UIView+Extension.swift in Sources */,
+				E9F34D65270D9A2E0082BA8E /* Student+CoreDataClass.swift in Sources */,
 				E9985605264A7FBD006B0E1E /* LeftDrawerViewController.swift in Sources */,
 				E9E0CB4F26062A860047DAE9 /* AppDelegate.swift in Sources */,
 				E9E0CB5926062A860047DAE9 /* one.xcdatamodeld in Sources */,
@@ -1316,6 +1399,7 @@
 				E992241E265FCDB40038BAB7 /* MusicFunction.swift in Sources */,
 				E9E0CDBC2607A3230047DAE9 /* PlayViewController.swift in Sources */,
 				E9E0CBA62606604A0047DAE9 /* LaunchViewController.swift in Sources */,
+				E9F34D66270D9A2E0082BA8E /* Student+CoreDataProperties.swift in Sources */,
 				E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */,
 				E9937F5E2670AA200047FA64 /* ThemeManager.swift in Sources */,
 				E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */,
@@ -1324,6 +1408,7 @@
 				E9E0CD742607947C0047DAE9 /* Constants.swift in Sources */,
 				E9937F732672FE1B0047FA64 /* Tab1ViewController.swift in Sources */,
 				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
+				E9F34D4D270D98EA0082BA8E /* Class.xcdatamodeld in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,
 				E9922490266A5D4D0038BAB7 /* MusicListCollectionViewLayout.swift in Sources */,
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
@@ -1343,6 +1428,8 @@
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E93D436D26ECC42E0070EA34 /* RecordViewController.swift in Sources */,
+				E9F34D94270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift in Sources */,
+				E9F34D8D270DA42A0082BA8E /* StudentCoreData.swift in Sources */,
 				E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */,
 				E9A59F042668618200FA458B /* MusicListItemCollectionViewCell.swift in Sources */,
 				E9E0CD5F2607934D0047DAE9 /* UIImage+Custom.swift in Sources */,
@@ -1366,6 +1453,7 @@
 				E9E0CDF3260DA4330047DAE9 /* Collection1ViewController.swift in Sources */,
 				E9922415265FC7A50038BAB7 /* FunctionCollectionViewCell.swift in Sources */,
 				E9A59EF8266472CA00FA458B /* MusicSheetCollectionViewCell.swift in Sources */,
+				E9F34D63270D9A2E0082BA8E /* SchoolClass+CoreDataClass.swift in Sources */,
 				E998562526534C07006B0E1E /* LeftDrawerTableViewCell.swift in Sources */,
 				E93E0EA92611DF6A00D43B4C /* LiveListView.swift in Sources */,
 				E9937F6E26720F090047FA64 /* SwitchTabCollectionViewCell.swift in Sources */,
@@ -1718,6 +1806,16 @@
 			);
 			currentVersion = E9E0CB5826062A860047DAE9 /* one.xcdatamodel */;
 			path = one.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		E9F34D4B270D98EA0082BA8E /* Class.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9F34D4C270D98EA0082BA8E /* Class.xcdatamodel */,
+			);
+			currentVersion = E9F34D4C270D98EA0082BA8E /* Class.xcdatamodel */;
+			path = Class.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

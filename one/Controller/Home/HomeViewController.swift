@@ -156,6 +156,7 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         self.tableViewData.append(IdName(name: "相机", id: "10"))
         self.tableViewData.append(IdName(name: "多线程", id: "13"))
         self.tableViewData.append(IdName(name: "录音", id: "11"))
+        self.tableViewData.append(IdName(name: "CoreData", id: "14"))
         self.tableViewData.append(IdName(name: "测试", id: "0"))
 
         self.tableView.snp.makeConstraints { (maker) in
@@ -250,6 +251,8 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
             return
         case "13":
             targetController = ThreadViewController()
+        case "14":
+            targetController = CoreDataViewController()
         default:
             targetController = BaseTestViewController()
         }
