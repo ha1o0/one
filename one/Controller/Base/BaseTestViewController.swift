@@ -102,11 +102,12 @@ class BaseTestViewController: BaseViewController {
     }
     
     @objc func clickButton3() {
-        self.view1.snp.updateConstraints { (maker) in
-            maker.top.equalToSuperview().offset(200)
-        }
-        UIView.animate(withDuration: 0.6) {
-            self.view.layoutIfNeeded()
-        }
+        UIApplication.shared.applicationIconBadgeNumber += 1
+//        self.view1.snp.updateConstraints { (maker) in
+//            maker.top.equalToSuperview().offset(200)
+//        }
+//        UIView.animate(withDuration: 0.6) {
+//            self.view.layoutIfNeeded()
+//        }
     }
 }
