@@ -23,6 +23,13 @@ class ThreadViewController: BaseViewController {
         return _startBtn
     }()
     
+    lazy var thread3Btn: UIButton = {
+        var _startBtn = UIButton()
+        _startBtn.setTitle("测试gcd-barrier", for: .normal)
+        _startBtn.setTitleColor(.main, for: .normal)
+        return _startBtn
+    }()
+    
     var param1 = 0
     var flag = true
     var timer: Timer?
@@ -49,9 +56,15 @@ class ThreadViewController: BaseViewController {
             maker.top.equalTo(self.navigationView.snp.bottom).offset(80)
         }
         thread2Btn.addTarget(self, action: #selector(startThread2), for: .touchUpInside)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { (_) in
-            ThreadService.shared.log()
-        })
+//        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { (_) in
+//            ThreadService.shared.log()
+//        })
+        self.view.addSubview(thread3Btn)
+        thread3Btn.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.top.equalTo(self.navigationView.snp.bottom).offset(120)
+        }
+        thread3Btn.addTarget(self, action: #selector(startThread3), for: .touchUpInside)
     }
     
     @objc func startThread1() {
@@ -60,5 +73,35 @@ class ThreadViewController: BaseViewController {
     
     @objc func startThread2() {
         ThreadService.shared.thread2()
+    }
+    
+    @objc func startThread3() {
+        print("----------------")
+        let queue = DispatchQueue(label: "barrier", attributes: .concurrent)
+        print(1)
+        queue.async {
+            Thread.sleep(forTimeInterval: 2)
+            print("async1: \(self.param1)")
+        }
+        queue.async {
+            print("async2: \(self.param1)")
+        }
+        print(2)
+        queue.sync(flags: .barrier) {
+            print("sync3: \(self.param1)")
+        }
+//        queue.async {
+//            print("sync3: \(self.param1)")
+//        }
+        queue.async {
+            print("async4: \(self.param1)")
+        }
+        queue.async {
+            print("async5: \(self.param1)")
+        }
+        print(3)
+        DispatchQueue.main.sync {
+            print("hello main")
+        }
     }
 }
