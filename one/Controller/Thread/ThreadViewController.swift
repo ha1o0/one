@@ -30,6 +30,14 @@ class ThreadViewController: BaseViewController {
         return _startBtn
     }()
     
+    
+    lazy var thread4Btn: UIButton = {
+        var _startBtn = UIButton()
+        _startBtn.setTitle("测试OC锁", for: .normal)
+        _startBtn.setTitleColor(.main, for: .normal)
+        return _startBtn
+    }()
+    
     var param1 = 0
     var flag = true
     var timer: Timer?
@@ -65,6 +73,13 @@ class ThreadViewController: BaseViewController {
             maker.top.equalTo(self.navigationView.snp.bottom).offset(120)
         }
         thread3Btn.addTarget(self, action: #selector(startThread3), for: .touchUpInside)
+        
+        self.view.addSubview(thread4Btn)
+        thread4Btn.snp.makeConstraints { (maker) in
+            maker.centerX.equalToSuperview()
+            maker.top.equalTo(self.navigationView.snp.bottom).offset(160)
+        }
+        thread4Btn.addTarget(self, action: #selector(startThread4), for: .touchUpInside)
     }
     
     @objc func startThread1() {
@@ -103,5 +118,11 @@ class ThreadViewController: BaseViewController {
         DispatchQueue.main.sync {
             print("hello main")
         }
+    }
+    
+    @objc func startThread4() {
+        let test = TestOC()
+        test.name = "mike"
+        test.log()
     }
 }
