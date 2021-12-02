@@ -16,6 +16,8 @@
 
 - (void)log;
 
+- (void)testLock;
+
 @end
 
 

@@ -124,5 +124,6 @@ class ThreadViewController: BaseViewController {
         let test = TestOC()
         test.name = "mike"
         test.log()
+        test.testLock()
     }
 }
