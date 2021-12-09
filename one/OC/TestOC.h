@@ -16,7 +16,11 @@
 
 - (void)log;
 
+- (void)log2:(NSString *)param;
+
 - (void)testLock;
+
+- (void)testObgMsg;
 
 @end
 

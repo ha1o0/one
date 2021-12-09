@@ -24,6 +24,7 @@
 		E93E0EDD2613775200D43B4C /* Animation3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EDC2613775100D43B4C /* Animation3TableViewCell.swift */; };
 		E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93E0EE126137DC200D43B4C /* Animation4TableViewCell.swift */; };
 		E94CB89A2758F9C100C189C7 /* TestOC.m in Sources */ = {isa = PBXBuildFile; fileRef = E94CB8992758F9C100C189C7 /* TestOC.m */; };
+		E94CB8B727625BD700C189C7 /* TestOC2.m in Sources */ = {isa = PBXBuildFile; fileRef = E94CB8B627625BD700C189C7 /* TestOC2.m */; };
 		E951C70E265501A9007CC3C2 /* MusicHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C70C265501A9007CC3C2 /* MusicHomeViewController.swift */; };
 		E951C70F265501A9007CC3C2 /* MusicHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */; };
 		E951C71126550C3E007CC3C2 /* MusicHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */; };
@@ -237,6 +238,8 @@
 		E94CB8982758F9C100C189C7 /* one-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "one-Bridging-Header.h"; sourceTree = "<group>"; };
 		E94CB8992758F9C100C189C7 /* TestOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOC.m; sourceTree = "<group>"; };
 		E94CB89E2758F9FE00C189C7 /* TestOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOC.h; sourceTree = "<group>"; };
+		E94CB8B527625BC800C189C7 /* TestOC2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestOC2.h; sourceTree = "<group>"; };
+		E94CB8B627625BD700C189C7 /* TestOC2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestOC2.m; sourceTree = "<group>"; };
 		E951C70C265501A9007CC3C2 /* MusicHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeViewController.swift; sourceTree = "<group>"; };
 		E951C70D265501A9007CC3C2 /* MusicHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicHomeViewController.xib; sourceTree = "<group>"; };
 		E951C71026550C3E007CC3C2 /* MusicHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHomeModel.swift; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				E94CB8982758F9C100C189C7 /* one-Bridging-Header.h */,
 				E94CB8992758F9C100C189C7 /* TestOC.m */,
 				E94CB89E2758F9FE00C189C7 /* TestOC.h */,
+				E94CB8B627625BD700C189C7 /* TestOC2.m */,
+				E94CB8B527625BC800C189C7 /* TestOC2.h */,
 			);
 			path = OC;
 			sourceTree = "<group>";
@@ -1433,6 +1438,7 @@
 				E9922490266A5D4D0038BAB7 /* MusicListCollectionViewLayout.swift in Sources */,
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
 				E9A59F072668788400FA458B /* MockService.swift in Sources */,
+				E94CB8B727625BD700C189C7 /* TestOC2.m in Sources */,
 				E9E0CBB3260666370047DAE9 /* BaseNavigationViewController.swift in Sources */,
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
