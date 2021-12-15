@@ -7,7 +7,40 @@
 
 import UIKit
 
-class BezierPathViewController: BaseViewController {
+protocol Emitterable {
+
+}
+
+extension Emitterable where Self: UIViewController {
+    func startEmittering(_ point: CGPoint) {
+        let emitter = CAEmitterLayer()
+        emitter.emitterPosition = point
+        emitter.preservesDepth = false
+        let cell = CAEmitterCell()
+        cell.velocity = 150
+        cell.velocityRange = 100
+        cell.scale = 0.3
+        cell.scaleRange = 0.1
+        cell.lifetime = 3
+        cell.lifetimeRange = 1.5
+        cell.emissionLongitude = CGFloat.pi / 2
+        cell.emissionRange = CGFloat.pi / 6
+        cell.spin = CGFloat.pi / 2
+        cell.spinRange = CGFloat.pi / 4
+        cell.birthRate = 2
+        cell.contents = UIImage(named: "sliderThumb1")?.cgImage
+        emitter.emitterCells = [cell, cell, cell, cell, cell, cell]
+        view.layer.addSublayer(emitter)
+    }
+    
+    func stopEmittering() {
+        view.layer.sublayers?.filter({ (calayer) -> Bool in
+            return calayer.isKind(of: CAEmitterLayer.self)
+        }).first?.removeFromSuperlayer()
+    }
+}
+
+class BezierPathViewController: BaseViewController, Emitterable {
 
     lazy var scrollView = {
         return UIScrollView()
@@ -111,16 +144,8 @@ class BezierPathViewController: BaseViewController {
             maker.height.equalTo(height)
             maker.bottom.equalToSuperview()
         }
-        
-        let card = viewFromNib("MemberCardView")
-        secondView.addSubview(card)
-        card.snp.makeConstraints { (maker) in
-            maker.centerX.equalToSuperview()
-            maker.height.equalTo(160)
-            maker.leading.equalToSuperview().offset(15)
-            maker.trailing.equalToSuperview().offset(-15)
-        }
-        
+//        startEmittering(CGPoint(x: 200,y: 600))
+        startEmittering(CGPoint(x: self.view.center.x, y: 100))
     }
     
     @objc func animateView1() {
@@ -176,4 +201,9 @@ class BezierPathViewController: BaseViewController {
 //        pathAnimation.repeatCount = Float.greatestFiniteMagnitude
         layer.add(pathAnimation, forKey: "strokeEndAnimation")
     }
+    
+    deinit {
+        self.stopEmittering()
+    }
 }
+
