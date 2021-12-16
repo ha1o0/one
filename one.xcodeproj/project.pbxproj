@@ -32,6 +32,7 @@
 		E95ED2D12691A8CE00960EFF /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95ED2CF2691A8CE00960EFF /* WebViewController.xib */; };
 		E95ED2D62693582200960EFF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ED2D52693582200960EFF /* UserDefault.swift */; };
 		E9628EBC2654B5C200F5BECF /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9628EBB2654B5C200F5BECF /* NotificationService.swift */; };
+		E9746D3C276B0641008E19C5 /* Emitterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9746D3B276B0641008E19C5 /* Emitterable.swift */; };
 		E97FA3572677A5F900041A77 /* Tab3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA3552677A5F900041A77 /* Tab3ViewController.swift */; };
 		E97FA3582677A5F900041A77 /* Tab3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97FA3562677A5F900041A77 /* Tab3ViewController.xib */; };
 		E97FA35E267E396900041A77 /* MusicPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */; };
@@ -247,6 +248,7 @@
 		E95ED2CF2691A8CE00960EFF /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		E95ED2D52693582200960EFF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		E9628EBB2654B5C200F5BECF /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		E9746D3B276B0641008E19C5 /* Emitterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitterable.swift; sourceTree = "<group>"; };
 		E97FA3552677A5F900041A77 /* Tab3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3ViewController.swift; sourceTree = "<group>"; };
 		E97FA3562677A5F900041A77 /* Tab3ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tab3ViewController.xib; sourceTree = "<group>"; };
 		E97FA35C267E396900041A77 /* MusicPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerViewController.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 				E9E0CDEB2608EF7B0047DAE9 /* UIUtils.swift */,
 				E99224CB266E6D5B0038BAB7 /* AnimationUtils.swift */,
 				E93D439326EDFAB60070EA34 /* Observable.swift */,
+				E9746D3B276B0641008E19C5 /* Emitterable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1396,6 +1399,7 @@
 				E99BC1AB2628958A0002C066 /* ModalViewController.swift in Sources */,
 				E9E0CD622607934D0047DAE9 /* Image+Gif.swift in Sources */,
 				E951C70E265501A9007CC3C2 /* MusicHomeViewController.swift in Sources */,
+				E9746D3C276B0641008E19C5 /* Emitterable.swift in Sources */,
 				E9A135C02624479900DEC078 /* CouponLeftView.swift in Sources */,
 				E99BC16326272A300002C066 /* MapViewController.swift in Sources */,
 				E992249B266BC21F0038BAB7 /* CustomRefreshHeader.swift in Sources */,
