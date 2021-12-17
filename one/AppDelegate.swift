@@ -9,6 +9,10 @@ import UIKit
 import CoreData
 import AVKit
 
+#if DEBUG
+    import DoraemonKit
+#endif
+
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 @main
@@ -38,6 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let frame = CGRect(x: 0, y: SCREEN_HEIGHT, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         self.musicWindow = MusicPlayerWindow(frame: frame)
         self.showLaunchWindow()
+        
+        #if DEBUG
+        DoraemonManager.shareInstance().install {
+            print("Doraemon installed")
+        }
+        #endif
         
         return true
     }

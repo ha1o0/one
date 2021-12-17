@@ -17,7 +17,7 @@ inhibit_all_warnings!
 
 target 'one' do
     # pod swift
-    pod 'Moya'
+    pod 'Moya', '~> 15.0.0'
     pod 'SnapKit', '~> 5.0.0'
     pod 'DLRadioButton', '~> 1.4'
     pod 'SDWebImage', '~> 5.0'
@@ -28,5 +28,12 @@ target 'one' do
     # pod objective-c
     pod 'ZImageCropper'
     pod 'MJRefresh'
+    pod 'DoraemonKit/Core', '~> 3.0.4', :configurations => ['Debug'], :modular_headers => true #必选
+    pod 'DoraemonKit/WithGPS', '~> 3.0.4', :configurations => ['Debug'] #可选
+    pod 'DoraemonKit/WithLoad', '~> 3.0.4', :configurations => ['Debug'] #可选
+    pod 'DoraemonKit/WithLogger', '~> 3.0.4', :configurations => ['Debug'] #可选
+    pod 'DoraemonKit/WithDatabase', '~> 3.0.4', :configurations => ['Debug'] #可选
+    pod 'DoraemonKit/WithMLeaksFinder', '~> 3.0.4', :configurations => ['Debug'] #可选
+    pod 'DoraemonKit/WithWeex', '~> 3.0.4', :configurations => ['Debug'] #可选
 end
 	
