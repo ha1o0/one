@@ -44,9 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.showLaunchWindow()
         
         #if DEBUG
-        DoraemonManager.shareInstance().install {
-            print("Doraemon installed")
-        }
+        DoraemonManager.shareInstance().install(withStartingPosition: CGPoint(x: SCREEN_WIDTH - 100, y: 100))
         #endif
         
         return true
