@@ -123,8 +123,14 @@ class ThreadViewController: BaseViewController {
     @objc func startThread4() {
         let test = TestOC()
         test.name = "mike"
+        // log已经被swizzling
+        test.logSwizzling()
 //        test.log()
 //        test.testLock()
-        test.testObgMsg()
+//        test.testObgMsg()
+//
+//
+//        let test2 = TestOC2()
+//        test2.testObgMsg()
     }
 }

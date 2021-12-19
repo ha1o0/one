@@ -8,24 +8,26 @@
 import UIKit
 import WebKit
 
-class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
+class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate, WKURLSchemeHandler {
     
     var url = "https://www.baidu.com"
     
     lazy var webView: WKWebView = {
-        let _webView = WKWebView()
+        
+        let configuration = WKWebViewConfiguration()
+        configuration.preferences = WKPreferences()
+        configuration.preferences.minimumFontSize = 12.0
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        configuration.userContentController = WKUserContentController()
+//        configuration.setURLSchemeHandler(self, forURLScheme: "https")
+        if #available(iOS 13.0, *) {
+            configuration.defaultWebpagePreferences.preferredContentMode = .mobile
+        }
+        let jsStr = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        let wkUserScript = WKUserScript(source: jsStr, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
+        configuration.userContentController.addUserScript(wkUserScript)
+        let _webView = WKWebView(frame: CGRect.zero, configuration: configuration)
         _webView.allowsBackForwardNavigationGestures = true
-//        let configuration = WKWebViewConfiguration()
-//        configuration.preferences = WKPreferences()
-//        configuration.preferences.minimumFontSize = 12.0
-//        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-//        configuration.userContentController = WKUserContentController()
-//        if #available(iOS 13.0, *) {
-//            configuration.defaultWebpagePreferences.preferredContentMode = .mobile
-//        }
-//        let jsStr = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'); document.getElementsByTagName('head')[0].appendChild(meta);"
-//        let wkUserScript = WKUserScript(source: jsStr, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
-//        configuration.userContentController.addUserScript(wkUserScript)
         _webView.backgroundColor = UIColor.clear
         _webView.navigationDelegate = self
         _webView.uiDelegate = self
@@ -51,9 +53,12 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "浏览器页面"
         setCustomNav()
         setWebView()
+        var url = self.url
+        url = self.interceptUrl(url: url)
         webView.load(URLRequest(url: URL(string: url)!))
         print("didload: \(Date())")
         // Do any additional setup after loading the view.
@@ -87,7 +92,36 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
             }
         }
     }
-
+ 
+    
+    func _handleUrlSchema(urlSchema: String) -> Bool {
+        if urlSchema == "https" {
+            return false
+        }
+        return _handleUrlSchema(urlSchema: urlSchema)
+    }
+    
+    func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
+        let request = urlSchemeTask.request
+        let url = request.url?.absoluteString
+        if ((url?.hasPrefix("https://cdn.poizon.com/")) != nil) {
+            print("enter start: \(String(describing: url))")
+            urlSchemeTask.didReceive(URLResponse())
+            do {
+                try urlSchemeTask.didReceive(Data(contentsOf: URL(string: MockService.shared.getRandomImg())!))
+            } catch (_) {
+                
+            }
+        }
+        urlSchemeTask.didFinish()
+    }
+    
+    func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
+        let request = urlSchemeTask.request
+        let url = request.url?.absoluteString
+        print("enter stop url: \(String(describing: url))")
+        return
+    }
     
     func loadHTMLString(_ html: String) {
         let jsStr = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
@@ -96,4 +130,11 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         webView.loadHTMLString(html, baseURL: nil)
     }
     
+    // 对webView的url进行黑名单替换拦截
+    func interceptUrl(url: String) -> String {
+        if WebService.shared.isUrlInBlackList(url: url) {
+            return "https://h5plus.dewu.com/post?postsId=66902177&477zitijianju=0"
+        }
+        return url
+    }
 }

@@ -13,12 +13,46 @@
 
 @implementation TestOC: NSObject
 
++ (void)load {
+    NSLog(@"TestOC load");
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class aClass = [self class];
+        SEL originalSelector = @selector(logOriginal);
+        SEL swizzlingSelector = @selector(logSwizzling);
+        Method originalMethod = class_getClassMethod(aClass, originalSelector);
+        Method swizzlingMethod = class_getClassMethod(aClass, swizzlingSelector);
+        method_exchangeImplementations(originalMethod, swizzlingMethod);
+        NSLog(@"swizzling success");
+    });
+}
+
++ (void)initialize
+{
+    if (self == [TestOC class]) {
+        NSLog(@"TestOC initialize");
+    }
+}
+
+- (void)testlog {
+    [self logOriginal];
+}
+
+- (void)logOriginal {
+    NSLog(@"log original: %@", self.name);
+}
+
+- (void)logSwizzling {
+    NSLog(@"log swizzling: %@", self.name);
+//    [self logSwizzling];
+}
+
 - (void)log {
-    NSLog(@"%@", self.name);
+    NSLog(@"log: %@", self.name);
 }
 
 - (void)log2:(NSString *)param {
-    NSLog(@"%@", param);
+    NSLog(@"log2: %@", param);
 }
 
 - (void)testLock {

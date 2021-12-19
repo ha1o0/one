@@ -11,8 +11,8 @@ import QuartzCore   // for the basic animation
 
 class SceneKitViewController: BaseViewController {
 
-    let sceneView = SCNView()
-    let sceneView2 = SCNView()
+    var sceneView = SCNView()
+    var sceneView2 = SCNView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

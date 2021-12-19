@@ -174,7 +174,8 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
     }
     
     @objc func toMessageVc() {
-        let vc = BaseTestViewController()
+//        let vc = BaseWebViewController.create(with: "https://blog.iword.win/iostest.html")
+        let vc = BaseWebViewController.create(with: "https://www.google.com")
         self.pushVc(vc: vc, animate: true)
     }
     
@@ -233,9 +234,6 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         case "9":
             hideAllTabBar = true
             targetController = BaseWebViewController.create(with: "https://blog.iword.win")
-//            let a: WebViewController = WebViewController()
-//            a.url = "https://blog.iword.win"
-//            targetController = a
         case "10":
             targetController = ScanQrCodeViewController()
             hideAllTabBar = true

@@ -14,7 +14,13 @@
 
 @property(nonatomic, strong) NSString *name;
 
+- (void)testlog;
+
 - (void)log;
+
+- (void)logOriginal;
+
+- (void)logSwizzling;
 
 - (void)log2:(NSString *)param;
 

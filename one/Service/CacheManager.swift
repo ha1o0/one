@@ -7,15 +7,27 @@
 
 import Foundation
 import SDWebImage
+import SceneKit
+import WebKit
 
 class CacheManager {
     static let shared = CacheManager()
     
     var refreshHeaderImages: [UIImage] = []
     var imageInfos: [String: ImageInfo] = [:]
+    var sceneViews: [SCNView] = []
+    var webViews: [WKWebView] = []
     
     private init() {
-        let _ = BaseWebViewController.create(with: "https://www.baidu.com")
+//        let webView = WKWebView()
+//        self.webViews.append(webView)
+        
+//        for _ in [0...2] {
+//            let sceneView = SCNView()
+//            let scene = SCNScene(named: "BrickLandspeeder4501.obj")
+//            sceneView.scene = scene
+//            self.sceneViews.append(sceneView)
+//        }
     }
     
     private func getImagesInfo(urls: [String], callback: @escaping () -> Void) {
