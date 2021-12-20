@@ -145,6 +145,7 @@
 		E9BB1C0026710DFB0016406B /* MusicControlBar1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB1BFF26710DFB0016406B /* MusicControlBar1.swift */; };
 		E9BB1C2426753B810016406B /* Tab2FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB1C2326753B810016406B /* Tab2FlowLayout.swift */; };
 		E9C7638B276E370100E00BB6 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C7638A276E370100E00BB6 /* WebService.swift */; };
+		E9C763AF2770B45400E00BB6 /* WKWebView+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C763AE2770B45400E00BB6 /* WKWebView+Hook.m */; };
 		E9DC4F7B26F3938600038C97 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC4F7926F3938600038C97 /* ThreadViewController.swift */; };
 		E9DC4F7C26F3938600038C97 /* ThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC4F7A26F3938600038C97 /* ThreadViewController.xib */; };
 		E9DC4F8426F39D0800038C97 /* ThreadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC4F8326F39D0800038C97 /* ThreadService.swift */; };
@@ -364,6 +365,8 @@
 		E9BB1BFF26710DFB0016406B /* MusicControlBar1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicControlBar1.swift; sourceTree = "<group>"; };
 		E9BB1C2326753B810016406B /* Tab2FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2FlowLayout.swift; sourceTree = "<group>"; };
 		E9C7638A276E370100E00BB6 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		E9C763AD2770B45400E00BB6 /* WKWebView+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+Hook.h"; sourceTree = "<group>"; };
+		E9C763AE2770B45400E00BB6 /* WKWebView+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+Hook.m"; sourceTree = "<group>"; };
 		E9DC4F7926F3938600038C97 /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		E9DC4F7A26F3938600038C97 /* ThreadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadViewController.xib; sourceTree = "<group>"; };
 		E9DC4F8326F39D0800038C97 /* ThreadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadService.swift; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 				E94CB8B527625BC800C189C7 /* TestOC2.h */,
 				E90AB216277015D50086B5FC /* TestOC+Swizzling.h */,
 				E90AB217277015D50086B5FC /* TestOC+Swizzling.m */,
+				E9C763AD2770B45400E00BB6 /* WKWebView+Hook.h */,
+				E9C763AE2770B45400E00BB6 /* WKWebView+Hook.m */,
 			);
 			path = OC;
 			sourceTree = "<group>";
@@ -1447,6 +1452,7 @@
 				E992243426667CF50038BAB7 /* MusicList.swift in Sources */,
 				E9F34D4D270D98EA0082BA8E /* Class.xcdatamodeld in Sources */,
 				E93E0EE226137DC200D43B4C /* Animation4TableViewCell.swift in Sources */,
+				E9C763AF2770B45400E00BB6 /* WKWebView+Hook.m in Sources */,
 				E9922490266A5D4D0038BAB7 /* MusicListCollectionViewLayout.swift in Sources */,
 				E93E0ED826122F9100D43B4C /* AnimationTableViewCell.swift in Sources */,
 				E9A59F072668788400FA458B /* MockService.swift in Sources */,

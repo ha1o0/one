@@ -19,7 +19,8 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         configuration.preferences.minimumFontSize = 12.0
         configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         configuration.userContentController = WKUserContentController()
-//        configuration.setURLSchemeHandler(self, forURLScheme: "https")
+        configuration.setURLSchemeHandler(self, forURLScheme: "http")
+        configuration.setURLSchemeHandler(self, forURLScheme: "https")
         if #available(iOS 13.0, *) {
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
         }
@@ -92,28 +93,35 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
             }
         }
     }
- 
     
-    func _handleUrlSchema(urlSchema: String) -> Bool {
-        if urlSchema == "https" {
-            return false
-        }
-        return _handleUrlSchema(urlSchema: urlSchema)
-    }
-    
+    // 拦截图片并替换为自定义图片
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
         let request = urlSchemeTask.request
         let url = request.url?.absoluteString
-        if ((url?.hasPrefix("https://cdn.poizon.com/")) != nil) {
-            print("enter start: \(String(describing: url))")
-            urlSchemeTask.didReceive(URLResponse())
-            do {
-                try urlSchemeTask.didReceive(Data(contentsOf: URL(string: MockService.shared.getRandomImg())!))
-            } catch (_) {
-                
+        if let url = url {
+            if url.hasPrefix("https://cdn.poizon.com") && url.contains("image/") {
+                print("enter start: \(String(describing: url))")
+                urlSchemeTask.didReceive(URLResponse())
+                do {
+                    try urlSchemeTask.didReceive(Data(contentsOf: URL(string: MockService.shared.getRandomImg())!))
+                } catch (_) {
+                    
+                }
+                urlSchemeTask.didFinish()
+                return
             }
         }
-        urlSchemeTask.didFinish()
+        
+        let task = URLSession.shared.dataTask(with: request) {data, response, error in
+            if let response = response {
+                urlSchemeTask.didReceive(response)
+            }
+            if let data = data {
+                urlSchemeTask.didReceive(data)
+            }
+            urlSchemeTask.didFinish()
+        }
+        task.resume()
     }
     
     func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
