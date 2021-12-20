@@ -99,7 +99,7 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         let request = urlSchemeTask.request
         let url = request.url?.absoluteString
         if let url = url {
-            if url.hasPrefix("https://cdn.poizon.com") && url.contains("image/") {
+            if url.hasPrefix("https://www.baidu.com") && url.contains(".png") {
                 print("enter start: \(String(describing: url))")
                 urlSchemeTask.didReceive(URLResponse())
                 do {
@@ -113,11 +113,20 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         }
         
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
-            if let response = response {
-                urlSchemeTask.didReceive(response)
-            }
-            if let data = data {
-                urlSchemeTask.didReceive(data)
+            if data == nil {
+                urlSchemeTask.didReceive(URLResponse())
+                do {
+                    try urlSchemeTask.didReceive(Data(contentsOf: URL(string: MockService.shared.getRandomImg())!))
+                } catch (_) {
+                    
+                }
+            } else {
+                if let response = response {
+                    urlSchemeTask.didReceive(response)
+                }
+                if let data = data {
+                    urlSchemeTask.didReceive(data)
+                }
             }
             urlSchemeTask.didFinish()
         }
@@ -141,7 +150,8 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
     // 对webView的url进行黑名单替换拦截
     func interceptUrl(url: String) -> String {
         if WebService.shared.isUrlInBlackList(url: url) {
-            return "https://h5plus.dewu.com/post?postsId=66902177&477zitijianju=0"
+            return "https://www.baidu.com"
+//            return "https://h5plus.dewu.com/post?postsId=66902177&477zitijianju=0"
         }
         return url
     }
