@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC2F42DE8D443519841727F0 /* Pods_one.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */; };
+		E90AB218277015D50086B5FC /* TestOC+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = E90AB217277015D50086B5FC /* TestOC+Swizzling.m */; };
 		E93D436D26ECC42E0070EA34 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D436B26ECC42E0070EA34 /* RecordViewController.swift */; };
 		E93D436E26ECC42E0070EA34 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93D436C26ECC42E0070EA34 /* RecordViewController.xib */; };
 		E93D437626ECFBC80070EA34 /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93D437526ECFBC80070EA34 /* RecordService.swift */; };
@@ -222,6 +223,8 @@
 		4A6108A952F3F17ACF4B4E2C /* Pods-one.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one.debug.xcconfig"; path = "Target Support Files/Pods-one/Pods-one.debug.xcconfig"; sourceTree = "<group>"; };
 		54814271B70437C46126C7F5 /* Pods-one.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one.release.xcconfig"; path = "Target Support Files/Pods-one/Pods-one.release.xcconfig"; sourceTree = "<group>"; };
 		570D0E0BAE1D0BA362A8D3D8 /* Pods_one.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_one.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90AB216277015D50086B5FC /* TestOC+Swizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOC+Swizzling.h"; sourceTree = "<group>"; };
+		E90AB217277015D50086B5FC /* TestOC+Swizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestOC+Swizzling.m"; sourceTree = "<group>"; };
 		E93D436B26ECC42E0070EA34 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E93D436C26ECC42E0070EA34 /* RecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
 		E93D437526ECFBC80070EA34 /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
@@ -518,6 +521,8 @@
 				E94CB89E2758F9FE00C189C7 /* TestOC.h */,
 				E94CB8B627625BD700C189C7 /* TestOC2.m */,
 				E94CB8B527625BC800C189C7 /* TestOC2.h */,
+				E90AB216277015D50086B5FC /* TestOC+Swizzling.h */,
+				E90AB217277015D50086B5FC /* TestOC+Swizzling.m */,
 			);
 			path = OC;
 			sourceTree = "<group>";
@@ -1462,6 +1467,7 @@
 				E93E0EC626122C5400D43B4C /* Animation2TableViewCell.swift in Sources */,
 				E9E0CD88260795270047DAE9 /* DiyPlayerView.swift in Sources */,
 				E93D436D26ECC42E0070EA34 /* RecordViewController.swift in Sources */,
+				E90AB218277015D50086B5FC /* TestOC+Swizzling.m in Sources */,
 				E9F34D94270F1DED0082BA8E /* CoreDataSchoolClassTableViewCell.swift in Sources */,
 				E9F34D8D270DA42A0082BA8E /* StudentCoreData.swift in Sources */,
 				E998561E265274D7006B0E1E /* MemberCardView.swift in Sources */,

@@ -14,17 +14,7 @@
 @implementation TestOC: NSObject
 
 + (void)load {
-    NSLog(@"TestOC load");
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        Class aClass = [self class];
-        SEL originalSelector = @selector(logOriginal);
-        SEL swizzlingSelector = @selector(logSwizzling);
-        Method originalMethod = class_getClassMethod(aClass, originalSelector);
-        Method swizzlingMethod = class_getClassMethod(aClass, swizzlingSelector);
-        method_exchangeImplementations(originalMethod, swizzlingMethod);
-        NSLog(@"swizzling success");
-    });
+    NSLog(@"test oc load");
 }
 
 + (void)initialize
