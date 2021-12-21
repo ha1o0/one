@@ -11,6 +11,7 @@ import WebKit
 class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate, WKURLSchemeHandler {
     
     var url = "https://www.baidu.com"
+    var urlSchemeTaskStatusDict: [String: Bool] = [:]
     
     lazy var webView: WKWebView = {
         
@@ -96,6 +97,15 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
     
     // 拦截图片并替换为自定义图片
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
+        let requestUrlStr = urlSchemeTask.request.url!.absoluteString
+        print(requestUrlStr)
+        
+        if let urlSchemeTaskStarted = self.urlSchemeTaskStatusDict[requestUrlStr] {
+            if urlSchemeTaskStarted {
+                return
+            }
+        }
+        self.urlSchemeTaskStatusDict[requestUrlStr] = true
         let request = urlSchemeTask.request
         let url = request.url?.absoluteString
         if let url = url {
@@ -112,7 +122,10 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
             }
         }
         
-        let task = URLSession.shared.dataTask(with: request) {data, response, error in
+        let task = URLSession.shared.dataTask(with: request) {[weak urlSchemeTask] data, response, error in
+            guard let urlSchemeTask = urlSchemeTask else {
+                return
+            }
             if data == nil {
                 urlSchemeTask.didReceive(URLResponse())
                 do {
@@ -134,6 +147,7 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
     }
     
     func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
+        self.urlSchemeTaskStatusDict[urlSchemeTask.request.url!.absoluteString] = false
         let request = urlSchemeTask.request
         let url = request.url?.absoluteString
         print("enter stop url: \(String(describing: url))")
