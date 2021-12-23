@@ -20,8 +20,10 @@ class BaseWebViewController: BaseViewController, WKNavigationDelegate, WKUIDeleg
         configuration.preferences.minimumFontSize = 12.0
         configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         configuration.userContentController = WKUserContentController()
-        configuration.setURLSchemeHandler(self, forURLScheme: "http")
-        configuration.setURLSchemeHandler(self, forURLScheme: "https")
+        if self.url == "https://www.baidu.com" {
+            configuration.setURLSchemeHandler(self, forURLScheme: "http")
+            configuration.setURLSchemeHandler(self, forURLScheme: "https")
+        }
         if #available(iOS 13.0, *) {
             configuration.defaultWebpagePreferences.preferredContentMode = .mobile
         }

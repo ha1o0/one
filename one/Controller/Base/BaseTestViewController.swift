@@ -76,6 +76,29 @@ class BaseTestViewController: BaseViewController {
             maker.leading.trailing.equalToSuperview()
             maker.height.equalTo(60)
         }
+        
+        let view4Son = UIView()
+        view4Son.backgroundColor = .blue
+        view4.addSubview(view4Son)
+//        view4.isUserInteractionEnabled = false
+        view4Son.translatesAutoresizingMaskIntoConstraints = false
+        view4Son.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        view4Son.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        view4Son.topAnchor.constraint(equalTo: view4.topAnchor).isActive = true
+        view4Son.leadingAnchor.constraint(equalTo: view4.leadingAnchor).isActive = true
+        
+        let view4sonClick = UITapGestureRecognizer(target: self, action: #selector(clickView4Son))
+        view4Son.addGestureRecognizer(view4sonClick)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = Array(touches).last
+        let result = touch?.view?.isDescendant(of: self.view4)
+        print(result)
+    }
+    
+    @objc func clickView4Son() {
+        print("click view4son")
     }
     
     @objc func clickButton() {
