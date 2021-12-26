@@ -78,8 +78,9 @@ class BaseTestViewController: BaseViewController {
             maker.height.equalTo(60)
         }
         
-        let view4Son = UIView()
+        let view4Son = BaseView()
         view4Son.backgroundColor = .blue
+        view4Son.tag = 1
         view4.addSubview(view4Son)
 //        view4.isUserInteractionEnabled = false
         view4Son.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +94,7 @@ class BaseTestViewController: BaseViewController {
         
         let view4Gson = BaseView()
         view4Gson.backgroundColor = .red
+        view4Gson.tag = 2
 //        view4Gson.isUserInteractionEnabled = false
         view4Son.addSubview(view4Gson)
         view4Gson.snp.makeConstraints { (maker) in
@@ -108,7 +110,7 @@ class BaseTestViewController: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = Array(touches).last
         let result = touch?.view?.isDescendant(of: self.view4)
-        print(result)
+        print(result ?? false)
     }
     
     
