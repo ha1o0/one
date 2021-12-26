@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BaseTestViewController: BaseViewController {
     var view1 = UIView()
@@ -89,12 +90,30 @@ class BaseTestViewController: BaseViewController {
         
         let view4sonClick = UITapGestureRecognizer(target: self, action: #selector(clickView4Son))
         view4Son.addGestureRecognizer(view4sonClick)
+        
+        let view4Gson = BaseView()
+        view4Gson.backgroundColor = .red
+//        view4Gson.isUserInteractionEnabled = false
+        view4Son.addSubview(view4Gson)
+        view4Gson.snp.makeConstraints { (maker) in
+            maker.width.equalTo(100)
+            maker.height.equalTo(20)
+            maker.center.equalToSuperview()
+        }
+        let view4GsonClick = UITapGestureRecognizer(target: self, action: #selector(clickView4Gson))
+        view4Gson.addGestureRecognizer(view4GsonClick)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = Array(touches).last
         let result = touch?.view?.isDescendant(of: self.view4)
         print(result)
+    }
+    
+    
+    @objc func clickView4Gson() {
+        print("click view4gson")
     }
     
     @objc func clickView4Son() {

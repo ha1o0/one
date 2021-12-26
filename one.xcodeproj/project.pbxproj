@@ -146,6 +146,7 @@
 		E9BB1C2426753B810016406B /* Tab2FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB1C2326753B810016406B /* Tab2FlowLayout.swift */; };
 		E9C7638B276E370100E00BB6 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C7638A276E370100E00BB6 /* WebService.swift */; };
 		E9C763AF2770B45400E00BB6 /* WKWebView+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C763AE2770B45400E00BB6 /* WKWebView+Hook.m */; };
+		E9C763B4277629B200E00BB6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C763B3277629B200E00BB6 /* BaseView.swift */; };
 		E9DC4F7B26F3938600038C97 /* ThreadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC4F7926F3938600038C97 /* ThreadViewController.swift */; };
 		E9DC4F7C26F3938600038C97 /* ThreadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC4F7A26F3938600038C97 /* ThreadViewController.xib */; };
 		E9DC4F8426F39D0800038C97 /* ThreadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC4F8326F39D0800038C97 /* ThreadService.swift */; };
@@ -367,6 +368,7 @@
 		E9C7638A276E370100E00BB6 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		E9C763AD2770B45400E00BB6 /* WKWebView+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+Hook.h"; sourceTree = "<group>"; };
 		E9C763AE2770B45400E00BB6 /* WKWebView+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+Hook.m"; sourceTree = "<group>"; };
+		E9C763B3277629B200E00BB6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		E9DC4F7926F3938600038C97 /* ThreadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewController.swift; sourceTree = "<group>"; };
 		E9DC4F7A26F3938600038C97 /* ThreadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreadViewController.xib; sourceTree = "<group>"; };
 		E9DC4F8326F39D0800038C97 /* ThreadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadService.swift; sourceTree = "<group>"; };
@@ -1030,6 +1032,7 @@
 				E93E0EA62611DF6A00D43B4C /* ScrollTabView.swift */,
 				E9E68BE42648376100929383 /* Capsule.swift */,
 				E9A59EEB265CF0B600FA458B /* Carousel.swift */,
+				E9C763B3277629B200E00BB6 /* BaseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1461,6 +1464,7 @@
 				E9E0CD602607934D0047DAE9 /* UIColor+hex.swift in Sources */,
 				E9C7638B276E370100E00BB6 /* WebService.swift in Sources */,
 				E99BC0F726232DFC0002C066 /* PictureCollectionViewCell.swift in Sources */,
+				E9C763B4277629B200E00BB6 /* BaseView.swift in Sources */,
 				E99BC1DB26340F580002C066 /* BaseWebViewController.swift in Sources */,
 				E93E0E9E2611D80A00D43B4C /* AnimationViewController.swift in Sources */,
 				E9DC4F8426F39D0800038C97 /* ThreadService.swift in Sources */,
