@@ -24,6 +24,7 @@ target 'one' do
     pod 'Toast-Swift', '~> 5.0.1'
     pod 'FreeStreamer'
     pod 'MarqueeLabel'
+    pod "CTMediator"
     pod 'Dplayer', :git =>'https://github.com/weifengsmile/Dplayer.git', :branch => 'master'
     # pod objective-c
     pod 'ZImageCropper'

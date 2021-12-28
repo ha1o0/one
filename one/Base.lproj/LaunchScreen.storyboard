@@ -44,7 +44,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImg" width="320" height="568"/>
+        <image name="LaunchImg" width="414" height="896"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

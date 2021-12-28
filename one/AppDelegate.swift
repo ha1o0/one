@@ -43,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.musicWindow = MusicPlayerWindow(frame: frame)
         self.showLaunchWindow()
         
-        #if DEBUG
-        DoraemonManager.shareInstance().install(withStartingPosition: CGPoint(x: SCREEN_WIDTH - 100, y: 100))
-        #endif
+//        #if DEBUG
+//        DoraemonManager.shareInstance().install(withStartingPosition: CGPoint(x: SCREEN_WIDTH - 100, y: 100))
+//        #endif
         
         return true
     }

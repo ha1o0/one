@@ -3,6 +3,7 @@ PODS:
   - CocoaLumberjack (3.7.4):
     - CocoaLumberjack/Core (= 3.7.4)
   - CocoaLumberjack/Core (3.7.4)
+  - CTMediator (46)
   - DLRadioButton (1.4.12)
   - DoraemonKit/Core (3.0.7):
     - FMDB
@@ -65,6 +66,7 @@ PODS:
   - ZImageCropper (0.1.0)
 
 DEPENDENCIES:
+  - CTMediator
   - DLRadioButton (~> 1.4)
   - DoraemonKit/Core (~> 3.0.4)
   - DoraemonKit/WithDatabase (~> 3.0.4)
@@ -87,6 +89,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CocoaLumberjack
+    - CTMediator
     - DLRadioButton
     - DoraemonKit
     - FBRetainCycleDetector
@@ -119,6 +122,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
+  CTMediator: f1cf58d509fb3192086c367711f039efd769b907
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   DoraemonKit: 32fb97f3aa82efa133111d193080ca5462cef135
   Dplayer: 0afcf68c45c74ef7bc4ae6b2ded0f958379b72ff
@@ -139,6 +143,6 @@ SPEC CHECKSUMS:
   YYDebugDatabase: e684a7f79fca2e3673a23347cefb822f911f3124
   ZImageCropper: 1a5518eea94f1ce903bbfebc860bfb023d27fc62
 
-PODFILE CHECKSUM: 6e66f7b23edfe6674b3682a4d79856a75afbeb65
+PODFILE CHECKSUM: f78f3229aa184645c993871d9869c4f98904e2dc
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
