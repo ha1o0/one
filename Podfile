@@ -26,6 +26,8 @@ target 'one' do
     pod 'MarqueeLabel'
     pod "CTMediator"
     pod 'Dplayer', :git =>'https://github.com/weifengsmile/Dplayer.git', :branch => 'master'
+    pod "scrolltab_Category", :path => "../scrolltab_Category"
+    pod "scrolltab", :path => "../scrolltab"
     # pod objective-c
     pod 'ZImageCropper'
     pod 'MJRefresh'

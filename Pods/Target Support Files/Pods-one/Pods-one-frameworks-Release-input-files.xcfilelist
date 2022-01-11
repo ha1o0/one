@@ -20,3 +20,5 @@ ${BUILT_PRODUCTS_DIR}/WXDevtool/WXDevtool.framework
 ${BUILT_PRODUCTS_DIR}/WeexSDK/WeexSDK.framework
 ${BUILT_PRODUCTS_DIR}/YYDebugDatabase/YYDebugDatabase.framework
 ${BUILT_PRODUCTS_DIR}/ZImageCropper/ZImageCropper.framework
+${BUILT_PRODUCTS_DIR}/scrolltab/scrolltab.framework
+${BUILT_PRODUCTS_DIR}/scrolltab_Category/scrolltab_Category.framework

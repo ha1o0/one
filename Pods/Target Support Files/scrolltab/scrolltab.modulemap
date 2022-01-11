@@ -1,0 +1,6 @@
+framework module scrolltab {
+  umbrella header "scrolltab-umbrella.h"
+
+  export *
+  module * { export * }
+}

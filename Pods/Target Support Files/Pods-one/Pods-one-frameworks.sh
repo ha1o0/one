@@ -198,6 +198,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WeexSDK/WeexSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYDebugDatabase/YYDebugDatabase.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ZImageCropper/ZImageCropper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/scrolltab/scrolltab.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/scrolltab_Category/scrolltab_Category.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
@@ -221,6 +223,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/WeexSDK/WeexSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYDebugDatabase/YYDebugDatabase.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ZImageCropper/ZImageCropper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/scrolltab/scrolltab.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/scrolltab_Category/scrolltab_Category.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

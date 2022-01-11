@@ -1,0 +1,6 @@
+framework module scrolltab_Category {
+  umbrella header "scrolltab_Category-umbrella.h"
+
+  export *
+  module * { export * }
+}

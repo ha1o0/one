@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import CTMediator
+import scrolltab_Category
 
 class BaseTestViewController: BaseViewController {
     var view1 = UIView()
@@ -120,6 +122,10 @@ class BaseTestViewController: BaseViewController {
     
     @objc func clickView4Son() {
         print("click view4son")
+        let vc = CTMediator.sharedInstance().get_scrolltabViewController()
+        if let vc = vc {
+            self.navigationController?.pushVc(vc: vc)
+        }
     }
     
     @objc func clickButton() {
