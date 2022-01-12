@@ -122,10 +122,8 @@ class BaseTestViewController: BaseViewController {
     
     @objc func clickView4Son() {
         print("click view4son")
-        let vc = CTMediator.sharedInstance().get_scrolltabViewController()
-        if let vc = vc {
-            self.navigationController?.pushVc(vc: vc)
-        }
+        let vc: UIViewController = CTMediator.sharedInstance().get_scrolltabViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func clickButton() {
