@@ -83,14 +83,17 @@ DEPENDENCIES:
   - MarqueeLabel
   - MJRefresh
   - Moya (~> 15.0.0)
-  - scrolltab (from `../scrolltab`)
-  - scrolltab_Category (from `../scrolltab_Category`)
+  - scrolltab
+  - scrolltab_Category
   - SDWebImage (~> 5.0)
   - SnapKit (~> 5.0.0)
   - Toast-Swift (~> 5.0.1)
   - ZImageCropper
 
 SPEC REPOS:
+  "git@github.com:weifengsmile/PrivatePods.git":
+    - scrolltab
+    - scrolltab_Category
   trunk:
     - Alamofire
     - CocoaLumberjack
@@ -118,10 +121,6 @@ EXTERNAL SOURCES:
   Dplayer:
     :branch: master
     :git: https://github.com/weifengsmile/Dplayer.git
-  scrolltab:
-    :path: "../scrolltab"
-  scrolltab_Category:
-    :path: "../scrolltab_Category"
 
 CHECKOUT OPTIONS:
   Dplayer:
@@ -143,8 +142,8 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  scrolltab: 87b974519b8d45a3b983d194de3f17df6cd28b68
-  scrolltab_Category: 1fea66f507f94192f178abdb7fade8392f4df9ad
+  scrolltab: c0182ab1e87b54addb2cfbde26d38f5daf275b42
+  scrolltab_Category: 7ce3f5889430893bbdf1ec106ecff5be58c959cd
   SDWebImage: 240e5c12b592fb1268c1d03b8c90d90e8c2ffe82
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
@@ -154,6 +153,6 @@ SPEC CHECKSUMS:
   YYDebugDatabase: e684a7f79fca2e3673a23347cefb822f911f3124
   ZImageCropper: 1a5518eea94f1ce903bbfebc860bfb023d27fc62
 
-PODFILE CHECKSUM: e4d3289f3394451753725f1df0e4a6b9c67ffd25
+PODFILE CHECKSUM: 3c1a87a5b2b4305314ed7eb989fd5e7c14b5cb8e
 
 COCOAPODS: 1.10.1

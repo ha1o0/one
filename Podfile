@@ -1,6 +1,7 @@
 #解决Multiple commands produce '.../xxx.app/Assets.car':
 #install! 'cocoapods', :disable_input_output_paths => true
 #source 'https://github.com/CocoaPods/Specs.git'
+source 'git@github.com:weifengsmile/PrivatePods.git'
 source 'https://cdn.cocoapods.org/'
 platform :ios, '10.0'
 use_frameworks!
@@ -26,8 +27,8 @@ target 'one' do
     pod 'MarqueeLabel'
     pod "CTMediator"
     pod 'Dplayer', :git =>'https://github.com/weifengsmile/Dplayer.git', :branch => 'master'
-    pod "scrolltab_Category", :path => "../scrolltab_Category"
-    pod "scrolltab", :path => "../scrolltab"
+    pod "scrolltab_Category"
+    pod "scrolltab"
     # pod objective-c
     pod 'ZImageCropper'
     pod 'MJRefresh'
