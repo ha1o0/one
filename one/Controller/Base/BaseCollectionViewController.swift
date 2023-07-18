@@ -78,7 +78,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDelegate
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 //        flowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 100)
 //        flowLayout.footerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 100)
-        let viewWidth = (SCREEN_WIDTH - 20 - flowLayout.minimumInteritemSpacing) / 2
+        let viewWidth = floor((SCREEN_WIDTH - 20 - flowLayout.minimumInteritemSpacing) / 2)
         flowLayout.itemSize = CGSize(width: viewWidth, height: 160)
         return flowLayout
     }
