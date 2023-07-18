@@ -10626,9 +10626,11 @@
 			baseConfigurationReference = 90A1D85EA06F0EE7C08ECE57B3C0AFA0 /* Dplayer.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Dplayer";
+				DEVELOPMENT_TEAM = WZMD84KKFL;
 				IBSC_MODULE = Dplayer;
 				INFOPLIST_FILE = "Target Support Files/Dplayer/ResourceBundle-Dplayer-Dplayer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = win.iword.one;
 				PRODUCT_NAME = Dplayer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -11092,9 +11094,11 @@
 			baseConfigurationReference = C1073E931F240E521F952E74A4754CEA /* DoraemonKit.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DoraemonKit";
+				DEVELOPMENT_TEAM = WZMD84KKFL;
 				IBSC_MODULE = DoraemonKit;
 				INFOPLIST_FILE = "Target Support Files/DoraemonKit/ResourceBundle-DoraemonKit-DoraemonKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = win.iword.one;
 				PRODUCT_NAME = DoraemonKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -12316,9 +12320,11 @@
 			baseConfigurationReference = 9EB8266D2799D79BBC70B6B6B3574B0F /* DoraemonKit.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DoraemonKit";
+				DEVELOPMENT_TEAM = WZMD84KKFL;
 				IBSC_MODULE = DoraemonKit;
 				INFOPLIST_FILE = "Target Support Files/DoraemonKit/ResourceBundle-DoraemonKit-DoraemonKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = win.iword.one;
 				PRODUCT_NAME = DoraemonKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -12332,9 +12338,11 @@
 			baseConfigurationReference = 9E0C589F041E4A1907D7C9EE593CC648 /* Dplayer.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Dplayer";
+				DEVELOPMENT_TEAM = WZMD84KKFL;
 				IBSC_MODULE = Dplayer;
 				INFOPLIST_FILE = "Target Support Files/Dplayer/ResourceBundle-Dplayer-Dplayer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = win.iword.one;
 				PRODUCT_NAME = Dplayer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

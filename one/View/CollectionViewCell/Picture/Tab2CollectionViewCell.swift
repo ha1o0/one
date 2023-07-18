@@ -44,7 +44,7 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
 //                self.delegate?.reloadIndexPath(indexPath)
             }
             if let image = SDImageCache.shared.imageFromCache(forKey: data.poster) {
-                self.imageHeightConstraint.constant = (image.size.height * (SCREEN_WIDTH - 30) / 2) / image.size.width
+                self.imageHeightConstraint.constant = (image.size.height * floor((SCREEN_WIDTH - 30) / 2)) / image.size.width
             }
         }
     }
@@ -55,7 +55,7 @@ class Tab2CollectionViewCell: BaseCollectionViewCell {
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        let targetSize = CGSize(width: (SCREEN_WIDTH - 30) / 2, height: 0)
+        let targetSize = CGSize(width: floor((SCREEN_WIDTH - 30) / 2), height: 0)
         layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
         return layoutAttributes
     }

@@ -17,6 +17,9 @@ class BaseTableViewController: BaseViewController, UITableViewDelegate, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .systemGray6
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0;
+        }
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()

@@ -143,6 +143,9 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
         self.tableView.backgroundColor = .systemGray6
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        if #available(iOS 15.0, *) {
+            self.tableView.sectionHeaderTopPadding = 0;
+        }
         self.tableViewData.append(IdName(name: "视频播放器", id: "1"))
         self.tableViewData.append(IdName(name: "音乐播放器", id: "12"))
         self.tableViewData.append(IdName(name: "动画", id: "2"))
@@ -197,14 +200,15 @@ class HomeViewController: BaseTabBarViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc {
-            return tabbarVc.tabBarHeight + tabbarVc.musicControlBarHeight
+            return tabbarVc.bottomBlurView.frame.size.height
         }
-        
+
         return .leastNormalMagnitude
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView()
+        footer.backgroundColor = .clear
         return footer
     }
     

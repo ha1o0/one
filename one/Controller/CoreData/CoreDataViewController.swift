@@ -24,6 +24,9 @@ class CoreDataViewController: BaseViewController, UITableViewDataSource, UITable
     
     lazy var tableView: UITableView = {
         var _tableView = UITableView()
+        if #available(iOS 15.0, *) {
+            _tableView.sectionHeaderTopPadding = 0;
+        }
         _tableView.separatorStyle = .none
         return _tableView
     }()

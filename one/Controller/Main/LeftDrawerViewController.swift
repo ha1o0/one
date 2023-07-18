@@ -53,8 +53,11 @@ class LeftDrawerViewController: UIViewController, UITableViewDelegate, UITableVi
         return _topBarView
     }()
     
-       lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let _tableView = UITableView()
+        if #available(iOS 15.0, *) {
+           _tableView.sectionHeaderTopPadding = 0;
+        }
         _tableView.backgroundColor = .clear
         _tableView.separatorStyle = .none
         return _tableView

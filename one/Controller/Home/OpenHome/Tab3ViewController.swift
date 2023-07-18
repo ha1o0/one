@@ -50,7 +50,10 @@ class Tab3ViewController: BaseCollectionViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                           layout collectionViewLayout: UICollectionViewLayout,
                           referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 60)
+//        if let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc {
+//            return CGSize(width: self.view.frame.width, height: tabbarVc.bottomBlurView.frame.size.height)
+//        }
+        return CGSize(width: self.view.frame.width, height: 70)
     }
     
     func updateCollectionView() {

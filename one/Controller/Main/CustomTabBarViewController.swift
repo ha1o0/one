@@ -8,6 +8,8 @@
 import UIKit
 
 class CustomTabBarViewController: UITabBarController {
+    var hasAllShow: Bool = true
+    let blurDownHeight = 8.0
     var tabbarItems: [TabbarItem] = {
         var items: [TabbarItem] = []
         let item1 = TabbarItem(vc: HomeViewController(), title: "首页", imageName: "home", selectedImageName: "homeSelected")
@@ -30,9 +32,11 @@ class CustomTabBarViewController: UITabBarController {
         let _bottomBlurView = UIVisualEffectView(effect: UIBlurEffect(style: ThemeManager.shared.getBlurStyle()))
         return _bottomBlurView
     }()
+    // 整个底部 bar 高度
     var tabBarHeight: CGFloat {
         get {
-            return self.tabBar.frame.size.height
+            // tabbar height + music bar height + extra
+            return 49 + 50 + BOTTOM_EXTRA_HEIGHT
         }
     }
 
@@ -58,11 +62,10 @@ class CustomTabBarViewController: UITabBarController {
         self.viewControllers = items
         let frame = self.tabBar.frame
         self.tabBar.isHidden = true
-        let bottomBlurViewHeight: CGFloat = 49 + (hasNotch ? 34 : 0) + self.musicControlBarHeight
         self.view.addSubview(bottomBlurView)
         self.bottomBlurView.snp.makeConstraints { (maker) in
             maker.bottom.leading.trailing.equalToSuperview()
-            maker.height.equalTo(bottomBlurViewHeight - 8)
+            maker.height.equalTo(self.tabBarHeight - self.blurDownHeight)
         }
         self.customTabBar = CustomTabBar(tabBarItems: self.tabbarItems, frame: frame, self.changeSelectedIndex)
         self.view.addSubview(self.customTabBar)
@@ -79,34 +82,38 @@ class CustomTabBarViewController: UITabBarController {
     }
     
     func setupMusicControlBar() {
-        let bottomTabBarHeight = tabBarHeight + (hasNotch ? 34 : 0)
         MusicService.shared.musicList = MockService.shared.getRandomMusic()
         self.view.insertSubview(musicControlBar, belowSubview: self.customTabBar)
         musicControlBar.snp.makeConstraints { (maker) in
             maker.leading.trailing.equalToSuperview()
-            maker.bottom.equalToSuperview().offset(-bottomTabBarHeight)
+            maker.bottom.equalToSuperview().offset(-(self.tabBarHeight - self.musicControlBarHeight))
             maker.height.equalTo(self.musicControlBarHeight)
         }
         musicControlBar.commonInit()
     }
     
     func showTabbar() {
+        // 判断是否已经 show，show 了就不再 show
+        if (self.hasAllShow) {
+            return
+        }
         UIView.animate(withDuration: self.animationDuration) {
-            self.bottomBlurView.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight + 8
-            self.musicControlBar.center.y = SCREEN_HEIGHT - self.tabBarHeight - self.musicControlBarHeight / 2
-            self.customTabBar.center.y = SCREEN_HEIGHT - self.tabBarHeight / 2
+            self.bottomBlurView.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight + self.blurDownHeight
+            self.musicControlBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight
+            self.customTabBar.frame.origin.y = SCREEN_HEIGHT - self.tabBarHeight + self.musicControlBarHeight
             self.customTabBar.showTabBarItems()
+            self.hasAllShow = true
         }
     }
 
     func hideTabbar(_ all: Bool = false) {
-        let extraBottomHeight: CGFloat = hasNotch ? 34 : 0
         let hideAll = NotificationService.shared.hideAll || all
         UIView.animate(withDuration: self.animationDuration) {
-            self.bottomBlurView.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - self.tabBarHeight + 8
-            self.musicControlBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - extraBottomHeight - self.musicControlBarHeight
-            self.customTabBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - extraBottomHeight
+            self.bottomBlurView.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - self.musicControlBarHeight - BOTTOM_EXTRA_HEIGHT + self.blurDownHeight
+            self.musicControlBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - BOTTOM_EXTRA_HEIGHT - self.musicControlBarHeight
+            self.customTabBar.frame.origin.y = hideAll ? SCREEN_HEIGHT : SCREEN_HEIGHT - BOTTOM_EXTRA_HEIGHT
             self.customTabBar.hideTabBarItems()
+            self.hasAllShow = false
         }
     }
     

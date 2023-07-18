@@ -105,8 +105,9 @@ class MusicHomeViewController: BaseTableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.snp.makeConstraints { (maker) in
-            maker.leading.trailing.bottom.equalToSuperview()
+            maker.leading.trailing.equalToSuperview()
             maker.top.equalToSuperview().offset(hasNotch ? 88 : 64)
+            maker.bottom.equalToSuperview()
         }
         let header = CustomRefreshHeader1()
         tableView.mj_header = header
@@ -143,6 +144,9 @@ class MusicHomeViewController: BaseTableViewController {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section >= tableData.count {
+            return nil
+        }
         let headerData = tableData[section] as! MusicHomeSection
         let header = UIView()
         let padding: CGFloat = 10
@@ -225,7 +229,7 @@ class MusicHomeViewController: BaseTableViewController {
         }
         if section == self.tableData.count - 1 {
             if let tabbarVc = appDelegate.rootVc?.drawerVc.tabbarVc {
-                return tabbarVc.tabBarHeight + tabbarVc.musicControlBarHeight
+                return tabbarVc.bottomBlurView.frame.size.height
             }
         }
         return .leastNormalMagnitude

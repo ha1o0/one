@@ -190,15 +190,24 @@ class MusicPlayerViewController: BaseViewController, ProgressBarDelegate, FileDo
         self.musicNameLabel.text = currentMusic.name
         self.musicAuthorLabel.text = currentMusic.author
         if let url = URL(string: currentMusic.poster) {
-            self.bkgImageView.sd_setImage(with: url, completed: nil)
-            self.posterImageView.sd_setImage(with: url, completed: nil)
-            self.posterImageView.setCircleCornerRadius()
+            if self.bkgImageView != nil {
+                self.bkgImageView.sd_setImage(with: url, completed: nil)
+            }
+            if self.posterImageView != nil {
+                self.posterImageView.sd_setImage(with: url, completed: nil)
+                self.posterImageView.setCircleCornerRadius()
+            }
         }
-        self.isDownloadedImageView.isHidden = MusicService.shared.getCurrentMusicDownloadStatus() != .downloaded
+        if self.isDownloadedImageView != nil {
+            self.isDownloadedImageView.isHidden = MusicService.shared.getCurrentMusicDownloadStatus() != .downloaded
+        }
     }
     
     func updatePlayBtn() {
-        self.playBtn.setImage(UIImage(systemName: "\(musicInstance.isPlaying ? "pause.fill" : "play.fill")"), for: .normal)
+        guard let playBtn = self.playBtn else {
+            return
+        }
+        playBtn.setImage(UIImage(systemName: "\(musicInstance.isPlaying ? "pause.fill" : "play.fill")"), for: .normal)
     }
     
     @IBAction func dismiss(_ sender: UIButton) {
