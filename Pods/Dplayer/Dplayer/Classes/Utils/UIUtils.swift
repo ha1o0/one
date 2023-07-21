@@ -11,6 +11,11 @@ public func viewFromNib<T: UIView>(_ nibName: String) -> T {
     return getBundle().loadNibNamed(nibName, owner: nil, options: nil)?.first as! T
 }
 
+public func delay(_ delayTime: Double, closure: @escaping () -> ()) {
+    let time = DispatchTime.now() + delayTime
+    DispatchQueue.main.asyncAfter(deadline: time, execute: closure)
+}
+
 extension UIView {
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self

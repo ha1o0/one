@@ -1,9 +1,9 @@
 {
   "name": "Dplayer",
-  "version": "1.3.0",
+  "version": "1.4.5",
   "summary": "A video player.",
   "description": "A video player developed by Swift.",
-  "homepage": "https://github.com/weifengsmile/Dplayer",
+  "homepage": "https://github.com/ha1o0/Dplayer",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,16 +12,25 @@
     "sidney": "516202795@qq.com"
   },
   "source": {
-    "git": "https://github.com/weifengsmile/Dplayer.git",
-    "tag": "1.3.0"
+    "git": "https://github.com/ha1o0/Dplayer.git",
+    "tag": "1.4.5"
   },
   "platforms": {
     "ios": "10.0"
   },
   "source_files": "Dplayer/Classes/**/*",
+  "ios": {
+    "pod_target_xcconfig": {
+      "METAL_LIBRARY_OUTPUT_DIR": "${TARGET_BUILD_DIR}/Dplayer.bundle/"
+    }
+  },
+  "weak_frameworks": [
+    "MetalPerformanceShaders",
+    "Metal"
+  ],
   "resource_bundles": {
     "Dplayer": [
-      "Dplayer/**/*.{xib,xcassets,gif,png,jpg,jpeg}"
+      "Dplayer/**/*.{xib,xcassets,gif,png,jpg,jpeg,metallib}"
     ]
   },
   "dependencies": {

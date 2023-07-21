@@ -27,7 +27,7 @@ PODS:
     - DoraemonKit/Core
     - WeexSDK
     - WXDevtool
-  - Dplayer (1.3.0):
+  - Dplayer (1.4.5):
     - SnapKit (~> 5.0.0)
     - Toast-Swift (~> 5.0.1)
   - FBRetainCycleDetector (0.1.4)
@@ -78,7 +78,7 @@ DEPENDENCIES:
   - DoraemonKit/WithLogger (~> 3.0.4)
   - DoraemonKit/WithMLeaksFinder (~> 3.0.4)
   - DoraemonKit/WithWeex (~> 3.0.4)
-  - Dplayer (from `https://github.com/weifengsmile/Dplayer.git`, branch `master`)
+  - Dplayer (from `https://github.com/ha1o0/Dplayer.git`, branch `master`)
   - FreeStreamer
   - MarqueeLabel
   - MJRefresh
@@ -91,7 +91,7 @@ DEPENDENCIES:
   - ZImageCropper
 
 SPEC REPOS:
-  "git@github.com:weifengsmile/PrivatePods.git":
+  "git@github.com:ha1o0/PrivatePods.git":
     - scrolltab
     - scrolltab_Category
   trunk:
@@ -120,12 +120,12 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Dplayer:
     :branch: master
-    :git: https://github.com/weifengsmile/Dplayer.git
+    :git: https://github.com/ha1o0/Dplayer.git
 
 CHECKOUT OPTIONS:
   Dplayer:
-    :commit: da3ce1f7d81f487acc48995522c31668409f81da
-    :git: https://github.com/weifengsmile/Dplayer.git
+    :commit: 1f073d87f835024ec65d5ac33fecea13a8036ebf
+    :git: https://github.com/ha1o0/Dplayer.git
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
@@ -133,7 +133,7 @@ SPEC CHECKSUMS:
   CTMediator: f1cf58d509fb3192086c367711f039efd769b907
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   DoraemonKit: 32fb97f3aa82efa133111d193080ca5462cef135
-  Dplayer: 0afcf68c45c74ef7bc4ae6b2ded0f958379b72ff
+  Dplayer: 1d0eadba84c2da501557bda1380180b3d905f773
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
@@ -153,6 +153,6 @@ SPEC CHECKSUMS:
   YYDebugDatabase: e684a7f79fca2e3673a23347cefb822f911f3124
   ZImageCropper: 1a5518eea94f1ce903bbfebc860bfb023d27fc62
 
-PODFILE CHECKSUM: 3c1a87a5b2b4305314ed7eb989fd5e7c14b5cb8e
+PODFILE CHECKSUM: ad061071fb7835c6f6dde5ad07a6f633599919ae
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.12.1

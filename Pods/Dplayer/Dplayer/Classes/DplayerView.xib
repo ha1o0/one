@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,6 +21,7 @@
                 <outlet property="dateTimeDisplayLabel" destination="33g-sw-A88" id="unG-Lp-2WK"/>
                 <outlet property="fullBtn" destination="Z4c-xI-hoI" id="nNq-vi-yPM"/>
                 <outlet property="gestureView" destination="DWW-gs-m1W" id="nd4-nj-hPj"/>
+                <outlet property="hdrBtn" destination="6ON-B5-7fb" id="5Ue-SA-TCH"/>
                 <outlet property="pipBtn" destination="yTL-i4-wn8" id="v5c-pC-bk3"/>
                 <outlet property="playBtn" destination="6u3-HC-jMk" id="zpl-x4-idE"/>
                 <outlet property="playerView" destination="hjP-xm-UaE" id="Aa2-OE-I6E"/>
@@ -71,19 +72,38 @@
                                             <rect key="frame" x="160" y="0.0" width="200" height="44"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4g-yP-5bj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRd-ou-R1A">
+                                                    <rect key="frame" x="50" y="0.0" width="50" height="44"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQF-ag-juY">
-                                                    <rect key="frame" x="66.5" y="0.0" width="67" height="44"/>
+                                                    <rect key="frame" x="100" y="0.0" width="50" height="44"/>
+                                                    <subviews>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ON-B5-7fb">
+                                                            <rect key="frame" x="12.5" y="10" width="25" height="24"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" image="h.square" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="enableHdr:" destination="-1" eventType="touchUpInside" id="v4r-QT-ouX"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="6ON-B5-7fb" firstAttribute="centerY" secondItem="fQF-ag-juY" secondAttribute="centerY" id="MW1-A1-dP8"/>
+                                                        <constraint firstItem="6ON-B5-7fb" firstAttribute="centerX" secondItem="fQF-ag-juY" secondAttribute="centerX" id="npt-tz-9u2"/>
+                                                    </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIM-s9-iin">
-                                                    <rect key="frame" x="133.5" y="0.0" width="66.5" height="44"/>
+                                                    <rect key="frame" x="150" y="0.0" width="50" height="44"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTL-i4-wn8">
-                                                            <rect key="frame" x="17.5" y="12" width="32" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTL-i4-wn8">
+                                                            <rect key="frame" x="9" y="9" width="32.5" height="26"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal" image="pip.enter" catalog="system">
@@ -95,6 +115,10 @@
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="yTL-i4-wn8" firstAttribute="centerY" secondItem="sIM-s9-iin" secondAttribute="centerY" id="TNj-bs-EWp"/>
+                                                        <constraint firstItem="yTL-i4-wn8" firstAttribute="centerX" secondItem="sIM-s9-iin" secondAttribute="centerX" id="kG8-8L-EzS"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -276,8 +300,9 @@
     </objects>
     <resources>
         <image name="full" width="100" height="100"/>
+        <image name="h.square" catalog="system" width="128" height="114"/>
         <image name="leftBack" width="100" height="100"/>
-        <image name="pip.enter" catalog="system" width="128" height="96"/>
+        <image name="pip.enter" catalog="system" width="128" height="98"/>
         <image name="play" width="100" height="100"/>
         <systemColor name="lightTextColor">
             <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

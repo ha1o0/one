@@ -67,4 +67,19 @@ extension UIView {
         let rotation = self.transform.rotated(by: radians);
         self.transform = rotation
     }
+    
+    func rotateView(clockwise: Bool, degrees: CGFloat) {
+        // 计算旋转角度的弧度值
+        let radians = degrees * .pi / 180
+        // 设置旋转方向，顺时针或逆时针
+        let rotationDirection: CGFloat = clockwise ? 1 : -1
+        // 创建一个旋转的变换矩阵
+        let rotationTransform = CGAffineTransform(rotationAngle: rotationDirection * radians)
+        // 如果希望在动画中旋转视图
+        UIView.animate(withDuration: 1.0) {
+            self.transform = rotationTransform
+        }
+        // 如果希望立即旋转视图，而不是使用动画，可以直接设置 transform 属性：
+        // self.transform = rotationTransform
+    }
 }
